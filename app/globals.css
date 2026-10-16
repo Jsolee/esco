@@ -1,26 +1,294 @@
 @import "tailwindcss";
 
+/* Tinta i paper: interfície acromàtica. A l'Estat gairebé cada to saturat ja és d'algun partit,
+   així que el color de partit només apareix als resultats. La «sala» del joc és sempre fosca. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #fbfbfa;
+  --sunken: #f1f1ee;
+  --rule: #deddd8;
+  --ink: #0e0e0d;
+  --ink-2: #55544f;
+  --ink-3: #6f6e69;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f0f0e;
+    --sunken: #191917;
+    --rule: #2c2b28;
+    --ink: #f2f1ec;
+    --ink-2: #b4b2aa;
+    --ink-3: #8e8c85;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f0f0e;
+  --sunken: #191917;
+  --rule: #2c2b28;
+  --ink: #f2f1ec;
+  --ink-2: #b4b2aa;
+  --ink-3: #8e8c85;
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-sunken: var(--sunken);
+  --color-rule: var(--rule);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  /* sala del ple: fixa en tots dos temes */
+  --color-stage: #0c0c0b;
+  --color-stage-2: #1a1917;
+  --color-stage-3: #2a2926;
+  --color-chalk: #f2f1ec;
+  --color-chalk-2: #b4b2aa;
+  --color-chalk-3: #8e8c85;
+  --color-card: #f7f6f2;
+  --color-card-2: #e4e2dc;
+  --color-card-3: #c9c6bd;
+  --color-card-ink: #0e0e0d;
+  --color-card-ink-2: #55544f;
+  --font-serif: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  --font-sans: var(--font-schibsted), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+@layer base {
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility kicker {
+  font-weight: 600;
+  font-size: 0.78rem;
+  line-height: 1.3;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+@utility num {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+@utility display {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding-inline: 1.4rem;
+  border-radius: 999px;
+  border: 1.5px solid currentColor;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.16s var(--ease-out-quint), background-color 0.16s, color 0.16s, opacity 0.16s;
+  &:active {
+    transform: scale(0.97);
+  }
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+}
+
+.rise {
+  animation: rise 0.55s var(--ease-out-quint) both;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+.bar-grow {
+  transform-origin: left;
+  animation: bar-grow 0.9s var(--ease-out-quint) both;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes bar-grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+.seat-reveal {
+  animation: seat-reveal 0.6s var(--ease-out-quint) both;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes seat-reveal {
+  from {
+    fill: var(--rule);
+    transform: scale(0.5);
+  }
+}
+
+/* Carta de demostració de la pantalla d'entrada */
+.demo-card {
+  animation: demo-swipe 5.2s var(--ease-out-quint) infinite;
+}
+.demo-yes {
+  animation: demo-yes 5.2s infinite;
+}
+.demo-no {
+  animation: demo-no 5.2s infinite;
+}
+@keyframes demo-swipe {
+  0%,
+  12% {
+    transform: none;
+  }
+  25%,
+  35% {
+    transform: translateX(70px) rotate(7deg);
+  }
+  48%,
+  58% {
+    transform: none;
+  }
+  70%,
+  80% {
+    transform: translateX(-70px) rotate(-7deg);
+  }
+  92%,
+  100% {
+    transform: none;
+  }
+}
+@keyframes demo-yes {
+  0%,
+  16% {
+    opacity: 0;
+  }
+  25%,
+  35% {
+    opacity: 1;
+  }
+  45%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes demo-no {
+  0%,
+  62% {
+    opacity: 0;
+  }
+  70%,
+  80% {
+    opacity: 1;
+  }
+  90%,
+  100% {
+    opacity: 0;
+  }
+}
+.count-bar {
+  transform-origin: left;
+  animation: bar-grow 2.8s linear both;
+}
+
+/* Hemicicle */
+.seat {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: fill 0.5s var(--ease-out-quint) var(--d, 0ms), opacity 0.5s var(--ease-out-quint) var(--d, 0ms),
+    transform 0.5s var(--ease-out-quint) var(--d, 0ms);
+}
+.seats-in .seat {
+  animation: seat-in 0.7s var(--ease-out-quint) both;
+  animation-delay: calc(var(--i) * 2.4ms);
+}
+@keyframes seat-in {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+}
+.seat-pop {
+  animation: seat-pop 0.6s var(--ease-out-quint) both;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes seat-pop {
+  0% {
+    transform: scale(0.4);
+  }
+  55% {
+    transform: scale(1.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.seats-count .seat {
+  animation: seat-count 0.9s ease-in-out infinite alternate;
+  animation-delay: calc(var(--r) * -900ms);
+}
+@keyframes seat-count {
+  from {
+    opacity: 0.15;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.seat-next {
+  animation: seat-next 0.9s ease-in-out infinite alternate;
+}
+@keyframes seat-next {
+  from {
+    opacity: 0.12;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+@keyframes you-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.6);
+  }
+}
+.you-seat {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: you-pulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

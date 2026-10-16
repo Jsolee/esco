@@ -1,0 +1,222 @@
+{
+  "meta": {
+    "title": "Escó · Orientador de voto",
+    "description": "Vota propuestas como si tuvieras un escaño y descubre qué candidaturas piensan como tú. Neutral, privado y con fuentes."
+  },
+  "nav": {
+    "skip": "Salta al contenido",
+    "how": "Cómo funciona",
+    "language": "Idioma",
+    "theme": "Tema",
+    "themes": {
+      "system": "Sistema",
+      "light": "Claro",
+      "dark": "Oscuro"
+    },
+    "home": "Escó, inicio"
+  },
+  "landing": {
+    "kicker": "Orientador de voto",
+    "title": "Tienes un escaño. Úsalo.",
+    "lead": "Vota 24 propuestas como si estuvieras en el Congreso. Al final verás qué candidaturas han votado como tú, con la fuente de cada posición.",
+    "start": "Empieza",
+    "note": "Escó no recomienda ningún partido. Todo se calcula en tu dispositivo y no guardamos ninguna respuesta.",
+    "yourSeat": "Este escaño es tuyo",
+    "stepsTitle": "Cómo se juega",
+    "steps": [
+      {
+        "title": "Vota",
+        "text": "Desliza cada propuesta: a la derecha si estás de acuerdo, a la izquierda si no."
+      },
+      {
+        "title": "Prioriza",
+        "text": "Marca los temas que más te importan. Cuentan el doble."
+      },
+      {
+        "title": "Descubre",
+        "text": "Mira a quién iría tu escaño y compara propuesta por propuesta."
+      }
+    ],
+    "principlesTitle": "Las reglas del juego",
+    "principles": [
+      {
+        "title": "Neutral",
+        "text": "Las propuestas y las candidaturas salen en orden aleatorio. Ningún color de partido hasta el resultado."
+      },
+      {
+        "title": "Privado",
+        "text": "Sin cookies ni cuentas. Las respuestas nunca salen de tu navegador."
+      },
+      {
+        "title": "Verificable",
+        "text": "Cada posición enlaza con el programa electoral y la página donde aparece."
+      }
+    ]
+  },
+  "start": {
+    "where": "¿Dónde estás empadronado?",
+    "hint": "Escribe el código postal o el nombre de la provincia o la capital.",
+    "placeholder": "28001, Sevilla, Bilbao…",
+    "suggestions": "Sugerencias",
+    "invalidCp": "Este código postal no existe. Los códigos postales empiezan entre 01 y 52.",
+    "noMatch": "No encontramos ninguna provincia con ese nombre.",
+    "change": "Cambia",
+    "elections": "Elecciones en las que puedes votar",
+    "noElections": "Ahora mismo no hay ninguna elección abierta en tu territorio.",
+    "statements": "{n} propuestas",
+    "candidacies": "{n} candidaturas en {place}",
+    "enter": "Entra al pleno",
+    "fictional": "Ficticia",
+    "status": {
+      "open": "Abierta",
+      "upcoming": "Próxima",
+      "archived": "Archivada"
+    }
+  },
+  "game": {
+    "fictional": "Datos ficticios",
+    "fictionalBanner": "Partidos, posiciones y fuentes inventados para probar la herramienta.",
+    "exit": "Sal",
+    "progress": "{n} de {total}",
+    "intro": {
+      "kicker": "Sesión plenaria",
+      "title": "Te damos la bienvenida al pleno.",
+      "text": "Tienes un escaño y {n} propuestas para votar. No hay respuestas buenas ni malas.",
+      "gestures": [
+        {
+          "dir": "right",
+          "text": "Desliza a la derecha si estás de acuerdo"
+        },
+        {
+          "dir": "left",
+          "text": "A la izquierda si no"
+        },
+        {
+          "dir": "up",
+          "text": "Hacia arriba si te es indiferente"
+        }
+      ],
+      "circ": "Votas por la circunscripción de",
+      "pick": "Elige tu provincia",
+      "start": "Abre la sesión",
+      "keys": "Con teclado: flechas o 1–5 para votar, S para saltar, Z para deshacer.",
+      "demoTopic": "Gastronomía",
+      "demo": "Las croquetas de casa son las mejores del mundo.",
+      "demoLabel": "Ejemplo"
+    },
+    "votes": {
+      "-2": "Muy en desacuerdo",
+      "-1": "En desacuerdo",
+      "0": "Neutral",
+      "1": "De acuerdo",
+      "2": "Muy de acuerdo"
+    },
+    "card": "Votación {n}",
+    "why": "¿Por qué se habla de esto?",
+    "backToCard": "Vuelve a la propuesta",
+    "context": "Contexto",
+    "skip": "Salta",
+    "undo": "Deshaz",
+    "previously": "Lo habías votado: {v}",
+    "votePad": "Tu votación",
+    "live": {
+      "card": "Votación {n} de {total}. {topic}.",
+      "voted": "Has votado: {v}.",
+      "skipped": "Propuesta saltada."
+    },
+    "pause": {
+      "kicker": "Pausa en el pleno",
+      "title": "¿Sabías que…?",
+      "stats": "Llevas {n} votos",
+      "continue": "Continúa",
+      "labels": {
+        "yes": "A favor",
+        "no": "En contra",
+        "neutral": "Neutrales",
+        "skipped": "Saltadas"
+      }
+    },
+    "priorities": {
+      "kicker": "Último paso",
+      "title": "¿Qué te importa más?",
+      "text": "Marca los temas que más pesan para ti. Sus propuestas contarán el doble.",
+      "count": "{n} propuestas",
+      "go": "Haz el recuento",
+      "none": "Sin ninguna marca, todas las propuestas cuentan igual."
+    },
+    "counting": {
+      "title": "Haciendo el recuento",
+      "text": "Contando {n} votos…"
+    }
+  },
+  "results": {
+    "kicker": "Tu escaño",
+    "goesTo": "Tu escaño es para",
+    "tie": "Empate en cabeza",
+    "affinity": "de afinidad",
+    "basedOn": "Calculado sobre {n} propuestas que has votado.",
+    "allSkipped": {
+      "title": "No has votado ninguna propuesta.",
+      "text": "Sin votos no podemos compararte con nadie. Vuelve y vota al menos unas cuantas.",
+      "back": "Vuelve a la primera"
+    },
+    "hemicycleTitle": "Si el Congreso pensara como tú",
+    "hemicycleText": "350 escaños repartidos con el sistema D'Hondt, usando tu afinidad con cada candidatura como si fueran votos. Las candidaturas se ordenan de izquierda a derecha según su posición económica.",
+    "seats": "{n} escaños",
+    "rankingTitle": "Ranking de afinidad",
+    "coverage": "Se pronuncia sobre el {n} % de las propuestas que has votado.",
+    "members": "Coalición de {list}",
+    "compare": "Compara propuesta por propuesta",
+    "colStatement": "Propuesta",
+    "colYou": "Tú",
+    "colSource": "Fuente",
+    "noPosition": "No se pronuncia",
+    "skipped": "Saltada",
+    "page": "p. {n}",
+    "insufficientTitle": "Sin suficientes posiciones para comparar",
+    "insufficientText": "Se pronuncian sobre menos de la mitad de las propuestas que has votado.",
+    "mapTitle": "El mapa",
+    "mapText": "Tu posición y la de cada candidatura, calculadas a partir de las respuestas a las propuestas que pesan en cada eje.",
+    "axes": {
+      "economic": {
+        "name": "Económico",
+        "neg": "Izquierda",
+        "pos": "Derecha"
+      },
+      "social": {
+        "name": "Social",
+        "neg": "Liberal",
+        "pos": "Conservador"
+      },
+      "territorial": {
+        "name": "Territorial",
+        "neg": "Más competencias al Estado",
+        "pos": "Más autogobierno"
+      }
+    },
+    "you": "Tú",
+    "asTable": "Ver como tabla",
+    "colCandidacy": "Candidatura",
+    "share": "Comparte el resultado",
+    "copied": "Enlace copiado",
+    "shareText": "Mi escaño en Escó es para {top}. ¿Y el tuyo?",
+    "again": "Vuelve a jugar",
+    "how": "¿Cómo se ha calculado?",
+    "disclaimer": "Escó es una herramienta orientativa. No es una recomendación de voto ni tiene carácter oficial."
+  },
+  "shared": {
+    "title": "Un resultado de Escó",
+    "lead": "Alguien ha votado {n} propuestas. Así ha quedado su escaño:",
+    "cta": "Haz tu test",
+    "note": "Este enlace solo contiene porcentajes redondeados. Ninguna respuesta."
+  },
+  "footer": {
+    "text": "Escó es una herramienta orientativa y neutral. Todo se calcula en tu dispositivo.",
+    "method": "Metodología",
+    "fictional": "Esta versión usa datos ficticios."
+  },
+  "notFound": {
+    "title": "Esta página no existe.",
+    "back": "Vuelve al inicio"
+  }
+}

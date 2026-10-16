@@ -1,0 +1,10 @@
+[
+  { "id": "habitatge", "name": { "ca": "Habitatge", "es": "Vivienda" } },
+  { "id": "treball", "name": { "ca": "Treball", "es": "Trabajo" } },
+  { "id": "fiscalitat", "name": { "ca": "Fiscalitat", "es": "Fiscalidad" } },
+  { "id": "energia", "name": { "ca": "Energia i clima", "es": "Energía y clima" } },
+  { "id": "educacio", "name": { "ca": "Educació", "es": "Educación" } },
+  { "id": "sanitat", "name": { "ca": "Sanitat", "es": "Sanidad" } },
+  { "id": "territori", "name": { "ca": "Model territorial", "es": "Modelo territorial" } },
+  { "id": "drets", "name": { "ca": "Drets i llibertats", "es": "Derechos y libertades" } }
+]

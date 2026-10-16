@@ -1,0 +1,138 @@
+{
+  "id": "partit-g",
+  "name": "Partit G",
+  "short": "PG",
+  "color": "#C4517E",
+  "circumscriptions": [
+    "07"
+  ],
+  "sources": [
+    {
+      "id": "programa",
+      "title": "Programa electoral 2027 de Partit G (FICTICI)",
+      "url": "https://example.org/esco/partit-g/programa-2027.pdf",
+      "date": "2027-05-15",
+      "lang": "ca"
+    }
+  ],
+  "positions": {
+    "hab-lloguer": {
+      "value": 0,
+      "source": "programa",
+      "page": 87
+    },
+    "hab-public": {
+      "value": 1,
+      "source": "programa",
+      "page": 14
+    },
+    "hab-ocupacio": {
+      "value": -1,
+      "source": "programa",
+      "page": 84
+    },
+    "tre-jornada": {
+      "value": 0,
+      "source": "programa",
+      "page": 82
+    },
+    "tre-smi": {
+      "value": 1,
+      "source": "programa",
+      "page": 80
+    },
+    "tre-acomiadament": {
+      "value": -1,
+      "source": "programa",
+      "page": 44
+    },
+    "fis-herencies": {
+      "value": -1,
+      "source": "programa",
+      "page": 36
+    },
+    "fis-fortunes": {
+      "value": 0,
+      "source": "programa",
+      "page": 70
+    },
+    "fis-autonomia": {
+      "value": 2,
+      "source": "programa",
+      "page": 81
+    },
+    "ene-nuclear": {
+      "value": 0,
+      "source": "programa",
+      "page": 70
+    },
+    "ene-combustio": {
+      "value": 1,
+      "source": "programa",
+      "page": 7
+    },
+    "ene-transvasaments": {
+      "value": -2,
+      "source": "programa",
+      "page": 52
+    },
+    "edu-0-3": {
+      "value": 0,
+      "source": "programa",
+      "page": 42
+    },
+    "edu-concertada": {
+      "value": 1,
+      "source": "programa",
+      "page": 64
+    },
+    "edu-religio": {
+      "value": 1,
+      "source": "programa",
+      "page": 41
+    },
+    "san-derivacions": {
+      "value": 0,
+      "source": "programa",
+      "page": 87
+    },
+    "san-eutanasia": {
+      "value": null,
+      "source": "programa"
+    },
+    "san-dentista": {
+      "value": 1,
+      "source": "programa",
+      "page": 22
+    },
+    "ter-referendum": {
+      "value": 2,
+      "source": "programa",
+      "page": 86
+    },
+    "ter-recentralitzar": {
+      "value": -2,
+      "source": "programa",
+      "page": 67
+    },
+    "ter-senat": {
+      "value": null,
+      "source": "programa"
+    },
+    "dre-regularitzacio": {
+      "value": 1,
+      "source": "programa",
+      "page": 64
+    },
+    "dre-penes": {
+      "value": 0,
+      "source": "programa",
+      "page": 80
+    },
+    "dre-monarquia": {
+      "value": 0,
+      "source": "programa",
+      "page": 42
+    }
+  }
+}

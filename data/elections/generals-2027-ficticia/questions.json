@@ -1,0 +1,314 @@
+[
+  {
+    "id": "hab-lloguer",
+    "topic": "habitatge",
+    "text": {
+      "ca": "Els lloguers a les zones tensionades haurien de tenir un preu màxim fixat per llei.",
+      "es": "Los alquileres en las zonas tensionadas deberían tener un precio máximo fijado por ley."
+    },
+    "context": {
+      "ca": "La Llei d'habitatge de 2023 permet declarar zones de mercat tensionat i limitar-hi els preus. Qui ho defensa diu que protegeix els llogaters; qui s'hi oposa, que redueix l'oferta de pisos.",
+      "es": "La Ley de vivienda de 2023 permite declarar zonas de mercado tensionado y limitar en ellas los precios. Quien lo defiende dice que protege a los inquilinos; quien se opone, que reduce la oferta de pisos."
+    },
+    "axes": { "economic": -1 }
+  },
+  {
+    "id": "hab-public",
+    "topic": "habitatge",
+    "text": {
+      "ca": "L'Estat hauria de dedicar molts més diners a construir habitatge públic de lloguer.",
+      "es": "El Estado debería dedicar mucho más dinero a construir vivienda pública de alquiler."
+    },
+    "context": {
+      "ca": "L'habitatge social és una part petita del parc d'habitatges a Espanya, per sota de la mitjana europea. Augmentar-lo requereix inversió pública durant anys.",
+      "es": "La vivienda social es una parte pequeña del parque de viviendas en España, por debajo de la media europea. Aumentarla requiere inversión pública durante años."
+    },
+    "axes": { "economic": -0.8 }
+  },
+  {
+    "id": "hab-ocupacio",
+    "topic": "habitatge",
+    "text": {
+      "ca": "Els desallotjaments d'habitatges ocupats sense permís haurien de fer-se en menys de 48 hores.",
+      "es": "Los desalojos de viviendas ocupadas sin permiso deberían hacerse en menos de 48 horas."
+    },
+    "context": {
+      "ca": "Ara, recuperar un habitatge ocupat pot requerir un procés judicial de mesos, segons el cas. Hi ha propostes per accelerar-ho i crítiques per les garanties que es perdrien.",
+      "es": "Ahora, recuperar una vivienda ocupada puede requerir un proceso judicial de meses, según el caso. Hay propuestas para acelerarlo y críticas por las garantías que se perderían."
+    },
+    "axes": { "social": 0.6, "economic": 0.4 }
+  },
+  {
+    "id": "tre-jornada",
+    "topic": "treball",
+    "text": {
+      "ca": "La jornada laboral màxima hauria de baixar a 35 hores setmanals sense reduir el sou.",
+      "es": "La jornada laboral máxima debería bajar a 35 horas semanales sin reducir el sueldo."
+    },
+    "context": {
+      "ca": "Ara la jornada ordinària màxima és de 40 hores setmanals de mitjana anual. Qui ho defensa parla de conciliació i productivitat; qui s'hi oposa, del cost per a les empreses petites.",
+      "es": "Ahora la jornada ordinaria máxima es de 40 horas semanales de promedio anual. Quien lo defiende habla de conciliación y productividad; quien se opone, del coste para las pequeñas empresas."
+    },
+    "axes": { "economic": -1 }
+  },
+  {
+    "id": "tre-smi",
+    "topic": "treball",
+    "text": {
+      "ca": "El salari mínim hauria de pujar cada any per sobre de la inflació.",
+      "es": "El salario mínimo debería subir cada año por encima de la inflación."
+    },
+    "context": {
+      "ca": "El Govern fixa el salari mínim interprofessional cada any. Els augments recents han millorat els sous més baixos; hi ha qui alerta de l'efecte sobre l'ocupació en alguns sectors.",
+      "es": "El Gobierno fija el salario mínimo interprofesional cada año. Las subidas recientes han mejorado los sueldos más bajos; hay quien alerta del efecto sobre el empleo en algunos sectores."
+    },
+    "axes": { "economic": -0.8 }
+  },
+  {
+    "id": "tre-acomiadament",
+    "topic": "treball",
+    "text": {
+      "ca": "Acomiadar hauria de costar menys a les empreses perquè s'animin a contractar.",
+      "es": "Despedir debería costar menos a las empresas para que se animen a contratar."
+    },
+    "context": {
+      "ca": "La indemnització per acomiadament improcedent és de 33 dies per any treballat, amb un màxim de 24 mensualitats. El debat és si abaratir-la crearia ocupació o només en reduiria l'estabilitat.",
+      "es": "La indemnización por despido improcedente es de 33 días por año trabajado, con un máximo de 24 mensualidades. El debate es si abaratarla crearía empleo o solo reduciría su estabilidad."
+    },
+    "axes": { "economic": 1 }
+  },
+  {
+    "id": "fis-herencies",
+    "topic": "fiscalitat",
+    "text": {
+      "ca": "Les herències entre pares i fills haurien d'estar exemptes d'impostos.",
+      "es": "Las herencias entre padres e hijos deberían estar exentas de impuestos."
+    },
+    "context": {
+      "ca": "L'impost de successions és estatal, però el gestionen les comunitats autònomes, que hi apliquen bonificacions molt diferents. La mateixa herència pot pagar quantitats molt diverses segons on visquis.",
+      "es": "El impuesto de sucesiones es estatal, pero lo gestionan las comunidades autónomas, que aplican bonificaciones muy distintas. La misma herencia puede pagar cantidades muy diferentes según dónde vivas."
+    },
+    "axes": { "economic": 0.8 }
+  },
+  {
+    "id": "fis-fortunes",
+    "topic": "fiscalitat",
+    "text": {
+      "ca": "Les grans fortunes haurien de pagar un impost especial sobre el seu patrimoni.",
+      "es": "Las grandes fortunas deberían pagar un impuesto especial sobre su patrimonio."
+    },
+    "context": {
+      "ca": "Hi ha un impost de patrimoni que gestionen les comunitats i, des del 2022, un impost estatal temporal sobre les fortunes més grans. Hi ha qui el veu just i qui creu que fa marxar capital.",
+      "es": "Existe un impuesto de patrimonio que gestionan las comunidades y, desde 2022, un impuesto estatal temporal sobre las mayores fortunas. Hay quien lo ve justo y quien cree que ahuyenta capital."
+    },
+    "axes": { "economic": -1 }
+  },
+  {
+    "id": "fis-autonomia",
+    "topic": "fiscalitat",
+    "text": {
+      "ca": "Cada comunitat autònoma hauria de recaptar i gestionar tots els seus impostos.",
+      "es": "Cada comunidad autónoma debería recaudar y gestionar todos sus impuestos."
+    },
+    "context": {
+      "ca": "El País Basc i Navarra ja recapten els seus impostos amb el concert i el conveni econòmic. La resta de comunitats depenen del sistema comú de finançament.",
+      "es": "El País Vasco y Navarra ya recaudan sus impuestos con el concierto y el convenio económico. El resto de comunidades dependen del sistema común de financiación."
+    },
+    "axes": { "territorial": 1 }
+  },
+  {
+    "id": "ene-nuclear",
+    "topic": "energia",
+    "text": {
+      "ca": "Les centrals nuclears haurien de funcionar més enllà del calendari de tancament acordat.",
+      "es": "Las centrales nucleares deberían funcionar más allá del calendario de cierre acordado."
+    },
+    "context": {
+      "ca": "El calendari pactat el 2019 preveu tancar els set reactors entre el 2027 i el 2035. El debat enfronta la seguretat de subministrament i les emissions amb el cost i la gestió dels residus.",
+      "es": "El calendario pactado en 2019 prevé cerrar los siete reactores entre 2027 y 2035. El debate enfrenta la seguridad de suministro y las emisiones con el coste y la gestión de los residuos."
+    },
+    "axes": { "economic": 0.5, "social": 0.3 }
+  },
+  {
+    "id": "ene-combustio",
+    "topic": "energia",
+    "text": {
+      "ca": "La venda de cotxes nous de gasolina i dièsel s'hauria de prohibir a partir del 2035.",
+      "es": "La venta de coches nuevos de gasolina y diésel debería prohibirse a partir de 2035."
+    },
+    "context": {
+      "ca": "La Unió Europea va aprovar aquest calendari per reduir emissions, i se'n debat la flexibilització. Afecta la indústria de l'automòbil, l'ocupació i el preu dels vehicles.",
+      "es": "La Unión Europea aprobó este calendario para reducir emisiones, y se debate su flexibilización. Afecta a la industria del automóvil, al empleo y al precio de los vehículos."
+    },
+    "axes": { "economic": -0.5, "social": -0.4 }
+  },
+  {
+    "id": "ene-transvasaments",
+    "topic": "energia",
+    "text": {
+      "ca": "S'haurien d'ampliar els transvasaments d'aigua entre conques hidrogràfiques.",
+      "es": "Deberían ampliarse los trasvases de agua entre cuencas hidrográficas."
+    },
+    "context": {
+      "ca": "Els transvasaments porten aigua de conques amb més recursos a zones amb sequera. Les comunitats d'origen i de destinació solen tenir interessos oposats.",
+      "es": "Los trasvases llevan agua de cuencas con más recursos a zonas con sequía. Las comunidades de origen y de destino suelen tener intereses opuestos."
+    },
+    "axes": { "territorial": -0.6 }
+  },
+  {
+    "id": "edu-0-3",
+    "topic": "educacio",
+    "text": {
+      "ca": "L'educació de 0 a 3 anys hauria de ser gratuïta i universal.",
+      "es": "La educación de 0 a 3 años debería ser gratuita y universal."
+    },
+    "context": {
+      "ca": "L'etapa de 0 a 3 anys és voluntària. La gratuïtat i el nombre de places públiques varien molt segons la comunitat autònoma i el municipi.",
+      "es": "La etapa de 0 a 3 años es voluntaria. La gratuidad y el número de plazas públicas varían mucho según la comunidad autónoma y el municipio."
+    },
+    "axes": { "economic": -0.7 }
+  },
+  {
+    "id": "edu-concertada",
+    "topic": "educacio",
+    "text": {
+      "ca": "L'escola concertada hauria de deixar de rebre diners públics.",
+      "es": "La escuela concertada debería dejar de recibir dinero público."
+    },
+    "context": {
+      "ca": "Les escoles concertades són privades però reben finançament públic a canvi de ser gratuïtes en les etapes obligatòries. Hi estudia aproximadament un de cada quatre alumnes.",
+      "es": "Los colegios concertados son privados pero reciben financiación pública a cambio de ser gratuitos en las etapas obligatorias. En ellos estudia aproximadamente uno de cada cuatro alumnos."
+    },
+    "axes": { "economic": -0.5, "social": -0.6 }
+  },
+  {
+    "id": "edu-religio",
+    "topic": "educacio",
+    "text": {
+      "ca": "La religió hauria de deixar de ser una assignatura a l'escola.",
+      "es": "La religión debería dejar de ser una asignatura en la escuela."
+    },
+    "context": {
+      "ca": "Ara els centres l'han d'oferir i les famílies trien si l'alumnat la cursa. Els acords amb la Santa Seu de 1979 en condicionen la regulació.",
+      "es": "Ahora los centros deben ofrecerla y las familias eligen si el alumnado la cursa. Los acuerdos con la Santa Sede de 1979 condicionan su regulación."
+    },
+    "axes": { "social": -1 }
+  },
+  {
+    "id": "san-derivacions",
+    "topic": "sanitat",
+    "text": {
+      "ca": "Per reduir les llistes d'espera, la sanitat pública hauria de derivar més pacients a centres privats.",
+      "es": "Para reducir las listas de espera, la sanidad pública debería derivar más pacientes a centros privados."
+    },
+    "context": {
+      "ca": "Moltes comunitats ja concerten proves i operacions amb centres privats. Qui ho defensa vol reduir les esperes de seguida; qui s'hi oposa prefereix reforçar els centres públics.",
+      "es": "Muchas comunidades ya conciertan pruebas y operaciones con centros privados. Quien lo defiende quiere reducir las esperas de inmediato; quien se opone prefiere reforzar los centros públicos."
+    },
+    "axes": { "economic": 0.8 }
+  },
+  {
+    "id": "san-eutanasia",
+    "topic": "sanitat",
+    "text": {
+      "ca": "La llei de l'eutanàsia s'hauria de mantenir tal com és ara.",
+      "es": "La ley de eutanasia debería mantenerse tal como está ahora."
+    },
+    "context": {
+      "ca": "Des del 2021, una persona amb una malaltia greu i incurable pot demanar ajuda per morir, amb diversos controls mèdics. Alguns partits en volen la derogació.",
+      "es": "Desde 2021, una persona con una enfermedad grave e incurable puede pedir ayuda para morir, con varios controles médicos. Algunos partidos quieren derogarla."
+    },
+    "axes": { "social": -0.8 }
+  },
+  {
+    "id": "san-dentista",
+    "topic": "sanitat",
+    "text": {
+      "ca": "La sanitat pública hauria de cobrir el dentista per a tothom.",
+      "es": "La sanidad pública debería cubrir el dentista para todo el mundo."
+    },
+    "context": {
+      "ca": "Ara la cobertura dental pública és limitada i la majoria de tractaments es paguen de manera privada. Ampliar-la tindria un cost elevat.",
+      "es": "Ahora la cobertura dental pública es limitada y la mayoría de tratamientos se pagan de forma privada. Ampliarla tendría un coste elevado."
+    },
+    "axes": { "economic": -0.7 }
+  },
+  {
+    "id": "ter-referendum",
+    "topic": "territori",
+    "text": {
+      "ca": "Una comunitat autònoma hauria de poder fer un referèndum d'independència acordat amb l'Estat.",
+      "es": "Una comunidad autónoma debería poder celebrar un referéndum de independencia acordado con el Estado."
+    },
+    "context": {
+      "ca": "La Constitució no preveu aquest tipus de consulta. Escòcia i el Quebec en van fer de pactades; aquí el debat divideix partits i territoris.",
+      "es": "La Constitución no prevé este tipo de consulta. Escocia y Quebec celebraron consultas pactadas; aquí el debate divide a partidos y territorios."
+    },
+    "axes": { "territorial": 1 }
+  },
+  {
+    "id": "ter-recentralitzar",
+    "topic": "territori",
+    "text": {
+      "ca": "Algunes competències, com l'educació o la sanitat, haurien de tornar a l'Estat.",
+      "es": "Algunas competencias, como la educación o la sanidad, deberían volver al Estado."
+    },
+    "context": {
+      "ca": "L'educació i la sanitat estan transferides a les comunitats autònomes. Qui vol recentralitzar parla d'igualtat entre territoris; qui s'hi oposa, d'autogovern i proximitat.",
+      "es": "La educación y la sanidad están transferidas a las comunidades autónomas. Quien quiere recentralizar habla de igualdad entre territorios; quien se opone, de autogobierno y proximidad."
+    },
+    "axes": { "territorial": -1 }
+  },
+  {
+    "id": "ter-senat",
+    "topic": "territori",
+    "text": {
+      "ca": "El Senat s'hauria de convertir en una cambra de representació de les comunitats autònomes.",
+      "es": "El Senado debería convertirse en una cámara de representación de las comunidades autónomas."
+    },
+    "context": {
+      "ca": "La Constitució ja el defineix com a cambra de representació territorial, però la majoria de senadors s'escullen per província. Canviar-ho requeriria una reforma constitucional.",
+      "es": "La Constitución ya lo define como cámara de representación territorial, pero la mayoría de senadores se eligen por provincia. Cambiarlo requeriría una reforma constitucional."
+    },
+    "axes": { "territorial": 0.5 }
+  },
+  {
+    "id": "dre-regularitzacio",
+    "topic": "drets",
+    "text": {
+      "ca": "Caldria facilitar la regularització de les persones migrants que ja viuen i treballen a Espanya.",
+      "es": "Habría que facilitar la regularización de las personas migrantes que ya viven y trabajan en España."
+    },
+    "context": {
+      "ca": "Centenars de milers de persones viuen a Espanya sense permís de residència. El Congrés va admetre a tràmit una iniciativa legislativa popular per regularitzar-les.",
+      "es": "Cientos de miles de personas viven en España sin permiso de residencia. El Congreso admitió a trámite una iniciativa legislativa popular para regularizarlas."
+    },
+    "axes": { "social": -0.8 }
+  },
+  {
+    "id": "dre-penes",
+    "topic": "drets",
+    "text": {
+      "ca": "Les penes de presó per als delictes greus s'haurien d'endurir.",
+      "es": "Las penas de prisión para los delitos graves deberían endurecerse."
+    },
+    "context": {
+      "ca": "Espanya té una taxa de criminalitat per sota de la mitjana europea. El debat és si endurir les penes reduiria els delictes o si cal invertir més en prevenció i reinserció.",
+      "es": "España tiene una tasa de criminalidad por debajo de la media europea. El debate es si endurecer las penas reduciría los delitos o si hay que invertir más en prevención y reinserción."
+    },
+    "axes": { "social": 0.9 }
+  },
+  {
+    "id": "dre-monarquia",
+    "topic": "drets",
+    "text": {
+      "ca": "Espanya hauria de fer un referèndum per triar entre monarquia i república.",
+      "es": "España debería celebrar un referéndum para elegir entre monarquía y república."
+    },
+    "context": {
+      "ca": "La Constitució de 1978 estableix la monarquia parlamentària. Canviar la forma d'Estat requeriria una reforma constitucional amb majories reforçades i un referèndum.",
+      "es": "La Constitución de 1978 establece la monarquía parlamentaria. Cambiar la forma de Estado requeriría una reforma constitucional con mayorías reforzadas y un referéndum."
+    },
+    "axes": { "social": -0.6 }
+  }
+]

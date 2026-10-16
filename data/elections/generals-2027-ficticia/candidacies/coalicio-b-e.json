@@ -1,0 +1,147 @@
+{
+  "id": "coalicio-b-e",
+  "name": "Coalició B–E",
+  "short": "B–E",
+  "color": "#8E6CC0",
+  "members": [
+    "Partit B",
+    "Partit E"
+  ],
+  "circumscriptions": [
+    "08",
+    "17",
+    "25",
+    "43"
+  ],
+  "sources": [
+    {
+      "id": "programa",
+      "title": "Programa electoral 2027 de Coalició B–E (FICTICI)",
+      "url": "https://example.org/esco/coalicio-b-e/programa-2027.pdf",
+      "date": "2027-05-15",
+      "lang": "ca"
+    }
+  ],
+  "positions": {
+    "hab-lloguer": {
+      "value": 1,
+      "source": "programa",
+      "page": 29
+    },
+    "hab-public": {
+      "value": 1,
+      "source": "programa",
+      "page": 88
+    },
+    "hab-ocupacio": {
+      "value": -2,
+      "source": "programa",
+      "page": 58
+    },
+    "tre-jornada": {
+      "value": 1,
+      "source": "programa",
+      "page": 52
+    },
+    "tre-smi": {
+      "value": 1,
+      "source": "programa",
+      "page": 38
+    },
+    "tre-acomiadament": {
+      "value": -1,
+      "source": "programa",
+      "page": 34
+    },
+    "fis-herencies": {
+      "value": -1,
+      "source": "programa",
+      "page": 42
+    },
+    "fis-fortunes": {
+      "value": 1,
+      "source": "programa",
+      "page": 64
+    },
+    "fis-autonomia": {
+      "value": 2,
+      "source": "programa",
+      "page": 91
+    },
+    "ene-nuclear": {
+      "value": -1,
+      "source": "programa",
+      "page": 40
+    },
+    "ene-combustio": {
+      "value": 1,
+      "source": "programa",
+      "page": 61
+    },
+    "ene-transvasaments": {
+      "value": -1,
+      "source": "programa",
+      "page": 10
+    },
+    "edu-0-3": {
+      "value": 1,
+      "source": "programa",
+      "page": 4
+    },
+    "edu-concertada": {
+      "value": 1,
+      "source": "programa",
+      "page": 30
+    },
+    "edu-religio": {
+      "value": 1,
+      "source": "programa",
+      "page": 11
+    },
+    "san-derivacions": {
+      "value": -1,
+      "source": "programa",
+      "page": 45
+    },
+    "san-eutanasia": {
+      "value": 2,
+      "source": "programa",
+      "page": 9
+    },
+    "san-dentista": {
+      "value": 1,
+      "source": "programa",
+      "page": 64
+    },
+    "ter-referendum": {
+      "value": 2,
+      "source": "programa",
+      "page": 48
+    },
+    "ter-recentralitzar": {
+      "value": -1,
+      "source": "programa",
+      "page": 41
+    },
+    "ter-senat": {
+      "value": 1,
+      "source": "programa",
+      "page": 8
+    },
+    "dre-regularitzacio": {
+      "value": 2,
+      "source": "programa",
+      "page": 46
+    },
+    "dre-penes": {
+      "value": -1,
+      "source": "programa",
+      "page": 30
+    },
+    "dre-monarquia": {
+      "value": 1,
+      "source": "programa",
+      "page": 60
+    }
+  }
+}

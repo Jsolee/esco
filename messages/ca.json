@@ -1,0 +1,222 @@
+{
+  "meta": {
+    "title": "Escó · Orientador de vot",
+    "description": "Vota propostes com si tinguessis un escó i descobreix quines candidatures pensen com tu. Neutral, privat i amb fonts."
+  },
+  "nav": {
+    "skip": "Salta al contingut",
+    "how": "Com funciona",
+    "language": "Idioma",
+    "theme": "Tema",
+    "themes": {
+      "system": "Sistema",
+      "light": "Clar",
+      "dark": "Fosc"
+    },
+    "home": "Escó, inici"
+  },
+  "landing": {
+    "kicker": "Orientador de vot",
+    "title": "Tens un escó. Fes-lo servir.",
+    "lead": "Vota 24 propostes com si fossis al Congrés. Al final veuràs quines candidatures han votat com tu, amb la font de cada posició.",
+    "start": "Comença",
+    "note": "Escó no recomana cap partit. Tot es calcula al teu dispositiu i no guardem cap resposta.",
+    "yourSeat": "Aquest escó és teu",
+    "stepsTitle": "Com es juga",
+    "steps": [
+      {
+        "title": "Vota",
+        "text": "Llisca cada proposta: a la dreta si hi estàs d'acord, a l'esquerra si no."
+      },
+      {
+        "title": "Prioritza",
+        "text": "Marca els temes que més t'importen. Compten el doble."
+      },
+      {
+        "title": "Descobreix",
+        "text": "Mira a qui aniria el teu escó i compara proposta per proposta."
+      }
+    ],
+    "principlesTitle": "Les regles del joc",
+    "principles": [
+      {
+        "title": "Neutral",
+        "text": "Les propostes i les candidatures surten en ordre aleatori. Cap color de partit fins al resultat."
+      },
+      {
+        "title": "Privat",
+        "text": "Sense galetes ni comptes. Les respostes no surten mai del teu navegador."
+      },
+      {
+        "title": "Verificable",
+        "text": "Cada posició enllaça amb el programa electoral i la pàgina on apareix."
+      }
+    ]
+  },
+  "start": {
+    "where": "On estàs empadronat?",
+    "hint": "Escriu el codi postal o el nom de la província o la capital.",
+    "placeholder": "08001, Girona, Bilbao…",
+    "suggestions": "Suggeriments",
+    "invalidCp": "Aquest codi postal no existeix. Els codis postals comencen entre 01 i 52.",
+    "noMatch": "No trobem cap província amb aquest nom.",
+    "change": "Canvia",
+    "elections": "Eleccions on pots votar",
+    "noElections": "Ara mateix no hi ha cap elecció oberta al teu territori.",
+    "statements": "{n} propostes",
+    "candidacies": "{n} candidatures a {place}",
+    "enter": "Entra al ple",
+    "fictional": "Fictícia",
+    "status": {
+      "open": "Oberta",
+      "upcoming": "Propera",
+      "archived": "Arxivada"
+    }
+  },
+  "game": {
+    "fictional": "Dades fictícies",
+    "fictionalBanner": "Partits, posicions i fonts inventats per provar l'eina.",
+    "exit": "Surt",
+    "progress": "{n} de {total}",
+    "intro": {
+      "kicker": "Sessió plenària",
+      "title": "Et donem la benvinguda al ple.",
+      "text": "Tens un escó i {n} propostes per votar. No hi ha respostes bones ni dolentes.",
+      "gestures": [
+        {
+          "dir": "right",
+          "text": "Llisca a la dreta si hi estàs d'acord"
+        },
+        {
+          "dir": "left",
+          "text": "A l'esquerra si no"
+        },
+        {
+          "dir": "up",
+          "text": "Amunt si et deixa indiferent"
+        }
+      ],
+      "circ": "Votes per la circumscripció de",
+      "pick": "Tria la teva província",
+      "start": "Obre la sessió",
+      "keys": "Amb teclat: fletxes o 1–5 per votar, S per saltar, Z per desfer.",
+      "demoTopic": "Gastronomia",
+      "demo": "Les croquetes de casa són les millors del món.",
+      "demoLabel": "Exemple"
+    },
+    "votes": {
+      "-2": "Molt en desacord",
+      "-1": "En desacord",
+      "0": "Neutral",
+      "1": "D'acord",
+      "2": "Molt d'acord"
+    },
+    "card": "Votació {n}",
+    "why": "Per què se'n parla?",
+    "backToCard": "Torna a la proposta",
+    "context": "Context",
+    "skip": "Salta",
+    "undo": "Desfés",
+    "previously": "Ho havies votat: {v}",
+    "votePad": "La teva votació",
+    "live": {
+      "card": "Votació {n} de {total}. {topic}.",
+      "voted": "Has votat: {v}.",
+      "skipped": "Proposta saltada."
+    },
+    "pause": {
+      "kicker": "Pausa al ple",
+      "title": "Sabies que…?",
+      "stats": "Portes {n} vots",
+      "continue": "Continua",
+      "labels": {
+        "yes": "A favor",
+        "no": "En contra",
+        "neutral": "Neutrals",
+        "skipped": "Saltades"
+      }
+    },
+    "priorities": {
+      "kicker": "Últim pas",
+      "title": "Què et importa més?",
+      "text": "Marca els temes que pesen més per a tu. Les seves propostes comptaran el doble.",
+      "count": "{n} propostes",
+      "go": "Fes el recompte",
+      "none": "Sense cap marca, totes les propostes compten igual."
+    },
+    "counting": {
+      "title": "Fent el recompte",
+      "text": "Comptant {n} vots…"
+    }
+  },
+  "results": {
+    "kicker": "El teu escó",
+    "goesTo": "El teu escó és per a",
+    "tie": "Empat al capdamunt",
+    "affinity": "d'afinitat",
+    "basedOn": "Calculat sobre {n} propostes que has votat.",
+    "allSkipped": {
+      "title": "No has votat cap proposta.",
+      "text": "Sense vots no podem comparar-te amb ningú. Torna-hi i vota'n almenys unes quantes.",
+      "back": "Torna a la primera"
+    },
+    "hemicycleTitle": "Si el Congrés pensés com tu",
+    "hemicycleText": "350 escons repartits amb el sistema D'Hondt, fent servir la teva afinitat amb cada candidatura com si fossin vots. Les candidatures s'ordenen d'esquerra a dreta segons la seva posició econòmica.",
+    "seats": "{n} escons",
+    "rankingTitle": "Rànquing d'afinitat",
+    "coverage": "Es pronuncia sobre el {n} % de les propostes que has votat.",
+    "members": "Coalició de {list}",
+    "compare": "Compara proposta per proposta",
+    "colStatement": "Proposta",
+    "colYou": "Tu",
+    "colSource": "Font",
+    "noPosition": "No s'hi pronuncia",
+    "skipped": "Saltada",
+    "page": "p. {n}",
+    "insufficientTitle": "Sense prou posicions per comparar",
+    "insufficientText": "Es pronuncien sobre menys de la meitat de les propostes que has votat.",
+    "mapTitle": "El mapa",
+    "mapText": "La teva posició i la de cada candidatura, calculades a partir de les respostes a les propostes que pesen en cada eix.",
+    "axes": {
+      "economic": {
+        "name": "Econòmic",
+        "neg": "Esquerra",
+        "pos": "Dreta"
+      },
+      "social": {
+        "name": "Social",
+        "neg": "Liberal",
+        "pos": "Conservador"
+      },
+      "territorial": {
+        "name": "Territorial",
+        "neg": "Més competències a l'Estat",
+        "pos": "Més autogovern"
+      }
+    },
+    "you": "Tu",
+    "asTable": "Veure com a taula",
+    "colCandidacy": "Candidatura",
+    "share": "Comparteix el resultat",
+    "copied": "Enllaç copiat",
+    "shareText": "El meu escó a Escó és per a {top}. I el teu?",
+    "again": "Torna a jugar",
+    "how": "Com s'ha calculat?",
+    "disclaimer": "Escó és una eina orientativa. No és una recomanació de vot ni té cap caràcter oficial."
+  },
+  "shared": {
+    "title": "Un resultat d'Escó",
+    "lead": "Algú ha votat {n} propostes. Així ha quedat el seu escó:",
+    "cta": "Fes el teu test",
+    "note": "Aquest enllaç només conté percentatges arrodonits. Cap resposta."
+  },
+  "footer": {
+    "text": "Escó és una eina orientativa i neutral. Tot es calcula al teu dispositiu.",
+    "method": "Metodologia",
+    "fictional": "Aquesta versió fa servir dades fictícies."
+  },
+  "notFound": {
+    "title": "Aquesta pàgina no existeix.",
+    "back": "Torna a l'inici"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "partit-f",
+  "name": "Partit F",
+  "short": "PF",
+  "color": "#9C6644",
+  "circumscriptions": "all",
+  "sources": [
+    {
+      "id": "programa",
+      "title": "Programa electoral 2027 de Partit F (FICTICI)",
+      "url": "https://example.org/esco/partit-f/programa-2027.pdf",
+      "date": "2027-05-15",
+      "lang": "es"
+    }
+  ],
+  "positions": {
+    "hab-lloguer": {
+      "value": 0,
+      "source": "programa",
+      "page": 20
+    },
+    "hab-public": {
+      "value": null,
+      "source": "programa"
+    },
+    "hab-ocupacio": {
+      "value": null,
+      "source": "programa"
+    },
+    "tre-jornada": {
+      "value": null,
+      "source": "programa"
+    },
+    "tre-smi": {
+      "value": 0,
+      "source": "programa",
+      "page": 59
+    },
+    "tre-acomiadament": {
+      "value": null,
+      "source": "programa"
+    },
+    "fis-herencies": {
+      "value": null,
+      "source": "programa"
+    },
+    "fis-fortunes": {
+      "value": null,
+      "source": "programa"
+    },
+    "fis-autonomia": {
+      "value": 0,
+      "source": "programa",
+      "page": 14
+    },
+    "ene-nuclear": {
+      "value": null,
+      "source": "programa"
+    },
+    "ene-combustio": {
+      "value": null,
+      "source": "programa"
+    },
+    "ene-transvasaments": {
+      "value": null,
+      "source": "programa"
+    },
+    "edu-0-3": {
+      "value": 0,
+      "source": "programa",
+      "page": 21
+    },
+    "edu-concertada": {
+      "value": null,
+      "source": "programa"
+    },
+    "edu-religio": {
+      "value": null,
+      "source": "programa"
+    },
+    "san-derivacions": {
+      "value": null,
+      "source": "programa"
+    },
+    "san-eutanasia": {
+      "value": 0,
+      "source": "programa",
+      "page": 8
+    },
+    "san-dentista": {
+      "value": null,
+      "source": "programa"
+    },
+    "ter-referendum": {
+      "value": null,
+      "source": "programa"
+    },
+    "ter-recentralitzar": {
+      "value": null,
+      "source": "programa"
+    },
+    "ter-senat": {
+      "value": 0,
+      "source": "programa",
+      "page": 41
+    },
+    "dre-regularitzacio": {
+      "value": null,
+      "source": "programa"
+    },
+    "dre-penes": {
+      "value": null,
+      "source": "programa"
+    },
+    "dre-monarquia": {
+      "value": null,
+      "source": "programa"
+    }
+  }
+}

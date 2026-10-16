@@ -1,0 +1,24 @@
+{
+  "id": "generals-2027-ficticia",
+  "type": "general",
+  "scope": "ES",
+  "date": "2027-06-27",
+  "status": "open",
+  "name": { "ca": "Eleccions generals 2027", "es": "Elecciones generales 2027" },
+  "fictional": true,
+  "axes": ["economic", "social", "territorial"],
+  "facts": [
+    {
+      "ca": "El Congrés té 350 escons. Cada província en té com a mínim dos, i Ceuta i Melilla, un cadascuna.",
+      "es": "El Congreso tiene 350 escaños. Cada provincia tiene como mínimo dos, y Ceuta y Melilla, uno cada una."
+    },
+    {
+      "ca": "Els escons es reparteixen amb el sistema D'Hondt, i una candidatura necessita com a mínim el 3 % dels vots vàlids de la seva circumscripció.",
+      "es": "Los escaños se reparten con el sistema D'Hondt, y una candidatura necesita como mínimo el 3 % de los votos válidos de su circunscripción."
+    },
+    {
+      "ca": "Al Senat, cada província peninsular escull quatre senadors, i a la papereta pots marcar fins a tres caselles.",
+      "es": "En el Senado, cada provincia peninsular elige cuatro senadores, y en la papeleta puedes marcar hasta tres casillas."
+    }
+  ]
+}

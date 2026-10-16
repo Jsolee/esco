@@ -1,0 +1,70 @@
+import { z } from "zod";
+import { RAW } from "@/data";
+import { Candidacy, Election, Question, Territory, Topic } from "./schema";
+import type { Axis } from "./schema";
+
+export type ElectionData = {
+  election: Election;
+  questions: Question[];
+  candidacies: Candidacy[];
+};
+
+function parse<T>(schema: z.ZodType<T>, value: unknown, where: string): T {
+  const r = schema.safeParse(value);
+  if (!r.success) throw new Error(`Dades invàlides a ${where}:\n${z.prettifyError(r.error)}`);
+  return r.data;
+}
+
+// Valida totes les dades i les referències creuades. Llença un error que atura el build.
+export function loadData(raw: unknown = RAW) {
+  const r = raw as typeof RAW;
+  const territory = parse(Territory, r.territory, "data/territory.json");
+  const topics = parse(z.array(Topic), r.topics, "data/topics.json");
+  const provinceIds = new Set(territory.provinces.map((p) => p.id));
+  const topicIds = new Set(topics.map((t) => t.id));
+  const errors: string[] = [];
+
+  const elections: ElectionData[] = r.elections.map((e) => {
+    const base = `data/elections/${(e.election as { id?: string }).id ?? "?"}`;
+    const election = parse(Election, e.election, `${base}/election.json`);
+    const questions = parse(z.array(Question), e.questions, `${base}/questions.json`);
+    const candidacies = e.candidacies.map((c) =>
+      parse(Candidacy, c, `${base}/candidacies/${(c as { id?: string }).id ?? "?"}.json`),
+    );
+
+    const qIds = new Set<string>();
+    for (const q of questions) {
+      if (qIds.has(q.id)) errors.push(`${base}: afirmació repetida «${q.id}»`);
+      qIds.add(q.id);
+      if (!topicIds.has(q.topic)) errors.push(`${base}: «${q.id}» té un tema inexistent «${q.topic}»`);
+      for (const axis of Object.keys(q.axes) as Axis[])
+        if (!election.axes.includes(axis)) errors.push(`${base}: «${q.id}» fa servir l'eix «${axis}», que l'elecció no declara`);
+    }
+
+    const namesByCirc = new Map<string, string>();
+    for (const c of candidacies) {
+      const where = `${base}/candidacies/${c.id}.json`;
+      const sourceIds = new Set(c.sources.map((s) => s.id));
+      for (const q of questions) if (!(q.id in c.positions)) errors.push(`${where}: falta la posició sobre «${q.id}» (escriu null si no s'hi pronuncia)`);
+      for (const [qid, p] of Object.entries(c.positions)) {
+        if (!qIds.has(qid)) errors.push(`${where}: posició sobre una afirmació inexistent «${qid}»`);
+        if (!sourceIds.has(p.source)) errors.push(`${where}: «${qid}» cita una font inexistent «${p.source}»`);
+      }
+      const circs = c.circumscriptions === "all" ? [...provinceIds] : c.circumscriptions;
+      for (const id of circs) {
+        if (!provinceIds.has(id)) errors.push(`${where}: província inexistent «${id}»`);
+        const key = `${id}:${c.name}`;
+        if (namesByCirc.has(key)) errors.push(`${where}: el nom «${c.name}» ja existeix a la circumscripció ${id}`);
+        namesByCirc.set(key, c.id);
+      }
+    }
+    return { election, questions, candidacies };
+  });
+
+  if (errors.length) throw new Error(`Dades invàlides:\n- ${errors.join("\n- ")}`);
+  return { territory, topics, elections };
+}
+
+export const DATA = loadData();
+
+export const getElection = (id: string) => DATA.elections.find((e) => e.election.id === id);
