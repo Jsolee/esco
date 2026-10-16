@@ -1,0 +1,15 @@
+{
+  "id": "psc",
+  "name": "Partit dels Socialistes de Catalunya",
+  "short": "PSC",
+  "color": "#E30613",
+  "provisional": true,
+  "circumscriptions": [
+    "08",
+    "17",
+    "25",
+    "43"
+  ],
+  "sources": [],
+  "positions": {}
+}

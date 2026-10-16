@@ -1,0 +1,15 @@
+{
+  "id": "bng",
+  "name": "Bloque Nacionalista Galego",
+  "short": "BNG",
+  "color": "#76B3DD",
+  "provisional": true,
+  "circumscriptions": [
+    "15",
+    "27",
+    "32",
+    "36"
+  ],
+  "sources": [],
+  "positions": {}
+}

@@ -41,11 +41,15 @@ export function loadData(raw: unknown = RAW) {
         if (!election.axes.includes(axis)) errors.push(`${base}: «${q.id}» fa servir l'eix «${axis}», que l'elecció no declara`);
     }
 
+    // Una elecció oberta s'ha de poder jugar: candidatures oficials, amb fonts i posició a cada afirmació.
+    const open = election.status === "open";
     const namesByCirc = new Map<string, string>();
     for (const c of candidacies) {
       const where = `${base}/candidacies/${c.id}.json`;
       const sourceIds = new Set(c.sources.map((s) => s.id));
-      for (const q of questions) if (!(q.id in c.positions)) errors.push(`${where}: falta la posició sobre «${q.id}» (escriu null si no s'hi pronuncia)`);
+      if (open && c.provisional) errors.push(`${where}: una elecció oberta no pot tenir candidatures provisionals`);
+      if (open && c.sources.length === 0) errors.push(`${where}: una elecció oberta necessita almenys una font`);
+      if (open) for (const q of questions) if (!(q.id in c.positions)) errors.push(`${where}: falta la posició sobre «${q.id}» (escriu null si no s'hi pronuncia)`);
       for (const [qid, p] of Object.entries(c.positions)) {
         if (!qIds.has(qid)) errors.push(`${where}: posició sobre una afirmació inexistent «${qid}»`);
         if (!sourceIds.has(p.source)) errors.push(`${where}: «${qid}» cita una font inexistent «${p.source}»`);

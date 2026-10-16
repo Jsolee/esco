@@ -1,0 +1,16 @@
+{
+  "id": "frente-amplio",
+  "name": "Frente Amplio",
+  "short": "FA",
+  "color": "#E5005A",
+  "provisional": true,
+  "members": [
+    "Izquierda Unida",
+    "Movimiento Sumar",
+    "Más Madrid",
+    "Comuns"
+  ],
+  "circumscriptions": "all",
+  "sources": [],
+  "positions": {}
+}

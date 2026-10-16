@@ -27,6 +27,21 @@ describe("dades del repo", () => {
     expect(() => loadData(raw)).toThrow(/pàgina o URL/);
   });
 
+  it("accepten candidatures provisionals sense posicions en una elecció propera", () => {
+    const upcoming = DATA.elections.find((e) => e.election.status === "upcoming");
+    expect(upcoming?.candidacies.every((c) => c.provisional && Object.keys(c.positions).length === 0)).toBe(true);
+  });
+
+  it("fallen si una elecció oberta té candidatures provisionals o sense fonts", () => {
+    const provisional = clone();
+    (provisional.elections[0].candidacies[0] as Record<string, unknown>).provisional = true;
+    expect(() => loadData(provisional)).toThrow(/no pot tenir candidatures provisionals/);
+    const noSources = clone();
+    const g26 = noSources.elections[1];
+    (g26.election as Record<string, unknown>).status = "open";
+    expect(() => loadData(noSources)).toThrow(/necessita almenys una font/);
+  });
+
   it("fallen si es cita una font inexistent", () => {
     const raw = clone();
     const p = raw.elections[0].candidacies[0].positions as Record<string, { source: string }>;

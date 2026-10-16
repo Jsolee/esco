@@ -40,7 +40,7 @@ Tots els identificadors (`id`) són en minúscules, sense accents ni espais: `[a
 |---|---|
 | `type` | `general`, `autonomica`, `europea`, `municipal` |
 | `scope` | `"ES"` per a tot l'Estat, o `{ "community": "<codi INE de la comunitat>" }` |
-| `status` | `open` (es pot jugar), `upcoming` (es mostra com a propera), `archived` (no es mostra) |
+| `status` | `open` (es pot jugar), `upcoming` (surt a la portada com a propera, sense enllaç al joc), `archived` (no es mostra) |
 | `fictional` | `true` mostra l'avís «Dades fictícies» a totes les pantalles |
 | `axes` | eixos del mapa; mínim dos |
 | `facts` | dades curioses i verificables per a les pauses del joc (es fan servir les tres primeres) |
@@ -107,6 +107,7 @@ Bones pràctiques per a la neutralitat:
 - **`circumscriptions`**: `"all"` o una llista de codis de província (`["08", "17", "25", "43"]`). A una mateixa província no hi pot haver dues candidatures amb el mateix nom.
 - **`color`**: només apareix a la pantalla de resultats, sempre acompanyat del nom.
 - **`members`** (opcional): partits que formen la coalició.
+- **`provisional`** (opcional, `false` per defecte): `true` mentre la candidatura no s'hagi proclamat oficialment. Una elecció `upcoming` pot tenir candidatures provisionals sense fonts ni posicions (`"sources": []`, `"positions": {}`) per anar preparant les dades. Una elecció `open` no: hi exigeix candidatures oficials, almenys una font i una posició per a cada afirmació. Vegeu `data/elections/generals-2026/ESTAT.md` com a exemple.
 - **`sources`**: tots els documents d'on surten les posicions. `lang` és l'idioma del document; serveix per marcar correctament les cites.
 
 ### Posicions

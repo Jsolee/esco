@@ -15,6 +15,7 @@ const party = (id: string, values: Record<string, Answer | null>): Candidacy => 
   name: id,
   short: id,
   color: "#000000",
+  provisional: false,
   circumscriptions: "all",
   sources: [{ id: "p", title: "p", url: "https://example.org", date: "2027-01-01", lang: "ca" }],
   positions: Object.fromEntries(Object.entries(values).map(([k, v]) => [k, { value: v, source: "p", page: 1 }])),

@@ -1,0 +1,13 @@
+{
+  "id": "cc",
+  "name": "Coalición Canaria",
+  "short": "CC",
+  "color": "#FFD200",
+  "provisional": true,
+  "circumscriptions": [
+    "35",
+    "38"
+  ],
+  "sources": [],
+  "positions": {}
+}

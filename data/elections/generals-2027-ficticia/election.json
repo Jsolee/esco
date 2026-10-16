@@ -4,9 +4,16 @@
   "scope": "ES",
   "date": "2027-06-27",
   "status": "open",
-  "name": { "ca": "Eleccions generals 2027", "es": "Elecciones generales 2027" },
+  "name": {
+    "ca": "Eleccions generals de prova",
+    "es": "Elecciones generales de prueba"
+  },
   "fictional": true,
-  "axes": ["economic", "social", "territorial"],
+  "axes": [
+    "economic",
+    "social",
+    "territorial"
+  ],
   "facts": [
     {
       "ca": "El Congrés té 350 escons. Cada província en té com a mínim dos, i Ceuta i Melilla, un cadascuna.",

@@ -54,7 +54,8 @@ export function Start({
         setQuery(p.name);
       }
     } catch {}
-    requestAnimationFrame(() => input.current?.focus());
+    // Si recuperem la província d'abans, la deixem seleccionada perquè escriure la substitueixi.
+    requestAnimationFrame(() => input.current?.select());
   }
 
   function pick(p: ProvinceOption) {
@@ -173,6 +174,17 @@ export function Start({
           {available.length === 0 && <p className="text-ink-2">{m.start.noElections}</p>}
           {available.map((e) => {
             const count = e.circs.filter((c) => c === "all" || c.includes(province.id)).length;
+            if (e.status !== "open")
+              return (
+                <div key={e.id} className="grid gap-3 border-2 border-dashed border-ink-3 p-5">
+                  <span className="flex flex-wrap items-center gap-2">
+                    <span className="kicker rounded-full border border-current px-2.5 py-1 text-ink-2">{m.start.status[e.status]}</span>
+                  </span>
+                  <span className="font-serif text-3xl leading-tight">{e.name}</span>
+                  <span className="text-sm text-ink-2">{dateFmt.format(new Date(e.date))}</span>
+                  <span className="text-sm text-ink-2">{m.start.pending}</span>
+                </div>
+              );
             return (
               <Link
                 key={e.id}

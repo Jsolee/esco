@@ -1,0 +1,15 @@
+{
+  "id": "erc",
+  "name": "Esquerra Republicana de Catalunya",
+  "short": "ERC",
+  "color": "#FFB232",
+  "provisional": true,
+  "circumscriptions": [
+    "08",
+    "17",
+    "25",
+    "43"
+  ],
+  "sources": [],
+  "positions": {}
+}

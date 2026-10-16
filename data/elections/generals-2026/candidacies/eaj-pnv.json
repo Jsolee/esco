@@ -1,0 +1,14 @@
+{
+  "id": "eaj-pnv",
+  "name": "Euzko Alderdi Jeltzalea-Partido Nacionalista Vasco",
+  "short": "EAJ-PNV",
+  "color": "#1E7B3C",
+  "provisional": true,
+  "circumscriptions": [
+    "01",
+    "20",
+    "48"
+  ],
+  "sources": [],
+  "positions": {}
+}

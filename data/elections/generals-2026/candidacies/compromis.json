@@ -1,0 +1,14 @@
+{
+  "id": "compromis",
+  "name": "Compromís",
+  "short": "COMPROMÍS",
+  "color": "#F49D2A",
+  "provisional": true,
+  "circumscriptions": [
+    "03",
+    "12",
+    "46"
+  ],
+  "sources": [],
+  "positions": {}
+}

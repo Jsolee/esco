@@ -8,7 +8,9 @@ import { axesOf, positionsOf } from "@/lib/match";
 import { tx } from "@/lib/text";
 
 export const dynamicParams = false;
-export const generateStaticParams = () => DATA.elections.map((e) => ({ election: e.election.id }));
+// Només les eleccions obertes es poden jugar; les properes surten a la portada sense enllaç.
+export const generateStaticParams = () =>
+  DATA.elections.filter((e) => e.election.status === "open").map((e) => ({ election: e.election.id }));
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/[election]">): Promise<Metadata> {
   const { locale, election } = await params;
@@ -19,7 +21,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/[electio
 export default async function ElectionPage({ params }: PageProps<"/[locale]/[election]">) {
   const { locale, election: id } = await params;
   const e = getElection(id);
-  if (!e || !isLocale(locale)) notFound();
+  if (!e || e.election.status !== "open" || !isLocale(locale)) notFound();
 
   const usedTopics = new Set(e.questions.map((q) => q.topic));
   const data: GameData = {

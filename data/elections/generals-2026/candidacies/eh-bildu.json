@@ -1,0 +1,15 @@
+{
+  "id": "eh-bildu",
+  "name": "Euskal Herria Bildu",
+  "short": "EH BILDU",
+  "color": "#A3C940",
+  "provisional": true,
+  "circumscriptions": [
+    "01",
+    "20",
+    "48",
+    "31"
+  ],
+  "sources": [],
+  "positions": {}
+}

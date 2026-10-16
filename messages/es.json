@@ -71,7 +71,8 @@
       "open": "Abierta",
       "upcoming": "Próxima",
       "archived": "Archivada"
-    }
+    },
+    "pending": "Se podrá jugar cuando se proclamen las candidaturas y se publiquen los programas electorales."
   },
   "game": {
     "fictional": "Datos ficticios",

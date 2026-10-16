@@ -22,6 +22,8 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
   const communities = Object.fromEntries(DATA.territory.communities.map((c) => [c.id, tx(c.name, locale)]));
   const elections: ElectionSummary[] = DATA.elections
     .filter((e) => e.election.status !== "archived")
+    // primer les eleccions reals, després les de prova
+    .sort((a, b) => Number(a.election.fictional) - Number(b.election.fictional))
     .map(({ election, questions, candidacies }) => ({
       id: election.id,
       name: tx(election.name, locale),

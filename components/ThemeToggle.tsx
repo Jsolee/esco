@@ -50,7 +50,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
         {mode !== "light" && <path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor" />}
         {mode === "system" && <path d="M10 2.75v14.5" stroke="currentColor" strokeWidth="1.5" />}
       </svg>
-      <span>{m.nav.themes[mode]}</span>
+      <span className="hidden sm:inline">{m.nav.themes[mode]}</span>
     </button>
   );
 }

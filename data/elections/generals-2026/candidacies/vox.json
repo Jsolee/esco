@@ -1,0 +1,10 @@
+{
+  "id": "vox",
+  "name": "Vox",
+  "short": "VOX",
+  "color": "#63BE21",
+  "provisional": true,
+  "circumscriptions": "all",
+  "sources": [],
+  "positions": {}
+}

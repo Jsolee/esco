@@ -71,7 +71,8 @@
       "open": "Oberta",
       "upcoming": "Propera",
       "archived": "Arxivada"
-    }
+    },
+    "pending": "Es podrà jugar quan es proclamin les candidatures i es publiquin els programes electorals."
   },
   "game": {
     "fictional": "Dades fictícies",

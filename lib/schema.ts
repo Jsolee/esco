@@ -67,8 +67,9 @@ export const Candidacy = z.object({
   short: z.string().min(1),
   color: z.string().regex(/^#[0-9a-f]{6}$/i),
   members: z.array(z.string()).optional(),
+  provisional: z.boolean().default(false), // encara no proclamada oficialment
   circumscriptions: z.union([z.literal("all"), z.array(Ine2).min(1)]),
-  sources: z.array(Source).min(1),
+  sources: z.array(Source), // en una elecció oberta, almenys una (ho comprova lib/data.ts)
   positions: z.record(Id, Position),
 });
 

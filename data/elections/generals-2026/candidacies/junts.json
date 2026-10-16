@@ -1,0 +1,20 @@
+{
+  "id": "junts",
+  "name": "Junts per Catalunya",
+  "short": "JUNTS",
+  "color": "#00C3B2",
+  "provisional": true,
+  "members": [
+    "Junts per Catalunya",
+    "Demòcrates de Catalunya",
+    "Moviment d'Esquerres"
+  ],
+  "circumscriptions": [
+    "08",
+    "17",
+    "25",
+    "43"
+  ],
+  "sources": [],
+  "positions": {}
+}

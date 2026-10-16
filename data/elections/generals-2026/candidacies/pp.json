@@ -1,0 +1,10 @@
+{
+  "id": "pp",
+  "name": "Partido Popular",
+  "short": "PP",
+  "color": "#1D84CE",
+  "provisional": true,
+  "circumscriptions": "all",
+  "sources": [],
+  "positions": {}
+}

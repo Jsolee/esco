@@ -1,0 +1,14 @@
+{
+  "id": "podemos",
+  "name": "Podemos",
+  "short": "PODEMOS",
+  "color": "#6B2E68",
+  "provisional": true,
+  "members": [
+    "Podemos",
+    "Alianza Verde"
+  ],
+  "circumscriptions": "all",
+  "sources": [],
+  "positions": {}
+}
