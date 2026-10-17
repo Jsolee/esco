@@ -1,73 +1,71 @@
 "use client";
 
-import { animate, m, useMotionValue, useMotionValueEvent, useReducedMotion, useTransform, type PanInfo } from "motion/react";
 import { useEffect, useImperativeHandle, useRef, useState } from "react";
+import type { Achievement } from "@/lib/achievements";
+import { Draggable, gsap, sfx, SplitText, useGSAP, useReducedMotion } from "@/lib/fx";
 import type { Answers } from "@/lib/match";
 import type { Answer } from "@/lib/schema";
 import { format, pad2 } from "@/lib/text";
 import { useI18n } from "../I18n";
 import type { Item } from "./Game";
+import { RoundComplete } from "./Overlays";
 
 const THRESH = 90; // px per comptar com a vot
 const STRONG = 190; // px per a «molt»
 const VALUES: Answer[] = [-2, -1, 0, 1, 2];
-const SPRING = { type: "spring", stiffness: 420, damping: 32 } as const;
-const OUT = { duration: 0.42, ease: [0.4, 0, 1, 1] } as const;
+const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 
-type Outcome = Answer | null | "go"; // null = saltada, "go" = continuar després d'una pausa
+export type Outcome = Answer | null | "go"; // null = saltada, "go" = continuar després d'una ronda
 type CardHandle = { fling: (o: Outcome) => void };
 
 const previewOf = (dx: number, dy: number): Answer | undefined =>
   dx > STRONG ? 2 : dx > THRESH ? 1 : dx < -STRONG ? -2 : dx < -THRESH ? -1 : dy < -THRESH ? 0 : undefined;
 
-function decide(info: PanInfo, pause: boolean): Outcome | undefined {
-  const { x: dx, y: dy } = info.offset;
-  const { x: vx, y: vy } = info.velocity;
-  if (Math.abs(dx) > THRESH || (Math.abs(vx) > 700 && Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy))) {
-    if (pause) return "go";
+function decide(dx: number, dy: number, vx: number, vy: number): Answer | undefined {
+  if (Math.abs(dx) > THRESH || (Math.abs(vx) > 700 && Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)))
     return (Math.sign(dx) * (Math.abs(dx) > STRONG || Math.abs(vx) > 1800 ? 2 : 1)) as Answer;
-  }
-  if (dy < -THRESH || (vy < -700 && dy < -40)) return pause ? "go" : 0;
+  if (dy < -THRESH || (vy < -700 && dy < -40)) return 0;
   return undefined;
-}
-
-// On queda una carta quan surt (i, en desfer, des d'on torna a entrar).
-function exitFor(o: Outcome | undefined) {
-  if (typeof window === "undefined") return { x: 0, y: 0 };
-  const w = window.innerWidth + 240;
-  if (o === null) return { x: 0, y: 160 };
-  if (o === 0) return { x: 0, y: -window.innerHeight };
-  if (o === "go" || o === undefined) return { x: w, y: 0 };
-  return { x: Math.sign(o) * w, y: 0 };
 }
 
 export function Deck({
   item,
   upcoming,
   total,
+  round,
   back,
+  delay,
   answers,
   stats,
+  ach,
   topics,
   onVote,
   onContinue,
   onUndo,
   canUndo,
+  onImpact,
+  onRead,
 }: {
   item: Item;
   upcoming: Item[];
   total: number;
+  round: number;
   back: boolean;
+  delay: number; // s d'espera abans de repartir la carta (rètol de ronda)
   answers: Answers;
   stats: (Answer | null | undefined)[];
+  ach: Achievement[];
   topics: { id: string; name: string }[];
   onVote: (v: Answer | null) => void;
   onContinue: () => void;
   onUndo: () => void;
   canUndo: boolean;
+  onImpact: (v: Answer | null) => void;
+  onRead: (qid: string) => void;
 }) {
   const { m: t } = useI18n();
   const card = useRef<CardHandle>(null);
+  const pad = useRef<HTMLDivElement>(null);
   const [hint, setHint] = useState<Answer | undefined>();
   const keyOf = (it: Item) => (it.kind === "q" ? it.q.id : `pause-${it.n}`);
   const prev = item.kind === "q" ? answers[item.q.id] : undefined;
@@ -98,6 +96,13 @@ export function Deck({
     return () => removeEventListener("keydown", onKey);
   }, [item, canUndo, onUndo]);
 
+  useGSAP(
+    () => {
+      gsap.from(".pad-btn", { y: 30, opacity: 0, stagger: 0.05, duration: 0.5, ease: "back.out(2)", delay: 0.2 });
+    },
+    { scope: pad },
+  );
+
   function done(o: Outcome) {
     setHint(undefined);
     if (o === "go") onContinue();
@@ -105,8 +110,8 @@ export function Deck({
   }
 
   return (
-    <div className="relative flex w-full flex-1 flex-col items-center">
-      <div className="relative -mt-5 h-[clamp(320px,50dvh,500px)] w-[min(90vw,400px)]">
+    <div className="relative flex w-full flex-col items-center">
+      <div className="relative h-[clamp(300px,48dvh,480px)] w-[min(90vw,400px)] [perspective:1400px]">
         {upcoming
           .map((it, i) => ({ it, depth: i + 1 }))
           .reverse()
@@ -120,54 +125,72 @@ export function Deck({
               style={{ transform: `translateY(${depth * 14}px) scale(${1 - depth * 0.05})` }}
             />
           ))}
-        <SwipeCard
-          key={keyOf(item)}
-          ref={card}
-          item={item}
-          total={total}
-          enter={back ? exitFor(item.kind === "pause" ? "go" : prev) : null}
-          prev={prev}
-          topic={item.kind === "q" ? (topics.find((x) => x.id === item.q.topic)?.name ?? "") : ""}
-          stats={stats}
-          onDone={done}
-          onPreview={setHint}
-        />
+        {item.kind === "pause" ? (
+          <RoundComplete
+            key={keyOf(item)}
+            ref={card as React.Ref<{ fling: () => void }>}
+            round={round}
+            fact={item.fact}
+            stats={stats}
+            ach={ach}
+            onDone={() => done("go")}
+          />
+        ) : (
+          <SwipeCard
+            key={keyOf(item)}
+            ref={card}
+            item={item}
+            total={total}
+            enter={back ? (prev ?? "go") : undefined}
+            delay={delay}
+            prev={prev}
+            topic={topics.find((x) => x.id === item.q.topic)?.name ?? ""}
+            onDone={done}
+            onPreview={setHint}
+            onImpact={onImpact}
+            onRead={() => onRead(item.q.id)}
+          />
+        )}
       </div>
 
-      {item.kind === "q" ? (
-        <div role="group" aria-label={t.game.votePad} className="mt-7 flex items-start justify-center gap-1.5 sm:gap-3">
-          {VALUES.map((v, i) => {
-            const label = t.game.votes[String(v) as "0"];
-            const size = Math.abs(v) === 2 ? "size-15" : Math.abs(v) === 1 ? "size-13" : "size-11";
-            return (
-              <div key={v} className="flex w-[4.1rem] flex-col items-center gap-1.5">
-                <button
-                  type="button"
-                  aria-label={label}
-                  aria-keyshortcuts={String(i + 1)}
-                  onClick={() => card.current?.fling(v)}
-                  className={`grid ${size} place-items-center rounded-full border transition duration-150 ease-out-quint active:scale-90 ${
-                    hint === v
-                      ? "scale-110 border-chalk bg-chalk text-stage"
-                      : "border-chalk-3/60 bg-stage-2 text-chalk hover:border-chalk hover:bg-stage-3"
-                  }`}
-                >
-                  <Glyph v={v} />
-                </button>
-                <span aria-hidden className={`text-center text-[0.68rem] leading-tight ${hint === v ? "text-chalk" : "text-chalk-2"}`}>
-                  {label}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-      ) : (
-        <button type="button" onClick={() => card.current?.fling("go")} className="btn mt-7 bg-chalk px-8 text-stage">
-          {t.game.pause.continue} <span aria-hidden>→</span>
-        </button>
-      )}
+      <div ref={pad} className="w-full">
+        {item.kind === "q" ? (
+          <div role="group" aria-label={t.game.votePad} className="mt-7 flex items-start justify-center gap-1.5 sm:gap-3">
+            {VALUES.map((v, i) => {
+              const label = t.game.votes[String(v) as "0"];
+              const size = Math.abs(v) === 2 ? "size-15" : Math.abs(v) === 1 ? "size-13" : "size-11";
+              return (
+                <div key={v} className="pad-btn flex w-[4.1rem] flex-col items-center gap-1.5">
+                  <button
+                    type="button"
+                    aria-label={label}
+                    aria-keyshortcuts={String(i + 1)}
+                    onClick={() => card.current?.fling(v)}
+                    className={`grid ${size} place-items-center rounded-full border backdrop-blur transition duration-150 ease-out-quint active:scale-90 ${
+                      hint === v
+                        ? "scale-115 border-chalk bg-chalk text-stage shadow-[0_0_40px_rgba(242,241,236,0.45)]"
+                        : "border-chalk-3/60 bg-stage-2/80 text-chalk hover:border-chalk hover:bg-stage-3"
+                    }`}
+                  >
+                    <Glyph v={v} />
+                  </button>
+                  <span aria-hidden className={`text-center text-[0.68rem] leading-tight ${hint === v ? "text-chalk" : "text-chalk-2"}`}>
+                    {label}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="mt-7 flex justify-center">
+            <button type="button" onClick={() => card.current?.fling("go")} className="btn bg-chalk px-8 text-stage">
+              {t.game.pause.continue} <span aria-hidden>→</span>
+            </button>
+          </div>
+        )}
+      </div>
 
-      <div className="mt-auto flex w-[min(92vw,420px)] items-center justify-between gap-4 pb-[max(14px,env(safe-area-inset-bottom))] pt-3">
+      <div className="mt-3 flex w-[min(92vw,420px)] items-center justify-between gap-4 pb-[max(14px,env(safe-area-inset-bottom))]">
         <button
           type="button"
           onClick={onUndo}
@@ -176,7 +199,7 @@ export function Deck({
         >
           <span aria-hidden>↶</span> {t.game.undo}
         </button>
-        <p className="hidden text-center text-xs text-chalk-3 [@media(hover:hover)]:block">{t.game.intro.keys}</p>
+        <p className="hidden text-center text-[0.7rem] text-chalk-3 [@media(hover:hover)]:block">{t.game.intro.keys}</p>
         {item.kind === "q" ? (
           <button
             type="button"
@@ -198,142 +221,235 @@ function SwipeCard({
   item,
   total,
   enter,
+  delay,
   prev,
   topic,
-  stats,
   onDone,
   onPreview,
+  onImpact,
+  onRead,
 }: {
   ref: React.Ref<CardHandle>;
-  item: Item;
+  item: Extract<Item, { kind: "q" }>;
   total: number;
-  enter: { x: number; y: number } | null;
+  enter: Outcome | undefined; // en desfer: d'on torna la carta
+  delay: number;
   prev: Answer | null | undefined;
   topic: string;
-  stats: (Answer | null | undefined)[];
   onDone: (o: Outcome) => void;
   onPreview: (a: Answer | undefined) => void;
+  onImpact: (v: Answer | null) => void;
+  onRead: () => void;
 }) {
   const { m: t } = useI18n();
   const reduced = useReducedMotion();
-  const pause = item.kind === "pause";
-  const x = useMotionValue(reduced ? 0 : (enter?.x ?? 0));
-  const y = useMotionValue(reduced ? 0 : (enter?.y ?? 0));
-  const opacity = useMotionValue(enter && !reduced ? 0 : 1);
-  const rotate = useTransform(x, [-320, 320], [-16, 16]);
-  const yes = useTransform(x, [24, THRESH], [0, 1]);
-  const no = useTransform(x, [-THRESH, -24], [1, 0]);
-  const meh = useTransform(y, [-THRESH, -24], [1, 0]);
-  const [preview, setPreview] = useState<Answer | undefined>();
-  const [flipped, setFlipped] = useState(false);
-  const busy = useRef(false);
+  const wrap = useRef<HTMLDivElement>(null);
+  const drag = useRef<HTMLDivElement>(null);
+  const tilt = useRef<HTMLDivElement>(null);
+  const inner = useRef<HTMLDivElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
+  const draggable = useRef<Draggable | null>(null);
+  const busy = useRef(false);
+  const preview = useRef<Answer | undefined>(undefined);
+  const vel = useRef({ x: 0, y: 0, lx: 0, ly: 0, t: 0 });
+  const [label, setLabel] = useState<Answer | undefined>();
+  const [flipped, setFlipped] = useState(false);
 
-  useEffect(() => {
-    heading.current?.focus({ preventScroll: true });
-    if (!enter || reduced) return;
-    animate(x, 0, SPRING);
-    animate(y, 0, SPRING);
-    animate(opacity, 1, { duration: 0.25 });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps -- només en muntar
+  const q = (sel: string) => wrap.current!.querySelector<HTMLElement>(sel)!;
 
-  function track() {
-    if (busy.current || pause) return;
-    const p = previewOf(x.get(), y.get());
-    setPreview(p);
-    onPreview(p);
+  function update(x: number, y: number) {
+    gsap.set(drag.current, { rotation: Math.max(-18, Math.min(18, x / 16)) });
+    const yes = clamp01((x - 24) / (THRESH - 24));
+    const no = clamp01((-x - 24) / (THRESH - 24));
+    const meh = Math.abs(x) < THRESH ? clamp01((-y - 24) / (THRESH - 24)) : 0;
+    gsap.set(q(".stamp-yes"), { opacity: yes, scale: 1.35 - yes * 0.35 });
+    gsap.set(q(".stamp-no"), { opacity: no, scale: 1.35 - no * 0.35 });
+    gsap.set(q(".stamp-meh"), { opacity: meh, scale: 1.35 - meh * 0.35 });
+    gsap.set(q(".cue-yes"), { opacity: yes, x: (1 - yes) * -30 });
+    gsap.set(q(".cue-no"), { opacity: no, x: (1 - no) * 30 });
+    gsap.set(q(".gloss"), {
+      backgroundPosition: `${50 - x / 5}% ${50 - y / 5}%`,
+      opacity: 0.25 + Math.min(Math.abs(x) + Math.abs(y), 240) / 480,
+    });
+    const p = previewOf(x, y);
+    if (p !== preview.current) {
+      preview.current = p;
+      setLabel(p);
+      onPreview(p);
+      if (p !== undefined) sfx.tick();
+    }
   }
-  useMotionValueEvent(x, "change", track);
-  useMotionValueEvent(y, "change", track);
 
-  async function fling(o: Outcome) {
+  useGSAP(
+    () => {
+      heading.current?.focus({ preventScroll: true });
+      gsap.set([q(".stamp-yes"), q(".stamp-no"), q(".stamp-meh")], { opacity: 0 });
+      gsap.set(q(".stamp-yes"), { rotation: -12 });
+      gsap.set(q(".stamp-no"), { rotation: 12 });
+      gsap.set(q(".stamp-meh"), { xPercent: -50 });
+
+      if (!reduced) {
+        if (enter !== undefined) {
+          const d = enter === "go" ? 1 : enter === null ? 0 : Math.sign(enter);
+          gsap.from(drag.current, {
+            x: d * (innerWidth + 200),
+            y: enter === 0 ? -innerHeight : enter === null ? 160 : 0,
+            rotation: d * 30,
+            opacity: enter === null || enter === 0 ? 0 : 1,
+            duration: 0.6,
+            ease: "power3.out",
+          });
+        } else {
+          gsap.from(tilt.current, { y: 60, scale: 0.9, rotationX: 22, opacity: 0, duration: 0.75, delay, ease: "back.out(1.5)" });
+          const split = SplitText.create(heading.current, { type: "words", mask: "words" });
+          gsap.from(split.words, { yPercent: 110, duration: 0.75, stagger: 0.035, delay: delay + 0.15, ease: "expo.out" });
+          gsap.from(q(".card-num"), { xPercent: 30, opacity: 0, duration: 1.1, delay: delay + 0.1, ease: "expo.out" });
+        }
+      }
+
+      draggable.current = Draggable.create(drag.current, {
+        type: "x,y",
+        minimumMovement: 4,
+        dragClickables: false,
+        allowContextMenu: true,
+        zIndexBoost: false,
+        onPress() {
+          vel.current = { x: 0, y: 0, lx: this.x, ly: this.y, t: performance.now() };
+        },
+        onDrag() {
+          const now = performance.now();
+          const dt = Math.max(now - vel.current.t, 1) / 1000;
+          vel.current = { x: (this.x - vel.current.lx) / dt, y: (this.y - vel.current.ly) / dt, lx: this.x, ly: this.y, t: now };
+          update(this.x, this.y);
+        },
+        onDragEnd() {
+          const v = decide(this.x, this.y, vel.current.x, vel.current.y);
+          if (v !== undefined) return fling(v);
+          const el = drag.current!;
+          gsap.to(el, {
+            x: 0,
+            y: 0,
+            duration: 0.7,
+            ease: "elastic.out(1, 0.55)",
+            onUpdate: () => update(Number(gsap.getProperty(el, "x")), Number(gsap.getProperty(el, "y"))),
+          });
+        },
+      })[0];
+      return () => {
+        draggable.current?.kill();
+        gsap.killTweensOf([drag.current, tilt.current, inner.current]);
+      };
+    },
+    { scope: wrap },
+  );
+
+  function impact(v: Answer) {
+    sfx.stamp();
+    navigator.vibrate?.(Math.abs(v) === 2 ? 22 : 10);
+    onImpact(v);
+  }
+
+  function fling(o: Outcome) {
     if (busy.current) return;
     busy.current = true;
+    draggable.current?.disable();
+    gsap.to(inner.current, { rotationY: 0, duration: 0.25 });
     setFlipped(false);
     if (o !== "go") {
-      setPreview(o ?? undefined);
+      preview.current = o ?? undefined;
+      setLabel(o ?? undefined);
       onPreview(o ?? undefined);
     }
-    navigator.vibrate?.(8);
-    if (!reduced) {
-      const up = o === "go" && Math.abs(y.get()) > Math.abs(x.get());
-      const dir = o === "go" ? (up ? undefined : Math.sign(x.get()) || 1) : undefined;
-      const to = o === "go" ? (up ? { x: 0, y: -innerHeight } : { x: dir! * (innerWidth + 240), y: y.get() }) : exitFor(o);
-      await Promise.all([
-        animate(x, to.x, OUT),
-        animate(y, to.y, OUT),
-        o === null || o === 0 || (o === "go" && up) ? animate(opacity, 0, OUT) : Promise.resolve(),
-      ]);
+    if (reduced) {
+      onImpact(o === "go" ? null : o);
+      return onDone(o);
     }
-    onDone(o);
+    const el = drag.current!;
+    const x0 = Number(gsap.getProperty(el, "x"));
+    const tl = gsap.timeline({ onComplete: () => onDone(o) });
+
+    if (o === null) {
+      sfx.flip();
+      tl.to(el, { y: "+=50", rotationX: -30, scale: 0.88, opacity: 0, duration: 0.38, ease: "power2.in", onStart: () => onImpact(null) });
+      return;
+    }
+    if (o === 0) {
+      tl.to(el, { y: "+=14", duration: 0.12, ease: "power2.out" })
+        .fromTo(q(".stamp-meh"), { opacity: 0, scale: 2.4 }, { opacity: 1, scale: 1, duration: 0.18, ease: "power4.in", onComplete: () => impact(0) })
+        .to(el, { y: -innerHeight, scale: 0.8, rotation: gsap.utils.random(-10, 10), duration: 0.55, ease: "power2.in", onStart: sfx.whoosh }, "+=0.12");
+      return;
+    }
+    const d = o === "go" ? Math.sign(x0) || 1 : Math.sign(o);
+    if (o !== "go") {
+      const stamp = q(d > 0 ? ".stamp-yes" : ".stamp-no");
+      tl.to(el, { x: d * Math.max(Math.abs(x0), 46), rotation: d * 7, duration: 0.14, ease: "power2.out" })
+        .fromTo(
+          stamp,
+          { opacity: 0, scale: Math.abs(o) === 2 ? 3 : 2.3, rotation: d * -32 },
+          { opacity: 1, scale: 1, rotation: d * -12, duration: 0.2, ease: "power4.in", onComplete: () => impact(o) },
+        )
+        .to(q(".card-face"), { scale: 0.96, duration: 0.07, yoyo: true, repeat: 1 }, ">-0.02");
+    }
+    tl.to(el, { x: d * (innerWidth + 320), y: "+=90", rotation: d * 40, duration: 0.5, ease: "power2.in", onStart: sfx.whoosh }, "+=0.12");
   }
+
   useImperativeHandle(ref, () => ({ fling }));
 
-  function onDragEnd(_: unknown, info: PanInfo) {
-    const o = decide(info, pause);
-    if (o !== undefined) return void fling(o);
-    animate(x, 0, SPRING);
-    animate(y, 0, SPRING);
+  function flip(to: boolean) {
+    setFlipped(to);
+    sfx.flip();
+    if (to) {
+      onRead();
+      draggable.current?.disable();
+    } else draggable.current?.enable();
+    gsap.to(inner.current, { rotationY: to ? 180 : 0, duration: reduced ? 0 : 0.75, ease: "power3.inOut" });
   }
 
-  const stamp = "pointer-events-none absolute rounded-lg border-[3px] px-3 py-1 font-sans text-lg font-extrabold uppercase tracking-wider";
-  const strongYes = preview === 2;
-  const strongNo = preview === -2;
+  function onTilt(e: React.PointerEvent) {
+    if (reduced || e.pointerType !== "mouse" || busy.current) return;
+    const r = tilt.current!.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    gsap.to(tilt.current, { rotationY: px * 10, rotationX: -py * 10, duration: 0.6, ease: "power3.out" });
+  }
+  function onTiltEnd() {
+    gsap.to(tilt.current, { rotationY: 0, rotationX: 0, duration: 0.8, ease: "elastic.out(1, 0.6)" });
+  }
+
+  const stamp = "pointer-events-none absolute z-10 rounded-lg border-[3px] px-3 py-1 font-sans text-lg font-extrabold uppercase tracking-wider";
+  const face =
+    "absolute inset-0 flex flex-col overflow-hidden rounded-[28px] p-6 text-card-ink shadow-[0_40px_90px_-30px_rgba(0,0,0,0.9)] [backface-visibility:hidden] sm:p-8";
 
   return (
-    <m.div
-      className="absolute inset-0"
-      initial={enter ? false : { y: 14, scale: 0.95 }}
-      animate={{ y: 0, scale: 1 }}
-      transition={SPRING}
-    >
-      <m.div
-        className="absolute inset-0 cursor-grab touch-none [perspective:1400px] active:cursor-grabbing"
-        style={{ x, y, rotate, opacity }}
-        drag={!flipped}
-        dragMomentum={false}
-        dragElastic={0.9}
-        onDragEnd={onDragEnd}
+    <div ref={wrap} className="absolute inset-0">
+      <span
+        aria-hidden
+        className="cue-no pointer-events-none absolute right-full top-1/2 mr-10 hidden -translate-y-1/2 font-serif text-[9rem] italic leading-none text-chalk opacity-0 lg:block"
       >
-        {pause ? (
-          <article className="absolute inset-0 flex flex-col overflow-hidden rounded-[28px] border border-chalk-3/60 bg-stage-2 p-6 text-chalk shadow-[0_40px_90px_-30px_rgba(0,0,0,0.9)] sm:p-8">
-            <p className="kicker text-chalk-2">{t.game.pause.kicker}</p>
-            <h2 ref={heading} tabIndex={-1} className="mt-auto font-serif text-4xl italic outline-none">
-              {t.game.pause.title}
-            </h2>
-            <p className="mt-4 font-serif text-[1.35rem] leading-snug">{item.fact}</p>
-            <div className="mt-auto pt-6">
-              <p className="text-sm text-chalk-2">{format(t.game.pause.stats, { n: stats.length })}</p>
-              <dl className="mt-2 grid grid-cols-4 gap-2 border-t border-chalk-3/40 pt-3">
-                {(
-                  [
-                    ["yes", stats.filter((a) => typeof a === "number" && a > 0).length],
-                    ["no", stats.filter((a) => typeof a === "number" && a < 0).length],
-                    ["neutral", stats.filter((a) => a === 0).length],
-                    ["skipped", stats.filter((a) => a === null).length],
-                  ] as const
-                ).map(([k, v]) => (
-                  <div key={k} className="grid gap-0.5">
-                    <dt className="text-[0.68rem] uppercase tracking-wider text-chalk-2">{t.game.pause.labels[k]}</dt>
-                    <dd className="num font-serif text-3xl leading-none">{v}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </article>
-        ) : (
-          <m.div
-            className="relative size-full [transform-style:preserve-3d]"
-            animate={{ rotateY: flipped ? 180 : 0 }}
-            transition={{ type: "spring", stiffness: 230, damping: 24 }}
-          >
-            <article
-              inert={flipped}
-              className="absolute inset-0 flex flex-col overflow-hidden rounded-[28px] bg-card p-6 text-card-ink shadow-[0_40px_90px_-30px_rgba(0,0,0,0.9)] [backface-visibility:hidden] sm:p-8"
-            >
+        No
+      </span>
+      <span
+        aria-hidden
+        className="cue-yes pointer-events-none absolute left-full top-1/2 ml-10 hidden -translate-y-1/2 font-serif text-[9rem] italic leading-none text-chalk opacity-0 lg:block"
+      >
+        Sí
+      </span>
+      <div ref={drag} className="absolute inset-0 cursor-grab touch-none active:cursor-grabbing">
+        <div
+          ref={tilt}
+          onPointerMove={onTilt}
+          onPointerLeave={onTiltEnd}
+          className="absolute inset-0 [perspective:1400px] [transform-style:preserve-3d]"
+        >
+          <div ref={inner} className="card-face relative size-full [transform-style:preserve-3d]">
+            <article inert={flipped} className={`${face} bg-card`}>
               <span
                 aria-hidden
-                className="num pointer-events-none absolute -bottom-12 -right-4 select-none font-serif text-[12.5rem] italic leading-none text-transparent [-webkit-text-stroke:1.5px_#c9c6bd]"
+                className="gloss pointer-events-none absolute inset-0 opacity-25 mix-blend-soft-light [background-image:linear-gradient(115deg,transparent_30%,rgba(255,255,255,0.9)_48%,transparent_62%)] [background-size:250%_250%]"
+              />
+              <span
+                aria-hidden
+                className="card-num num pointer-events-none absolute -bottom-12 -right-4 select-none font-serif text-[12.5rem] italic leading-none text-transparent [-webkit-text-stroke:1.5px_#c9c6bd]"
               >
                 {pad2(item.n)}
               </span>
@@ -344,7 +460,7 @@ function SwipeCard({
                 <h2
                   ref={heading}
                   tabIndex={-1}
-                  className="font-serif text-[clamp(1.6rem,1.05rem+2.4vw,2.3rem)] leading-[1.08] tracking-[-0.018em] outline-none"
+                  className="font-serif text-[clamp(1.6rem,1.05rem+2.4vw,2.3rem)] leading-[1.1] tracking-[-0.018em] outline-none"
                 >
                   {item.q.text}
                 </h2>
@@ -353,8 +469,7 @@ function SwipeCard({
                 <button
                   type="button"
                   aria-expanded={flipped}
-                  onClick={() => setFlipped(true)}
-                  onPointerDownCapture={(e) => e.stopPropagation()}
+                  onClick={() => flip(true)}
                   className="-ml-1 inline-flex min-h-11 items-center gap-2 rounded-full px-1 text-sm font-semibold underline decoration-card-3 underline-offset-4 hover:decoration-card-ink"
                 >
                   <span aria-hidden>↻</span> {t.game.why}
@@ -365,64 +480,44 @@ function SwipeCard({
                   </span>
                 )}
               </div>
-
-              <m.span aria-hidden style={{ opacity: yes }} className={`${stamp} left-5 top-16 -rotate-12 border-card-ink ${strongYes ? "bg-card-ink text-card" : ""}`}>
-                {t.game.votes[strongYes ? "2" : "1"]}
-              </m.span>
-              <m.span aria-hidden style={{ opacity: no }} className={`${stamp} right-5 top-16 rotate-12 border-card-ink ${strongNo ? "bg-card-ink text-card" : ""}`}>
-                {t.game.votes[strongNo ? "-2" : "-1"]}
-              </m.span>
-              <m.span aria-hidden style={{ opacity: meh }} className={`${stamp} bottom-20 left-1/2 -translate-x-1/2 border-dashed border-card-ink`}>
+              <span aria-hidden className={`stamp-yes ${stamp} left-5 top-16 border-card-ink ${label === 2 ? "bg-card-ink text-card" : ""}`}>
+                {t.game.votes[label === 2 ? "2" : "1"]}
+              </span>
+              <span aria-hidden className={`stamp-no ${stamp} right-5 top-16 border-card-ink ${label === -2 ? "bg-card-ink text-card" : ""}`}>
+                {t.game.votes[label === -2 ? "-2" : "-1"]}
+              </span>
+              <span aria-hidden className={`stamp-meh ${stamp} bottom-20 left-1/2 border-dashed border-card-ink`}>
                 {t.game.votes["0"]}
-              </m.span>
+              </span>
             </article>
 
-            <article
-              inert={!flipped}
-              aria-hidden={!flipped}
-              className="absolute inset-0 flex flex-col overflow-y-auto rounded-[28px] bg-card-2 p-6 text-card-ink shadow-[0_40px_90px_-30px_rgba(0,0,0,0.9)] [backface-visibility:hidden] [transform:rotateY(180deg)] sm:p-8"
-            >
+            <article inert={!flipped} aria-hidden={!flipped} className={`${face} overflow-y-auto bg-card-2 [transform:rotateY(180deg)]`}>
               <p className="kicker text-card-ink-2">
                 {t.game.context} · {topic}
               </p>
               <p className="mt-5 font-serif text-[1.3rem] leading-snug">{item.q.context}</p>
               <button
                 type="button"
-                onClick={() => setFlipped(false)}
-                onPointerDownCapture={(e) => e.stopPropagation()}
+                onClick={() => flip(false)}
                 className="mt-auto inline-flex min-h-11 items-center gap-2 self-start pt-4 text-sm font-semibold underline decoration-card-3 underline-offset-4"
               >
                 <span aria-hidden>↺</span> {t.game.backToCard}
               </button>
             </article>
-          </m.div>
-        )}
-      </m.div>
-
-      {!pause && (
-        <>
-          <m.span
-            aria-hidden
-            style={{ opacity: no }}
-            className="pointer-events-none absolute right-full top-1/2 mr-8 hidden -translate-y-1/2 font-serif text-[9rem] italic leading-none text-chalk lg:block"
-          >
-            No
-          </m.span>
-          <m.span
-            aria-hidden
-            style={{ opacity: yes }}
-            className="pointer-events-none absolute left-full top-1/2 ml-8 hidden -translate-y-1/2 font-serif text-[9rem] italic leading-none text-chalk lg:block"
-          >
-            Sí
-          </m.span>
-        </>
-      )}
-    </m.div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
 function Glyph({ v }: { v: Answer }) {
-  if (v === 0) return <svg viewBox="0 0 24 24" className="size-3" aria-hidden><circle cx="12" cy="12" r="6" fill="currentColor" /></svg>;
+  if (v === 0)
+    return (
+      <svg viewBox="0 0 24 24" className="size-3" aria-hidden>
+        <circle cx="12" cy="12" r="6" fill="currentColor" />
+      </svg>
+    );
   const d = Math.abs(v) === 2 ? "M5 6l6 6-6 6M12 6l6 6-6 6" : "M9 6l6 6-6 6";
   return (
     <svg viewBox="0 0 24 24" className={`size-6 ${v < 0 ? "-scale-x-100" : ""}`} aria-hidden>

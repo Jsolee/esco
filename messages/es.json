@@ -146,8 +146,44 @@
       "none": "Sin ninguna marca, todas las propuestas cuentan igual."
     },
     "counting": {
-      "title": "Haciendo el recuento",
-      "text": "Contando {n} votos…"
+      "title": "Recuento",
+      "text": "votos contados"
+    },
+    "sound": "Sonido",
+    "round": "Ronda {n}",
+    "roundOf": "de {total}",
+    "roundDone": "Ronda {n} completada",
+    "streak": "Racha",
+    "gavelOpen": "Empieza la sesión",
+    "gavelClose": "Se cierra la votación",
+    "achTitle": "Logro",
+    "achSoFar": "Logros",
+    "votesLabel": "votos",
+    "ach": {
+      "first": {
+        "t": "Primer voto",
+        "d": "Ya tienes voz en el pleno."
+      },
+      "streak5": {
+        "t": "Racha de 5",
+        "d": "Cinco votaciones seguidas sin saltar."
+      },
+      "streak10": {
+        "t": "Racha de 10",
+        "d": "Diez votaciones seguidas sin saltar."
+      },
+      "curious": {
+        "t": "Curiosidad",
+        "d": "Has leído el contexto de 3 propuestas."
+      },
+      "informed": {
+        "t": "Lectura atenta",
+        "d": "Has leído el contexto de 8 propuestas."
+      },
+      "full": {
+        "t": "Pleno completo",
+        "d": "Has votado todas las propuestas."
+      }
     }
   },
   "results": {

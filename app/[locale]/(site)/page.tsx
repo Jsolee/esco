@@ -1,12 +1,10 @@
 import { notFound } from "next/navigation";
-import { Hemicycle } from "@/components/Hemicycle";
-import { Start, type ElectionSummary } from "@/components/Start";
+import { Hero, Reveal, Ticker } from "@/components/Hero";
+import type { ElectionSummary } from "@/components/Start";
 import { DATA } from "@/lib/data";
-import { FILL, SEATS } from "@/lib/hemicycle";
 import { getMessages, isLocale } from "@/lib/i18n";
 import { pad2, tx } from "@/lib/text";
 
-const YOU = FILL.find((i) => SEATS[i].row === 6)!;
 
 export default async function Home({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
@@ -34,31 +32,23 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       statements: questions.length,
       circs: candidacies.map((c) => c.circumscriptions),
     }));
-  const [titleA, titleB] = m.landing.title.split(/(?<=\.)\s/);
 
   return (
     <>
-      <section className="mx-auto grid max-w-6xl items-end gap-12 px-5 pt-8 sm:px-8 sm:pt-14 lg:grid-cols-[1.05fr_1fr]">
-        <div>
-          <p className="kicker text-ink-2">{m.landing.kicker}</p>
-          <h1 className="display mt-5 text-[clamp(3.4rem,1.9rem+6.4vw,7.6rem)]">
-            {titleA} <em className="italic">{titleB}</em>
-          </h1>
-          <p className="mt-7 max-w-[36ch] text-xl leading-snug text-ink-2">{m.landing.lead}</p>
-          <Start provinces={provinces} communities={communities} elections={elections} />
-          <p className="mt-6 max-w-[48ch] text-sm text-ink-3">{m.landing.note}</p>
-        </div>
-        <figure className="relative mx-auto w-full max-w-xl text-ink lg:mb-24">
-          <Hemicycle
-            className="seats-in w-full"
-            seat={(i) => ({ fill: "var(--ink)", opacity: 0.1 + SEATS[i].row * 0.028 })}
-            you={YOU}
-          />
-          <figcaption className="kicker mt-3 text-center text-ink-2">{m.landing.yourSeat}</figcaption>
-        </figure>
-      </section>
+      <Hero
+        kicker={m.landing.kicker}
+        title={m.landing.title}
+        lead={m.landing.lead}
+        note={m.landing.note}
+        yourSeat={m.landing.yourSeat}
+        provinces={provinces}
+        communities={communities}
+        elections={elections}
+      />
+      <Ticker items={DATA.topics.map((t) => tx(t.name, locale))} />
 
-      <section className="mx-auto mt-28 max-w-6xl px-5 sm:px-8" aria-labelledby="steps">
+      <Reveal className="mx-auto mt-24 max-w-6xl px-5 sm:px-8">
+      <section aria-labelledby="steps">
         <h2 id="steps" className="kicker text-ink-2">
           {m.landing.stepsTitle}
         </h2>
@@ -72,8 +62,10 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
           ))}
         </ol>
       </section>
+      </Reveal>
 
-      <section className="mx-auto mt-20 max-w-6xl px-5 sm:px-8" aria-labelledby="rules">
+      <Reveal className="mx-auto mt-20 max-w-6xl px-5 sm:px-8">
+      <section aria-labelledby="rules">
         <h2 id="rules" className="kicker text-ink-2">
           {m.landing.principlesTitle}
         </h2>
@@ -86,6 +78,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
           ))}
         </div>
       </section>
+      </Reveal>
     </>
   );
 }

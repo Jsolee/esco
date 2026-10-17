@@ -146,8 +146,44 @@
       "none": "Sense cap marca, totes les propostes compten igual."
     },
     "counting": {
-      "title": "Fent el recompte",
-      "text": "Comptant {n} vots…"
+      "title": "Recompte",
+      "text": "vots comptats"
+    },
+    "sound": "So",
+    "round": "Ronda {n}",
+    "roundOf": "de {total}",
+    "roundDone": "Ronda {n} completada",
+    "streak": "Ratxa",
+    "gavelOpen": "Comença la sessió",
+    "gavelClose": "Es tanca la votació",
+    "achTitle": "Assoliment",
+    "achSoFar": "Assoliments",
+    "votesLabel": "vots",
+    "ach": {
+      "first": {
+        "t": "Primer vot",
+        "d": "Ja tens veu al ple."
+      },
+      "streak5": {
+        "t": "Ratxa de 5",
+        "d": "Cinc votacions seguides sense saltar."
+      },
+      "streak10": {
+        "t": "Ratxa de 10",
+        "d": "Deu votacions seguides sense saltar."
+      },
+      "curious": {
+        "t": "Curiositat",
+        "d": "Has llegit el context de 3 propostes."
+      },
+      "informed": {
+        "t": "Lectura atenta",
+        "d": "Has llegit el context de 8 propostes."
+      },
+      "full": {
+        "t": "Ple complet",
+        "d": "Has votat totes les propostes."
+      }
     }
   },
   "results": {

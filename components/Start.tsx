@@ -91,7 +91,7 @@ export function Start({
 
   if (!open)
     return (
-      <button type="button" onClick={begin} className="btn group mt-9 bg-ink px-8 text-lg text-paper">
+      <button type="button" onClick={begin} className="btn group mt-9 bg-chalk px-8 text-lg text-stage">
         {m.landing.start}
         <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">→</span>
       </button>
@@ -103,7 +103,7 @@ export function Start({
         <label htmlFor={`${uid}-q`} className="font-serif text-3xl">
           {m.start.where}
         </label>
-        <p id={`${uid}-hint`} className="text-sm text-ink-2">
+        <p id={`${uid}-hint`} className="text-sm text-chalk-2">
           {m.start.hint}
         </p>
         <input
@@ -124,14 +124,14 @@ export function Start({
           onChange={(e) => onChange(e.target.value)}
           onKeyDown={onKeyDown}
           onBlur={() => setListOpen(false)}
-          className="mt-1 min-h-14 w-full border-0 border-b-2 border-ink bg-transparent px-0 font-serif text-2xl placeholder:text-ink-3 focus:outline-none focus-visible:border-b-[3px]"
+          className="mt-1 min-h-14 w-full border-0 border-b-2 border-chalk bg-transparent px-0 font-serif text-2xl text-chalk placeholder:text-chalk-3 focus:outline-none focus-visible:border-b-[3px]"
         />
         <ul
           id={`${uid}-list`}
           role="listbox"
           aria-label={m.start.suggestions}
           hidden={!showList}
-          className="absolute inset-x-0 top-full z-20 mt-1 border border-ink bg-paper shadow-xl"
+          className="absolute inset-x-0 top-full z-20 mt-1 overflow-hidden rounded-2xl border border-chalk-3/60 bg-stage-2/95 text-chalk shadow-2xl backdrop-blur"
         >
           {hits.map((h, i) => (
             <li
@@ -143,10 +143,10 @@ export function Start({
                 e.preventDefault();
                 pick(h.province);
               }}
-              className="flex cursor-pointer items-baseline justify-between gap-4 px-4 py-3 aria-selected:bg-sunken"
+              className="flex cursor-pointer items-baseline justify-between gap-4 px-4 py-3 aria-selected:bg-stage-3"
             >
               <span className="font-medium">{h.label}</span>
-              <span className="text-sm text-ink-2">
+              <span className="text-sm text-chalk-2">
                 {h.label !== h.province.name ? `${h.province.name} · ` : ""}
                 {communities[h.province.community]}
               </span>
@@ -168,21 +168,21 @@ export function Start({
 
       {province && (
         <section className="rise grid gap-3" aria-labelledby={`${uid}-el`}>
-          <h2 id={`${uid}-el`} className="kicker text-ink-2">
+          <h2 id={`${uid}-el`} className="kicker text-chalk-2">
             {m.start.elections}
           </h2>
-          {available.length === 0 && <p className="text-ink-2">{m.start.noElections}</p>}
+          {available.length === 0 && <p className="text-chalk-2">{m.start.noElections}</p>}
           {available.map((e) => {
             const count = e.circs.filter((c) => c === "all" || c.includes(province.id)).length;
             if (e.status !== "open")
               return (
-                <div key={e.id} className="grid gap-3 border-2 border-dashed border-ink-3 p-5">
+                <div key={e.id} className="grid gap-3 rounded-2xl border border-dashed border-chalk-3/70 p-5">
                   <span className="flex flex-wrap items-center gap-2">
-                    <span className="kicker rounded-full border border-current px-2.5 py-1 text-ink-2">{m.start.status[e.status]}</span>
+                    <span className="kicker rounded-full border border-current px-2.5 py-1 text-chalk-2">{m.start.status[e.status]}</span>
                   </span>
                   <span className="font-serif text-3xl leading-tight">{e.name}</span>
-                  <span className="text-sm text-ink-2">{dateFmt.format(new Date(e.date))}</span>
-                  <span className="text-sm text-ink-2">{m.start.pending}</span>
+                  <span className="text-sm text-chalk-2">{dateFmt.format(new Date(e.date))}</span>
+                  <span className="text-sm text-chalk-2">{m.start.pending}</span>
                 </div>
               );
             return (
@@ -190,7 +190,7 @@ export function Start({
                 key={e.id}
                 href={`/${locale}/${e.id}`}
                 onClick={() => rememberProvince(province.id)}
-                className="group grid gap-3 border-2 border-ink bg-paper p-5 transition-colors hover:bg-ink hover:text-paper"
+                className="group grid gap-3 rounded-2xl border border-chalk/70 bg-stage-2/70 p-5 backdrop-blur transition-colors hover:bg-chalk hover:text-stage"
               >
                 <span className="flex flex-wrap items-center gap-2">
                   <span className="kicker rounded-full border border-current px-2.5 py-1">{m.start.status[e.status]}</span>
