@@ -27,5 +27,192 @@
       "ca": "Al Senat, cada província peninsular escull quatre senadors, i a la papereta pots marcar fins a tres caselles.",
       "es": "En el Senado, cada provincia peninsular elige cuatro senadores, y en la papeleta puedes marcar hasta tres casillas."
     }
+  ],
+  "funding": [
+    {
+      "id": "retall-defensa",
+      "kind": "cut",
+      "topic": "fiscalitat",
+      "capacity": 6,
+      "name": {
+        "ca": "Retallar la despesa en defensa",
+        "es": "Recortar el gasto en defensa"
+      },
+      "detail": {
+        "ca": "Menys pressupost militar i menys compres d'armament.",
+        "es": "Menos presupuesto militar y menos compras de armamento."
+      },
+      "axes": {
+        "economic": -0.3,
+        "social": -0.4
+      }
+    },
+    {
+      "id": "retall-infraestructures",
+      "kind": "cut",
+      "topic": "fiscalitat",
+      "capacity": 6,
+      "name": {
+        "ca": "Retallar inversió en infraestructures",
+        "es": "Recortar inversión en infraestructuras"
+      },
+      "detail": {
+        "ca": "Menys obra pública: carreteres, trens i ports.",
+        "es": "Menos obra pública: carreteras, trenes y puertos."
+      },
+      "axes": {}
+    },
+    {
+      "id": "retall-administracio",
+      "kind": "cut",
+      "topic": "fiscalitat",
+      "capacity": 5,
+      "name": {
+        "ca": "Reduir la despesa de l'Administració",
+        "es": "Reducir el gasto de la Administración"
+      },
+      "detail": {
+        "ca": "Menys personal i menys despesa corrent als ministeris.",
+        "es": "Menos personal y menos gasto corriente en los ministerios."
+      },
+      "axes": {
+        "economic": 0.6
+      }
+    },
+    {
+      "id": "retall-subvencions",
+      "kind": "cut",
+      "topic": "fiscalitat",
+      "capacity": 5,
+      "name": {
+        "ca": "Retallar subvencions a empreses",
+        "es": "Recortar subvenciones a empresas"
+      },
+      "detail": {
+        "ca": "Menys ajudes públiques a sectors i empreses.",
+        "es": "Menos ayudas públicas a sectores y empresas."
+      },
+      "axes": {
+        "economic": -0.4
+      }
+    },
+    {
+      "id": "retall-pensions",
+      "kind": "cut",
+      "topic": "fiscalitat",
+      "capacity": 8,
+      "name": {
+        "ca": "Congelar les pensions",
+        "es": "Congelar las pensiones"
+      },
+      "detail": {
+        "ca": "Que les pensions no pugin amb la inflació durant uns anys.",
+        "es": "Que las pensiones no suban con la inflación durante unos años."
+      },
+      "axes": {
+        "economic": 0.8
+      }
+    },
+    {
+      "id": "retall-comunitats",
+      "kind": "cut",
+      "topic": "fiscalitat",
+      "capacity": 6,
+      "name": {
+        "ca": "Reduir les transferències a les comunitats",
+        "es": "Reducir las transferencias a las comunidades"
+      },
+      "detail": {
+        "ca": "Menys diners de l'Estat per als governs autonòmics.",
+        "es": "Menos dinero del Estado para los gobiernos autonómicos."
+      },
+      "axes": {
+        "territorial": -0.8
+      }
+    },
+    {
+      "id": "imp-irpf",
+      "kind": "tax",
+      "topic": "fiscalitat",
+      "capacity": 6,
+      "name": {
+        "ca": "Pujar l'IRPF a les rendes altes",
+        "es": "Subir el IRPF a las rentas altas"
+      },
+      "detail": {
+        "ca": "Més impost sobre la renda per a qui més guanya.",
+        "es": "Más impuesto sobre la renta para quien más gana."
+      },
+      "axes": {
+        "economic": -0.8
+      }
+    },
+    {
+      "id": "imp-societats",
+      "kind": "tax",
+      "topic": "fiscalitat",
+      "capacity": 6,
+      "name": {
+        "ca": "Pujar l'impost de societats",
+        "es": "Subir el impuesto de sociedades"
+      },
+      "detail": {
+        "ca": "Que les empreses paguin més pels seus beneficis.",
+        "es": "Que las empresas paguen más por sus beneficios."
+      },
+      "axes": {
+        "economic": -0.7
+      }
+    },
+    {
+      "id": "imp-iva",
+      "kind": "tax",
+      "topic": "fiscalitat",
+      "capacity": 8,
+      "name": {
+        "ca": "Pujar l'IVA",
+        "es": "Subir el IVA"
+      },
+      "detail": {
+        "ca": "Un impost que paga tothom en comprar, sigui quina sigui la renda.",
+        "es": "Un impuesto que paga todo el mundo al comprar, sea cual sea su renta."
+      },
+      "axes": {}
+    },
+    {
+      "id": "imp-verds",
+      "kind": "tax",
+      "topic": "fiscalitat",
+      "capacity": 5,
+      "name": {
+        "ca": "Crear impostos ambientals",
+        "es": "Crear impuestos ambientales"
+      },
+      "detail": {
+        "ca": "Gravar els carburants, els vols i les emissions.",
+        "es": "Gravar los carburantes, los vuelos y las emisiones."
+      },
+      "axes": {
+        "economic": -0.3,
+        "social": -0.3
+      }
+    },
+    {
+      "id": "deute",
+      "kind": "debt",
+      "topic": "fiscalitat",
+      "capacity": 10,
+      "name": {
+        "ca": "Endeutar-se",
+        "es": "Endeudarse"
+      },
+      "detail": {
+        "ca": "Pagar-ho amb més dèficit: ho pagarà el pròxim govern, amb interessos.",
+        "es": "Pagarlo con más déficit: lo pagará el próximo gobierno, con intereses."
+      },
+      "axes": {
+        "economic": -0.4
+      }
+    }
   ]
 }

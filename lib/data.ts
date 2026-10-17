@@ -33,7 +33,14 @@ export function loadData(raw: unknown = RAW) {
     );
 
     const qIds = new Set<string>();
+    for (const f of election.funding) {
+      if (qIds.has(f.id)) errors.push(`${base}: font de finançament repetida «${f.id}»`);
+      qIds.add(f.id);
+      if (!topicIds.has(f.topic)) errors.push(`${base}: la font «${f.id}» té un tema inexistent «${f.topic}»`);
+    }
     for (const q of questions) {
+      if (q.budget !== undefined && election.status === "open" && !election.fictional && !q.budgetSource)
+        errors.push(`${base}: «${q.id}» té cost però no diu d'on surt l'estimació (budgetSource)`);
       if (qIds.has(q.id)) errors.push(`${base}: afirmació repetida «${q.id}»`);
       qIds.add(q.id);
       if (!topicIds.has(q.topic)) errors.push(`${base}: «${q.id}» té un tema inexistent «${q.topic}»`);
@@ -49,7 +56,9 @@ export function loadData(raw: unknown = RAW) {
       const sourceIds = new Set(c.sources.map((s) => s.id));
       if (open && c.provisional) errors.push(`${where}: una elecció oberta no pot tenir candidatures provisionals`);
       if (open && c.sources.length === 0) errors.push(`${where}: una elecció oberta necessita almenys una font`);
-      if (open) for (const q of questions) if (!(q.id in c.positions)) errors.push(`${where}: falta la posició sobre «${q.id}» (escriu null si no s'hi pronuncia)`);
+      if (open)
+        for (const id of [...questions.map((q) => q.id), ...election.funding.map((f) => f.id)])
+          if (!(id in c.positions)) errors.push(`${where}: falta la posició sobre «${id}» (escriu null si no s'hi pronuncia)`);
       for (const [qid, p] of Object.entries(c.positions)) {
         if (!qIds.has(qid)) errors.push(`${where}: posició sobre una afirmació inexistent «${qid}»`);
         if (!sourceIds.has(p.source)) errors.push(`${where}: «${qid}» cita una font inexistent «${p.source}»`);

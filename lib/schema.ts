@@ -20,6 +20,18 @@ export const Territory = z.object({
 
 export const Topic = z.object({ id: Id, name: Text });
 
+// D'on es poden treure diners per pagar les propostes: retallar un àmbit, pujar un impost o endeutar-se.
+// Fer-la servir equival a estar-hi d'acord, i cada candidatura hi té posició com en una afirmació.
+export const FundingSource = z.object({
+  id: Id,
+  kind: z.enum(["cut", "tax", "debt"]),
+  topic: Id,
+  name: Text,
+  detail: Text,
+  capacity: z.int().positive(), // punts màxims que se'n poden treure
+  axes: z.partialRecord(Axis, z.number().min(-1).max(1)),
+});
+
 export const Election = z.object({
   id: Id,
   type: z.enum(["general", "autonomica", "europea", "municipal"]),
@@ -30,6 +42,7 @@ export const Election = z.object({
   fictional: z.boolean(),
   axes: z.array(Axis).min(2),
   facts: z.array(Text).default([]), // dades curioses per a les pauses del joc
+  funding: z.array(FundingSource).default([]), // sense fonts, el joc no demana finançament
 });
 
 export const Question = z.object({
@@ -39,7 +52,12 @@ export const Question = z.object({
   context: Text,
   // +1: estar-hi d'acord empeny cap al pol positiu de l'eix
   axes: z.partialRecord(Axis, z.number().min(-1).max(1)),
+  // Efecte sobre el pressupost si hi estàs d'acord, en punts: negatiu = costa diners, positiu = n'aporta.
+  budget: z.int().optional(),
+  budgetSource: z.url().optional(), // d'on surt l'estimació del cost (obligatori en eleccions reals obertes)
 });
+
+
 
 export const Source = z.object({
   id: Id,
@@ -77,6 +95,7 @@ export type Territory = z.infer<typeof Territory>;
 export type Topic = z.infer<typeof Topic>;
 export type Election = z.infer<typeof Election>;
 export type Question = z.infer<typeof Question>;
+export type FundingSource = z.infer<typeof FundingSource>;
 export type Position = z.infer<typeof Position>;
 export type Candidacy = z.infer<typeof Candidacy>;
 export type Answer = -2 | -1 | 0 | 1 | 2;

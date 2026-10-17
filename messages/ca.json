@@ -18,7 +18,7 @@
   "landing": {
     "kicker": "Orientador de vot",
     "title": "Tens un escó. Fes-lo servir.",
-    "lead": "Vota 24 propostes com si fossis al Congrés. Al final veuràs quines candidatures han votat com tu, amb la font de cada posició.",
+    "lead": "Vota 24 propostes com si fossis al Congrés, amb un pressupost limitat. Al final veuràs quines candidatures han votat com tu, amb la font de cada posició.",
     "start": "Comença",
     "note": "Escó no recomana cap partit. Tot es calcula al teu dispositiu i no guardem cap resposta.",
     "yourSeat": "Aquest escó és teu",
@@ -29,12 +29,12 @@
         "text": "Llisca cada proposta: a la dreta si hi estàs d'acord, a l'esquerra si no."
       },
       {
-        "title": "Prioritza",
-        "text": "Marca els temes que més t'importen. Compten el doble."
+        "title": "Paga-ho",
+        "text": "Els diners són limitats. Cada sí que costa diners l'has de finançar: retallant, pujant impostos o endeutant-te."
       },
       {
         "title": "Descobreix",
-        "text": "Mira a qui aniria el teu escó i compara proposta per proposta."
+        "text": "Reparteix la teva influència, fes el recompte i mira a qui aniria el teu escó."
       }
     ],
     "principlesTitle": "Les regles del joc",
@@ -82,7 +82,7 @@
     "intro": {
       "kicker": "Sessió plenària",
       "title": "Et donem la benvinguda al ple.",
-      "text": "Tens un escó i {n} propostes per votar. No hi ha respostes bones ni dolentes.",
+      "text": "Tens un escó i {n} propostes per votar. Els diners són limitats: el que aprovis, ho hauràs de pagar.",
       "gestures": [
         {
           "dir": "right",
@@ -184,6 +184,36 @@
         "t": "Ple complet",
         "d": "Has votat totes les propostes."
       }
+    },
+    "budget": "Pressupost",
+    "points": "punts",
+    "costs": "Costa {n}",
+    "yields": "Aporta {n}",
+    "fund": {
+      "kicker": "Simulador de mandat",
+      "title": "D'on surten els diners?",
+      "cost": "Aquesta proposta costa {n} punts.",
+      "need": "Te'n falten {n}.",
+      "covered": "Finançada",
+      "cut": "Retallar",
+      "tax": "Pujar impostos",
+      "debt": "Endeutar-se",
+      "left": "queden {n}",
+      "empty": "Ja no queda marge enlloc. Sense d'on treure-ho, la proposta no tira endavant.",
+      "no": "Llavors no hi voto a favor",
+      "cancel": "Torna a la carta",
+      "reset": "Torna a triar",
+      "take": "Treu {n} punts de: {name}"
+    },
+    "tokens": {
+      "kicker": "Últim pas",
+      "title": "Reparteix la teva influència",
+      "text": "Tens {n} fitxes. Posa-les als temes que més t'importen: cada fitxa hi suma pes.",
+      "left": "Et queden {n} fitxes",
+      "add": "Afegeix una fitxa a {t}",
+      "remove": "Treu una fitxa de {t}",
+      "none": "Sense fitxes, totes les propostes pesen igual.",
+      "weight": "pes ×{w}"
     }
   },
   "results": {
@@ -239,7 +269,19 @@
     "shareText": "El meu escó a Escó és per a {top}. I el teu?",
     "again": "Torna a jugar",
     "how": "Com s'ha calculat?",
-    "disclaimer": "Escó és una eina orientativa. No és una recomanació de vot ni té cap caràcter oficial."
+    "disclaimer": "Escó és una eina orientativa. No és una recomanació de vot ni té cap caràcter oficial.",
+    "mandate": {
+      "title": "El teu mandat",
+      "text": "Amb el pressupost limitat, cada sí que costa diners ha tingut un preu.",
+      "approved": "Has aprovat",
+      "funded": "Ho has pagat amb",
+      "balance": "Saldo final",
+      "debt": "Deute nou",
+      "none": "No has aprovat cap proposta amb cost.",
+      "of": "{n} de {cap}"
+    },
+    "fundingRows": "Com ho finançaries",
+    "usedYes": "Hi has recorregut"
   },
   "shared": {
     "title": "Un resultat d'Escó",

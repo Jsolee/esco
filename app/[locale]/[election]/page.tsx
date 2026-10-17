@@ -36,6 +36,16 @@ export default async function ElectionPage({ params }: PageProps<"/[locale]/[ele
       text: tx(q.text, locale),
       context: tx(q.context, locale),
       axes: q.axes,
+      budget: q.budget,
+    })),
+    funding: e.election.funding.map((f) => ({
+      id: f.id,
+      kind: f.kind,
+      topic: f.topic,
+      name: tx(f.name, locale),
+      detail: tx(f.detail, locale),
+      capacity: f.capacity,
+      axes: f.axes,
     })),
     topics: DATA.topics.filter((t) => usedTopics.has(t.id)).map((t) => ({ id: t.id, name: tx(t.name, locale) })),
     candidacies: e.candidacies.map((c) => ({
@@ -47,7 +57,7 @@ export default async function ElectionPage({ params }: PageProps<"/[locale]/[ele
       circumscriptions: c.circumscriptions,
       positions: c.positions as GameData["candidacies"][number]["positions"],
       sources: Object.fromEntries(c.sources.map((s) => [s.id, { title: s.title, url: s.url, lang: s.lang }])),
-      axes: axesOf(e.questions, positionsOf(c), 0.5),
+      axes: axesOf([...e.questions, ...e.election.funding], positionsOf(c), 0.5),
     })),
     provinces: DATA.territory.provinces
       .map((p) => ({ id: p.id, name: tx(p.name, locale) }))

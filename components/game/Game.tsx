@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { achievementsOf, progressOf, type Achievement } from "@/lib/achievements";
+import { balanceOf, needFor, remainingOf, TOKENS, type Alloc } from "@/lib/budget";
 import type { GameData, GQuestion } from "@/lib/game";
 import { FILL, RANK, SEATS } from "@/lib/hemicycle";
 import { inCircumscription, seededShuffle, type Answers } from "@/lib/match";
@@ -14,20 +15,22 @@ import type { ChamberHandle, ChamberMode } from "../three/Chamber";
 import { Stage3D } from "../three/Stage3D";
 import { Wordmark } from "../Wordmark";
 import { Deck } from "./Deck";
+import { BudgetChip } from "./Funding";
 import { Gavel, RoundSplash, Toasts } from "./Overlays";
 import { Results } from "./Results";
-import { Counting, Intro, Priorities, SoundToggle } from "./Stages";
+import { Counting, Intro, SoundToggle, Tokens } from "./Stages";
 
 export type Item = { kind: "q"; q: GQuestion; n: number } | { kind: "pause"; fact: string; n: number };
 type Phase = "intro" | "play" | "priorities" | "counting" | "results";
 type State = {
-  v: 2;
+  v: 3;
   seed: number;
   province: string | null;
   phase: Phase;
   index: number; // posició dins de la baralla (afirmacions + finals de ronda)
   answers: Answers;
-  priorities: string[];
+  tokens: Record<string, number>; // fitxes d'influència per tema
+  alloc: Alloc; // d'on ha sortit el finançament de cada proposta aprovada
   read: string[]; // afirmacions de les quals s'ha llegit el context
   ach: Achievement[];
   back: boolean; // l'últim moviment ha estat enrere
@@ -35,24 +38,25 @@ type State = {
 type Action =
   | { type: "province"; id: string }
   | { type: "start" }
-  | { type: "vote"; id: string; value: Answer | null; total: number }
+  | { type: "vote"; id: string; value: Answer | null; total: number; from?: Record<string, number> }
   | { type: "next"; total: number }
   | { type: "goto"; index: number }
   | { type: "phase"; phase: Phase }
-  | { type: "priority"; topic: string }
+  | { type: "token"; topic: string; delta: 1 | -1 }
   | { type: "read"; id: string }
   | { type: "unlock"; ids: Achievement[] }
   | { type: "restart"; seed: number };
 
 const newSeed = () => Math.floor(Math.random() * 2 ** 31);
 const fresh = (province: string | null): State => ({
-  v: 2,
+  v: 3,
   seed: newSeed(),
   province,
   phase: "intro",
   index: 0,
   answers: {},
-  priorities: [],
+  tokens: {},
+  alloc: {},
   read: [],
   ach: [],
   back: false,
@@ -66,19 +70,24 @@ function reducer(s: State, a: Action): State {
       return { ...s, province: a.id };
     case "start":
       return { ...s, phase: "play", index: 0, back: false };
-    case "vote":
-      return advance({ ...s, answers: { ...s.answers, [a.id]: a.value } }, a.total);
+    case "vote": {
+      const alloc = { ...s.alloc };
+      if (a.from) alloc[a.id] = a.from;
+      else delete alloc[a.id];
+      return advance({ ...s, answers: { ...s.answers, [a.id]: a.value }, alloc }, a.total);
+    }
     case "next":
       return advance(s, a.total);
     case "goto":
       return { ...s, phase: "play", index: a.index, back: a.index < s.index || s.phase !== "play" };
     case "phase":
       return { ...s, phase: a.phase, back: false };
-    case "priority":
-      return {
-        ...s,
-        priorities: s.priorities.includes(a.topic) ? s.priorities.filter((t) => t !== a.topic) : [...s.priorities, a.topic],
-      };
+    case "token": {
+      const used = Object.values(s.tokens).reduce((x, y) => x + y, 0);
+      const cur = s.tokens[a.topic] ?? 0;
+      if ((a.delta > 0 && used >= TOKENS) || (a.delta < 0 && cur === 0)) return s;
+      return { ...s, tokens: { ...s.tokens, [a.topic]: cur + a.delta } };
+    }
     case "read":
       return s.read.includes(a.id) ? s : { ...s, read: [...s.read, a.id] };
     case "unlock":
@@ -107,9 +116,15 @@ export function Game({ data }: { data: GameData }) {
   const { m, locale } = useI18n();
   const key = `esco:${data.electionId}`;
   const [s, dispatch] = useReducer(reducer, null, (): State => {
-    const saved = readJSON<State | (Omit<State, "v" | "read" | "ach"> & { v: 1 })>(key);
-    if (saved?.v === 1 || saved?.v === 2) {
-      const st: State = { read: [], ach: [], ...saved, v: 2 };
+    type Old = Omit<State, "v" | "tokens" | "alloc" | "read" | "ach"> & { v: 1 | 2; priorities?: string[]; read?: string[]; ach?: Achievement[] };
+    const saved = readJSON<State | Old>(key);
+    if (saved && (saved.v === 1 || saved.v === 2 || saved.v === 3)) {
+      // Les partides antigues passen els temes ×2 a dues fitxes cadascun.
+      const old = saved as Old;
+      const st: State =
+        saved.v === 3
+          ? (saved as State)
+          : { read: [], ach: [], ...old, v: 3, alloc: {}, tokens: Object.fromEntries((old.priorities ?? []).map((t) => [t, 2])) };
       return st.phase === "counting" ? { ...st, phase: "results" } : st;
     }
     const p = readProvince();
@@ -183,11 +198,19 @@ export function Game({ data }: { data: GameData }) {
     setToasts((t) => [...t, ...ids.filter((x) => !t.includes(x))]);
   }
 
-  function vote(value: Answer | null) {
+  const balance = balanceOf(data.questions, s.answers, s.alloc);
+  const sources = useMemo(() => {
+    const rem = remainingOf(data.funding, s.alloc, item?.kind === "q" ? item.q.id : undefined);
+    return data.funding.map((f) => ({ ...f, remaining: rem[f.id] }));
+  }, [data.funding, s.alloc, item]);
+  const need = (v: Answer) =>
+    item?.kind === "q" && data.funding.length ? needFor(item.q, v, data.questions, s.answers, s.alloc) : 0;
+
+  function vote(value: Answer | null, from?: Record<string, number>) {
     if (item?.kind !== "q") return;
     setLive(value === null ? m.game.live.skipped : format(m.game.live.voted, { v: m.game.votes[String(value) as "0"] }));
     const answers = { ...s.answers, [item.q.id]: value };
-    dispatch({ type: "vote", id: item.q.id, value, total });
+    dispatch({ type: "vote", id: item.q.id, value, total, from });
     if (value !== null) chamber.current?.pulse(batches[item.n - 1]);
     unlock(answers, s.read.length, s.index + 1 >= total);
   }
@@ -210,7 +233,8 @@ export function Game({ data }: { data: GameData }) {
         data={data}
         order={order}
         answers={s.answers}
-        priorities={s.priorities}
+        tokens={s.tokens}
+        alloc={s.alloc}
         candidacies={candidacies}
         onRestart={() => dispatch({ type: "restart", seed: newSeed() })}
         onFirst={() => dispatch({ type: "goto", index: 0 })}
@@ -253,6 +277,9 @@ export function Game({ data }: { data: GameData }) {
             </p>
           )}
           <div className="flex items-center gap-2">
+            {data.funding.length > 0 && (s.phase === "play" || s.phase === "priorities") && (
+              <BudgetChip value={balance} label={m.game.budget} />
+            )}
             {s.phase === "play" && streak >= 2 && (
               <span key={streak} className="streak-pop kicker inline-flex items-center gap-1 rounded-full bg-chalk px-2.5 py-1 text-stage" title={m.game.streak}>
                 <svg viewBox="0 0 16 16" className="size-3" aria-hidden>
@@ -319,17 +346,19 @@ export function Game({ data }: { data: GameData }) {
             canUndo={s.index > 0}
             onImpact={(v) => chamber.current?.shake(v === null ? 0.3 : Math.abs(v) === 2 ? 1.7 : 1)}
             onRead={read}
+            needFor={need}
+            sources={sources}
           />
         </main>
       )}
 
       {s.phase === "priorities" && (
         <div className="relative z-10 flex flex-1 flex-col">
-          <Priorities
+          <Tokens
             topics={data.topics}
             questions={data.questions}
-            selected={s.priorities}
-            onToggle={(topic) => dispatch({ type: "priority", topic })}
+            tokens={s.tokens}
+            onChange={(topic, delta) => dispatch({ type: "token", topic, delta })}
             onUndo={undo}
             onGo={() => setGavel("close")}
           />

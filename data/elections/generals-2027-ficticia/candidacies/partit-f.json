@@ -115,6 +115,53 @@
     "dre-monarquia": {
       "value": null,
       "source": "programa"
+    },
+    "retall-defensa": {
+      "value": 0,
+      "source": "programa",
+      "page": 69
+    },
+    "retall-infraestructures": {
+      "value": null,
+      "source": "programa"
+    },
+    "retall-administracio": {
+      "value": null,
+      "source": "programa"
+    },
+    "retall-subvencions": {
+      "value": null,
+      "source": "programa"
+    },
+    "retall-pensions": {
+      "value": 1,
+      "source": "programa",
+      "page": 70
+    },
+    "retall-comunitats": {
+      "value": null,
+      "source": "programa"
+    },
+    "imp-irpf": {
+      "value": null,
+      "source": "programa"
+    },
+    "imp-societats": {
+      "value": null,
+      "source": "programa"
+    },
+    "imp-iva": {
+      "value": 0,
+      "source": "programa",
+      "page": 13
+    },
+    "imp-verds": {
+      "value": null,
+      "source": "programa"
+    },
+    "deute": {
+      "value": null,
+      "source": "programa"
     }
   }
 }

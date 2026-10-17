@@ -22,8 +22,8 @@ const party = (id: string, values: Record<string, Answer | null>): Candidacy => 
 });
 
 const Q = [q("a"), q("b"), q("c"), q("d", "t2")];
-const run = (answers: Record<string, Answer | null>, candidacies: Candidacy[], priorities: string[] = [], order?: string[]) =>
-  match({ questions: Q, answers, priorities, candidacies, order: order ?? candidacies.map((c) => c.id) });
+const run = (answers: Record<string, Answer | null>, candidacies: Candidacy[], weights: Record<string, number> = {}, order?: string[]) =>
+  match({ questions: Q, answers, weights, candidacies, order: order ?? candidacies.map((c) => c.id) });
 
 describe("match", () => {
   it("coincidència total dona 100 i oposició total dona 0", () => {
@@ -45,13 +45,13 @@ describe("match", () => {
     expect(ranked[0]).toMatchObject({ affinity: 100, coverage: 1 });
   });
 
-  it("el pes ×2 canvia l'ordre quan ha de canviar-lo", () => {
+  it("el pes d'un tema canvia l'ordre quan ha de canviar-lo", () => {
     // x encerta tot el tema t1 i falla del tot la d (t2); y s'equivoca per poc a t1 i encerta t2
     const x = party("x", { a: 2, b: 2, c: 2, d: -2 });
     const y = party("y", { a: 1, b: 1, c: 1, d: 2 });
     const answers = { a: 2, b: 2, c: 2, d: 2 } as const;
     expect(run(answers, [x, y]).ranked.map((r) => r.id)).toEqual(["y", "x"]);
-    expect(run(answers, [x, y], ["t1"]).ranked.map((r) => r.id)).toEqual(["x", "y"]);
+    expect(run(answers, [x, y], { t1: 2 }).ranked.map((r) => r.id)).toEqual(["x", "y"]);
   });
 
   it("tot saltat: rànquing buit i eixos sense valor", () => {
@@ -81,9 +81,9 @@ describe("match", () => {
     const p2 = party("p2", { a: 1, b: 1, c: 1, d: 1 });
     const p3 = party("p3", { a: -2, b: -2, c: -2, d: -2 });
     const answers = { a: 1, b: 1, c: 1, d: 1 } as const;
-    const r1 = run(answers, [p1, p2, p3], [], ["p2", "p3", "p1"]);
+    const r1 = run(answers, [p1, p2, p3], {}, ["p2", "p3", "p1"]);
     expect(r1.ranked.map((r) => [r.id, r.rank])).toEqual([["p2", 1], ["p1", 1], ["p3", 3]]);
-    const r2 = run(answers, [p1, p2, p3], [], ["p1", "p2", "p3"]);
+    const r2 = run(answers, [p1, p2, p3], {}, ["p1", "p2", "p3"]);
     expect(r2.ranked.map((r) => r.id)).toEqual(["p1", "p2", "p3"]);
   });
 
@@ -93,7 +93,7 @@ describe("match", () => {
     // 1 punt de distància sobre 28 → 96,4 → 96 ; 1 punt sobre 24 (6 respostes) → 95,8 → 96
     const a = party("a", { ...Object.fromEntries(questions.map((x) => [x.id, 2])), q0: 1 } as Record<string, Answer>);
     const b = party("b", { ...Object.fromEntries(questions.map((x) => [x.id, 2])), q0: 1, q6: null } as Record<string, Answer | null>);
-    const r = match({ questions, answers, priorities: [], candidacies: [a, b], order: ["b", "a"] });
+    const r = match({ questions, answers, candidacies: [a, b], order: ["b", "a"] });
     expect(r.ranked.map((x) => [x.id, x.affinity, x.rank])).toEqual([["b", 96, 1], ["a", 96, 1]]);
   });
 });

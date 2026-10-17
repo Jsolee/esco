@@ -43,6 +43,10 @@ Altres formacions anunciades sense representació al Congrés (Se Acabó La Fies
 
 `questions.json` és una còpia de les 24 afirmacions d'exemple. Cal revisar-les per a aquesta campanya (per exemple, els decrets d'habitatge que van provocar l'avançament electoral) i fer-les validar per persones de sensibilitats diferents.
 
+## Pressupost
+
+El simulador de mandat necessita, per a aquesta elecció, el cost de cada afirmació (`budget`, amb `budgetSource` d'una font neutral com l'AIReF) i la llista de fonts de finançament (`funding` a `election.json`), amb la posició de cada candidatura sobre cada font. Encara no hi són: sense fonts, el joc no demana finançament.
+
 ## Per poder obrir l'elecció
 
 1. Substituir l'esquelet per les candidatures proclamades (BOE del 3 de novembre) i posar `"provisional": false`.

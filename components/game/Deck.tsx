@@ -8,6 +8,7 @@ import type { Answer } from "@/lib/schema";
 import { format, pad2 } from "@/lib/text";
 import { useI18n } from "../I18n";
 import type { Item } from "./Game";
+import { CostTag, FundingSheet, type FundResult, type FundSource } from "./Funding";
 import { RoundComplete } from "./Overlays";
 
 const THRESH = 90; // px per comptar com a vot
@@ -45,6 +46,8 @@ export function Deck({
   canUndo,
   onImpact,
   onRead,
+  needFor,
+  sources,
 }: {
   item: Item;
   upcoming: Item[];
@@ -56,15 +59,19 @@ export function Deck({
   stats: (Answer | null | undefined)[];
   ach: Achievement[];
   topics: { id: string; name: string }[];
-  onVote: (v: Answer | null) => void;
+  onVote: (v: Answer | null, from?: Record<string, number>) => void;
   onContinue: () => void;
   onUndo: () => void;
   canUndo: boolean;
   onImpact: (v: Answer | null) => void;
   onRead: (qid: string) => void;
+  needFor: (v: Answer) => number; // punts que cal finançar si votes `v`
+  sources: FundSource[];
 }) {
   const { m: t } = useI18n();
   const card = useRef<CardHandle>(null);
+  const [fund, setFund] = useState<{ need: number; resolve: (r: FundResult) => void } | null>(null);
+  const onFund = (need: number) => new Promise<FundResult>((resolve) => setFund({ need, resolve }));
   const pad = useRef<HTMLDivElement>(null);
   const [hint, setHint] = useState<Answer | undefined>();
   const keyOf = (it: Item) => (it.kind === "q" ? it.q.id : `pause-${it.n}`);
@@ -72,10 +79,10 @@ export function Deck({
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
-      const target = e.target as HTMLElement;
-      if (target.closest("input, textarea, select, [contenteditable]")) return;
-      if ((e.key === "Enter" || e.key === " ") && target.closest("button, a, summary")) return;
+      if (fund || e.metaKey || e.ctrlKey || e.altKey) return;
+      const target = e.target instanceof Element ? e.target : null;
+      if (target?.closest("input, textarea, select, [contenteditable]")) return;
+      if ((e.key === "Enter" || e.key === " ") && target?.closest("button, a, summary")) return;
       const c = card.current;
       if (!c) return;
       const k = e.key.toLowerCase();
@@ -94,7 +101,7 @@ export function Deck({
     }
     addEventListener("keydown", onKey);
     return () => removeEventListener("keydown", onKey);
-  }, [item, canUndo, onUndo]);
+  }, [item, canUndo, onUndo, fund]);
 
   useGSAP(
     () => {
@@ -103,10 +110,10 @@ export function Deck({
     { scope: pad },
   );
 
-  function done(o: Outcome) {
+  function done(o: Outcome, from?: Record<string, number>) {
     setHint(undefined);
     if (o === "go") onContinue();
-    else onVote(o);
+    else onVote(o, from);
   }
 
   return (
@@ -149,9 +156,21 @@ export function Deck({
             onPreview={setHint}
             onImpact={onImpact}
             onRead={() => onRead(item.q.id)}
+            needFor={needFor}
+            onFund={onFund}
           />
         )}
       </div>
+      {fund && (
+        <FundingSheet
+          need={fund.need}
+          sources={sources}
+          onResolve={(r) => {
+            fund.resolve(r);
+            setFund(null);
+          }}
+        />
+      )}
 
       <div ref={pad} className="w-full">
         {item.kind === "q" ? (
@@ -228,6 +247,8 @@ function SwipeCard({
   onPreview,
   onImpact,
   onRead,
+  needFor,
+  onFund,
 }: {
   ref: React.Ref<CardHandle>;
   item: Extract<Item, { kind: "q" }>;
@@ -236,10 +257,12 @@ function SwipeCard({
   delay: number;
   prev: Answer | null | undefined;
   topic: string;
-  onDone: (o: Outcome) => void;
+  onDone: (o: Outcome, from?: Record<string, number>) => void;
   onPreview: (a: Answer | undefined) => void;
   onImpact: (v: Answer | null) => void;
   onRead: () => void;
+  needFor: (v: Answer) => number;
+  onFund: (need: number) => Promise<FundResult>;
 }) {
   const { m: t } = useI18n();
   const reduced = useReducedMotion();
@@ -252,6 +275,7 @@ function SwipeCard({
   const busy = useRef(false);
   const preview = useRef<Answer | undefined>(undefined);
   const vel = useRef({ x: 0, y: 0, lx: 0, ly: 0, t: 0 });
+  const from = useRef<Record<string, number> | undefined>(undefined);
   const [label, setLabel] = useState<Answer | undefined>();
   const [flipped, setFlipped] = useState(false);
 
@@ -349,9 +373,21 @@ function SwipeCard({
     onImpact(v);
   }
 
+  // Torna la carta al centre, sense vot (si cancel·les el finançament).
+  function reset() {
+    busy.current = false;
+    preview.current = undefined;
+    setLabel(undefined);
+    onPreview(undefined);
+    gsap.to([q(".stamp-yes"), q(".stamp-no"), q(".stamp-meh")], { opacity: 0, duration: 0.2 });
+    gsap.to(drag.current, { x: 0, y: 0, rotation: 0, duration: 0.7, ease: "elastic.out(1, 0.55)" });
+    draggable.current?.enable();
+  }
+
   function fling(o: Outcome) {
     if (busy.current) return;
     busy.current = true;
+    const need = typeof o === "number" && o > 0 ? needFor(o) : 0;
     draggable.current?.disable();
     gsap.to(inner.current, { rotationY: 0, duration: 0.25 });
     setFlipped(false);
@@ -361,12 +397,19 @@ function SwipeCard({
       onPreview(o ?? undefined);
     }
     if (reduced) {
+      if (need > 0)
+        return void onFund(need).then((r) => {
+          if (r === "cancel") return reset();
+          if (r === "no") return (busy.current = false), fling(0);
+          onImpact(o as Answer);
+          onDone(o, r);
+        });
       onImpact(o === "go" ? null : o);
       return onDone(o);
     }
     const el = drag.current!;
     const x0 = Number(gsap.getProperty(el, "x"));
-    const tl = gsap.timeline({ onComplete: () => onDone(o) });
+    const tl = gsap.timeline({ onComplete: () => onDone(o, from.current) });
 
     if (o === null) {
       sfx.flip();
@@ -390,6 +433,22 @@ function SwipeCard({
         )
         .to(q(".card-face"), { scale: 0.96, duration: 0.07, yoyo: true, repeat: 1 }, ">-0.02");
     }
+    // Simulador de mandat: abans de llançar la carta cal dir d'on surten els diners.
+    if (need > 0)
+      tl.add(() => {
+        tl.pause();
+        void onFund(need).then((r) => {
+          if (r === "cancel") return tl.kill(), reset();
+          if (r === "no") {
+            tl.kill();
+            gsap.to(q(".stamp-yes"), { opacity: 0, duration: 0.15 });
+            busy.current = false;
+            return fling(0);
+          }
+          from.current = r;
+          tl.resume();
+        });
+      });
     tl.to(el, { x: d * (innerWidth + 320), y: "+=90", rotation: d * 40, duration: 0.5, ease: "power2.in", onStart: sfx.whoosh }, "+=0.12");
   }
 
@@ -453,9 +512,12 @@ function SwipeCard({
               >
                 {pad2(item.n)}
               </span>
-              <p className="kicker relative text-card-ink-2">
-                {format(t.game.card, { n: pad2(item.n) })} <span className="opacity-50">/ {pad2(total)}</span> · {topic}
-              </p>
+              <div className="relative flex items-start justify-between gap-3">
+                <p className="kicker text-card-ink-2">
+                  {format(t.game.card, { n: pad2(item.n) })} <span className="opacity-50">/ {pad2(total)}</span> · {topic}
+                </p>
+                {item.q.budget ? <CostTag budget={item.q.budget} /> : null}
+              </div>
               <div className="relative flex flex-1 items-center">
                 <h2
                   ref={heading}

@@ -132,6 +132,60 @@
       "value": -2,
       "source": "programa",
       "page": 63
+    },
+    "retall-defensa": {
+      "value": -2,
+      "source": "programa",
+      "page": 23
+    },
+    "retall-infraestructures": {
+      "value": 0,
+      "source": "programa",
+      "page": 40
+    },
+    "retall-administracio": {
+      "value": 2,
+      "source": "programa",
+      "page": 82
+    },
+    "retall-subvencions": {
+      "value": -2,
+      "source": "programa",
+      "page": 76
+    },
+    "retall-pensions": {
+      "value": 2,
+      "source": "programa",
+      "page": 24
+    },
+    "retall-comunitats": {
+      "value": 2,
+      "source": "programa",
+      "page": 80
+    },
+    "imp-irpf": {
+      "value": null,
+      "source": "programa"
+    },
+    "imp-societats": {
+      "value": -2,
+      "source": "programa",
+      "page": 50
+    },
+    "imp-iva": {
+      "value": 0,
+      "source": "programa",
+      "page": 55
+    },
+    "imp-verds": {
+      "value": -2,
+      "source": "programa",
+      "page": 25
+    },
+    "deute": {
+      "value": -2,
+      "source": "programa",
+      "page": 75
     }
   }
 }

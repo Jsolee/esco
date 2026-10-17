@@ -15,12 +15,12 @@ export type Insufficient = { id: string; coverage: number };
 export function match(input: {
   questions: MQuestion[];
   answers: Answers;
-  priorities: string[]; // temes amb pes ×2
+  weights?: Record<string, number>; // multiplicador per tema (fitxes d'influència); per defecte 1
   candidacies: MCandidacy[]; // ja filtrades per circumscripció
   order: string[]; // ordre aleatori de la sessió: desfà empats sense afavorir ningú
 }): { ranked: Ranked[]; insufficient: Insufficient[]; user: Point } {
   const { questions, answers, candidacies, order } = input;
-  const prio = new Set(input.priorities);
+  const weights = input.weights ?? {};
   const answered = questions.filter((q) => typeof answers[q.id] === "number");
   const pos = (id: string) => (order.indexOf(id) + 1 || Infinity);
 
@@ -33,7 +33,7 @@ export function match(input: {
     for (const q of answered) {
       const v = c.positions[q.id]?.value;
       if (v === null || v === undefined) continue;
-      const w = prio.has(q.topic) ? 2 : 1;
+      const w = weights[q.topic] ?? 1;
       distance += w * Math.abs((answers[q.id] as number) - v);
       max += w * 4;
       n++;

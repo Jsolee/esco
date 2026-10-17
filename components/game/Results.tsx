@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
 import { gsap, reducedMotion, sfx, SplitText, useGSAP } from "@/lib/fx";
-import type { GameData, GCandidacy, GQuestion } from "@/lib/game";
+import { balanceOf, fundingAnswers, usedOf, weightOf, type Alloc } from "@/lib/budget";
+import type { GameData, GCandidacy, GFunding, GQuestion } from "@/lib/game";
 import { dhondt, match, type Answers } from "@/lib/match";
 import type { Answer } from "@/lib/schema";
 import { encodeShare } from "@/lib/share";
@@ -13,6 +14,7 @@ import { LocaleSwitch } from "../LocaleSwitch";
 import type { ChamberHandle } from "../three/Chamber";
 import { Stage3D } from "../three/Stage3D";
 import { ThemeToggle } from "../ThemeToggle";
+import { Coin } from "./Funding";
 import { Wordmark } from "../Wordmark";
 import { PoliticalMap } from "./PoliticalMap";
 import { ScaleGlyph } from "./ScaleGlyph";
@@ -21,7 +23,8 @@ export function Results({
   data,
   order,
   answers,
-  priorities,
+  tokens,
+  alloc,
   candidacies,
   onRestart,
   onFirst,
@@ -29,7 +32,8 @@ export function Results({
   data: GameData;
   order: GQuestion[];
   answers: Answers;
-  priorities: string[];
+  tokens: Record<string, number>;
+  alloc: Alloc;
   candidacies: GCandidacy[];
   onRestart: () => void;
   onFirst: () => void;
@@ -42,9 +46,18 @@ export function Results({
   const chamberApi = useRef<ChamberHandle>(null);
   const [copied, setCopied] = useState(false);
   const byId = useMemo(() => Object.fromEntries(candidacies.map((c) => [c.id, c])), [candidacies]);
+  // Com finançaries les decisions també compta: cada font que has fet servir és una resposta més.
+  const fundAnswers = useMemo(() => fundingAnswers(data.funding, alloc), [data.funding, alloc]);
   const result = useMemo(
-    () => match({ questions: order, answers, priorities, candidacies, order: candidacies.map((c) => c.id) }),
-    [order, answers, priorities, candidacies],
+    () =>
+      match({
+        questions: [...order, ...data.funding],
+        answers: { ...answers, ...fundAnswers },
+        weights: Object.fromEntries(Object.entries(tokens).map(([t, n]) => [t, weightOf(n)])),
+        candidacies,
+        order: candidacies.map((c) => c.id),
+      }),
+    [order, data.funding, answers, fundAnswers, tokens, candidacies],
   );
   const voted = order.filter((q) => typeof answers[q.id] === "number").length;
   const top = result.ranked.filter((x) => x.rank === 1);
@@ -193,6 +206,7 @@ export function Results({
       </section>
 
       <main id="main" className="mx-auto max-w-6xl px-5 pb-16 sm:px-8">
+        {data.funding.length > 0 && voted > 0 && <Mandate order={order} answers={answers} alloc={alloc} funding={data.funding} />}
         {result.ranked.length > 0 && (
           <section className="mt-16" aria-labelledby="res-rk">
             <h2 id="res-rk" className="reveal kicker text-ink-2">
@@ -222,7 +236,7 @@ export function Results({
                         <div className="rank-bar h-full origin-left rounded-full" style={{ width: `${x.affinity}%`, background: c.color }} />
                       </div>
                       {x.coverage < 1 && <p className="text-sm text-ink-3">{format(r.coverage, { n: Math.round(x.coverage * 100) })}</p>}
-                      <Comparison c={c} order={order} answers={answers} />
+                      <Comparison c={c} order={order} answers={answers} funding={data.funding} fundAnswers={fundAnswers} />
                     </div>
                   </li>
                 );
@@ -244,7 +258,7 @@ export function Results({
                     <span className="font-semibold">{byId[x.id].name}</span>
                     <span className="num text-sm text-ink-3">{Math.round(x.coverage * 100)} %</span>
                   </p>
-                  <Comparison c={byId[x.id]} order={order} answers={answers} />
+                  <Comparison c={byId[x.id]} order={order} answers={answers} funding={data.funding} fundAnswers={fundAnswers} />
                 </li>
               ))}
             </ul>
@@ -298,7 +312,87 @@ export function Results({
   );
 }
 
-function Comparison({ c, order, answers }: { c: GCandidacy; order: GQuestion[]; answers: Answers }) {
+function Mandate({ order, answers, alloc, funding }: { order: GQuestion[]; answers: Answers; alloc: Alloc; funding: GFunding[] }) {
+  const { m } = useI18n();
+  const r = m.results.mandate;
+  const approved = order.filter((q) => q.budget && typeof answers[q.id] === "number" && (answers[q.id] as number) > 0);
+  const used = usedOf(alloc);
+  const sources = funding.filter((f) => used[f.id]);
+  const balance = balanceOf(order, answers, alloc);
+  const debt = funding.filter((f) => f.kind === "debt").reduce((a, f) => a + (used[f.id] ?? 0), 0);
+  const signed = (n: number) => (n > 0 ? `+${n}` : n < 0 ? `−${-n}` : "0");
+  return (
+    <section className="reveal mt-16 grid gap-8 lg:grid-cols-[1fr_1.4fr]" aria-labelledby="res-md">
+      <div className="grid content-start gap-3">
+        <h2 id="res-md" className="font-serif text-3xl">
+          {r.title}
+        </h2>
+        <p className="max-w-[46ch] text-ink-2">{r.text}</p>
+        <dl className="mt-2 grid grid-cols-2 gap-3">
+          <div className="rounded-2xl bg-sunken p-4">
+            <dt className="kicker text-ink-2">{r.balance}</dt>
+            <dd className="num mt-1 font-serif text-4xl">{signed(balance)}</dd>
+          </div>
+          <div className="rounded-2xl bg-sunken p-4">
+            <dt className="kicker text-ink-2">{r.debt}</dt>
+            <dd className="num mt-1 font-serif text-4xl">{debt}</dd>
+          </div>
+        </dl>
+      </div>
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div>
+          <h3 className="kicker text-ink-2">{r.approved}</h3>
+          {approved.length === 0 ? (
+            <p className="mt-2 text-sm text-ink-2">{r.none}</p>
+          ) : (
+            <ul className="mt-2 grid gap-2 border-t border-rule pt-2 text-sm">
+              {approved.map((q) => (
+                <li key={q.id} className="flex items-start justify-between gap-3">
+                  <span>{q.text}</span>
+                  <span className="num inline-flex shrink-0 items-center gap-1 font-semibold">
+                    <Coin className="size-3 text-ink" /> {signed(q.budget!)}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        {sources.length > 0 && (
+          <div>
+            <h3 className="kicker text-ink-2">{r.funded}</h3>
+            <ul className="mt-2 grid gap-3 border-t border-rule pt-2 text-sm">
+              {sources.map((f) => (
+                <li key={f.id} className="grid gap-1">
+                  <span className="flex justify-between gap-3">
+                    <span>{f.name}</span>
+                    <span className="num text-ink-2">{format(r.of, { n: used[f.id], cap: f.capacity })}</span>
+                  </span>
+                  <span className="h-1.5 overflow-hidden rounded-full bg-sunken">
+                    <span className="rank-bar block h-full origin-left rounded-full bg-ink" style={{ width: `${(used[f.id] / f.capacity) * 100}%` }} />
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function Comparison({
+  c,
+  order,
+  answers,
+  funding,
+  fundAnswers,
+}: {
+  c: GCandidacy;
+  order: GQuestion[];
+  answers: Answers;
+  funding: GFunding[];
+  fundAnswers: Answers;
+}) {
   const { m } = useI18n();
   const r = m.results;
   const label = (v: Answer) => m.game.votes[String(v) as "0"];
@@ -346,6 +440,38 @@ function Comparison({ c, order, answers }: { c: GCandidacy; order: GQuestion[]; 
                         {p.quote}
                       </q>
                     )}
+                  </td>
+                </tr>
+              );
+            })}
+            {funding.length > 0 && (
+              <tr>
+                <th colSpan={4} scope="colgroup" className="kicker pb-2 pt-6 text-left text-ink-2">
+                  {r.fundingRows}
+                </th>
+              </tr>
+            )}
+            {funding.map((f) => {
+              const a = fundAnswers[f.id];
+              const p = c.positions[f.id];
+              const src = p && c.sources[p.source];
+              return (
+                <tr key={f.id} className="border-b border-rule align-top">
+                  <td className="max-w-[24rem] py-3 pr-4">{f.name}</td>
+                  <td className="py-3 pr-4">{typeof a === "number" ? <ScaleGlyph value={a} label={r.usedYes} /> : <span className="text-ink-3">—</span>}</td>
+                  <td className="py-3 pr-4">
+                    {p && p.value !== null ? <ScaleGlyph value={p.value} label={label(p.value)} /> : <span className="text-ink-3">{r.noPosition}</span>}
+                  </td>
+                  <td className="py-3">
+                    {src &&
+                      (p.value !== null ? (
+                        <a href={p.url ?? src.url} target="_blank" rel="noopener noreferrer" className="underline decoration-ink-3 underline-offset-4 hover:decoration-ink">
+                          {src.title}
+                          {p.page ? `, ${format(r.page, { n: p.page })}` : ""}
+                        </a>
+                      ) : (
+                        <span className="text-ink-3">{src.title}</span>
+                      ))}
                   </td>
                 </tr>
               );

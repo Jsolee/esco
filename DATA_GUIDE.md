@@ -44,6 +44,32 @@ Tots els identificadors (`id`) són en minúscules, sense accents ni espais: `[a
 | `fictional` | `true` mostra l'avís «Dades fictícies» a totes les pantalles |
 | `axes` | eixos del mapa; mínim dos |
 | `facts` | dades curioses i verificables per a les pauses del joc (es fan servir les tres primeres) |
+| `funding` | fonts de finançament del simulador de mandat (vegeu més avall). Sense fonts, el joc no demana d'on surten els diners |
+
+### Fonts de finançament (`funding`)
+
+Quan algú vota a favor d'una proposta que costa diners i no té marge, ha de triar d'on els treu. Cada font és com una afirmació oculta: fer-la servir equival a estar-hi d'acord, i les candidatures hi tenen posició (amb font, igual que a les afirmacions).
+
+```json
+{
+  "id": "imp-irpf",
+  "kind": "tax",
+  "topic": "fiscalitat",
+  "capacity": 6,
+  "name": { "ca": "Pujar l'IRPF a les rendes altes", "es": "Subir el IRPF a las rentas altas" },
+  "detail": { "ca": "Més impost sobre la renda per a qui més guanya.", "es": "Más impuesto sobre la renta para quien más gana." },
+  "axes": { "economic": -0.8 }
+}
+```
+
+| Camp | Valors |
+|---|---|
+| `kind` | `cut` (retallar un àmbit), `tax` (pujar un impost) o `debt` (endeutar-se) |
+| `capacity` | punts màxims que se'n poden treure en tot el mandat |
+| `topic` | tema al qual sumen les fitxes d'influència |
+| `axes` | com en les afirmacions: cap a on empeny fer-la servir |
+
+Ofereix sempre opcions de tots els tipus i de sensibilitats diferents (retallades de despesa social i no social, impostos progressius i indirectes, deute), perquè el finançament no empenyi cap a una resposta.
 
 3. Registra-la a `data/index.ts`: importa `election.json`, `questions.json` i cada candidatura, i afegeix l'objecte a la llista `elections` de `RAW`.
 
@@ -58,10 +84,14 @@ Tots els identificadors (`id`) són en minúscules, sense accents ni espais: `[a
     "es": "Los alquileres en las zonas tensionadas deberían tener un precio máximo fijado por ley."
   },
   "context": { "ca": "…", "es": "…" },
-  "axes": { "economic": -1 }
+  "axes": { "economic": -1 },
+  "budget": -12,
+  "budgetSource": "https://www.airef.es/…"
 }
 ```
 
+- **`budget`** (opcional): efecte sobre el pressupost si s'hi està d'acord, en punts. Negatiu si costa diners (més despesa o menys impostos), positiu si n'aporta. Les propostes que no tenen cost públic (una regulació, un referèndum) no en porten.
+- **`budgetSource`**: d'on surt l'estimació del cost. És obligatori en eleccions reals obertes; fes servir fonts neutrals (AIReF, pressupostos, memòries econòmiques dels programes). Recorda que baixar impostos també té cost.
 - **`text`**: una afirmació clara, en positiu, que es pugui respondre d'acord o en desacord. Màxim 120 caràcters per idioma, perquè hi càpiga a la carta del mòbil.
 - **`context`**: 2 o 3 frases neutres amb la situació actual i els arguments principals de cada banda. Res que no es pugui verificar.
 - **`topic`**: un `id` de `data/topics.json`. Els usuaris poden marcar temes com a prioritaris (pes ×2).
@@ -112,7 +142,7 @@ Bones pràctiques per a la neutralitat:
 
 ### Posicions
 
-Cada candidatura ha de tenir **una entrada per a cada afirmació** de l'elecció. Si en falta alguna, el build falla: així queda clar que s'ha revisat tot.
+Cada candidatura ha de tenir **una entrada per a cada afirmació i per a cada font de finançament** de l'elecció. Si en falta alguna, el build falla: així queda clar que s'ha revisat tot.
 
 | `value` | Significat |
 |---|---|

@@ -2,7 +2,8 @@ import type { Point } from "./match";
 import type { Answer, Axis } from "./schema";
 
 // Dades d'una elecció ja localitzades, tal com arriben al client.
-export type GQuestion = { id: string; topic: string; text: string; context: string; axes: Partial<Record<Axis, number>> };
+export type GQuestion = { id: string; topic: string; text: string; context: string; axes: Partial<Record<Axis, number>>; budget?: number };
+export type GFunding = { id: string; kind: "cut" | "tax" | "debt"; topic: string; name: string; detail: string; capacity: number; axes: Partial<Record<Axis, number>> };
 export type GCandidacy = {
   id: string;
   name: string;
@@ -21,6 +22,7 @@ export type GameData = {
   axes: Axis[];
   facts: string[];
   questions: GQuestion[];
+  funding: GFunding[];
   topics: { id: string; name: string }[];
   candidacies: GCandidacy[];
   provinces: { id: string; name: string }[];

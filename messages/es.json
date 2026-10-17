@@ -18,7 +18,7 @@
   "landing": {
     "kicker": "Orientador de voto",
     "title": "Tienes un escaño. Úsalo.",
-    "lead": "Vota 24 propuestas como si estuvieras en el Congreso. Al final verás qué candidaturas han votado como tú, con la fuente de cada posición.",
+    "lead": "Vota 24 propuestas como si estuvieras en el Congreso, con un presupuesto limitado. Al final verás qué candidaturas han votado como tú, con la fuente de cada posición.",
     "start": "Empieza",
     "note": "Escó no recomienda ningún partido. Todo se calcula en tu dispositivo y no guardamos ninguna respuesta.",
     "yourSeat": "Este escaño es tuyo",
@@ -29,12 +29,12 @@
         "text": "Desliza cada propuesta: a la derecha si estás de acuerdo, a la izquierda si no."
       },
       {
-        "title": "Prioriza",
-        "text": "Marca los temas que más te importan. Cuentan el doble."
+        "title": "Págalo",
+        "text": "El dinero es limitado. Cada sí que cuesta dinero tienes que financiarlo: recortando, subiendo impuestos o endeudándote."
       },
       {
         "title": "Descubre",
-        "text": "Mira a quién iría tu escaño y compara propuesta por propuesta."
+        "text": "Reparte tu influencia, haz el recuento y mira a quién iría tu escaño."
       }
     ],
     "principlesTitle": "Las reglas del juego",
@@ -82,7 +82,7 @@
     "intro": {
       "kicker": "Sesión plenaria",
       "title": "Te damos la bienvenida al pleno.",
-      "text": "Tienes un escaño y {n} propuestas para votar. No hay respuestas buenas ni malas.",
+      "text": "Tienes un escaño y {n} propuestas para votar. El dinero es limitado: lo que apruebes, tendrás que pagarlo.",
       "gestures": [
         {
           "dir": "right",
@@ -184,6 +184,36 @@
         "t": "Pleno completo",
         "d": "Has votado todas las propuestas."
       }
+    },
+    "budget": "Presupuesto",
+    "points": "puntos",
+    "costs": "Cuesta {n}",
+    "yields": "Aporta {n}",
+    "fund": {
+      "kicker": "Simulador de mandato",
+      "title": "¿De dónde sale el dinero?",
+      "cost": "Esta propuesta cuesta {n} puntos.",
+      "need": "Te faltan {n}.",
+      "covered": "Financiada",
+      "cut": "Recortar",
+      "tax": "Subir impuestos",
+      "debt": "Endeudarse",
+      "left": "quedan {n}",
+      "empty": "Ya no queda margen en ninguna partida. Sin de dónde sacarlo, la propuesta no sale adelante.",
+      "no": "Entonces no la voto a favor",
+      "cancel": "Vuelve a la carta",
+      "reset": "Vuelve a elegir",
+      "take": "Saca {n} puntos de: {name}"
+    },
+    "tokens": {
+      "kicker": "Último paso",
+      "title": "Reparte tu influencia",
+      "text": "Tienes {n} fichas. Ponlas en los temas que más te importan: cada ficha les suma peso.",
+      "left": "Te quedan {n} fichas",
+      "add": "Añade una ficha a {t}",
+      "remove": "Quita una ficha de {t}",
+      "none": "Sin fichas, todas las propuestas pesan igual.",
+      "weight": "peso ×{w}"
     }
   },
   "results": {
@@ -239,7 +269,19 @@
     "shareText": "Mi escaño en Escó es para {top}. ¿Y el tuyo?",
     "again": "Vuelve a jugar",
     "how": "¿Cómo se ha calculado?",
-    "disclaimer": "Escó es una herramienta orientativa. No es una recomendación de voto ni tiene carácter oficial."
+    "disclaimer": "Escó es una herramienta orientativa. No es una recomendación de voto ni tiene carácter oficial.",
+    "mandate": {
+      "title": "Tu mandato",
+      "text": "Con el presupuesto limitado, cada sí que cuesta dinero ha tenido un precio.",
+      "approved": "Has aprobado",
+      "funded": "Lo has pagado con",
+      "balance": "Saldo final",
+      "debt": "Deuda nueva",
+      "none": "No has aprobado ninguna propuesta con coste.",
+      "of": "{n} de {cap}"
+    },
+    "fundingRows": "Cómo lo financiarías",
+    "usedYes": "Has recurrido a ello"
   },
   "shared": {
     "title": "Un resultado de Escó",

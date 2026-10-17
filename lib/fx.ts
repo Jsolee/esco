@@ -106,3 +106,4 @@ export const sfx = {
   tick: () => tone(1500, 0.04, "square", 0.04),
   reveal: () => [523, 659, 784, 1047].forEach((f, i) => tone(f, 0.6, "triangle", 0.12, i * 0.09)),
 };
+

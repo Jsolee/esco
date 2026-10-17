@@ -40,7 +40,7 @@ const CONTENT = {
       {
         h: "El càlcul de l'afinitat",
         body: [
-          "Per a cada candidatura es mesura la distància entre la teva resposta i la seva, proposta per proposta, i es converteix en un percentatge de 0 a 100. Les propostes dels temes que marques com a prioritaris compten el doble.",
+          "Per a cada candidatura es mesura la distància entre la teva resposta i la seva, proposta per proposta, i es converteix en un percentatge de 0 a 100. Les propostes dels temes on poses fitxes d'influència pesen més.",
           "«Neutral» és una resposta i compta. «Salta» no compta. Si una candidatura no es pronuncia sobre una proposta, aquella proposta no entra al seu càlcul.",
           `Perquè una candidatura amb molt poques posicions no surti amunt per casualitat, cal que es pronunciï com a mínim sobre el ${pct} de les propostes que has votat per entrar al rànquing. La resta es mostra a part.`,
           "Els empats es decideixen sobre la xifra arrodonida, la que veus. Les candidatures empatades comparteixen posició i s'ordenen amb l'ordre aleatori de la sessió.",
@@ -48,9 +48,23 @@ const CONTENT = {
         formula: true,
       },
       {
+        h: "El pressupost",
+        body: [
+          "Escó és un simulador de mandat: els diners són limitats. Algunes propostes tenen cost (gastar més o cobrar menys impostos) i altres n'aporten (ingressos nous). Si votes a favor d'una proposta amb cost i no tens marge, has de dir d'on surten els diners: retallar un altre àmbit, pujar un impost o endeutar-te. Si no, la proposta no tira endavant.",
+          "Cada font de finançament compta com una resposta: fer-la servir equival a estar-hi d'acord, i fer-la servir a fons, a estar-hi molt d'acord. Les candidatures també hi tenen posició, i el càlcul de l'afinitat les compara igual que les afirmacions.",
+          "En aquesta versió els costos són punts orientatius i fictics. En una elecció real, cada cost ha de sortir d'una font neutral, com l'AIReF o la memòria econòmica dels programes.",
+        ],
+      },
+      {
+        h: "La teva influència",
+        body: [
+          "Al final reparteixes 10 fitxes entre els temes. Cada fitxa fa que les propostes d'aquell tema pesin mig punt més al càlcul (sense fitxes, pes 1; amb 2 fitxes, pes 2). Com que les fitxes són limitades, posar-ne moltes en un tema vol dir no posar-ne en un altre.",
+        ],
+      },
+      {
         h: "El mapa i l'hemicicle",
         body: [
-          "Cada proposta pot contribuir a un o més eixos: econòmic (esquerra–dreta), social (liberal–conservador) i territorial. La posició de cada punt és la mitjana de les respostes ponderada per aquesta contribució. Els temes prioritaris no et mouen al mapa.",
+          "Cada proposta pot contribuir a un o més eixos: econòmic (esquerra–dreta), social (liberal–conservador) i territorial. La posició de cada punt és la mitjana de les respostes ponderada per aquesta contribució. Les fitxes no et mouen al mapa.",
           "L'hemicicle reparteix 350 escons amb el sistema D'Hondt fent servir la teva afinitat com si fossin vots. És una manera visual de llegir el mateix rànquing, no una predicció electoral.",
         ],
       },
@@ -91,7 +105,7 @@ const CONTENT = {
       {
         h: "El cálculo de la afinidad",
         body: [
-          "Para cada candidatura se mide la distancia entre tu respuesta y la suya, propuesta por propuesta, y se convierte en un porcentaje de 0 a 100. Las propuestas de los temas que marcas como prioritarios cuentan el doble.",
+          "Para cada candidatura se mide la distancia entre tu respuesta y la suya, propuesta por propuesta, y se convierte en un porcentaje de 0 a 100. Las propuestas de los temas donde pones fichas de influencia pesan más.",
           "«Neutral» es una respuesta y cuenta. «Salta» no cuenta. Si una candidatura no se pronuncia sobre una propuesta, esa propuesta no entra en su cálculo.",
           `Para que una candidatura con muy pocas posiciones no suba por casualidad, tiene que pronunciarse como mínimo sobre el ${pct} de las propuestas que has votado para entrar en el ranking. El resto se muestra aparte.`,
           "Los empates se deciden sobre la cifra redondeada, la que ves. Las candidaturas empatadas comparten posición y se ordenan con el orden aleatorio de la sesión.",
@@ -99,9 +113,23 @@ const CONTENT = {
         formula: true,
       },
       {
+        h: "El presupuesto",
+        body: [
+          "Escó es un simulador de mandato: el dinero es limitado. Algunas propuestas tienen coste (gastar más o cobrar menos impuestos) y otras aportan (ingresos nuevos). Si votas a favor de una propuesta con coste y no tienes margen, tienes que decir de dónde sale el dinero: recortar otro ámbito, subir un impuesto o endeudarte. Si no, la propuesta no sale adelante.",
+          "Cada fuente de financiación cuenta como una respuesta: usarla equivale a estar de acuerdo, y usarla a fondo, a estar muy de acuerdo. Las candidaturas también tienen posición, y el cálculo de la afinidad las compara igual que las afirmaciones.",
+          "En esta versión los costes son puntos orientativos y ficticios. En una elección real, cada coste debe salir de una fuente neutral, como la AIReF o la memoria económica de los programas.",
+        ],
+      },
+      {
+        h: "Tu influencia",
+        body: [
+          "Al final repartes 10 fichas entre los temas. Cada ficha hace que las propuestas de ese tema pesen medio punto más en el cálculo (sin fichas, peso 1; con 2 fichas, peso 2). Como las fichas son limitadas, poner muchas en un tema significa no ponerlas en otro.",
+        ],
+      },
+      {
         h: "El mapa y el hemiciclo",
         body: [
-          "Cada propuesta puede contribuir a uno o más ejes: económico (izquierda–derecha), social (liberal–conservador) y territorial. La posición de cada punto es la media de las respuestas ponderada por esa contribución. Los temas prioritarios no te mueven en el mapa.",
+          "Cada propuesta puede contribuir a uno o más ejes: económico (izquierda–derecha), social (liberal–conservador) y territorial. La posición de cada punto es la media de las respuestas ponderada por esa contribución. Las fichas no te mueven en el mapa.",
           "El hemiciclo reparte 350 escaños con el sistema D'Hondt usando tu afinidad como si fueran votos. Es una forma visual de leer el mismo ranking, no una predicción electoral.",
         ],
       },

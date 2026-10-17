@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useRef } from "react";
+import { TOKENS, weightOf } from "@/lib/budget";
 import { gsap, reducedMotion, sfx, SplitText, useGSAP, useSound } from "@/lib/fx";
 import type { GameData, GQuestion } from "@/lib/game";
 import { format } from "@/lib/text";
@@ -144,27 +145,30 @@ export function Intro({
   );
 }
 
-export function Priorities({
+export function Tokens({
   topics,
   questions,
-  selected,
-  onToggle,
+  tokens,
+  onChange,
   onUndo,
   onGo,
 }: {
   topics: GameData["topics"];
   questions: GQuestion[];
-  selected: string[];
-  onToggle: (topic: string) => void;
+  tokens: Record<string, number>;
+  onChange: (topic: string, delta: 1 | -1) => void;
   onUndo: () => void;
   onGo: () => void;
 }) {
-  const { m } = useI18n();
-  const p = m.game.priorities;
+  const { m, locale } = useI18n();
+  const p = m.game.tokens;
   const root = useRef<HTMLElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
+  const pool = useRef<HTMLDivElement>(null);
+  const used = Object.values(tokens).reduce((a, b) => a + b, 0);
+  const left = TOKENS - used;
 
-  const { contextSafe } = useGSAP(
+  useGSAP(
     () => {
       heading.current?.focus({ preventScroll: true });
       if (reducedMotion()) return;
@@ -172,63 +176,115 @@ export function Priorities({
       gsap
         .timeline()
         .from(split.chars, { yPercent: 115, stagger: 0.02, duration: 0.8, ease: "expo.out" })
-        .from(".prio-tile", { y: 50, rotationX: -50, opacity: 0, stagger: { each: 0.06, from: "random" }, duration: 0.7, ease: "back.out(1.6)" }, "-=0.5")
-        .from(".prio-go", { y: 20, opacity: 0, duration: 0.5 }, "-=0.3");
+        .from(".tok-pool > *", { scale: 0, stagger: 0.04, duration: 0.4, ease: "back.out(3)" }, "-=0.5")
+        .from(".tok-tile", { y: 50, rotationX: -50, opacity: 0, stagger: { each: 0.06, from: "random" }, duration: 0.7, ease: "back.out(1.6)" }, "-=0.5")
+        .from(".tok-go", { y: 20, opacity: 0, duration: 0.5 }, "-=0.3");
     },
     { scope: root },
   );
 
-  const toggle = contextSafe((e: React.MouseEvent<HTMLButtonElement>, topic: string) => {
-    const on = !selected.includes(topic);
-    onToggle(topic);
-    if (on) sfx.chime();
-    else sfx.tick();
-    if (reducedMotion()) return;
-    gsap.fromTo(e.currentTarget, { scale: on ? 0.9 : 1.04 }, { scale: 1, duration: 0.6, ease: "elastic.out(1.2, 0.4)" });
-    if (on) gsap.fromTo(e.currentTarget.querySelector(".prio-x2"), { scale: 0, rotation: -120 }, { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(3)" });
-  });
+  // Una fitxa vola de la reserva al tema (o hi torna).
+  function fly(tile: HTMLElement, add: boolean) {
+    if (reducedMotion() || !pool.current) return;
+    const host = root.current!.getBoundingClientRect();
+    const a = pool.current.getBoundingClientRect();
+    const b = tile.getBoundingClientRect();
+    const coin = document.createElement("span");
+    coin.className = "pointer-events-none absolute z-50 size-5 rounded-full bg-chalk shadow-[0_0_18px_rgba(242,241,236,0.7)]";
+    const [from, to] = add ? [a, b] : [b, a];
+    coin.style.left = `${from.left - host.left + from.width / 2 - 10}px`;
+    coin.style.top = `${from.top - host.top + from.height / 2 - 10}px`;
+    root.current!.appendChild(coin);
+    gsap
+      .timeline({ onComplete: () => coin.remove() })
+      .to(coin, { x: to.left + to.width / 2 - (from.left + from.width / 2), duration: 0.5, ease: "power1.inOut" }, 0)
+      .to(coin, { y: to.top + to.height / 2 - (from.top + from.height / 2) - 50, duration: 0.25, ease: "power2.out" }, 0)
+      .to(coin, { y: to.top + to.height / 2 - (from.top + from.height / 2), duration: 0.25, ease: "power2.in" }, 0.25)
+      .to(coin, { scale: 0.4, opacity: 0, duration: 0.12 }, 0.45);
+  }
+
+  function change(e: React.MouseEvent, topic: string, delta: 1 | -1) {
+    e.stopPropagation();
+    if ((delta > 0 && left <= 0) || (delta < 0 && !(tokens[topic] ?? 0))) return;
+    const tile = (e.currentTarget as HTMLElement).closest<HTMLElement>(".tok-tile")!;
+    onChange(topic, delta);
+    if (delta > 0) sfx.tick();
+    else sfx.flip();
+    fly(tile, delta > 0);
+    if (!reducedMotion()) gsap.fromTo(tile, { scale: delta > 0 ? 0.95 : 1.03 }, { scale: 1, duration: 0.6, ease: "elastic.out(1.2, 0.4)", delay: 0.35 });
+  }
 
   return (
     <main ref={root} className="relative mx-auto w-full max-w-5xl flex-1 px-5 py-8 sm:px-8 sm:py-12">
       <p className="kicker text-chalk-2">{p.kicker}</p>
-      <h1 ref={heading} tabIndex={-1} className="display mt-3 text-[clamp(2.7rem,1.6rem+4.4vw,5rem)] outline-none">
+      <h1 ref={heading} tabIndex={-1} className="display mt-3 text-[clamp(2.6rem,1.6rem+4.2vw,4.8rem)] outline-none">
         {p.title}
       </h1>
-      <p className="mt-4 max-w-[46ch] text-lg text-chalk-2">{p.text}</p>
-      <div role="group" aria-label={p.title} className="mt-8 grid grid-cols-2 gap-3 [perspective:900px] md:grid-cols-4">
+      <p className="mt-4 max-w-[50ch] text-lg text-chalk-2">{format(p.text, { n: TOKENS })}</p>
+
+      <div className="mt-6 flex flex-wrap items-center gap-4">
+        <div ref={pool} aria-hidden className="tok-pool flex flex-wrap gap-1.5">
+          {Array.from({ length: TOKENS }, (_, i) => (
+            <span key={i} className={`size-5 rounded-full transition-colors duration-300 ${i < left ? "bg-chalk shadow-[0_0_12px_rgba(242,241,236,0.5)]" : "border border-chalk-3/50"}`} />
+          ))}
+        </div>
+        <p aria-live="polite" className="num kicker text-chalk-2">
+          {format(p.left, { n: left })}
+        </p>
+      </div>
+
+      <div className="mt-6 grid grid-cols-2 gap-3 [perspective:900px] md:grid-cols-4">
         {topics.map((t) => {
-          const on = selected.includes(t.id);
+          const n = tokens[t.id] ?? 0;
           return (
-            <button
+            <div
               key={t.id}
-              type="button"
-              aria-pressed={on}
-              onClick={(e) => toggle(e, t.id)}
-              className={`prio-tile group relative flex min-h-36 flex-col justify-between overflow-hidden rounded-2xl border p-4 text-left backdrop-blur transition-colors duration-200 ${
-                on
-                  ? "border-chalk bg-chalk text-stage shadow-[0_0_60px_rgba(242,241,236,0.35)]"
-                  : "border-chalk-3/50 bg-stage-2/80 text-chalk hover:border-chalk-2"
+              className={`tok-tile relative flex min-h-40 flex-col justify-between overflow-hidden rounded-2xl border p-4 backdrop-blur transition-colors duration-200 ${
+                n ? "border-chalk bg-chalk text-stage shadow-[0_0_60px_rgba(242,241,236,0.3)]" : "border-chalk-3/50 bg-stage-2/80 text-chalk"
               }`}
             >
-              <span className="font-serif text-[1.45rem] leading-tight">{t.name}</span>
-              <span className="flex items-end justify-between gap-2">
-                <span className={`text-xs ${on ? "text-stage/70" : "text-chalk-2"}`}>
-                  {format(p.count, { n: questions.filter((q) => q.topic === t.id).length })}
+              <div className="flex items-start justify-between gap-2">
+                <span className="font-serif text-[1.35rem] leading-tight">{t.name}</span>
+                {n > 0 && <span className="num font-serif text-2xl italic leading-none">{format(p.weight, { w: weightOf(n).toLocaleString(locale) })}</span>}
+              </div>
+              <div aria-hidden className="mt-3 flex flex-wrap gap-1">
+                {Array.from({ length: n }, (_, i) => (
+                  <span key={i} className="size-3 rounded-full bg-stage" />
+                ))}
+              </div>
+              <div className="mt-3 flex items-end justify-between gap-2">
+                <span className={`text-xs ${n ? "text-stage/70" : "text-chalk-2"}`}>
+                  {format(m.game.priorities.count, { n: questions.filter((q) => q.topic === t.id).length })}
                 </span>
-                <span aria-hidden className={`prio-x2 num font-serif text-4xl italic leading-none ${on ? "" : "opacity-0"}`}>
-                  ×2
+                <span className="flex gap-1.5">
+                  <button
+                    type="button"
+                    aria-label={format(p.remove, { t: t.name })}
+                    disabled={!n}
+                    onClick={(e) => change(e, t.id, -1)}
+                    className={`grid size-9 place-items-center rounded-full border text-lg leading-none disabled:opacity-30 ${n ? "border-stage/40" : "border-chalk-3/60"}`}
+                  >
+                    −
+                  </button>
+                  <button
+                    type="button"
+                    aria-label={format(p.add, { t: t.name })}
+                    disabled={left <= 0}
+                    onClick={(e) => change(e, t.id, 1)}
+                    className={`grid size-9 place-items-center rounded-full text-lg leading-none disabled:opacity-30 ${n ? "bg-stage text-chalk" : "bg-chalk text-stage"}`}
+                  >
+                    +
+                  </button>
                 </span>
-              </span>
-            </button>
+              </div>
+            </div>
           );
         })}
       </div>
-      <p className="mt-4 min-h-6 text-sm text-chalk-3" aria-live="polite">
-        {selected.length === 0 ? p.none : null}
-      </p>
-      <div className="prio-go mt-6 flex flex-wrap items-center gap-4 pb-[max(16px,env(safe-area-inset-bottom))]">
+      <p className="mt-4 min-h-6 text-sm text-chalk-3">{used === 0 ? p.none : null}</p>
+      <div className="tok-go mt-6 flex flex-wrap items-center gap-4 pb-[max(16px,env(safe-area-inset-bottom))]">
         <button type="button" onClick={onGo} className="btn group bg-chalk px-8 text-lg text-stage">
-          {p.go} <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+          {m.game.priorities.go} <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
         </button>
         <button type="button" onClick={onUndo} className="inline-flex min-h-11 items-center gap-2 px-2 text-sm font-medium text-chalk-2 hover:text-chalk">
           <span aria-hidden>↶</span> {m.game.undo}
