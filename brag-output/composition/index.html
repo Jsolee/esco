@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="ca" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="vendor/gsap.min.js"></script>
+    <script type="importmap">
+      { "imports": { "three": "./vendor/three.module.js" } }
+    </script>
+    <style>
+      @font-face { font-family: "Newsreader"; font-style: normal; font-weight: 200 800; src: url(fonts/newsreader.woff2) format("woff2"); }
+      @font-face { font-family: "Newsreader"; font-style: italic; font-weight: 200 800; src: url(fonts/newsreader-italic.woff2) format("woff2"); }
+      @font-face { font-family: "Schibsted Grotesk"; font-weight: 400 900; src: url(fonts/schibsted-grotesk.woff2) format("woff2"); }
+      :root {
+        --nit: #0c0c0b; --fum: #1a1917; --fum-2: #2a2926; --guix: #f2f1ec; --guix-2: #b4b2aa; --grafit: #8e8c85;
+        --carta: #f7f6f2; --carta-3: #c9c6bd; --tinta: #0e0e0d; --tinta-2: #55544f;
+        --serif: "Newsreader", Georgia, serif; --sans: "Schibsted Grotesk", system-ui, sans-serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--nit); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--nit); color: var(--guix); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+      .clip { position: absolute; inset: 0; }
+      #gl { position: absolute; inset: 0; width: 1080px; height: 1920px; display: block; }
+      #shade { background: var(--nit); opacity: 0; }
+      #vig { background:
+        radial-gradient(120% 70% at 50% 42%, transparent 45%, rgba(0,0,0,.55) 100%),
+        linear-gradient(to bottom, rgba(12,12,11,.55), transparent 16%, transparent 72%, rgba(12,12,11,.7)); }
+      .kicker { font: 600 30px/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--guix-2); }
+      .display { font: 400 150px/.98 var(--serif); letter-spacing: -.03em; color: var(--guix); }
+      .it { font-style: italic; }
+      .line { display: block; overflow: hidden; padding-bottom: .08em; margin-bottom: -.08em; }
+      .line > span { display: inline-block; }
+      .w { display: inline-block; }
+      .touch { position: absolute; width: 110px; height: 110px; margin: -55px 0 0 -55px; border-radius: 50%; background: rgba(242,241,236,.28); border: 3px solid rgba(242,241,236,.85); opacity: 0; }
+
+      /* 1–2 */
+      #youTag { opacity: 0; }
+      #youTagPos { position: absolute; left: 0; top: 0; }
+      .pill { display: inline-flex; align-items: center; gap: 12px; white-space: nowrap; border: 2px solid rgba(142,140,133,.6); border-radius: 999px; background: rgba(12,12,11,.7); padding: 12px 24px; font: 700 26px var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--guix); }
+      #hook { position: absolute; left: 90px; right: 90px; top: 1150px; }
+
+      /* 3 */
+      #vcap { position: absolute; left: 90px; right: 90px; top: 250px; }
+      #vcap .display { font-size: 92px; }
+      #card { position: absolute; left: 110px; top: 470px; width: 860px; height: 760px; border-radius: 44px; background: var(--carta); color: var(--tinta); padding: 60px; display: flex; flex-direction: column; box-shadow: 0 50px 90px rgba(0,0,0,.55); overflow: hidden; }
+      #card .top { display: flex; justify-content: space-between; align-items: center; }
+      #card .kicker { color: var(--tinta-2); font-size: 26px; }
+      .cost { display: inline-flex; align-items: center; gap: 10px; border: 2px solid rgba(14,14,13,.25); border-radius: 999px; padding: 8px 20px; font: 700 28px var(--sans); }
+      .coin { width: 24px; height: 24px; border-radius: 50%; background: currentColor; box-shadow: inset 0 0 0 5px rgba(12,12,11,.0), inset 0 0 0 7px rgba(255,255,255,.0); }
+      #card p { position: relative; z-index: 1; margin: auto 0; font: 400 72px/1.06 var(--serif); letter-spacing: -.02em; }
+      #card .num { position: absolute; right: -20px; bottom: -40px; width: 520px; height: 330px; overflow: visible; }
+      #card .why { position: relative; z-index: 1; font: 600 30px var(--sans); text-decoration: underline; text-decoration-color: var(--carta-3); text-underline-offset: 8px; }
+      #stamp { position: absolute; z-index: 2; left: 52px; top: 128px; border: 6px solid var(--tinta); border-radius: 14px; padding: 6px 20px; background: var(--tinta); color: var(--carta); font: 800 46px/1.1 var(--sans); letter-spacing: .06em; text-transform: uppercase; opacity: 0; transform: rotate(-10deg); }
+      #pads { position: absolute; left: 80px; width: 840px; top: 1290px; display: flex; justify-content: space-between; align-items: flex-start; }
+      .pad { width: 150px; display: grid; justify-items: center; gap: 14px; font: 500 24px/1.2 var(--sans); color: var(--guix-2); text-align: center; }
+      .pad i { display: grid; place-items: center; width: 104px; height: 104px; border-radius: 50%; border: 3px solid #57554f; background: var(--fum); color: var(--guix); font: 600 40px/1 var(--sans); font-style: normal; }
+      .pad.big i { width: 120px; height: 120px; }
+      .pad i svg { width: 42%; height: 42%; }
+
+      /* 4 */
+      #sheet { position: absolute; left: 0; right: 0; top: 400px; height: 1520px; border-radius: 64px 64px 0 0; background: var(--fum); border: 2px solid rgba(142,140,133,.5); border-bottom: 0; }
+      #sheet > * { position: absolute; left: 70px; }
+      #sheet h2 { top: 120px; font: 400 104px/1 var(--serif); letter-spacing: -.03em; }
+      #fsub { top: 352px; font: 400 36px/1.3 var(--sans); color: var(--guix-2); width: 900px; }
+      #fneed2, #fneed3 { position: absolute; left: 0; top: 0; white-space: nowrap; opacity: 0; }
+      #bar { top: 470px; width: 860px; height: 18px; border-radius: 999px; background: var(--fum-2); overflow: hidden; }
+      #bar > div { width: 0; height: 100%; border-radius: 999px; background: var(--guix); }
+      .flabel { font-size: 26px; }
+      .chip { width: 860px; height: 136px; border-radius: 34px; border: 2px solid rgba(142,140,133,.5); background: var(--nit); padding: 26px 32px; display: grid; gap: 8px; }
+      .chip b { display: flex; justify-content: space-between; align-items: baseline; font: 600 36px/1.15 var(--sans); }
+      .chip b small { display: inline-flex; align-items: center; gap: 10px; font: 500 26px var(--sans); position: relative; }
+      .chip b small .coin { width: 20px; height: 20px; }
+      .chip span { font: 400 26px/1.3 var(--sans); color: var(--guix-2); }
+      .chip .bg { position: absolute; inset: 0; border-radius: 34px; background: var(--guix); opacity: 0; }
+      .chip .fg { position: relative; display: grid; gap: 8px; }
+      .fcoin { position: absolute; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; background: var(--guix); box-shadow: 0 0 18px rgba(242,241,236,.7); opacity: 0; }
+      #fdone { top: 352px; display: inline-flex; align-items: center; gap: 14px; font: 700 36px var(--sans); color: var(--guix); opacity: 0; }
+
+      /* 4b */
+      #preu { position: absolute; left: 80px; right: 80px; top: 700px; }
+      #preu .display { font-size: 210px; }
+
+      /* 5 */
+      #tokHead { position: absolute; left: 90px; right: 90px; top: 290px; }
+      #tokHead .display { font-size: 104px; margin-top: 18px; }
+      #pool { position: absolute; left: 90px; top: 620px; }
+      .ptok { position: absolute; top: 0; width: 40px; height: 40px; border-radius: 50%; background: var(--guix); box-shadow: 0 0 16px rgba(242,241,236,.5); }
+      .phole { position: absolute; top: 0; width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(142,140,133,.6); }
+      #poolLabel { position: absolute; left: 670px; top: 625px; font-size: 26px; }
+      .tile { position: absolute; width: 410px; height: 300px; border-radius: 36px; border: 2px solid rgba(142,140,133,.5); background: rgba(26,25,23,.85); overflow: hidden; }
+      .tile .bg { position: absolute; inset: 0; background: var(--guix); opacity: 0; }
+      .tile .name { position: absolute; left: 32px; top: 28px; font: 400 50px/1.05 var(--serif); }
+      .tile .wt { position: absolute; left: 32px; top: 90px; font: italic 400 42px/1 var(--serif); color: var(--nit); opacity: 0; }
+      .tile .meta { position: absolute; left: 32px; bottom: 30px; font: 400 24px var(--sans); color: var(--guix-2); }
+      .tile .btns { position: absolute; right: 26px; bottom: 22px; display: flex; gap: 12px; }
+      .tile .btns i { width: 62px; height: 62px; border-radius: 50%; display: grid; place-items: center; font: 400 38px/1 var(--sans); font-style: normal; border: 2px solid rgba(142,140,133,.6); color: var(--guix); }
+      .tile .btns i.plus { border: 0; background: var(--guix); color: var(--nit); }
+      .ftok { position: absolute; width: 40px; height: 40px; margin: -20px 0 0 -20px; border-radius: 50%; background: var(--guix); box-shadow: 0 0 16px rgba(242,241,236,.6); opacity: 0; }
+      .dot { position: absolute; width: 26px; height: 26px; border-radius: 50%; background: var(--nit); opacity: 0; }
+
+      /* 6 */
+      #countK { position: absolute; left: 0; right: 0; top: 330px; text-align: center; font-size: 36px; color: var(--guix); letter-spacing: .3em; }
+      #who { position: absolute; left: 0; right: 0; top: 270px; text-align: center; }
+      #who .display { font-size: 132px; }
+      #rank { position: absolute; left: 90px; width: 800px; top: 1170px; }
+      .row { position: relative; height: 104px; display: grid; grid-template-columns: 70px 1fr 170px; align-items: center; }
+      .row .n { font: 400 54px/1 var(--serif); color: var(--grafit); }
+      .row .redact { height: 34px; border-radius: 10px; background: var(--fum-2); }
+      .row .p { text-align: right; font: 400 66px/1 var(--serif); }
+      .row .track { position: absolute; left: 70px; right: 0; bottom: 4px; height: 6px; border-radius: 999px; background: var(--fum-2); overflow: hidden; }
+      .row .track div { width: 0; height: 100%; background: var(--guix); }
+
+      /* 7 */
+      #lock { position: absolute; left: 0; right: 0; top: 640px; display: flex; justify-content: center; align-items: flex-end; gap: 44px; }
+      #lock svg { width: 230px; height: auto; margin-bottom: 34px; overflow: visible; }
+      #lock .word { font: italic 400 230px/1 var(--serif); letter-spacing: -.02em; padding-right: .06em; }
+      #tagline { position: absolute; left: 0; right: 0; top: 960px; text-align: center; font: 400 66px/1.1 var(--serif); letter-spacing: -.02em; }
+      #url { position: absolute; left: 0; right: 0; top: 1110px; text-align: center; }
+      #url span { display: inline-block; border: 2px solid var(--guix); border-radius: 999px; padding: 22px 44px; font: 600 44px var(--sans); letter-spacing: .01em; }
+      #seal { position: absolute; left: 0; right: 0; top: 1260px; text-align: center; font-size: 28px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="24" data-width="1080" data-height="1920">
+      <div id="stage" class="clip" data-start="0" data-duration="24" data-track-index="0" data-no-timeline data-layout-allow-overflow><canvas id="gl" width="1080" height="1920"></canvas></div>
+      <div id="shade" class="clip" data-start="0" data-duration="24" data-track-index="1"></div>
+      <div id="vig" class="clip" data-start="0" data-duration="24" data-track-index="2"></div>
+
+      <!-- 1–2 · Tens un escó. Fes-lo servir. -->
+      <div id="s-hook" class="clip" data-start="0" data-duration="5.75" data-track-index="3">
+        <div id="youTag"><div id="youTagPos"><span class="pill">El teu escó</span></div></div>
+        <div id="hook">
+          <p class="kicker" id="hookK">Congrés dels Diputats · 350 escons</p>
+          <h1 class="display" style="margin-top:26px"><span class="line" id="l1"><span><span class="w">Tens</span> <span class="w">un</span> <span class="w">escó.</span></span></span><span class="line it" id="l2"><span>Fes-lo servir.</span></span></h1>
+        </div>
+      </div>
+
+      <!-- 3 · la carta -->
+      <div id="s-vote" class="clip" data-start="5.6" data-duration="4" data-track-index="3">
+        <div id="vcap"><h2 class="display"><span class="line"><span>Llisca i vota</span></span><span class="line it"><span>24 propostes.</span></span></h2></div>
+        <div id="card" data-layout-allow-overflow>
+          <div class="top"><span class="kicker">Votació 07 / 24 · Fiscalitat</span><span class="cost"><span class="coin"></span>Costa 6</span></div>
+          <p>Les herències entre pares i fills haurien d'estar exemptes d'impostos.</p>
+          <svg class="num" viewBox="0 0 520 330" aria-hidden="true"><text x="10" y="300" font-family="Newsreader" font-style="italic" font-size="430" fill="none" stroke="#c9c6bd" stroke-width="3">07</text></svg>
+          <span class="why">↻ Per què se'n parla?</span>
+          <span id="stamp">D'acord</span>
+        </div>
+        <div id="pads">
+          <div class="pad big"><i>«</i>Molt en desacord</div>
+          <div class="pad"><i>‹</i>En desacord</div>
+          <div class="pad"><i>·</i>Neutral</div>
+          <div class="pad" id="padYes"><i>›</i>D'acord</div>
+          <div class="pad big"><i>»</i>Molt d'acord</div>
+        </div>
+        <div class="touch" id="t1" style="left:540px;top:850px"></div>
+      </div>
+
+      <!-- 4 · d'on surten els diners -->
+      <div id="s-fund" class="clip" data-start="9.4" data-duration="3.6" data-track-index="3">
+        <div id="sheet">
+          <p class="kicker" style="top:70px">Simulador de mandat</p>
+          <h2>D'on surten<br />els diners?</h2>
+          <p id="fsub"><span id="fs1">Aquesta proposta costa 6 punts.<br /><span style="position:relative;display:inline-block"><span id="fneed1">Te'n falten 6.</span><span id="fneed2">Te'n falten 3.</span></span></span></p>
+          <p id="fdone"><span class="coin" style="width:30px;height:30px;color:var(--guix)"></span>Finançada</p>
+          <div id="bar"><div></div></div>
+          <p class="kicker flabel" style="top:530px">Retallar</p>
+          <div class="chip" style="top:570px"><div class="fg"><b>Retallar la despesa en defensa<small><span class="coin"></span>queden 6</small></b><span>Menys pressupost militar i menys compres d'armament.</span></div></div>
+          <p class="kicker flabel" style="top:742px">Pujar impostos</p>
+          <div class="chip" id="chIva" style="top:782px"><div class="bg"></div><div class="fg"><b>Pujar l'IVA<small><span class="coin"></span><span class="q">queden 8</span></small></b><span>Un impost que paga tothom en comprar.</span></div></div>
+          <p class="kicker flabel" style="top:954px">Endeutar-se</p>
+          <div class="chip" id="chDeute" style="top:994px"><div class="bg"></div><div class="fg"><b>Endeutar-se<small><span class="coin"></span><span class="q">queden 10</span></small></b><span>Ho pagarà el pròxim govern, amb interessos.</span></div></div>
+          <div class="fcoin c1" style="left:850px;top:822px"></div><div class="fcoin c1" style="left:850px;top:822px"></div><div class="fcoin c1" style="left:850px;top:822px"></div>
+          <div class="fcoin c2" style="left:850px;top:1034px"></div><div class="fcoin c2" style="left:850px;top:1034px"></div><div class="fcoin c2" style="left:850px;top:1034px"></div>
+          <div class="touch" id="t2" style="left:470px;top:850px"></div>
+          <div class="touch" id="t3" style="left:470px;top:1062px"></div>
+        </div>
+      </div>
+
+      <!-- 4b · Cada sí té un preu. -->
+      <div id="s-preu" class="clip" data-start="12.9" data-duration="2" data-track-index="3">
+        <div id="preu"><h2 class="display"><span class="line"><span>Cada sí</span></span><span class="line it"><span>té un preu.</span></span></h2></div>
+      </div>
+
+      <!-- 5 · fitxes d'influència -->
+      <div id="s-tok" class="clip" data-start="14.85" data-duration="2.65" data-track-index="3">
+        <div id="tokHead"><p class="kicker">Últim pas</p><h2 class="display"><span class="line"><span>Reparteix la teva</span></span><span class="line it"><span>influència.</span></span></h2></div>
+        <div id="pool"></div>
+        <p class="kicker" id="poolLabel">Et queden <span id="left">10</span> fitxes</p>
+        <div id="tiles"></div>
+      </div>
+
+      <!-- 6 · recompte -->
+      <div id="s-count" class="clip" data-start="17.4" data-duration="2.95" data-track-index="3">
+        <p class="kicker" id="countK">Recompte</p>
+        <div id="who"><h2 class="display"><span class="line"><span>Qui vota com tu?</span></span></h2></div>
+        <div id="rank">
+          <div class="row"><span class="n">1</span><span class="redact" style="width:300px"></span><span class="p"><b class="pv" style="font-weight:400">0</b> %</span><span class="track"><div></div></span></div>
+          <div class="row"><span class="n">2</span><span class="redact" style="width:380px"></span><span class="p"><b class="pv" style="font-weight:400">0</b> %</span><span class="track"><div></div></span></div>
+          <div class="row"><span class="n">3</span><span class="redact" style="width:250px"></span><span class="p"><b class="pv" style="font-weight:400">0</b> %</span><span class="track"><div></div></span></div>
+        </div>
+      </div>
+
+      <!-- 7 · logo -->
+      <div id="s-end" class="clip" data-start="20.3" data-duration="3.7" data-track-index="3">
+        <div id="lock"><svg id="sym" viewBox="0 0 120 84" aria-label="Escó"></svg><span class="line"><span class="word">Escó</span></span></div>
+        <p id="tagline">Tens un escó. <i>Fes-lo servir.</i></p>
+        <p id="url"><span>esco-psi.vercel.app</span></p>
+        <p class="kicker" id="seal">Neutral · Privat · Amb fonts</p>
+      </div>
+
+      <audio id="music" src="audio/music.mp3" data-start="0" data-duration="24" data-volume="0.85" data-fade-out="1.2"></audio>
+      <audio id="sfx-lit" src="audio/impactSoft_medium_001.ogg" data-start="0.68" data-volume="0.55"></audio>
+      <audio id="sfx-deal" src="audio/card-slide-1.ogg" data-start="5.72" data-volume="0.3"></audio>
+      <audio id="sfx-stamp" src="audio/impactSoft_heavy_003.ogg" data-start="8.72" data-volume="0.6"></audio>
+      <audio id="sfx-fling" src="audio/card-slide-3.ogg" data-start="9.02" data-volume="0.22"></audio>
+      <audio id="sfx-sheet" src="audio/card-slide-1.ogg" data-start="9.45" data-volume="0.2"></audio>
+      <audio id="sfx-c1" src="audio/chip-lay-1.ogg" data-start="11.05" data-volume="0.2"></audio>
+      <audio id="sfx-c2" src="audio/chip-lay-2.ogg" data-start="11.85" data-volume="0.2"></audio>
+      <audio id="sfx-preu" src="audio/impactSoft_medium_004.ogg" data-start="13.1" data-volume="0.5"></audio>
+      <audio id="sfx-t1" src="audio/chip-lay-3.ogg" data-start="15.83" data-volume="0.16"></audio>
+      <audio id="sfx-t2" src="audio/chip-lay-1.ogg" data-start="16.43" data-volume="0.16"></audio>
+      <audio id="sfx-t3" src="audio/chip-lay-2.ogg" data-start="17.03" data-volume="0.16"></audio>
+      <audio id="sfx-who" src="audio/impactBell_heavy_000.ogg" data-start="18.54" data-volume="0.32"></audio>
+      <audio id="sfx-logo" src="audio/impactSoft_medium_001.ogg" data-start="20.74" data-volume="0.5"></audio>
+      <audio id="sfx-url" src="audio/impactBell_heavy_003.ogg" data-start="22.36" data-volume="0.26"></audio>
+    </div>
+
+    <script>
+      // Logo: hemicicle de set escons, el del mig és el teu (brand/source/kit.html).
+      (() => {
+        let s = "";
+        for (let k = 0; k < 7; k++) {
+          const a = Math.PI * (1 - k / 6), x = 60 + 46 * Math.cos(a), y = 66 - 46 * Math.sin(a), r = 90 - (a * 180) / Math.PI;
+          s += k === 3
+            ? `<g transform="translate(${x} ${y}) rotate(${r})"><rect class="seat you" x="-10.5" y="-9" width="21" height="18" rx="5.5" fill="#f2f1ec"/></g>`
+            : `<g transform="translate(${x} ${y}) rotate(${r})"><rect class="seat" data-k="${k}" x="-8" y="-7" width="16" height="14" rx="4.5" fill="#57554f"/></g>`;
+        }
+        document.getElementById("sym").innerHTML = s;
+      })();
+
+      // Fitxes i rajoles del pas 5 (posicions fixes per poder fer volar les fitxes).
+      const TILES = [
+        { name: "Habitatge", n: 4, x: 90, y: 700 },
+        { name: "Sanitat", n: 3, x: 520, y: 700 },
+        { name: "Fiscalitat", n: 4, x: 90, y: 1020 },
+        { name: "Educació", n: 2, x: 520, y: 1020 },
+      ];
+      const PICKS = [0, 0, 1, 3, 3]; // a quina rajola va cada fitxa
+      const poolX = (i) => i * 54;
+      const FLIGHTS = (() => {
+        const used = [0, 0, 0, 0];
+        return PICKS.map((k, j) => {
+          const t = TILES[k];
+          const f = { k, n: ++used[k], sx: 90 + poolX(9 - j) + 20, sy: 640, dx: t.x + 32 + (used[k] - 1) * 36 + 13, dy: t.y + 190 };
+          return f;
+        });
+      })();
+      document.getElementById("pool").innerHTML = Array.from({ length: 10 }, (_, i) => `<span class="phole" style="left:${poolX(i)}px"></span><span class="ptok" style="left:${poolX(i)}px"></span>`).join("");
+      document.getElementById("tiles").innerHTML =
+        TILES.map((t, k) => `<div class="tile" id="tile${k}" style="left:${t.x}px;top:${t.y}px"><div class="bg"></div><span class="name">${t.name}</span>
+          <span class="wt w15">pes ×1,5</span><span class="wt w2">pes ×2</span>
+          <span class="meta">${t.n} propostes</span>
+          <span class="btns"><i>−</i><i class="plus">+</i></span></div>`).join("") +
+        FLIGHTS.map((f) => `<span class="ftok" style="left:${f.sx}px;top:${f.sy}px"></span>`).join("") +
+        FLIGHTS.map((f) => `<span class="dot" style="left:${f.dx - 13}px;top:${f.dy - 13}px"></span>`).join("");
+
+      const tl = gsap.timeline({ paused: true });
+      const $ = (s) => document.querySelector(s);
+      const $$ = (s) => [...document.querySelectorAll(s)];
+      const shade = (at, v, d = 0.6) => tl.to("#shade", { opacity: v, duration: d, ease: "power2.inOut" }, at);
+      const rise = (els, at, stagger = 0.1, d = 0.75) => tl.from(els, { yPercent: 135, duration: d, ease: "power4.out", stagger }, at);
+      const out = (els, at, d = 0.35) => tl.to(els, { opacity: 0, y: -30, duration: d, ease: "power2.in" }, at);
+      const touch = (el, at) => tl.fromTo(el, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.14, ease: "power2.out" }, at).to(el, { opacity: 0, scale: 1.35, duration: 0.3, ease: "power1.out" }, at + 0.2);
+      const counter = (el, at, from, to, d, fmt = (v) => String(Math.round(v))) => {
+        const o = { v: from };
+        tl.to(o, { v: to, duration: d, ease: "power2.out", onUpdate: () => (el.textContent = fmt(o.v)) }, at);
+      };
+
+      // 1 · s'encén el teu escó
+      tl.to("#youTag", { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.85);
+      tl.to("#youTag", { opacity: 0, duration: 0.4 }, 3.25);
+      tl.set("#hookK", { opacity: 0 }, 0);
+      tl.from("#l1 .w", { yPercent: 135, duration: 0.7, ease: "power4.out", stagger: 0.12 }, 1.0);
+      // 2 · zoom enrere fins als 350
+      tl.to("#hookK", { opacity: 1, duration: 0.6 }, 4.0);
+      rise("#l2 > span", 3.85, 0, 0.8);
+      out("#hook", 5.3, 0.3);
+
+      // 3 · la carta
+      shade(5.5, 0.5, 0.8);
+      rise("#vcap .line > span", 5.75, 0.12);
+      tl.from("#card", { y: 1100, rotation: 9, duration: 0.85, ease: "back.out(1.15)" }, 5.75);
+      tl.from(".pad", { y: 40, opacity: 0, duration: 0.5, ease: "back.out(2)", stagger: 0.05 }, 6.05);
+      tl.to("#t1", { opacity: 1, scale: 1, duration: 0.15 }, 7.8);
+      tl.fromTo("#t1", { scale: 0.6 }, { x: 160, duration: 0.8, ease: "power1.inOut" }, 7.85);
+      tl.to("#card", { x: 150, rotation: 7, duration: 0.8, ease: "power1.inOut" }, 7.85);
+      tl.to("#padYes i", { backgroundColor: "#f2f1ec", color: "#0c0c0b", borderColor: "#f2f1ec", scale: 1.12, duration: 0.25, ease: "back.out(3)" }, 8.3);
+      tl.to("#padYes", { color: "#f2f1ec", duration: 0.25 }, 8.3);
+      tl.fromTo("#stamp", { opacity: 0, scale: 1.7 }, { opacity: 1, scale: 1, duration: 0.18, ease: "power4.in" }, 8.56);
+      tl.to("#card", { keyframes: [{ x: 162, duration: 0.05 }, { x: 144, duration: 0.05 }, { x: 150, duration: 0.06 }] }, 8.74);
+      tl.to("#t1", { opacity: 0, duration: 0.2 }, 8.75);
+      tl.to("#card", { x: 1350, y: -120, rotation: 26, duration: 0.5, ease: "power2.in" }, 9.0);
+      out(["#vcap", "#pads"], 9.2, 0.3);
+
+      // 4 · d'on surten els diners
+      shade(9.4, 0.78, 0.5);
+      tl.from("#sheet", { y: 1500, duration: 0.65, ease: "power3.out" }, 9.42);
+      tl.from("#sheet > :not(.fcoin):not(.touch)", { opacity: 0, y: 30, duration: 0.45, ease: "power2.out", stagger: 0.035 }, 9.6);
+      const pick = (chip, coins, at, q, fromPct, toPct) => {
+        touch(chip === "#chIva" ? "#t2" : "#t3", at - 0.05);
+        tl.to(`${chip} .bg`, { opacity: 1, duration: 0.2 }, at);
+        tl.to(`${chip} b, ${chip} small, ${chip} .q`, { color: "#0c0c0b", duration: 0.2 }, at);
+        tl.to(`${chip} .fg > span`, { color: "rgba(12,12,11,.7)", duration: 0.2 }, at);
+        tl.set(`${chip} .q`, { textContent: q }, at);
+        $$(coins).forEach((c, k) => {
+          const t0 = at + 0.12 + k * 0.08;
+          const tx = 70 + (860 * (fromPct + ((toPct - fromPct) * (k + 1)) / 3)) / 100 - 10;
+          const y0 = parseFloat(c.style.top);
+          tl.set(c, { opacity: 1 }, t0);
+          tl.to(c, { x: tx - 850, duration: 0.42, ease: "power2.inOut" }, t0);
+          tl.to(c, { y: 479 - y0, duration: 0.42, ease: "back.in(1.4)" }, t0);
+          tl.to(c, { opacity: 0, scale: 0.4, duration: 0.1 }, t0 + 0.4);
+        });
+        tl.to("#bar > div", { width: `${toPct}%`, duration: 0.45, ease: "power3.out" }, at + 0.45);
+      };
+      pick("#chIva", ".c1", 10.65, "−3", 0, 50);
+      tl.set("#fneed1", { opacity: 0 }, 11.1);
+      tl.set("#fneed2", { opacity: 1 }, 11.1);
+      pick("#chDeute", ".c2", 11.45, "−3", 50, 100);
+      tl.to("#fs1", { opacity: 0, duration: 0.2 }, 11.95);
+      tl.fromTo("#fdone", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, 12.0);
+      tl.to("#sheet", { y: 1600, duration: 0.42, ease: "power2.in" }, 12.55);
+
+      // 4b · Cada sí té un preu.
+      shade(12.9, 0.5, 0.5);
+      rise("#preu .line > span", 12.95, 0.16, 0.8);
+      out("#preu", 14.6, 0.3);
+
+      // 5 · fitxes
+      shade(14.75, 0.55, 0.6);
+      tl.from("#tokHead .kicker", { opacity: 0, duration: 0.4 }, 14.9);
+      rise("#tokHead .line > span", 14.9, 0.1);
+      tl.from(".ptok, .phole", { scale: 0, duration: 0.35, ease: "back.out(3)", stagger: 0.025 }, 15.05);
+      tl.from("#poolLabel", { opacity: 0, duration: 0.3 }, 15.2);
+      tl.from(".tile", { y: 60, opacity: 0, rotationX: -25, duration: 0.55, ease: "back.out(1.6)", stagger: 0.06 }, 15.05);
+      const ptoks = $$(".ptok"), ftoks = $$(".ftok"), dots = $$(".dot");
+      FLIGHTS.forEach(({ k, n, sx, sy, dx, dy }, j) => {
+        const at = 15.45 + j * 0.3;
+        tl.to(ptoks[9 - j], { opacity: 0, duration: 0.05 }, at);
+        tl.set(ftoks[j], { opacity: 1 }, at);
+        tl.to(ftoks[j], { x: dx - sx, duration: 0.38, ease: "power2.inOut" }, at);
+        tl.to(ftoks[j], { y: dy - sy, duration: 0.38, ease: "back.in(1.2)" }, at);
+        tl.set(ftoks[j], { opacity: 0 }, at + 0.38);
+        tl.set(dots[j], { opacity: 1 }, at + 0.38);
+        tl.to(`#tile${k} .bg`, { opacity: 1, duration: 0.15 }, at + 0.36);
+        tl.to(`#tile${k} .meta`, { color: "rgba(12,12,11,.7)", duration: 0.15 }, at + 0.36);
+        tl.to(`#tile${k} .name`, { color: "#0c0c0b", duration: 0.15 }, at + 0.36);
+        tl.to(`#tile${k} .btns i:not(.plus)`, { color: "#0c0c0b", borderColor: "rgba(12,12,11,.4)", duration: 0.15 }, at + 0.36);
+        tl.to(`#tile${k} .btns .plus`, { backgroundColor: "#0c0c0b", color: "#f2f1ec", duration: 0.15 }, at + 0.36);
+        tl.fromTo(`#tile${k}`, { scale: 1 }, { scale: 1.04, duration: 0.1, yoyo: true, repeat: 1, ease: "power1.inOut" }, at + 0.36);
+        if (n === 1) tl.to(`#tile${k} .w15`, { opacity: 1, duration: 0.15 }, at + 0.38);
+        else tl.to(`#tile${k} .w15`, { opacity: 0, duration: 0.1 }, at + 0.36).to(`#tile${k} .w2`, { opacity: 1, duration: 0.15 }, at + 0.38);
+        tl.set("#left", { textContent: String(9 - j) }, at);
+      });
+      out(["#tokHead", "#pool", "#poolLabel", "#tiles"], 17.2, 0.3);
+
+      // 6 · recompte
+      shade(17.3, 0, 0.6);
+      tl.from("#countK", { opacity: 0, duration: 0.3 }, 17.55);
+      tl.to("#countK", { keyframes: [{ opacity: 0.35, duration: 0.12 }, { opacity: 1, duration: 0.12 }, { opacity: 0.5, duration: 0.1 }, { opacity: 1, duration: 0.14 }] }, 17.9);
+      tl.to("#countK", { opacity: 0, duration: 0.15 }, 18.4);
+      rise("#who .line > span", 18.5, 0, 0.7);
+      tl.from(".row", { opacity: 0, y: 30, duration: 0.4, ease: "power2.out", stagger: 0.08 }, 18.95);
+      $$(".row").forEach((r, k) => {
+        const p = [87, 84, 59][k];
+        counter(r.querySelector(".pv"), 19.05 + k * 0.08, 0, p, 0.9);
+        tl.to(r.querySelector(".track div"), { width: `${p}%`, duration: 0.9, ease: "power2.out" }, 19.05 + k * 0.08);
+      });
+      out(["#who", "#rank"], 20.05, 0.3);
+
+      // 7 · logo
+      shade(20.3, 0.45, 0.8);
+      tl.from("#sym .seat:not(.you)", { scale: 0, transformOrigin: "50% 50%", duration: 0.4, ease: "back.out(3)", stagger: { each: 0.05, from: "edges" } }, 20.45);
+      tl.from("#sym .you", { scale: 0, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(4)" }, 20.74);
+      tl.from("#lock .word", { yPercent: 135, duration: 0.8, ease: "power4.out" }, 20.62);
+      tl.from("#tagline", { opacity: 0, y: 30, duration: 0.6, ease: "power3.out" }, 21.3);
+      tl.from("#url span", { opacity: 0, scale: 0.85, duration: 0.5, ease: "back.out(2.2)" }, 22.36);
+      tl.from("#seal", { opacity: 0, duration: 0.5 }, 22.65);
+      tl.set({}, {}, 24);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+    <script type="module">
+      import { createChamber } from "./chamber.js";
+      const chamber = createChamber(document.getElementById("gl"), document.getElementById("youTagPos"));
+      const ready = document.fonts.ready.then(() => chamber.render(0));
+      window.__chamber = chamber;
+      window.__hyperframes?.registerFrameSource({
+        element: document.getElementById("stage"),
+        ready,
+        render: (t) => chamber.render(t),
+        dispose: () => chamber.dispose(),
+      });
+    </script>
+  </body>
+</html>

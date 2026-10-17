@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<title>Escó · kit de marca</title>
+<style>
+/* Font de veritat per exportar el kit de marca a PNG (vegeu brand/README.md). Cada .board és un fitxer. */
+@font-face { font-family: "Newsreader"; font-style: normal; font-weight: 200 800; src: url(../fonts/newsreader.woff2) format("woff2"); }
+@font-face { font-family: "Newsreader"; font-style: italic; font-weight: 200 800; src: url(../fonts/newsreader-italic.woff2) format("woff2"); }
+@font-face { font-family: "Schibsted Grotesk"; font-weight: 400 900; src: url(../fonts/schibsted-grotesk.woff2) format("woff2"); }
+:root {
+  --nit: #0c0c0b; --fum: #1a1917; --fum-2: #2a2926; --guix: #f2f1ec; --guix-2: #b4b2aa; --grafit: #8e8c85;
+  --paper: #fbfbfa; --carta: #f7f6f2; --carta-2: #e4e2dc; --tinta: #0e0e0d; --tinta-2: #55544f;
+  --serif: "Newsreader", Georgia, serif; --sans: "Schibsted Grotesk", system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #333; font-family: var(--sans); display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; }
+.board { position: relative; overflow: hidden; flex: none; background: var(--nit); color: var(--guix); }
+.kicker { font: 600 26px/1.3 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--guix-2); }
+.display { font-family: var(--serif); font-weight: 300; letter-spacing: -.03em; line-height: .95; }
+.it { font-style: italic; }
+.glow { position: absolute; inset: 0; background: radial-gradient(70% 45% at 50% 18%, #2a2926 0%, transparent 70%); }
+.foot { position: absolute; left: 80px; right: 80px; bottom: 70px; display: flex; justify-content: space-between; align-items: center; font: 500 24px var(--sans); color: var(--grafit); }
+.lock { display: inline-flex; align-items: flex-end; gap: .28em; font: italic 400 1em/1 var(--serif); letter-spacing: -.01em; }
+.lock svg { height: .62em; width: auto; margin-bottom: .14em; }
+.card { background: var(--carta); color: var(--tinta); border-radius: 44px; box-shadow: 0 60px 120px -40px rgba(0,0,0,.9); position: relative; overflow: hidden; }
+.stamp { position: absolute; border: 6px solid var(--tinta); border-radius: 14px; padding: 6px 18px; font: 800 38px/1.1 var(--sans); letter-spacing: .06em; text-transform: uppercase; }
+.chip { display: inline-flex; align-items: center; gap: 12px; border: 2px solid #57554f; border-radius: 999px; padding: 14px 26px; font: 600 28px var(--sans); color: var(--guix); background: var(--fum); }
+.coin { width: 1em; height: 1em; border-radius: 50%; background: var(--guix); box-shadow: inset 0 0 0 .22em var(--guix), inset 0 0 0 .3em rgba(12,12,11,.35); display: inline-block; flex: none; }
+</style>
+</head>
+<body>
+
+<!-- ============ LOGO ============ -->
+<div class="board" id="symbol-dark" style="width:1024px;height:1024px;display:grid;place-items:center">
+  <svg data-symbol="dark" style="width:720px"></svg>
+</div>
+<div class="board" id="symbol-light" style="width:1024px;height:1024px;display:grid;place-items:center;background:var(--paper)">
+  <svg data-symbol="light" style="width:720px"></svg>
+</div>
+<div class="board" id="lockup-dark" style="width:2400px;height:900px;display:grid;place-items:center">
+  <span class="lock" style="font-size:420px;color:var(--guix)"><svg data-symbol="dark"></svg>Escó</span>
+</div>
+<div class="board" id="lockup-light" style="width:2400px;height:900px;display:grid;place-items:center;background:var(--paper)">
+  <span class="lock" style="font-size:420px;color:var(--tinta)"><svg data-symbol="light"></svg>Escó</span>
+</div>
+<div class="board" id="stacked-dark" style="width:1600px;height:1600px;display:grid;place-items:center">
+  <div style="display:grid;justify-items:center;gap:40px">
+    <svg data-symbol="dark" style="width:560px"></svg>
+    <span style="font:italic 400 380px/1 var(--serif);letter-spacing:-.01em">Escó</span>
+    <span class="kicker" style="font-size:44px;color:var(--grafit)">Orientador de vot</span>
+  </div>
+</div>
+
+<!-- ============ INSTAGRAM: PERFIL ============ -->
+<div class="board" id="avatar" style="width:1080px;height:1080px;display:grid;place-items:center">
+  <div class="glow" style="background:radial-gradient(55% 55% at 50% 48%, #2a2926 0%, transparent 70%)"></div>
+  <svg data-symbol="dark" style="width:640px;position:relative;top:-10px"></svg>
+</div>
+
+<!-- ============ INSTAGRAM: PORTADES DE DESTACATS ============ -->
+<div class="board hl" id="hl-com-es-juga" style="width:1080px;height:1920px"><div class="hl-icon">
+  <svg viewBox="0 0 120 120"><rect x="34" y="26" width="46" height="64" rx="9" fill="none" stroke="currentColor" stroke-width="5" transform="rotate(-10 57 58)" opacity=".45"/><rect x="40" y="28" width="46" height="64" rx="9" fill="currentColor"/><path d="M52 60h18m-6-7 7 7-7 7" stroke="#0c0c0b" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div></div>
+<div class="board hl" id="hl-pressupost" style="width:1080px;height:1920px"><div class="hl-icon">
+  <svg viewBox="0 0 120 120"><ellipse cx="60" cy="82" rx="32" ry="11" fill="currentColor" opacity=".45"/><ellipse cx="60" cy="68" rx="32" ry="11" fill="currentColor" opacity=".7"/><ellipse cx="60" cy="54" rx="32" ry="11" fill="currentColor"/><ellipse cx="60" cy="54" rx="18" ry="5.5" fill="none" stroke="#0c0c0b" stroke-width="3" opacity=".5"/></svg>
+</div></div>
+<div class="board hl" id="hl-metodologia" style="width:1080px;height:1920px"><div class="hl-icon">
+  <svg viewBox="0 0 120 120"><path d="M60 26v66M36 92h48" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M30 40h60" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M30 40 20 64h20zM90 40 80 64h20z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M20 64a10 6 0 0 0 20 0M80 64a10 6 0 0 0 20 0" fill="currentColor"/></svg>
+</div></div>
+<div class="board hl" id="hl-privacitat" style="width:1080px;height:1920px"><div class="hl-icon">
+  <svg viewBox="0 0 120 120"><rect x="32" y="52" width="56" height="44" rx="10" fill="currentColor"/><path d="M44 52V40a16 16 0 0 1 32 0v12" fill="none" stroke="currentColor" stroke-width="6"/><circle cx="60" cy="72" r="6" fill="#0c0c0b"/><path d="M60 72v10" stroke="#0c0c0b" stroke-width="5" stroke-linecap="round"/></svg>
+</div></div>
+<div class="board hl" id="hl-novetats" style="width:1080px;height:1920px"><div class="hl-icon">
+  <svg data-symbol="dark" style="width:62%"></svg>
+</div></div>
+
+<!-- ============ INSTAGRAM: PUBLICACIONS 4:5 ============ -->
+<div class="board" id="post-llancament" style="width:1080px;height:1350px">
+  <div class="glow"></div>
+  <svg class="hemi" data-you="1" style="position:absolute;left:60px;top:150px;width:960px"></svg>
+  <div style="position:absolute;left:80px;top:70px" class="kicker">Orientador de vot en format de joc</div>
+  <div style="position:absolute;left:80px;right:80px;bottom:190px">
+    <p class="display" style="font-size:150px">Tens un escó.</p>
+    <p class="display it" style="font-size:150px">Fes-lo servir.</p>
+  </div>
+  <div class="foot"><span class="lock" style="font-size:52px;color:var(--guix)"><svg data-symbol="dark"></svg>Escó</span><span>Neutral · Privat · Amb fonts</span></div>
+</div>
+
+<div class="board" id="post-preu" style="width:1080px;height:1350px">
+  <div class="glow"></div>
+  <div style="position:absolute;left:80px;top:70px" class="kicker">Simulador de mandat</div>
+  <div class="card" style="position:absolute;left:170px;top:170px;width:740px;height:520px;padding:52px;transform:rotate(-4deg)">
+    <div style="display:flex;justify-content:space-between;align-items:center"><span class="kicker" style="color:var(--tinta-2);font-size:24px">Votació 02 · Habitatge</span>
+      <span style="display:inline-flex;align-items:center;gap:10px;border:2px solid rgba(14,14,13,.25);border-radius:999px;padding:6px 16px;font:700 24px var(--sans)"><span class="coin" style="background:var(--tinta);box-shadow:none"></span>Costa 12</span></div>
+    <p style="font:400 56px/1.08 var(--serif);letter-spacing:-.02em;margin-top:70px">L'Estat hauria de dedicar molts més diners a construir habitatge públic de lloguer.</p>
+    <span class="stamp" style="right:44px;bottom:44px;transform:rotate(-10deg);background:var(--tinta);color:var(--carta)">D'acord</span>
+  </div>
+  <div style="position:absolute;left:80px;right:80px;top:770px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+    <span class="chip"><span class="coin"></span>Retallar</span><span class="chip"><span class="coin"></span>Pujar impostos</span><span class="chip"><span class="coin"></span>Endeutar-se</span>
+  </div>
+  <div style="position:absolute;left:80px;right:80px;bottom:190px">
+    <p class="display" style="font-size:132px">Cada sí</p>
+    <p class="display it" style="font-size:132px">té un preu.</p>
+  </div>
+  <div class="foot"><span class="lock" style="font-size:52px;color:var(--guix)"><svg data-symbol="dark"></svg>Escó</span><span>D'on surten els diners?</span></div>
+</div>
+
+<div class="board" id="post-proposta" style="width:1080px;height:1350px">
+  <div class="glow"></div>
+  <div style="position:absolute;left:80px;top:70px" class="kicker">Tu què votaries?</div>
+  <div class="card" style="position:absolute;left:110px;top:170px;width:860px;height:740px;padding:64px;display:flex;flex-direction:column">
+    <span class="kicker" style="color:var(--tinta-2);font-size:26px">Votació 07 · Habitatge</span>
+    <p style="position:relative;z-index:1;font:400 76px/1.06 var(--serif);letter-spacing:-.02em;margin:auto 0">Els lloguers a les zones tensionades haurien de tenir un preu màxim fixat per llei.</p>
+    <span style="position:absolute;right:-30px;bottom:-110px;font:italic 400 420px/1 var(--serif);color:transparent;-webkit-text-stroke:3px #c9c6bd">07</span>
+    <span style="position:relative;font:600 28px var(--sans);text-decoration:underline;text-decoration-color:#c9c6bd;text-underline-offset:8px">↻ Per què se'n parla?</span>
+  </div>
+  <div style="position:absolute;left:80px;right:80px;top:960px;display:flex;justify-content:space-between;align-items:flex-start">
+    <div class="pad" data-v="-2"></div><div class="pad" data-v="-1"></div><div class="pad" data-v="0"></div><div class="pad" data-v="1"></div><div class="pad" data-v="2"></div>
+  </div>
+  <div class="foot"><span class="lock" style="font-size:52px;color:var(--guix)"><svg data-symbol="dark"></svg>Escó</span><span>Llisca i vota</span></div>
+</div>
+
+<div class="board" id="post-sabies" style="width:1080px;height:1350px">
+  <div class="glow"></div>
+  <svg class="hemi" style="position:absolute;left:60px;top:140px;width:960px"></svg>
+  <div style="position:absolute;left:80px;top:70px" class="kicker">Pausa al ple</div>
+  <div style="position:absolute;left:80px;right:80px;bottom:190px">
+    <p class="display it" style="font-size:120px">Sabies que…?</p>
+    <p style="font:400 54px/1.18 var(--serif);margin-top:36px;max-width:22ch">El Congrés té 350 escons. Cada província en té com a mínim dos, i Ceuta i Melilla, un cadascuna.</p>
+  </div>
+  <div class="foot"><span class="lock" style="font-size:52px;color:var(--guix)"><svg data-symbol="dark"></svg>Escó</span><span>Dades de la LOREG</span></div>
+</div>
+
+<div class="board" id="post-com-es-juga" style="width:1080px;height:1350px">
+  <div class="glow"></div>
+  <div style="position:absolute;left:80px;top:70px" class="kicker">Com es juga</div>
+  <div style="position:absolute;left:80px;right:80px;top:170px;display:grid;gap:0">
+    <div class="step"><span>01</span><div><h3>Vota</h3><p>Llisca 24 propostes: a la dreta si hi estàs d'acord, a l'esquerra si no.</p></div></div>
+    <div class="step"><span>02</span><div><h3>Paga-ho</h3><p>Cada sí que costa diners l'has de finançar: retallant, pujant impostos o endeutant-te.</p></div></div>
+    <div class="step"><span>03</span><div><h3>Descobreix</h3><p>Reparteix la teva influència i mira quines candidatures han votat com tu.</p></div></div>
+  </div>
+  <div class="foot"><span class="lock" style="font-size:52px;color:var(--guix)"><svg data-symbol="dark"></svg>Escó</span><span>Tot es calcula al teu mòbil</span></div>
+</div>
+
+<!-- ============ INSTAGRAM: HISTÒRIA 9:16 ============ -->
+<div class="board" id="historia" style="width:1080px;height:1920px">
+  <div class="glow"></div>
+  <svg class="hemi" data-you="1" style="position:absolute;left:40px;top:250px;width:1000px"></svg>
+  <div style="position:absolute;left:90px;top:300px" class="kicker"></div>
+  <div class="card" style="position:absolute;left:130px;top:760px;width:820px;height:640px;padding:60px;display:flex;flex-direction:column;transform:rotate(4deg)">
+    <span class="kicker" style="color:var(--tinta-2);font-size:24px">Votació 01 · Educació</span>
+    <p style="font:400 70px/1.06 var(--serif);letter-spacing:-.02em;margin:auto 0">L'educació de 0 a 3 anys hauria de ser gratuïta i universal.</p>
+    <span class="stamp" style="right:44px;top:100px;transform:rotate(12deg)">En desacord</span>
+    <span class="stamp" style="left:44px;top:100px;transform:rotate(-12deg);opacity:.0">D'acord</span>
+  </div>
+  <div style="position:absolute;left:90px;right:90px;top:1470px;display:flex;justify-content:space-between;font:600 34px var(--sans);color:var(--guix-2)"><span>← No</span><span>Indiferent ↑</span><span>Sí →</span></div>
+  <div style="position:absolute;left:0;right:0;top:1580px;text-align:center"><span class="lock" style="font-size:70px;color:var(--guix)"><svg data-symbol="dark"></svg>Escó</span></div>
+</div>
+
+<!-- ============ FULL DE MARCA ============ -->
+<div class="board" id="full-de-marca" style="width:2400px;height:1500px;background:var(--paper);color:var(--tinta);padding:110px">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start">
+    <span class="lock" style="font-size:180px;color:var(--tinta)"><svg data-symbol="light"></svg>Escó</span>
+    <div style="text-align:right"><p class="kicker" style="color:var(--tinta-2);font-size:30px">Guia de marca · v1</p><p style="font:italic 400 64px/1.1 var(--serif);margin-top:16px">Tens un escó. Fes-lo servir.</p></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:28px;margin-top:110px">
+    <div class="sw" style="background:#0c0c0b;color:#f2f1ec"><b>Nit</b><span>#0C0C0B</span></div>
+    <div class="sw" style="background:#2a2926;color:#f2f1ec"><b>Fum</b><span>#2A2926</span></div>
+    <div class="sw" style="background:#8e8c85;color:#0c0c0b"><b>Grafit</b><span>#8E8C85</span></div>
+    <div class="sw" style="background:#e4e2dc;color:#0c0c0b"><b>Carta 2</b><span>#E4E2DC</span></div>
+    <div class="sw" style="background:#f2f1ec;color:#0c0c0b;outline:2px solid #deddd8"><b>Guix</b><span>#F2F1EC</span></div>
+    <div class="sw" style="background:#fbfbfa;color:#0c0c0b;outline:2px solid #deddd8"><b>Paper</b><span>#FBFBFA</span></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:80px;margin-top:100px;align-items:end">
+    <div><p class="kicker" style="color:var(--tinta-2);font-size:28px">Titulars · Newsreader</p><p class="display" style="font-size:150px;margin-top:20px">Cada sí <span class="it">té un preu.</span></p></div>
+    <div><p class="kicker" style="color:var(--tinta-2);font-size:28px">Text · Schibsted Grotesk</p><p style="font:400 44px/1.4 var(--sans);margin-top:20px">Vota 24 propostes com si fossis al Congrés, amb un pressupost limitat. Neutral, privat i amb fonts.</p></div>
+  </div>
+</div>
+
+<style>
+.hl { display: grid; place-items: center; }
+.hl-icon { width: 640px; height: 640px; border-radius: 50%; background: radial-gradient(circle at 50% 35%, #2a2926, #141413 70%); display: grid; place-items: center; color: var(--guix); box-shadow: inset 0 0 0 4px #2a2926; }
+.hl-icon > svg { width: 52%; }
+.pad { display: grid; justify-items: center; gap: 14px; width: 170px; font: 500 22px/1.2 var(--sans); color: var(--guix-2); text-align: center; }
+.pad i { display: grid; place-items: center; border-radius: 50%; border: 3px solid #57554f; background: var(--fum); color: var(--guix); }
+.step { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 46px 0; border-top: 2px solid #2a2926; }
+.step span { font: 300 96px/1 var(--serif); color: var(--grafit); }
+.step h3 { font: 400 84px/1 var(--serif); letter-spacing: -.02em; }
+.step p { font: 400 34px/1.4 var(--sans); color: var(--guix-2); margin-top: 16px; }
+.sw { height: 420px; border-radius: 28px; padding: 32px; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; }
+.sw b { font: 600 40px var(--sans); }
+.sw span { font: 500 30px ui-monospace, Menlo, monospace; }
+</style>
+
+<script>
+// Símbol: arc de 7 escons, el del mig encès (el teu). Mateixa geometria que brand/logo/*.svg.
+function symbol(on, dim) {
+  let s = "";
+  for (let k = 0; k < 7; k++) {
+    const a = Math.PI * (1 - k / 6), x = 60 + 46 * Math.cos(a), y = 66 - 46 * Math.sin(a), r = 90 - (a * 180) / Math.PI;
+    s += k === 3
+      ? `<rect x="-10.5" y="-9" width="21" height="18" rx="5.5" fill="${on}" transform="translate(${x} ${y}) rotate(${r})"/>`
+      : `<rect x="-8" y="-7" width="16" height="14" rx="4.5" fill="${dim}" transform="translate(${x} ${y}) rotate(${r})"/>`;
+  }
+  return s;
+}
+document.querySelectorAll("svg[data-symbol]").forEach((el) => {
+  el.setAttribute("viewBox", "0 0 120 84");
+  el.innerHTML = el.dataset.symbol === "light" ? symbol("#0e0e0d", "#b9b7af") : symbol("#f2f1ec", "#57554f");
+});
+
+// Hemicicle de 350 escons (mateix càlcul que lib/hemicycle.ts).
+function hemicycle(n = 350, rows = 10, inner = 0.42) {
+  const radii = Array.from({ length: rows }, (_, i) => inner + ((1 - inner) * i) / (rows - 1));
+  const total = radii.reduce((a, b) => a + b, 0);
+  const counts = radii.map((r) => Math.floor((n * r) / total));
+  for (let i = rows - 1, rest = n - counts.reduce((a, b) => a + b, 0); rest > 0; i--, rest--) counts[i]++;
+  const seats = [];
+  radii.forEach((r, row) => { const k = counts[row]; for (let j = 0; j < k; j++) { const a = Math.PI * (1 - j / (k - 1)); seats.push({ x: r * Math.cos(a), y: r * Math.sin(a), row, a }); } });
+  return seats;
+}
+const SEATS = hemicycle();
+// el teu escó: el seient central d'una fila del mig
+const you = SEATS.map((s, i) => [s, i]).filter(([s]) => Math.abs(s.a - Math.PI / 2) < 1e-6).sort((a, b) => Math.abs(a[0].row - 6) - Math.abs(b[0].row - 6))[0][1];
+document.querySelectorAll("svg.hemi").forEach((el) => {
+  el.setAttribute("viewBox", "-104 -103 208 107");
+  let s = "";
+  SEATS.forEach((p, i) => {
+    const isYou = el.dataset.you && i === you;
+    s += `<circle cx="${(p.x * 100).toFixed(2)}" cy="${(-p.y * 100).toFixed(2)}" r="${isYou ? 3.1 : 2.3}" fill="#f2f1ec" opacity="${isYou ? 1 : (0.12 + p.row * 0.03).toFixed(2)}"/>`;
+  });
+  if (el.dataset.you) { const p = SEATS[you]; s = `<circle cx="${p.x * 100}" cy="${-p.y * 100}" r="11" fill="#f2f1ec" opacity=".12"/>` + s; }
+  el.innerHTML = s;
+});
+
+// Botonera de vot de la carta.
+const LABELS = { "-2": "Molt en desacord", "-1": "En desacord", "0": "Neutral", "1": "D'acord", "2": "Molt d'acord" };
+document.querySelectorAll(".pad").forEach((el) => {
+  const v = Number(el.dataset.v), size = Math.abs(v) === 2 ? 128 : Math.abs(v) === 1 ? 112 : 96;
+  const d = Math.abs(v) === 2 ? "M5 6l6 6-6 6M12 6l6 6-6 6" : "M9 6l6 6-6 6";
+  const glyph = v === 0 ? `<svg viewBox="0 0 24 24" width="26"><circle cx="12" cy="12" r="6" fill="currentColor"/></svg>` : `<svg viewBox="0 0 24 24" width="52" style="${v < 0 ? "transform:scaleX(-1)" : ""}"><path d="${d}" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  el.innerHTML = `<i style="width:${size}px;height:${size}px">${glyph}</i><span>${LABELS[v]}</span>`;
+});
+</script>
+</body>
+</html>

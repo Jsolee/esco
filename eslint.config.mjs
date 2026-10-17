@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Material de marca i vídeo de promoció: no formen part de l'app.
+    "brand/**",
+    "brag-output/**",
   ]),
 ]);
 

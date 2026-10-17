@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# vídeo de promoció: intermedis, còpies de llibreries i àudio (llicència per verificar); vegeu brag-output/brag-plan.md
+/brag-output/work/
+/brag-output/brag.mp4
+/brag-output/composition/.hyperframes/
+/brag-output/composition/vendor/
+/brag-output/composition/audio/
+/brag-output/composition/fonts/
+/brag-output/composition/AGENTS.md
+/brag-output/composition/CLAUDE.md
