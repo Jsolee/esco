@@ -285,9 +285,9 @@
   },
   "shared": {
     "title": "Un resultat d'Escó",
-    "lead": "Algú ha votat {n} propostes. Així ha quedat el seu escó:",
+    "lead": "Algú ha jugat a Escó. Així ha quedat el seu escó:",
     "cta": "Fes el teu test",
-    "note": "Aquest enllaç només conté percentatges arrodonits. Cap resposta."
+    "note": "Aquest enllaç només conté percentatges arrodonits, cap resposta. Les xifres surten de l'enllaç: Escó no pot comprovar que siguin d'una partida real."
   },
   "footer": {
     "text": "Escó és una eina orientativa i neutral. Tot es calcula al teu dispositiu.",

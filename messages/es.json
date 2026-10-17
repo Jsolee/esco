@@ -285,9 +285,9 @@
   },
   "shared": {
     "title": "Un resultado de Escó",
-    "lead": "Alguien ha votado {n} propuestas. Así ha quedado su escaño:",
+    "lead": "Alguien ha jugado a Escó. Así ha quedado su escaño:",
     "cta": "Haz tu test",
-    "note": "Este enlace solo contiene porcentajes redondeados. Ninguna respuesta."
+    "note": "Este enlace solo contiene porcentajes redondeados, ninguna respuesta. Las cifras vienen del enlace: Escó no puede comprobar que sean de una partida real."
   },
   "footer": {
     "text": "Escó es una herramienta orientativa y neutral. Todo se calcula en tu dispositivo.",

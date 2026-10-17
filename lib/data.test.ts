@@ -42,6 +42,21 @@ describe("dades del repo", () => {
     expect(() => loadData(noSources)).toThrow(/necessita almenys una font/);
   });
 
+  it("fallen amb candidatures o fonts repetides, o una elecció oberta sense afirmacions", () => {
+    const dupC = clone();
+    (dupC.elections[0].candidacies as unknown[]).push(structuredClone(dupC.elections[0].candidacies[0]));
+    expect(() => loadData(dupC)).toThrow(/candidatura repetida/);
+    const dupS = clone();
+    const c = dupS.elections[0].candidacies[0] as { sources: unknown[] };
+    c.sources.push(structuredClone(c.sources[0]));
+    expect(() => loadData(dupS)).toThrow(/fonts amb el mateix id/);
+    const empty = clone();
+    (empty.elections[0] as { questions: unknown[] }).questions = [];
+    for (const c of empty.elections[0].candidacies) (c as { positions: unknown }).positions = {};
+    (empty.elections[0].election as { funding?: unknown }).funding = [];
+    expect(() => loadData(empty)).toThrow(/almenys una afirmació/);
+  });
+
   it("fallen si es cita una font inexistent", () => {
     const raw = clone();
     const p = raw.elections[0].candidacies[0].positions as Record<string, { source: string }>;
@@ -82,6 +97,8 @@ describe("enllaç compartit", () => {
     expect(decodeShare("e~a.50~a.40", known)).toBeNull();
     expect(decodeShare("x~a.50", known)).toBeNull();
     expect(decodeShare("e~<script>.1", known)).toBeNull();
+    expect(decodeShare("e~b.40~a.60", known)).toBeNull(); // desordenat
+    expect(decodeShare("e~a.60~b.60", known)).not.toBeNull(); // empat
   });
 });
 

@@ -2,7 +2,7 @@
 
 import { useEffect, useImperativeHandle, useRef, useState } from "react";
 import type { Achievement } from "@/lib/achievements";
-import { Draggable, gsap, sfx, SplitText, useGSAP, useReducedMotion } from "@/lib/fx";
+import { Draggable, gsap, reducedMotion, sfx, SplitText, useGSAP, useReducedMotion } from "@/lib/fx";
 import type { Answers } from "@/lib/match";
 import type { Answer } from "@/lib/schema";
 import { format, pad2 } from "@/lib/text";
@@ -110,6 +110,7 @@ export function Deck({
 
   useGSAP(
     () => {
+      if (reducedMotion()) return;
       gsap.from(".pad-btn", { y: 30, opacity: 0, stagger: 0.05, duration: 0.5, ease: "back.out(2)", delay: 0.2 });
     },
     { scope: pad },

@@ -264,6 +264,8 @@ export default function Chamber({ handle, mode, from, lit, next, colors, you, yo
     let shake = 0;
     let ripple = -1;
     const pointer = { x: 0, y: 0, sx: 0, sy: 0 };
+    // Amb moviment reduït l'escena és quieta: només es redibuixa uns quants fotogrames després de cada canvi.
+    let wake = 2;
 
     function setTargets() {
       const { lit: l, next: nx, colors: c } = props.current;
@@ -278,6 +280,7 @@ export default function Chamber({ handle, mode, from, lit, next, colors, you, yo
         tColor.set(col, i * 3);
         aNext[i] = 0;
       }
+      wake = 2;
       nx?.forEach((i) => (aNext[i] = 1));
       if (props.current.you !== undefined) aNext[props.current.you] = 1.4;
       attrs.aNext.needsUpdate = true;
@@ -290,6 +293,7 @@ export default function Chamber({ handle, mode, from, lit, next, colors, you, yo
 
     function setMode(m: ChamberMode) {
       const t = RIG[m];
+      wake = 2;
       seatMat.uniforms.uFlicker.value = m === "count" ? 1 : m === "idle" ? 0.12 : 0;
       gsap.to(rig, {
         px: t.p[0], py: t.p[1], pz: t.p[2], lx: t.l[0], ly: t.l[1], lz: t.l[2],
@@ -302,6 +306,7 @@ export default function Chamber({ handle, mode, from, lit, next, colors, you, yo
       setTargets,
       setMode,
       pulse(list) {
+        if (props.current.reduced) return; // sense salt d'escons: l'encesa ja marca el vot
         const now = performance.now();
         list.forEach((i, k) => (popAt[i] = now + k * 26));
         if (!props.current.reduced) ripple = 0;
@@ -341,6 +346,7 @@ export default function Chamber({ handle, mode, from, lit, next, colors, you, yo
       if (portrait) camera.setViewOffset(w, h, 0, h * 0.2, w, h);
       else camera.clearViewOffset();
       camera.updateProjectionMatrix();
+      wake = 2;
     };
     const ro = new ResizeObserver(resize);
     ro.observe(el);
@@ -366,20 +372,39 @@ export default function Chamber({ handle, mode, from, lit, next, colors, you, yo
       const dt = Math.min((now - last) / 1000, 0.05);
       last = now;
       const still = props.current.reduced;
+      if (still && ready && wake <= 0) return;
+      wake--;
       const t = still ? 0 : now / 1000;
       seatMat.uniforms.uTime.value = t;
 
+      // Persegueix els objectius i, quan s'hi arriba, s'hi enganxa: així només es pugen atributs si alguna cosa es mou.
+      const ease = (a: number, b: number, k: number) => (Math.abs(b - a) < 1e-3 ? b : a + (b - a) * k);
+      let moving = false;
       for (let i = 0; i < N; i++) {
         if (now >= startAt[i]) {
-          aLit[i] += (tLit[i] - aLit[i]) * (still ? 1 : 0.14);
-          for (let c = 0; c < 3; c++) aColor[i * 3 + c] += (tColor[i * 3 + c] - aColor[i * 3 + c]) * (still ? 1 : 0.12);
+          if (aLit[i] !== tLit[i]) {
+            aLit[i] = ease(aLit[i], tLit[i], still ? 1 : 0.14);
+            moving = true;
+          }
+          for (let c = 0; c < 3; c++) {
+            const j = i * 3 + c;
+            if (aColor[j] !== tColor[j]) {
+              aColor[j] = ease(aColor[j], tColor[j], still ? 1 : 0.12);
+              moving = true;
+            }
+          }
         }
         if (now >= popAt[i]) {
           aPop[i] = 1;
           popAt[i] = Infinity;
-        } else aPop[i] *= 0.9;
+          moving = true;
+        } else if (aPop[i] !== 0) {
+          aPop[i] = aPop[i] < 1e-3 ? 0 : aPop[i] * 0.9;
+          moving = true;
+        }
       }
-      attrs.aLit.needsUpdate = attrs.aColor.needsUpdate = attrs.aPop.needsUpdate = true;
+      if (moving) attrs.aLit.needsUpdate = attrs.aColor.needsUpdate = attrs.aPop.needsUpdate = true;
+      if (moving && still) wake = Math.max(wake, 1);
 
       if (ripple >= 0) {
         ripple += dt * 9;

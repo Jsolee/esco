@@ -14,7 +14,8 @@ export function decodeShare(code: string, known: (electionId: string) => Set<str
     const m = /^([a-z0-9-]+)\.(\d{1,3})$/.exec(part);
     if (!m || !ids.has(m[1]) || rows.some((r) => r.id === m[1])) return null;
     const affinity = Number(m[2]);
-    if (affinity > 100) return null;
+    // El resultat sempre surt ordenat de més a menys: un altre ordre és un enllaç fet a mà.
+    if (affinity > 100 || affinity > (rows.at(-1)?.affinity ?? 100)) return null;
     rows.push({ id: m[1], affinity });
   }
   return { electionId, rows };

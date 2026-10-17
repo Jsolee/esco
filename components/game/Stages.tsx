@@ -14,6 +14,7 @@ export function SoundToggle({ className = "", compact = false }: { className?: s
     <button
       type="button"
       aria-pressed={on}
+      aria-label={m.game.sound}
       onClick={toggle}
       className={`inline-flex min-h-11 items-center gap-2 rounded-full border border-chalk-3/50 px-3 text-xs font-semibold uppercase tracking-wider text-chalk-2 hover:text-chalk aria-pressed:border-chalk aria-pressed:text-chalk ${className}`}
     >

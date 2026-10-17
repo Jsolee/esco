@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getMessages, isLocale } from "@/lib/i18n";
 import { resolveShare } from "@/lib/shared";
-import { format, tx } from "@/lib/text";
+import { tx } from "@/lib/text";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/r/[code]">): Promise<Metadata> {
   const { locale, code } = await params;
@@ -29,13 +29,17 @@ export default async function SharedPage({ params }: PageProps<"/[locale]/r/[cod
       <p className="kicker text-ink-2">
         {m.shared.title} · {tx(s.election.name, locale)}
       </p>
-      <h1 className="display mt-4 text-[clamp(2.6rem,1.6rem+4vw,4.6rem)]">{format(m.shared.lead, { n: s.questions })}</h1>
+      <h1 className="display mt-4 text-[clamp(2.6rem,1.6rem+4vw,4.6rem)]">{m.shared.lead}</h1>
       <ol className="mt-10 border-t-2 border-ink">
-        {s.rows.map((r, i) => (
+        {s.rows.map((r) => (
           <li key={r.id} className="grid gap-2 border-b border-rule py-4">
             <p className="flex items-baseline justify-between gap-4">
               <span className="text-lg font-semibold">
-                <span className="num mr-3 font-serif font-light text-ink-3">{i + 1}</span>
+                <span className="num mr-3 font-serif font-light text-ink-3">
+                  {/* els empats comparteixen posició, com a la pantalla de resultats */}
+                  {s.rows.filter((x) => x.affinity === r.affinity).length > 1 && "="}
+                  {s.rows.findIndex((x) => x.affinity === r.affinity) + 1}
+                </span>
                 {r.name}
               </span>
               <span className="num font-serif text-3xl font-light">{r.affinity}%</span>

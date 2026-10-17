@@ -125,7 +125,11 @@ export function Game({ data }: { data: GameData }) {
         saved.v === 3
           ? (saved as State)
           : { read: [], ach: [], ...old, v: 3, alloc: {}, tokens: Object.fromEntries((old.priorities ?? []).map((t) => [t, 2])) };
-      return st.phase === "counting" ? { ...st, phase: "results" } : st;
+      // Si les afirmacions han canviat des que es va desar (un desplegament nou), la partida ja no quadra: es comença de nou.
+      const ids = new Set(data.questions.map((q) => q.id));
+      const stale =
+        Object.keys(st.answers).some((id) => !ids.has(id)) || st.index >= buildItems(data.questions, data.facts, st.seed).length;
+      if (!stale) return st.phase === "counting" ? { ...st, phase: "results" } : st;
     }
     const p = readProvince();
     return fresh(p && data.provinces.some((x) => x.id === p) ? p : null);
@@ -159,7 +163,7 @@ export function Game({ data }: { data: GameData }) {
     const onPop = () => {
       popped.current = true;
       const t = location.hash.slice(1);
-      const v = /^v(\d+)$/.exec(t);
+      const v = /^v([1-9]\d*)$/.exec(t);
       if (v && Number(v[1]) <= items.length) dispatch({ type: "goto", index: Number(v[1]) - 1 });
       else if (t === "inici") dispatch({ type: "phase", phase: "intro" });
       else if (t === "prioritats") dispatch({ type: "phase", phase: "priorities" });
@@ -208,7 +212,8 @@ export function Game({ data }: { data: GameData }) {
 
   function vote(value: Answer | null, from?: Record<string, number>) {
     if (item?.kind !== "q") return;
-    setLive(value === null ? m.game.live.skipped : format(m.game.live.voted, { v: m.game.votes[String(value) as "0"] }));
+    // Amb el número, dos vots iguals seguits no deixen el text igual i el lector de pantalla els torna a anunciar.
+    setLive(`${item.n}. ${value === null ? m.game.live.skipped : format(m.game.live.voted, { v: m.game.votes[String(value) as "0"] })}`);
     const answers = { ...s.answers, [item.q.id]: value };
     dispatch({ type: "vote", id: item.q.id, value, total, from });
     if (value !== null) chamber.current?.pulse(batches[item.n - 1]);
@@ -290,7 +295,7 @@ export function Game({ data }: { data: GameData }) {
             )}
             <SoundToggle compact />
             {data.fictional && (
-              <span className="kicker rounded-full border border-dashed border-chalk-3 px-2.5 py-1 text-[0.62rem] text-chalk-2">{m.start.fictional}</span>
+              <span className="kicker rounded-full border border-dashed border-chalk-3 px-2.5 py-1 text-[0.6875rem] text-chalk-2">{m.start.fictional}</span>
             )}
           </div>
         </div>

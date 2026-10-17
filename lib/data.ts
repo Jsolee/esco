@@ -50,10 +50,15 @@ export function loadData(raw: unknown = RAW) {
 
     // Una elecció oberta s'ha de poder jugar: candidatures oficials, amb fonts i posició a cada afirmació.
     const open = election.status === "open";
+    if (open && questions.length === 0) errors.push(`${base}: una elecció oberta necessita almenys una afirmació`);
     const namesByCirc = new Map<string, string>();
+    const cIds = new Set<string>();
     for (const c of candidacies) {
       const where = `${base}/candidacies/${c.id}.json`;
+      if (cIds.has(c.id)) errors.push(`${where}: candidatura repetida «${c.id}»`);
+      cIds.add(c.id);
       const sourceIds = new Set(c.sources.map((s) => s.id));
+      if (sourceIds.size < c.sources.length) errors.push(`${where}: hi ha fonts amb el mateix id`);
       if (open && c.provisional) errors.push(`${where}: una elecció oberta no pot tenir candidatures provisionals`);
       if (open && c.sources.length === 0) errors.push(`${where}: una elecció oberta necessita almenys una font`);
       if (open)

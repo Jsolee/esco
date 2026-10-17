@@ -11,7 +11,6 @@ export function resolveShare(code: string) {
   const e = getElection(decoded.electionId)!;
   return {
     election: e.election,
-    questions: e.questions.length,
     rows: decoded.rows.map((r) => {
       const c = e.candidacies.find((x) => x.id === r.id)!;
       return { ...r, name: c.name, color: c.color };

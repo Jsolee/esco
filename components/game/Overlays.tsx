@@ -101,6 +101,7 @@ function Toast({ id, onDone }: { id: Achievement; onDone: () => void }) {
   useGSAP(
     () => {
       sfx.chime();
+      if (reducedMotion()) return void gsap.delayedCall(2.8, onDone);
       gsap
         .timeline({ onComplete: onDone })
         .from(root.current, { y: -40, opacity: 0, scale: 0.9, duration: 0.5, ease: "back.out(2)" })
@@ -114,7 +115,7 @@ function Toast({ id, onDone }: { id: Achievement; onDone: () => void }) {
     <div ref={root} className="flex items-center gap-3 rounded-2xl border border-chalk-3/50 bg-stage-2/95 px-4 py-3 text-chalk shadow-2xl backdrop-blur">
       <Medal className="toast-medal size-8 shrink-0 text-chalk" />
       <div>
-        <p className="kicker text-[0.65rem] text-chalk-2">{m.game.achTitle}</p>
+        <p className="kicker text-[0.6875rem] text-chalk-2">{m.game.achTitle}</p>
         <p className="font-serif text-lg leading-tight">{a.t}</p>
         <p className="text-xs text-chalk-2">{a.d}</p>
       </div>
@@ -196,7 +197,7 @@ export function RoundComplete({
       <dl className="mt-5 grid grid-cols-4 gap-2">
         {(Object.keys(counts) as (keyof typeof counts)[]).map((k) => (
           <div key={k} className="rc-stat grid gap-1 rounded-xl bg-stage-3/60 p-2.5">
-            <dt className="text-[0.62rem] uppercase tracking-wider text-chalk-2">{m.game.pause.labels[k]}</dt>
+            <dt className="text-[0.6875rem] uppercase tracking-wider text-chalk-2">{m.game.pause.labels[k]}</dt>
             <dd className="rc-num num font-serif text-3xl leading-none" data-v={counts[k]}>
               {counts[k]}
             </dd>
@@ -209,7 +210,7 @@ export function RoundComplete({
       </div>
       {ach.length > 0 && (
         <div className="mt-auto pt-4">
-          <p className="kicker text-[0.65rem] text-chalk-2">{m.game.achSoFar}</p>
+          <p className="kicker text-[0.6875rem] text-chalk-2">{m.game.achSoFar}</p>
           <ul className="mt-2 flex flex-wrap gap-2">
             {ach.map((a) => (
               <li key={a} className="rc-ach flex items-center gap-1.5 rounded-full border border-chalk-3/50 px-2.5 py-1 text-xs">
