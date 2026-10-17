@@ -200,7 +200,7 @@
       "debt": "Endeudarse",
       "left": "quedan {n}",
       "empty": "Ya no queda margen en ninguna partida. Sin de dónde sacarlo, la propuesta no sale adelante.",
-      "no": "Entonces no la voto a favor",
+      "no": "Entonces la dejo sin votar",
       "cancel": "Vuelve a la carta",
       "reset": "Vuelve a elegir",
       "take": "Saca {n} puntos de: {name}"

@@ -17,7 +17,7 @@ const VALUES: Answer[] = [-2, -1, 0, 1, 2];
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 
 export type Outcome = Answer | null | "go"; // null = saltada, "go" = continuar després d'una ronda
-type CardHandle = { fling: (o: Outcome) => void };
+type CardHandle = { fling: (o: Outcome) => void; busy?: () => boolean; flipped?: () => boolean };
 
 const previewOf = (dx: number, dy: number): Answer | undefined =>
   dx > STRONG ? 2 : dx > THRESH ? 1 : dx < -STRONG ? -2 : dx < -THRESH ? -1 : dy < -THRESH ? 0 : undefined;
@@ -76,6 +76,10 @@ export function Deck({
   const [hint, setHint] = useState<Answer | undefined>();
   const keyOf = (it: Item) => (it.kind === "q" ? it.q.id : `pause-${it.n}`);
   const prev = item.kind === "q" ? answers[item.q.id] : undefined;
+  // Desfer mentre la carta vola deixaria la seva animació votant sobre la carta que torna.
+  const undo = () => {
+    if (canUndo && !card.current?.busy?.()) onUndo();
+  };
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -87,11 +91,12 @@ export function Deck({
       if (!c) return;
       const k = e.key.toLowerCase();
       if (k === "z" || e.key === "Backspace") {
-        if (canUndo) onUndo();
+        if (canUndo && !c.busy?.()) onUndo();
       } else if (item.kind === "pause") {
         if (!["enter", " ", "arrowright", "arrowleft", "arrowup"].includes(k)) return;
         c.fling("go");
-      } else if (k >= "1" && k <= "5" && k.length === 1) c.fling(VALUES[Number(k) - 1]);
+      } else if (c.flipped?.()) return; // amb el context a la vista, les fletxes desplacen el text, no voten
+      else if (k >= "1" && k <= "5" && k.length === 1) c.fling(VALUES[Number(k) - 1]);
       else if (k === "arrowright") c.fling(e.shiftKey ? 2 : 1);
       else if (k === "arrowleft") c.fling(e.shiftKey ? -2 : -1);
       else if (k === "arrowup") c.fling(0);
@@ -212,7 +217,7 @@ export function Deck({
       <div className="mt-3 flex w-[min(92vw,420px)] items-center justify-between gap-4 pb-[max(14px,env(safe-area-inset-bottom))]">
         <button
           type="button"
-          onClick={onUndo}
+          onClick={undo}
           disabled={!canUndo}
           className="inline-flex min-h-11 items-center gap-2 px-2 text-sm font-medium text-chalk-2 hover:text-chalk disabled:opacity-30"
         >
@@ -400,7 +405,7 @@ function SwipeCard({
       if (need > 0)
         return void onFund(need).then((r) => {
           if (r === "cancel") return reset();
-          if (r === "no") return (busy.current = false), fling(0);
+          if (r === "no") return (busy.current = false), fling(null);
           onImpact(o as Answer);
           onDone(o, r);
         });
@@ -443,7 +448,7 @@ function SwipeCard({
             tl.kill();
             gsap.to(q(".stamp-yes"), { opacity: 0, duration: 0.15 });
             busy.current = false;
-            return fling(0);
+            return fling(null); // sense votar: «indiferent» comptaria una posició que no has triat
           }
           from.current = r;
           tl.resume();
@@ -452,7 +457,7 @@ function SwipeCard({
     tl.to(el, { x: d * (innerWidth + 320), y: "+=90", rotation: d * 40, duration: 0.5, ease: "power2.in", onStart: sfx.whoosh }, "+=0.12");
   }
 
-  useImperativeHandle(ref, () => ({ fling }));
+  useImperativeHandle(ref, () => ({ fling, busy: () => busy.current, flipped: () => flipped }));
 
   function flip(to: boolean) {
     setFlipped(to);

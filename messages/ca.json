@@ -200,7 +200,7 @@
       "debt": "Endeutar-se",
       "left": "queden {n}",
       "empty": "Ja no queda marge enlloc. Sense d'on treure-ho, la proposta no tira endavant.",
-      "no": "Llavors no hi voto a favor",
+      "no": "Llavors la deixo sense votar",
       "cancel": "Torna a la carta",
       "reset": "Torna a triar",
       "take": "Treu {n} punts de: {name}"

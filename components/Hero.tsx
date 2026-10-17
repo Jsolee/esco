@@ -38,11 +38,12 @@ export function Hero({
       if (reducedMotion()) return;
       const split = SplitText.create(".hero-title", { type: "words,chars", mask: "chars" });
       gsap
-        .timeline({ delay: 0.15 })
+        // La màscara retalla els accents de les majúscules («Ú»): es desfà en acabar.
+        .timeline({ delay: 0.15, onComplete: () => split.revert() })
         .from(split.chars, { yPercent: 118, rotation: 6, stagger: 0.028, duration: 1.1, ease: "expo.out" })
         .from(".hero-fade", { y: 28, opacity: 0, stagger: 0.09, duration: 0.8, ease: "power3.out" }, "-=0.7");
-      // En baixar, el títol s'allunya i el ple s'enfosqueix.
-      gsap.to(".hero-copy", {
+      // En baixar, el títol s'allunya i el ple s'enfosqueix; el formulari d'inici no, perquè no sembli desactivat.
+      gsap.to(".hero-recede", {
         yPercent: -12,
         opacity: 0.2,
         ease: "none",
@@ -58,11 +59,13 @@ export function Hero({
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(110%_75%_at_50%_10%,transparent_40%,rgba(12,12,11,0.9)_100%)]" />
       <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-stage via-stage/85 to-transparent" />
       <div className="hero-copy relative z-10 mt-auto max-w-3xl px-6 pb-8 pt-[38svh] sm:px-10 sm:pb-12 lg:px-14">
-        <p className="hero-fade kicker text-chalk-2">{kicker}</p>
-        <h1 className="hero-title display mt-5 text-[clamp(3.4rem,1.9rem+6.4vw,7.6rem)]">
-          {titleA} <em className="italic">{titleB}</em>
-        </h1>
-        <p className="hero-fade mt-6 max-w-[36ch] text-xl leading-snug text-chalk-2">{lead}</p>
+        <div className="hero-recede">
+          <p className="hero-fade kicker text-chalk-2">{kicker}</p>
+          <h1 className="hero-title display mt-5 text-[clamp(3.4rem,1.9rem+6.4vw,7.6rem)]">
+            {titleA} <em className="italic">{titleB}</em>
+          </h1>
+          <p className="hero-fade mt-6 max-w-[36ch] text-xl leading-snug text-chalk-2">{lead}</p>
+        </div>
         <div className="hero-fade">
           <Start provinces={provinces} communities={communities} elections={elections} />
         </div>
