@@ -9,6 +9,281 @@
     "20",
     "48"
   ],
-  "sources": [],
-  "positions": {}
+  "sources": [
+    {
+      "id": "congreso-20261002-hab-renovacio",
+      "title": "Congreso, 2/10/2026. Votó no: convalidación del Real Decreto-ley 27/2026 (renovación de alquileres)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF",
+      "date": "2026-10-02",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260519-hab-desallotjament",
+      "title": "Congreso, 19/5/2026. Se abstuvo: toma en consideración de la ley del PP contra la ocupación ilegal",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf",
+      "date": "2026-05-19",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260421-hab-zones-tensionades",
+      "title": "Congreso, 21/4/2026. Se abstuvo: toma en consideración de la ley del PP que deroga las zonas de mercado tensionado",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf",
+      "date": "2026-04-21",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250910-tre-jornada",
+      "title": "Congreso, 10/9/2025. Votó no: enmiendas a la totalidad (devolución) al proyecto de ley de reducción de la jornada a 37,5 horas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf",
+      "date": "2025-09-10",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250917-tre-acomiadament",
+      "title": "Congreso, 17/9/2025. Votó sí: proposición no de ley de Sumar por un despido «restaurativo y disuasorio»",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf",
+      "date": "2025-09-17",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20251113-fis-irpf-inflacio",
+      "title": "Congreso, 13/11/2025. Se abstuvo: moción del PP que pide deflactar al menos tres tramos del IRPF",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf",
+      "date": "2025-11-13",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260930-fis-energetiques",
+      "title": "Congreso, 30/9/2026. Votó no: moción de Podemos, punto 1: impuesto permanente a energéticas y petroleras",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf",
+      "date": "2026-09-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250617-ene-nuclear",
+      "title": "Congreso, 17/6/2025. Votó no: toma en consideración de la ley del PP para mantener la energía nuclear",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf",
+      "date": "2025-06-17",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260930-ene-empresa-publica",
+      "title": "Congreso, 30/9/2026. Votó no: moción de Podemos, punto 3: empresa pública de energía",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf",
+      "date": "2026-09-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20240423-ene-transvasaments",
+      "title": "Congreso, 23/4/2024. Votó no: moción de Vox, punto 2: Plan Nacional del Agua con interconexión de cuencas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf",
+      "date": "2024-04-23",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260430-san-avortament",
+      "title": "Congreso, 30/4/2026. Votó no: enmiendas a la totalidad (devolución) a la reforma del artículo 43 de la Constitución (aborto)",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf",
+      "date": "2026-04-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250923-ter-immigracio",
+      "title": "Congreso, 23/9/2025. Votó sí: toma en consideración de la ley de delegación en Cataluña de competencias de inmigración",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf",
+      "date": "2025-09-23",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20240530-ter-amnistia",
+      "title": "Congreso, 30/5/2024. Votó sí: votación final de la Ley de Amnistía (levantamiento del veto del Senado)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF",
+      "date": "2024-05-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260212-dre-multireincidencia",
+      "title": "Congreso, 12/2/2026. Votó sí: votación final de la ley orgánica de multirreincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf",
+      "date": "2026-02-12",
+      "lang": "es"
+    },
+    {
+      "id": "programa-2023",
+      "title": "Euskadiren ahotsa. Con voz propia. Programa electoral EAJ-PNV, elecciones generales 23-J 2023",
+      "url": "https://www.eaj-pnv.eus/adjuntos/pnvDocumentos/20945_archivo.pdf",
+      "date": "2023-07-07",
+      "lang": "es"
+    },
+    {
+      "id": "orain-smi-2025-11-15",
+      "title": "Orain/EITB: El PNV pide a sindicatos y patronal dejar las líneas rojas para negociar un SMI y EH Bildu denuncia un veto del debate",
+      "url": "https://orain.eus/es/politica/2025/11/15/pnv-pide-sindicatos-patronal-dejar-las-lineas-rojas-negociar-un-smi-eh-bildu-denuncia-un-veto-del-debate/",
+      "date": "2025-11-15",
+      "lang": "es"
+    },
+    {
+      "id": "ondavasca-concertacion-2022",
+      "title": "Onda Vasca: Bildarratz responde al órdago de Podemos y avala la concertación de las aulas de dos años",
+      "url": "https://www.ondavasca.com/el-gobierno-vasco-ofrece-a-ppcs-mas-financiacion-para-la-concertada-y-agrieta-el-pacto-educativo/",
+      "date": "2022-11-17",
+      "lang": "es"
+    },
+    {
+      "id": "eldiario-decreto-universidades-2025",
+      "title": "elDiario.es: El PP rechaza un decreto anti chiringuitos universitarios que apoyan rectores, sindicatos y estudiantes",
+      "url": "https://www.eldiario.es/sociedad/pp-rechaza-decreto-anti-chiringuitos-universitarios-apoyan-rectores-sindicatos-estudiantes_1_12295535.html",
+      "date": "2025-05-13",
+      "lang": "es"
+    },
+    {
+      "id": "redaccion-medica-muface-2021",
+      "title": "Redacción Médica: Muface cuenta con el respaldo de la mayoría del Congreso de los Diputados",
+      "url": "https://www.redaccionmedica.com/politica/20210928/muface-cuenta-con-el-respaldo-de-la-mayoria-del-congreso-los-diputados/167018_0.html",
+      "date": "2021-09-28",
+      "lang": "es"
+    },
+    {
+      "id": "deia-referendum-2022",
+      "title": "Deia: El PNV ve \"positiva\" la propuesta de ERC de nuevo referéndum pactado",
+      "url": "https://www.deia.eus/politica/2022/12/13/pnv-ve-positiva-propuesta-erc-6292646.html",
+      "date": "2022-12-13",
+      "lang": "es"
+    },
+    {
+      "id": "deia-regularizacion-2026",
+      "title": "Deia: El PNV recrimina a Sánchez que no haya una mayor vinculación entre la regularización de migrantes y el trabajo",
+      "url": "https://www.deia.eus/politica/2026/02/27/pnv-recrimina-sanchez-haya-mayor-10755023.html",
+      "date": "2026-02-27",
+      "lang": "es"
+    }
+  ],
+  "positions": {
+    "hab-renovacio": {
+      "value": -2,
+      "source": "congreso-20261002-hab-renovacio",
+      "page": 63,
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF#page=63"
+    },
+    "hab-desallotjament": {
+      "value": 0,
+      "source": "congreso-20260519-hab-desallotjament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf"
+    },
+    "hab-zones-tensionades": {
+      "value": 0,
+      "source": "congreso-20260421-hab-zones-tensionades",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf"
+    },
+    "tre-jornada": {
+      "value": 1,
+      "source": "congreso-20250910-tre-jornada",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf"
+    },
+    "tre-acomiadament": {
+      "value": 1,
+      "source": "congreso-20250917-tre-acomiadament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf"
+    },
+    "tre-smi-autonomic": {
+      "value": 0,
+      "source": "orain-smi-2025-11-15",
+      "url": "https://orain.eus/es/politica/2025/11/15/pnv-pide-sindicatos-patronal-dejar-las-lineas-rojas-negociar-un-smi-eh-bildu-denuncia-un-veto-del-debate/",
+      "quote": "\"más pronto que tarde Euskadi va a tener un SMI de convenio acordado aquí\", que será \"dado a nuestra realidad socioeconómica\""
+    },
+    "fis-irpf-inflacio": {
+      "value": 0,
+      "source": "congreso-20251113-fis-irpf-inflacio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf"
+    },
+    "fis-successions": {
+      "value": null,
+      "source": "programa-2023"
+    },
+    "fis-energetiques": {
+      "value": -1,
+      "source": "congreso-20260930-fis-energetiques",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf"
+    },
+    "ene-nuclear": {
+      "value": -1,
+      "source": "congreso-20250617-ene-nuclear",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf"
+    },
+    "ene-empresa-publica": {
+      "value": -1,
+      "source": "congreso-20260930-ene-empresa-publica",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf"
+    },
+    "ene-transvasaments": {
+      "value": -1,
+      "source": "congreso-20240423-ene-transvasaments",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf"
+    },
+    "edu-concerts": {
+      "value": 1,
+      "source": "ondavasca-concertacion-2022",
+      "url": "https://www.ondavasca.com/el-gobierno-vasco-ofrece-a-ppcs-mas-financiacion-para-la-concertada-y-agrieta-el-pacto-educativo/",
+      "quote": "Bildarratz responde al órdago de Podemos y avala la concertación de las aulas de dos años"
+    },
+    "edu-castella": {
+      "value": null,
+      "source": "programa-2023"
+    },
+    "edu-universitats-privades": {
+      "value": -1,
+      "source": "eldiario-decreto-universidades-2025",
+      "url": "https://www.eldiario.es/sociedad/pp-rechaza-decreto-anti-chiringuitos-universitarios-apoyan-rectores-sindicatos-estudiantes_1_12295535.html",
+      "quote": "Vox y el PNV son las únicas formaciones que rechazan la propuesta del Ejecutivo, dirigida a acotar los “chiringuitos universitarios”"
+    },
+    "san-gestio-publica": {
+      "value": null,
+      "source": "programa-2023"
+    },
+    "san-muface": {
+      "value": 0,
+      "source": "redaccion-medica-muface-2021",
+      "url": "https://www.redaccionmedica.com/politica/20210928/muface-cuenta-con-el-respaldo-de-la-mayoria-del-congreso-los-diputados/167018_0.html",
+      "quote": "El PNV no se opondrá al nuevo convenio con Muface, si bien los nacionalistas vascos defienden que este modelo debe avanzar hacia su “extensión” de forma que se integre a los funcionarios en el Régimen General de la Seguridad."
+    },
+    "san-avortament": {
+      "value": 1,
+      "source": "congreso-20260430-san-avortament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf"
+    },
+    "ter-referendum": {
+      "value": 1,
+      "source": "deia-referendum-2022",
+      "url": "https://www.deia.eus/politica/2022/12/13/pnv-ve-positiva-propuesta-erc-6292646.html",
+      "quote": "el PNV siempre ha defendido que, tanto en Euskadi como en Catalunya, la solución debe pasar por que la gente \"se manifieste y diga lo que piensa\" en las urnas"
+    },
+    "ter-immigracio": {
+      "value": 1,
+      "source": "congreso-20250923-ter-immigracio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf"
+    },
+    "ter-amnistia": {
+      "value": -2,
+      "source": "congreso-20240530-ter-amnistia",
+      "page": 25,
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF#page=25"
+    },
+    "dre-regularitzacio": {
+      "value": 1,
+      "source": "deia-regularizacion-2026",
+      "url": "https://www.deia.eus/politica/2026/02/27/pnv-recrimina-sanchez-haya-mayor-10755023.html",
+      "quote": "Nosotros somos favorables a hacer una regularización pero, tal y como se ha hecho, tiene sus flecos. Debería estar más ligada al trabajo de lo que está."
+    },
+    "dre-multireincidencia": {
+      "value": 2,
+      "source": "congreso-20260212-dre-multireincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf"
+    },
+    "dre-memoria": {
+      "value": -2,
+      "source": "programa-2023",
+      "page": 9,
+      "quote": "Plena aplicación de la Ley de la Memoria Histórica y de la Ley de Memoria Democrática."
+    }
+  }
 }

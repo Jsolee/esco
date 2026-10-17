@@ -9,6 +9,267 @@
     "Alianza Verde"
   ],
   "circumscriptions": "all",
-  "sources": [],
-  "positions": {}
+  "sources": [
+    {
+      "id": "congreso-20261002-hab-renovacio",
+      "title": "Congreso, 2/10/2026. Votó sí: convalidación del Real Decreto-ley 27/2026 (renovación de alquileres)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF",
+      "date": "2026-10-02",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260519-hab-desallotjament",
+      "title": "Congreso, 19/5/2026. Votó no: toma en consideración de la ley del PP contra la ocupación ilegal",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf",
+      "date": "2026-05-19",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260421-hab-zones-tensionades",
+      "title": "Congreso, 21/4/2026. Votó no: toma en consideración de la ley del PP que deroga las zonas de mercado tensionado",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf",
+      "date": "2026-04-21",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250910-tre-jornada",
+      "title": "Congreso, 10/9/2025. Votó no: enmiendas a la totalidad (devolución) al proyecto de ley de reducción de la jornada a 37,5 horas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf",
+      "date": "2025-09-10",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250917-tre-acomiadament",
+      "title": "Congreso, 17/9/2025. Votó sí: proposición no de ley de Sumar por un despido «restaurativo y disuasorio»",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf",
+      "date": "2025-09-17",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20251113-fis-irpf-inflacio",
+      "title": "Congreso, 13/11/2025. Votó no: moción del PP que pide deflactar al menos tres tramos del IRPF",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf",
+      "date": "2025-11-13",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260930-fis-energetiques",
+      "title": "Congreso, 30/9/2026. Votó sí: moción de Podemos, punto 1: impuesto permanente a energéticas y petroleras",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf",
+      "date": "2026-09-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250617-ene-nuclear",
+      "title": "Congreso, 17/6/2025. Votó no: toma en consideración de la ley del PP para mantener la energía nuclear",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf",
+      "date": "2025-06-17",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260930-ene-empresa-publica",
+      "title": "Congreso, 30/9/2026. Votó sí: moción de Podemos, punto 3: empresa pública de energía",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf",
+      "date": "2026-09-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20240423-ene-transvasaments",
+      "title": "Congreso, 23/4/2024. Votó no: moción de Vox, punto 2: Plan Nacional del Agua con interconexión de cuencas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf",
+      "date": "2024-04-23",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260430-san-avortament",
+      "title": "Congreso, 30/4/2026. Votó no: enmiendas a la totalidad (devolución) a la reforma del artículo 43 de la Constitución (aborto)",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf",
+      "date": "2026-04-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250923-ter-immigracio",
+      "title": "Congreso, 23/9/2025. Votó no: toma en consideración de la ley de delegación en Cataluña de competencias de inmigración",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf",
+      "date": "2025-09-23",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20240530-ter-amnistia",
+      "title": "Congreso, 30/5/2024. Votó sí: votación final de la Ley de Amnistía (levantamiento del veto del Senado)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF",
+      "date": "2024-05-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260212-dre-multireincidencia",
+      "title": "Congreso, 12/2/2026. Votó no: votación final de la ley orgánica de multirreincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf",
+      "date": "2026-02-12",
+      "lang": "es"
+    },
+    {
+      "id": "programa-europeas-2024",
+      "title": "Programa electoral de Podemos, elecciones europeas 2024 («Por un futuro de paz y derechos»)",
+      "url": "https://podemos.info/wp-content/uploads/2024/05/Programa-PODEMOS-elecciones-europeas-2024.pdf",
+      "date": "2024-05-20",
+      "lang": "es"
+    },
+    {
+      "id": "enmiendas-losu-2026",
+      "title": "BOCG Congreso, Serie B, núm. 219-5: enmiendas a la Proposición de Ley Orgánica de modificación de la LOSU (enmiendas 27-36 de Ione Belarra, Podemos, G. Mixto)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/BOCG/B/BOCG-15-B-219-5.PDF",
+      "date": "2026-02-27",
+      "lang": "es"
+    },
+    {
+      "id": "derechos-sociales-muface-2021",
+      "title": "Europa Press: observaciones del Ministerio de Derechos Sociales (Ione Belarra, Podemos) al nuevo concierto de MUFACE",
+      "url": "https://www.bolsamania.com/noticias_amp/economia/economia--hacienda-destinara-3521-millones-para-el-nuevo-convenio-del-muface-que-suscita-rechazo-en-unidas-podemos--8124626.html",
+      "date": "2021-09-27",
+      "lang": "es"
+    },
+    {
+      "id": "montero-referendum-2021",
+      "title": "El Español: Irene Montero defiende el referéndum en Cataluña (entrevista en RAC1)",
+      "url": "https://www.elespanol.com/espana/politica/20210701/montero-defiende-referendum-cataluna-no-renunciamos-propuestas/593191755_0.html",
+      "date": "2021-07-01",
+      "lang": "es"
+    },
+    {
+      "id": "acuerdo-regularizacion-2026",
+      "title": "Ara: Podemos anuncia el acuerdo con el PSOE para una regularización extraordinaria de medio millón de migrantes",
+      "url": "https://es.ara.cat/politica/anuncia-pacto-psoe-regularizar-migrantes-irregulares-espana_1_5629388.html",
+      "date": "2026-01-26",
+      "lang": "es"
+    }
+  ],
+  "positions": {
+    "hab-renovacio": {
+      "value": 2,
+      "source": "congreso-20261002-hab-renovacio",
+      "page": 63,
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF#page=63"
+    },
+    "hab-desallotjament": {
+      "value": -1,
+      "source": "congreso-20260519-hab-desallotjament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf"
+    },
+    "hab-zones-tensionades": {
+      "value": -1,
+      "source": "congreso-20260421-hab-zones-tensionades",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf"
+    },
+    "tre-jornada": {
+      "value": 1,
+      "source": "congreso-20250910-tre-jornada",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf"
+    },
+    "tre-acomiadament": {
+      "value": 1,
+      "source": "congreso-20250917-tre-acomiadament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf"
+    },
+    "tre-smi-autonomic": {
+      "value": null,
+      "source": "programa-europeas-2024"
+    },
+    "fis-irpf-inflacio": {
+      "value": -1,
+      "source": "congreso-20251113-fis-irpf-inflacio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf"
+    },
+    "fis-successions": {
+      "value": null,
+      "source": "programa-europeas-2024"
+    },
+    "fis-energetiques": {
+      "value": 2,
+      "source": "congreso-20260930-fis-energetiques",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf"
+    },
+    "ene-nuclear": {
+      "value": -1,
+      "source": "congreso-20250617-ene-nuclear",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf"
+    },
+    "ene-empresa-publica": {
+      "value": 2,
+      "source": "congreso-20260930-ene-empresa-publica",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf"
+    },
+    "ene-transvasaments": {
+      "value": -1,
+      "source": "congreso-20240423-ene-transvasaments",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf"
+    },
+    "edu-concerts": {
+      "value": -1,
+      "source": "programa-europeas-2024",
+      "page": 32,
+      "quote": "Promoveremos que los sistemas educativos europeos tengan una red educativa pública que cubra el 90% de la demanda para la próxima década"
+    },
+    "edu-castella": {
+      "value": null,
+      "source": "programa-europeas-2024"
+    },
+    "edu-universitats-privades": {
+      "value": 2,
+      "source": "enmiendas-losu-2026",
+      "page": 35,
+      "quote": "No se podrá reconocer una universidad privada salvo que, en el ejercicio anterior al de su reconocimiento exista un 10 % de solicitantes de plaza en los estudios de grado que, cumpliendo los requisitos académicos mínimos, no hayan obtenido la misma."
+    },
+    "san-gestio-publica": {
+      "value": 2,
+      "source": "programa-europeas-2024",
+      "page": 33,
+      "quote": "Fin de la privatización de la sanidad. Para proteger nuestra salud, derogaremos la normativa que permite la privatización de centros y servicios sanitarios en todo el territorio comunitario. En su lugar, apoyaremos la gestión pública directa de los centros y recursos sanitarios."
+    },
+    "san-muface": {
+      "value": -1,
+      "source": "derechos-sociales-muface-2021",
+      "url": "https://www.bolsamania.com/noticias_amp/economia/economia--hacienda-destinara-3521-millones-para-el-nuevo-convenio-del-muface-que-suscita-rechazo-en-unidas-podemos--8124626.html",
+      "quote": "cambio progresivo con este objetivo, el cual debería realizarse mediante la inclusión de las nuevas incorporaciones de la administración pública directamente al Sistema Nacional de Salud"
+    },
+    "san-avortament": {
+      "value": 1,
+      "source": "congreso-20260430-san-avortament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf"
+    },
+    "ter-referendum": {
+      "value": 1,
+      "source": "montero-referendum-2021",
+      "url": "https://www.elespanol.com/espana/politica/20210701/montero-defiende-referendum-cataluna-no-renunciamos-propuestas/593191755_0.html",
+      "quote": "La ministra de Igualdad, Irene Montero, ha recordado que Unidas Podemos siempre ha defendido un referéndum de autodeterminación"
+    },
+    "ter-immigracio": {
+      "value": -1,
+      "source": "congreso-20250923-ter-immigracio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf"
+    },
+    "ter-amnistia": {
+      "value": -2,
+      "source": "congreso-20240530-ter-amnistia",
+      "page": 25,
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF#page=25"
+    },
+    "dre-regularitzacio": {
+      "value": 2,
+      "source": "acuerdo-regularizacion-2026",
+      "url": "https://es.ara.cat/politica/anuncia-pacto-psoe-regularizar-migrantes-irregulares-espana_1_5629388.html",
+      "quote": "Es una medida urgente y de justicia social que reconoce los derechos de cientos de miles de personas que viven y trabajan"
+    },
+    "dre-multireincidencia": {
+      "value": -2,
+      "source": "congreso-20260212-dre-multireincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf"
+    },
+    "dre-memoria": {
+      "value": -1,
+      "source": "programa-europeas-2024",
+      "page": 45,
+      "quote": "Una política cultural para fortalecer nuestra memoria democrática. Para acabar con las culturas de la impunidad, como ocurre con la historia compartida y silenciada de nuestro país"
+    }
+  }
 }

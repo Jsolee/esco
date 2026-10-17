@@ -5,6 +5,257 @@
   "color": "#63BE21",
   "provisional": true,
   "circumscriptions": "all",
-  "sources": [],
-  "positions": {}
+  "sources": [
+    {
+      "id": "congreso-20261002-hab-renovacio",
+      "title": "Congreso, 2/10/2026. Votó no: convalidación del Real Decreto-ley 27/2026 (renovación de alquileres)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF",
+      "date": "2026-10-02",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260519-hab-desallotjament",
+      "title": "Congreso, 19/5/2026. Votó sí: toma en consideración de la ley del PP contra la ocupación ilegal",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf",
+      "date": "2026-05-19",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260421-hab-zones-tensionades",
+      "title": "Congreso, 21/4/2026. Votó sí: toma en consideración de la ley del PP que deroga las zonas de mercado tensionado",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf",
+      "date": "2026-04-21",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250910-tre-jornada",
+      "title": "Congreso, 10/9/2025. Votó sí: enmiendas a la totalidad (devolución) al proyecto de ley de reducción de la jornada a 37,5 horas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf",
+      "date": "2025-09-10",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250917-tre-acomiadament",
+      "title": "Congreso, 17/9/2025. Votó no: proposición no de ley de Sumar por un despido «restaurativo y disuasorio»",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf",
+      "date": "2025-09-17",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20251113-fis-irpf-inflacio",
+      "title": "Congreso, 13/11/2025. Votó sí: moción del PP que pide deflactar al menos tres tramos del IRPF",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf",
+      "date": "2025-11-13",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260930-fis-energetiques",
+      "title": "Congreso, 30/9/2026. Votó no: moción de Podemos, punto 1: impuesto permanente a energéticas y petroleras",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf",
+      "date": "2026-09-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250617-ene-nuclear",
+      "title": "Congreso, 17/6/2025. Votó sí: toma en consideración de la ley del PP para mantener la energía nuclear",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf",
+      "date": "2025-06-17",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260930-ene-empresa-publica",
+      "title": "Congreso, 30/9/2026. Votó no: moción de Podemos, punto 3: empresa pública de energía",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf",
+      "date": "2026-09-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20240423-ene-transvasaments",
+      "title": "Congreso, 23/4/2024. Votó sí: moción de Vox, punto 2: Plan Nacional del Agua con interconexión de cuencas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf",
+      "date": "2024-04-23",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260430-san-avortament",
+      "title": "Congreso, 30/4/2026. Votó sí: enmiendas a la totalidad (devolución) a la reforma del artículo 43 de la Constitución (aborto)",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf",
+      "date": "2026-04-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250923-ter-immigracio",
+      "title": "Congreso, 23/9/2025. Votó no: toma en consideración de la ley de delegación en Cataluña de competencias de inmigración",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf",
+      "date": "2025-09-23",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20240530-ter-amnistia",
+      "title": "Congreso, 30/5/2024. Votó no: votación final de la Ley de Amnistía (levantamiento del veto del Senado)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF",
+      "date": "2024-05-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260212-dre-multireincidencia",
+      "title": "Congreso, 12/2/2026. Votó sí: votación final de la ley orgánica de multirreincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf",
+      "date": "2026-02-12",
+      "lang": "es"
+    },
+    {
+      "id": "programa-2023",
+      "title": "Programa electoral de VOX, elecciones generales 2023",
+      "url": "https://www.votaabascal.es/assets/pdf/Programa-VOX-2023.pdf",
+      "date": "2023-07-10",
+      "lang": "es"
+    },
+    {
+      "id": "ds-senado-pleno-78",
+      "title": "Diario de Sesiones del Senado, Pleno núm. 78: moción de Junts sobre ajustar el SMI al coste de la vida de cada comunidad autónoma (671/000065)",
+      "url": "https://www.senado.es/legis15/publicaciones/pdf/senado/ds/DS_P_15_78.PDF",
+      "date": "2025-05-06",
+      "lang": "es"
+    },
+    {
+      "id": "dscd-sanidad-311",
+      "title": "Diario de Sesiones del Congreso, Comisión de Sanidad núm. 311: PNL de Sumar para integrar MUFACE, ISFAS y MUGEJU en el SNS (161/001601)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/CO/DSCD-15-CO-311.PDF",
+      "date": "2025-04-10",
+      "lang": "es"
+    }
+  ],
+  "positions": {
+    "hab-renovacio": {
+      "value": -2,
+      "source": "congreso-20261002-hab-renovacio",
+      "page": 63,
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF#page=63"
+    },
+    "hab-desallotjament": {
+      "value": 1,
+      "source": "congreso-20260519-hab-desallotjament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf"
+    },
+    "hab-zones-tensionades": {
+      "value": 1,
+      "source": "congreso-20260421-hab-zones-tensionades",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf"
+    },
+    "tre-jornada": {
+      "value": -2,
+      "source": "congreso-20250910-tre-jornada",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf"
+    },
+    "tre-acomiadament": {
+      "value": -1,
+      "source": "congreso-20250917-tre-acomiadament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf"
+    },
+    "tre-smi-autonomic": {
+      "value": -2,
+      "source": "ds-senado-pleno-78",
+      "page": 56,
+      "quote": "Ajustar el salario mínimo interprofesional al coste real de la vida en cada una de las comunidades autónomas en España supone un atentado contra la igualdad. En Vox defendemos la necesidad de garantizar que ningún español vea mermado su poder adquisitivo"
+    },
+    "fis-irpf-inflacio": {
+      "value": 1,
+      "source": "congreso-20251113-fis-irpf-inflacio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf"
+    },
+    "fis-successions": {
+      "value": 2,
+      "source": "programa-2023",
+      "page": 77,
+      "quote": "Suprimiremos el Impuesto sobre el Patrimonio, el Impuesto sobre Sucesiones y Donaciones y Plusvalías municipales en todo el territorio nacional"
+    },
+    "fis-energetiques": {
+      "value": -1,
+      "source": "congreso-20260930-fis-energetiques",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf"
+    },
+    "ene-nuclear": {
+      "value": 1,
+      "source": "congreso-20250617-ene-nuclear",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf"
+    },
+    "ene-empresa-publica": {
+      "value": -1,
+      "source": "congreso-20260930-ene-empresa-publica",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf"
+    },
+    "ene-transvasaments": {
+      "value": 2,
+      "source": "congreso-20240423-ene-transvasaments",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf"
+    },
+    "edu-concerts": {
+      "value": 1,
+      "source": "programa-2023",
+      "page": 33,
+      "quote": "Blindaremos la libre elección de centro educativo en todos los niveles a través de un cheque escolar para que las familias elijan libremente el modelo educativo que desean, sin que su situación económica o social sea un impedimento para ello."
+    },
+    "edu-castella": {
+      "value": 1,
+      "source": "programa-2023",
+      "page": 33,
+      "quote": "Aseguraremos de forma clara e inmediata el derecho a ser educado en español en todo el territorio nacional."
+    },
+    "edu-universitats-privades": {
+      "value": null,
+      "source": "programa-2023"
+    },
+    "san-gestio-publica": {
+      "value": -1,
+      "source": "programa-2023",
+      "page": 57,
+      "quote": "Reduciremos el volumen y tiempo de las listas de espera en todos los ámbitos, incentivando a los centros públicos para su reducción, y reforzando los conciertos con la sanidad privada."
+    },
+    "san-muface": {
+      "value": 2,
+      "source": "dscd-sanidad-311",
+      "page": 10,
+      "quote": "vamos a rechazar esta proposición no de ley e, insisto, defendemos la continuidad de las mutualidades como una opción que ha garantizado la calidad y la sostenibilidad."
+    },
+    "san-avortament": {
+      "value": -2,
+      "source": "congreso-20260430-san-avortament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf"
+    },
+    "ter-referendum": {
+      "value": -1,
+      "source": "programa-2023",
+      "page": 16,
+      "quote": "Reintroduciremos los delitos de referéndum ilegal, sedición, traición y malversación de caudales públicos"
+    },
+    "ter-immigracio": {
+      "value": -1,
+      "source": "congreso-20250923-ter-immigracio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf"
+    },
+    "ter-amnistia": {
+      "value": 1,
+      "source": "congreso-20240530-ter-amnistia",
+      "page": 25,
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF#page=25"
+    },
+    "dre-regularitzacio": {
+      "value": -2,
+      "source": "programa-2023",
+      "page": 101,
+      "quote": "Trasladaremos el mensaje claro de que cualquier inmigrante que llegue ilegalmente nunca podrá regularizar su situación en España."
+    },
+    "dre-multireincidencia": {
+      "value": 2,
+      "source": "congreso-20260212-dre-multireincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf"
+    },
+    "dre-memoria": {
+      "value": 2,
+      "source": "programa-2023",
+      "page": 17,
+      "quote": "Derogaremos todas las leyes que el gobierno de Sánchez ha aprobado o mantenido y alientan el enfrentamiento y la división entre españoles, como la Ley de Memoria Democrática o la Ley LGTBI."
+    }
+  }
 }

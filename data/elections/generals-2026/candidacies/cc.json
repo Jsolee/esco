@@ -8,6 +8,260 @@
     "35",
     "38"
   ],
-  "sources": [],
-  "positions": {}
+  "sources": [
+    {
+      "id": "congreso-20261002-hab-renovacio",
+      "title": "Congreso, 2/10/2026. Votó no: convalidación del Real Decreto-ley 27/2026 (renovación de alquileres)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF",
+      "date": "2026-10-02",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260519-hab-desallotjament",
+      "title": "Congreso, 19/5/2026. Votó sí: toma en consideración de la ley del PP contra la ocupación ilegal",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf",
+      "date": "2026-05-19",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260421-hab-zones-tensionades",
+      "title": "Congreso, 21/4/2026. Se abstuvo: toma en consideración de la ley del PP que deroga las zonas de mercado tensionado",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf",
+      "date": "2026-04-21",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250910-tre-jornada",
+      "title": "Congreso, 10/9/2025. Votó no: enmiendas a la totalidad (devolución) al proyecto de ley de reducción de la jornada a 37,5 horas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf",
+      "date": "2025-09-10",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250917-tre-acomiadament",
+      "title": "Congreso, 17/9/2025. Votó sí: proposición no de ley de Sumar por un despido «restaurativo y disuasorio»",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf",
+      "date": "2025-09-17",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20251113-fis-irpf-inflacio",
+      "title": "Congreso, 13/11/2025. Votó sí: moción del PP que pide deflactar al menos tres tramos del IRPF",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf",
+      "date": "2025-11-13",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260930-fis-energetiques",
+      "title": "Congreso, 30/9/2026. Se abstuvo: moción de Podemos, punto 1: impuesto permanente a energéticas y petroleras",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf",
+      "date": "2026-09-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250617-ene-nuclear",
+      "title": "Congreso, 17/6/2025. Votó no: toma en consideración de la ley del PP para mantener la energía nuclear",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf",
+      "date": "2025-06-17",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260930-ene-empresa-publica",
+      "title": "Congreso, 30/9/2026. Votó no: moción de Podemos, punto 3: empresa pública de energía",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf",
+      "date": "2026-09-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20240423-ene-transvasaments",
+      "title": "Congreso, 23/4/2024. Votó no: moción de Vox, punto 2: Plan Nacional del Agua con interconexión de cuencas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf",
+      "date": "2024-04-23",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260430-san-avortament",
+      "title": "Congreso, 30/4/2026. Votó no: enmiendas a la totalidad (devolución) a la reforma del artículo 43 de la Constitución (aborto)",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf",
+      "date": "2026-04-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250923-ter-immigracio",
+      "title": "Congreso, 23/9/2025. Votó sí: toma en consideración de la ley de delegación en Cataluña de competencias de inmigración",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf",
+      "date": "2025-09-23",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20240530-ter-amnistia",
+      "title": "Congreso, 30/5/2024. Votó no: votación final de la Ley de Amnistía (levantamiento del veto del Senado)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF",
+      "date": "2024-05-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260212-dre-multireincidencia",
+      "title": "Congreso, 12/2/2026. Se abstuvo: votación final de la ley orgánica de multirreincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf",
+      "date": "2026-02-12",
+      "lang": "es"
+    },
+    {
+      "id": "programa-2023",
+      "title": "Manifiesto «Un objetivo común, la defensa de Canarias», elecciones generales del 23J (CC con Unidos por Gran Canaria, AHI y otras fuerzas canarias)",
+      "url": "https://coalicioncanaria.org/wp-content/uploads/cc-pdf/programas-electorales/00_COALICION%20POR%20CANARIAS.pdf",
+      "date": "2023-06-26",
+      "lang": "es"
+    },
+    {
+      "id": "diariodeavisos-2023-sucesiones",
+      "title": "Diario de Avisos, «La bonificación de sucesiones y donaciones ya está convalidada»",
+      "url": "https://diariodeavisos.elespanol.com/2023/09/la-bonificacion-de-sucesiones-y-donaciones-ya-esta-convalidada/",
+      "date": "2023-09-27",
+      "lang": "es"
+    },
+    {
+      "id": "rtvc-2023-referendum",
+      "title": "RTVC, «Clavijo dice que su partido está cómodo con cualquier Gobierno del Estado que dependa de ellos»",
+      "url": "https://rtvc.es/clavijo-dice-que-cc-esta-comodo-con-quienes-dependan-de-ellos/",
+      "date": "2023-10-26",
+      "lang": "es"
+    },
+    {
+      "id": "rtvc-2026-regularizacion",
+      "title": "RTVC, «Clavijo avala la regularización de migrantes pero lamenta la falta de previsión del Estado»",
+      "url": "https://rtvc.es/pleno-del-parlamento-de-canarias-sesion-de-manana-28-abril-2026/",
+      "date": "2026-04-28",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-2022-memoria",
+      "title": "Congreso, 14/7/2022, votación 178: dictamen del Proyecto de Ley de Memoria Democrática (Ana Oramas: sí)",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg14/Sesion195/20220714/Votacion178/VOT_20230302181854.pdf",
+      "date": "2022-07-14",
+      "lang": "es"
+    }
+  ],
+  "positions": {
+    "hab-renovacio": {
+      "value": -2,
+      "source": "congreso-20261002-hab-renovacio",
+      "page": 63,
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF#page=63"
+    },
+    "hab-desallotjament": {
+      "value": 1,
+      "source": "congreso-20260519-hab-desallotjament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf"
+    },
+    "hab-zones-tensionades": {
+      "value": 0,
+      "source": "congreso-20260421-hab-zones-tensionades",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf"
+    },
+    "tre-jornada": {
+      "value": 1,
+      "source": "congreso-20250910-tre-jornada",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf"
+    },
+    "tre-acomiadament": {
+      "value": 1,
+      "source": "congreso-20250917-tre-acomiadament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf"
+    },
+    "tre-smi-autonomic": {
+      "value": null,
+      "source": "programa-2023"
+    },
+    "fis-irpf-inflacio": {
+      "value": 1,
+      "source": "congreso-20251113-fis-irpf-inflacio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf"
+    },
+    "fis-successions": {
+      "value": 1,
+      "source": "diariodeavisos-2023-sucesiones",
+      "url": "https://diariodeavisos.elespanol.com/2023/09/la-bonificacion-de-sucesiones-y-donaciones-ya-esta-convalidada/",
+      "quote": "El pleno del Parlamento de Canarias convalidó ayer el decreto ley que suprime de hecho el impuesto de sucesiones y donaciones, hasta ahora exento para las herencias de menos de 300.000 euros, con los votos a favor de CC, PP, Vox, ASG y AHI y la oposición de PSOE y NC-BC."
+    },
+    "fis-energetiques": {
+      "value": 0,
+      "source": "congreso-20260930-fis-energetiques",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf"
+    },
+    "ene-nuclear": {
+      "value": -1,
+      "source": "congreso-20250617-ene-nuclear",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf"
+    },
+    "ene-empresa-publica": {
+      "value": -1,
+      "source": "congreso-20260930-ene-empresa-publica",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf"
+    },
+    "ene-transvasaments": {
+      "value": -1,
+      "source": "congreso-20240423-ene-transvasaments",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf"
+    },
+    "edu-concerts": {
+      "value": null,
+      "source": "programa-2023"
+    },
+    "edu-castella": {
+      "value": null,
+      "source": "programa-2023"
+    },
+    "edu-universitats-privades": {
+      "value": null,
+      "source": "programa-2023"
+    },
+    "san-gestio-publica": {
+      "value": null,
+      "source": "programa-2023"
+    },
+    "san-muface": {
+      "value": null,
+      "source": "programa-2023"
+    },
+    "san-avortament": {
+      "value": 1,
+      "source": "congreso-20260430-san-avortament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf"
+    },
+    "ter-referendum": {
+      "value": -2,
+      "source": "rtvc-2023-referendum",
+      "url": "https://rtvc.es/clavijo-dice-que-cc-esta-comodo-con-quienes-dependan-de-ellos/",
+      "quote": "hemos dejado clara nuestra postura, estamos en contra de la amnistía y el referendo, somos un partido constitucionalista"
+    },
+    "ter-immigracio": {
+      "value": 1,
+      "source": "congreso-20250923-ter-immigracio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf"
+    },
+    "ter-amnistia": {
+      "value": 1,
+      "source": "congreso-20240530-ter-amnistia",
+      "page": 25,
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF#page=25"
+    },
+    "dre-regularitzacio": {
+      "value": 1,
+      "source": "rtvc-2026-regularizacion",
+      "url": "https://rtvc.es/pleno-del-parlamento-de-canarias-sesion-de-manana-28-abril-2026/",
+      "quote": "El presidente del Gobierno de Canarias, Fernando Clavijo, afirmó que el proceso de regularización de migrantes es “positivo” porque permite otorgar derechos y dignidad a las personas afectadas"
+    },
+    "dre-multireincidencia": {
+      "value": 0,
+      "source": "congreso-20260212-dre-multireincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf"
+    },
+    "dre-memoria": {
+      "value": -1,
+      "source": "congreso-2022-memoria",
+      "page": 1
+    }
+  }
 }

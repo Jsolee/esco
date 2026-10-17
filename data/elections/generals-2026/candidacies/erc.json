@@ -10,6 +10,255 @@
     "25",
     "43"
   ],
-  "sources": [],
-  "positions": {}
+  "sources": [
+    {
+      "id": "congreso-20261002-hab-renovacio",
+      "title": "Congreso, 2/10/2026. Votó sí: convalidación del Real Decreto-ley 27/2026 (renovación de alquileres)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF",
+      "date": "2026-10-02",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260519-hab-desallotjament",
+      "title": "Congreso, 19/5/2026. Votó no: toma en consideración de la ley del PP contra la ocupación ilegal",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf",
+      "date": "2026-05-19",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260421-hab-zones-tensionades",
+      "title": "Congreso, 21/4/2026. Votó no: toma en consideración de la ley del PP que deroga las zonas de mercado tensionado",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf",
+      "date": "2026-04-21",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250910-tre-jornada",
+      "title": "Congreso, 10/9/2025. Votó no: enmiendas a la totalidad (devolución) al proyecto de ley de reducción de la jornada a 37,5 horas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf",
+      "date": "2025-09-10",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250917-tre-acomiadament",
+      "title": "Congreso, 17/9/2025. Votó sí: proposición no de ley de Sumar por un despido «restaurativo y disuasorio»",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf",
+      "date": "2025-09-17",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20251113-fis-irpf-inflacio",
+      "title": "Congreso, 13/11/2025. Votó no: moción del PP que pide deflactar al menos tres tramos del IRPF",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf",
+      "date": "2025-11-13",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260930-fis-energetiques",
+      "title": "Congreso, 30/9/2026. Votó sí: moción de Podemos, punto 1: impuesto permanente a energéticas y petroleras",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf",
+      "date": "2026-09-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250617-ene-nuclear",
+      "title": "Congreso, 17/6/2025. Votó no: toma en consideración de la ley del PP para mantener la energía nuclear",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf",
+      "date": "2025-06-17",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260930-ene-empresa-publica",
+      "title": "Congreso, 30/9/2026. Votó sí: moción de Podemos, punto 3: empresa pública de energía",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf",
+      "date": "2026-09-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20240423-ene-transvasaments",
+      "title": "Congreso, 23/4/2024. Votó no: moción de Vox, punto 2: Plan Nacional del Agua con interconexión de cuencas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf",
+      "date": "2024-04-23",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260430-san-avortament",
+      "title": "Congreso, 30/4/2026. Votó no: enmiendas a la totalidad (devolución) a la reforma del artículo 43 de la Constitución (aborto)",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf",
+      "date": "2026-04-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250923-ter-immigracio",
+      "title": "Congreso, 23/9/2025. Votó sí: toma en consideración de la ley de delegación en Cataluña de competencias de inmigración",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf",
+      "date": "2025-09-23",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20240530-ter-amnistia",
+      "title": "Congreso, 30/5/2024. Votó sí: votación final de la Ley de Amnistía (levantamiento del veto del Senado)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF",
+      "date": "2024-05-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260212-dre-multireincidencia",
+      "title": "Congreso, 12/2/2026. Se abstuvo: votación final de la ley orgánica de multirreincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf",
+      "date": "2026-02-12",
+      "lang": "es"
+    },
+    {
+      "id": "programa-2023",
+      "title": "Defensa Catalunya! Programa electoral d'ERC, eleccions generals 2023",
+      "url": "https://defensacatalunya.esquerrarepublicana.cat/documents/e2023-programa.pdf",
+      "date": "2023-07-05",
+      "lang": "ca"
+    },
+    {
+      "id": "efe-pnl-universitats-2025",
+      "title": "EFE (via Infobae): El Congreso pide al Gobierno endurecer los criterios para crear nuevas universidades",
+      "url": "https://www.infobae.com/espana/agencias/2025/03/13/el-congreso-pide-al-gobierno-endurecer-los-criterios-para-crear-nuevas-universidades/",
+      "date": "2025-03-13",
+      "lang": "es"
+    },
+    {
+      "id": "redaccion-medica-2026-03-18",
+      "title": "Redacción Médica: La Ley de Gestión Pública llegará herida al Congreso por el modelo catalán",
+      "url": "https://www.redaccionmedica.com/politica/20260318/la-ley-de-gestion-publica-llegara-herida-al-congreso-por-el-modelo-catalan/260331_0.amp.html",
+      "date": "2026-03-18",
+      "lang": "es"
+    }
+  ],
+  "positions": {
+    "hab-renovacio": {
+      "value": 2,
+      "source": "congreso-20261002-hab-renovacio",
+      "page": 63,
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF#page=63"
+    },
+    "hab-desallotjament": {
+      "value": -1,
+      "source": "congreso-20260519-hab-desallotjament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf"
+    },
+    "hab-zones-tensionades": {
+      "value": -1,
+      "source": "congreso-20260421-hab-zones-tensionades",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf"
+    },
+    "tre-jornada": {
+      "value": 1,
+      "source": "congreso-20250910-tre-jornada",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf"
+    },
+    "tre-acomiadament": {
+      "value": 1,
+      "source": "congreso-20250917-tre-acomiadament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf"
+    },
+    "tre-smi-autonomic": {
+      "value": 2,
+      "source": "programa-2023",
+      "page": 91,
+      "quote": "Habilitació a la Generalitat de Catalunya, la Generalitat Valenciana i el Govern de les Illes Balears per establir Salaris Mínims Interprofessionals propis que superin el Salari Mínim estatal."
+    },
+    "fis-irpf-inflacio": {
+      "value": -1,
+      "source": "congreso-20251113-fis-irpf-inflacio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf"
+    },
+    "fis-successions": {
+      "value": -1,
+      "source": "programa-2023",
+      "page": 55,
+      "quote": "Es bonifiquen els impostos de patrimoni i successions, fins i tot per a les grans fortunes, i es permet l’enginyeria fiscal que fomenta l’elusió de l’impost de societats."
+    },
+    "fis-energetiques": {
+      "value": 1,
+      "source": "congreso-20260930-fis-energetiques",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf"
+    },
+    "ene-nuclear": {
+      "value": -1,
+      "source": "congreso-20250617-ene-nuclear",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf"
+    },
+    "ene-empresa-publica": {
+      "value": 1,
+      "source": "congreso-20260930-ene-empresa-publica",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf"
+    },
+    "ene-transvasaments": {
+      "value": -1,
+      "source": "congreso-20240423-ene-transvasaments",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf"
+    },
+    "edu-concerts": {
+      "value": null,
+      "source": "programa-2023"
+    },
+    "edu-castella": {
+      "value": -2,
+      "source": "programa-2023",
+      "page": 128,
+      "quote": "Defensar el model d'immersió lingüística i el respecte al marc competencial al conjunt dels Països Catalans i combatre l’ofensiva reaccionària i catalanòfoba de la dreta i l’extrema dreta a les escoles."
+    },
+    "edu-universitats-privades": {
+      "value": 1,
+      "source": "efe-pnl-universitats-2025",
+      "url": "https://www.infobae.com/espana/agencias/2025/03/13/el-congreso-pide-al-gobierno-endurecer-los-criterios-para-crear-nuevas-universidades/",
+      "quote": "Sumar, con el apoyo del PSOE, ERC, Bildu, Podemos y la abstención del PNV ha sacado adelante una proposición no de ley"
+    },
+    "san-gestio-publica": {
+      "value": 0,
+      "source": "redaccion-medica-2026-03-18",
+      "url": "https://www.redaccionmedica.com/politica/20260318/la-ley-de-gestion-publica-llegara-herida-al-congreso-por-el-modelo-catalan/260331_0.amp.html",
+      "quote": "no se opondrán a la norma si se cumple una premisa: “En Cataluña tenemos un sistema que funciona muy bien, así que vamos a vigilar que se mantenga”"
+    },
+    "san-muface": {
+      "value": null,
+      "source": "programa-2023"
+    },
+    "san-avortament": {
+      "value": 1,
+      "source": "congreso-20260430-san-avortament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf"
+    },
+    "ter-referendum": {
+      "value": 2,
+      "source": "programa-2023",
+      "page": 12,
+      "quote": "Negociar la convocatòria d’un referèndum d’autodeterminació a Catalunya amb acompanyament internacional."
+    },
+    "ter-immigracio": {
+      "value": 1,
+      "source": "congreso-20250923-ter-immigracio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf"
+    },
+    "ter-amnistia": {
+      "value": -2,
+      "source": "congreso-20240530-ter-amnistia",
+      "page": 25,
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF#page=25"
+    },
+    "dre-regularitzacio": {
+      "value": 1,
+      "source": "programa-2023",
+      "page": 37,
+      "quote": "Derogar la llei d’estrangeria i promoure la llei de mobilitat humana que garanteixi el tracte digne per a totes les persones mitjançant vies legals i segures, que permeti l’obtenció de la nacionalitat per residència amb un màxim real de cinc anys"
+    },
+    "dre-multireincidencia": {
+      "value": 0,
+      "source": "congreso-20260212-dre-multireincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf"
+    },
+    "dre-memoria": {
+      "value": -2,
+      "source": "programa-2023",
+      "page": 34,
+      "quote": "Garantir el compliment de la Llei de Memòria Democràtica encara que no sigui la que nosaltres hauríem volgut."
+    }
+  }
 }

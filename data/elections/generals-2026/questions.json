@@ -1,314 +1,370 @@
 [
   {
-    "id": "hab-lloguer",
+    "id": "hab-renovacio",
     "topic": "habitatge",
     "text": {
-      "ca": "Els lloguers a les zones tensionades haurien de tenir un preu màxim fixat per llei.",
-      "es": "Los alquileres en las zonas tensionadas deberían tener un precio máximo fijado por ley."
+      "ca": "El propietari que no renovi un contracte de lloguer d'habitatge habitual hauria d'indemnitzar el llogater.",
+      "es": "El propietario que no renueve un contrato de alquiler de vivienda habitual debería indemnizar al inquilino."
     },
     "context": {
-      "ca": "La Llei d'habitatge de 2023 permet declarar zones de mercat tensionat i limitar-hi els preus. Qui ho defensa diu que protegeix els llogaters; qui s'hi oposa, que redueix l'oferta de pisos.",
-      "es": "La Ley de vivienda de 2023 permite declarar zonas de mercado tensionado y limitar en ellas los precios. Quien lo defiende dice que protege a los inquilinos; quien se opone, que reduce la oferta de pisos."
+      "ca": "El Reial decret llei 27/2026 preveia renovar automàticament els lloguers després de 5 anys (7 si el propietari és una empresa) i que qui no els renovés indemnitzés el llogater amb almenys 12 mensualitats. El Congrés el va derogar el 2 d'octubre de 2026 (166 vots a favor de convalidar-lo i 184 en contra) i el Govern el va tornar a aprovar com a Reial decret llei 28/2026, pendent de convalidació. Els defensors argumenten que dona estabilitat als llogaters; els detractors, que limita el dret de propietat i farà que es retirin pisos del lloguer.",
+      "es": "El Real Decreto-ley 27/2026 preveía renovar automáticamente los alquileres tras 5 años (7 si el propietario es una empresa) y que quien no renovara indemnizara al inquilino con al menos 12 mensualidades. El Congreso lo derogó el 2 de octubre de 2026 (166 votos a favor de convalidarlo y 184 en contra) y el Gobierno lo volvió a aprobar como Real Decreto-ley 28/2026, pendiente de convalidación. Sus defensores alegan que da estabilidad a los inquilinos; sus detractores, que limita el derecho de propiedad y retirará pisos del alquiler."
     },
-    "axes": { "economic": -1 }
+    "axes": {
+      "economic": -0.8
+    }
   },
   {
-    "id": "hab-public",
+    "id": "hab-desallotjament",
     "topic": "habitatge",
     "text": {
-      "ca": "L'Estat hauria de dedicar molts més diners a construir habitatge públic de lloguer.",
-      "es": "El Estado debería dedicar mucho más dinero a construir vivienda pública de alquiler."
+      "ca": "Qui ocupi un habitatge sense títol legal hauria de poder ser desallotjat en un termini de 24 a 48 hores.",
+      "es": "Quien ocupe una vivienda sin título legal debería poder ser desalojado en un plazo de 24 a 48 horas."
     },
     "context": {
-      "ca": "L'habitatge social és una part petita del parc d'habitatges a Espanya, per sota de la mitjana europea. Augmentar-lo requereix inversió pública durant anys.",
-      "es": "La vivienda social es una parte pequeña del parque de viviendas en España, por debajo de la media europea. Aumentarla requiere inversión pública durante años."
+      "ca": "El 19 de maig de 2026 el Congrés va admetre a tràmit una llei del PP contra l'ocupació il·legal que obliga els ocupants a sortir en 24 hores o a acreditar un títol (171 a favor, 164 en contra, 11 abstencions); no es va aprovar abans de la dissolució de les Corts. Els defensors sostenen que protegeix propietaris i veïns; els detractors, que barreja situacions diferents i enduereix el tracte a persones vulnerables sense oferir-los alternativa.",
+      "es": "El 19 de mayo de 2026 el Congreso admitió a trámite una ley del PP contra la ocupación ilegal que obliga a los ocupantes a salir en 24 horas o a acreditar un título (171 a favor, 164 en contra, 11 abstenciones); no se aprobó antes de la disolución de las Cortes. Sus defensores sostienen que protege a propietarios y vecinos; sus detractores, que mezcla situaciones distintas y endurece el trato a personas vulnerables sin ofrecerles alternativa."
     },
-    "axes": { "economic": -0.8 }
+    "axes": {
+      "economic": 0.5,
+      "social": 0.4
+    }
   },
   {
-    "id": "hab-ocupacio",
+    "id": "hab-zones-tensionades",
     "topic": "habitatge",
     "text": {
-      "ca": "Els desallotjaments d'habitatges ocupats sense permís haurien de fer-se en menys de 48 hores.",
-      "es": "Los desalojos de viviendas ocupadas sin permiso deberían hacerse en menos de 48 horas."
+      "ca": "S'hauria de suprimir la possibilitat de limitar el preu del lloguer a les zones declarades tensionades.",
+      "es": "Debería suprimirse la posibilidad de limitar el precio del alquiler en las zonas declaradas tensionadas."
     },
     "context": {
-      "ca": "Ara, recuperar un habitatge ocupat pot requerir un procés judicial de mesos, segons el cas. Hi ha propostes per accelerar-ho i crítiques per les garanties que es perdrien.",
-      "es": "Ahora, recuperar una vivienda ocupada puede requerir un proceso judicial de meses, según el caso. Hay propuestas para acelerarlo y críticas por las garantías que se perderían."
+      "ca": "La Llei d'habitatge del 2023 permet declarar zones de mercat tensionat i limitar-hi la renda dels nous contractes. El 2026 el Congrés va admetre a tràmit una llei del PP per suprimir aquestes zones (21 d'abril, 178 a favor i 163 en contra) i va aprovar una moció no vinculant per derogar la llei d'habitatge (10 de setembre, 170 a 168). Els qui les volen suprimir sostenen que els topalls redueixen l'oferta de lloguer; els qui s'hi oposen, que contenen els preus on hi ha més pressió.",
+      "es": "La Ley de vivienda de 2023 permite declarar zonas de mercado tensionado y limitar en ellas la renta de los nuevos contratos. En 2026 el Congreso admitió a trámite una ley del PP para suprimir estas zonas (21 de abril, 178 a favor y 163 en contra) y aprobó una moción no vinculante para derogar la ley de vivienda (10 de septiembre, 170 a 168). Quienes quieren suprimirlas sostienen que los topes reducen la oferta de alquiler; quienes se oponen, que contienen los precios donde hay más presión."
     },
-    "axes": { "social": 0.6, "economic": 0.4 }
+    "axes": {
+      "economic": 0.8
+    }
   },
   {
     "id": "tre-jornada",
     "topic": "treball",
     "text": {
-      "ca": "La jornada laboral màxima hauria de baixar a 35 hores setmanals sense reduir el sou.",
-      "es": "La jornada laboral máxima debería bajar a 35 horas semanales sin reducir el sueldo."
+      "ca": "La jornada laboral màxima s'hauria de reduir per llei de 40 a 37,5 hores setmanals sense rebaixar el sou.",
+      "es": "La jornada laboral máxima debería reducirse por ley de 40 a 37,5 horas semanales sin rebajar el sueldo."
     },
     "context": {
-      "ca": "Ara la jornada ordinària màxima és de 40 hores setmanals de mitjana anual. Qui ho defensa parla de conciliació i productivitat; qui s'hi oposa, del cost per a les empreses petites.",
-      "es": "Ahora la jornada ordinaria máxima es de 40 horas semanales de promedio anual. Quien lo defiende habla de conciliación y productividad; quien se opone, del coste para las pequeñas empresas."
+      "ca": "L'Estatut dels Treballadors fixa una jornada màxima de 40 hores setmanals de mitjana anual. El 10 de setembre de 2025 el Congrés va retornar al Govern el projecte que la rebaixava a 37,5 hores en aprovar les esmenes a la totalitat del PP, Vox i Junts (178 vots contra 170). Els defensors argumenten que reparteix els guanys de productivitat i millora la conciliació; els detractors, que la jornada s'ha de pactar als convenis i que encareix els costos de pimes i autònoms.",
+      "es": "El Estatuto de los Trabajadores fija una jornada máxima de 40 horas semanales de promedio anual. El 10 de septiembre de 2025 el Congreso devolvió al Gobierno el proyecto que la rebajaba a 37,5 horas al aprobar las enmiendas a la totalidad de PP, Vox y Junts (178 votos contra 170). Sus defensores alegan que reparte las ganancias de productividad y mejora la conciliación; sus detractores, que la jornada debe pactarse en los convenios y que encarece los costes de pymes y autónomos."
     },
-    "axes": { "economic": -1 }
-  },
-  {
-    "id": "tre-smi",
-    "topic": "treball",
-    "text": {
-      "ca": "El salari mínim hauria de pujar cada any per sobre de la inflació.",
-      "es": "El salario mínimo debería subir cada año por encima de la inflación."
-    },
-    "context": {
-      "ca": "El Govern fixa el salari mínim interprofessional cada any. Els augments recents han millorat els sous més baixos; hi ha qui alerta de l'efecte sobre l'ocupació en alguns sectors.",
-      "es": "El Gobierno fija el salario mínimo interprofesional cada año. Las subidas recientes han mejorado los sueldos más bajos; hay quien alerta del efecto sobre el empleo en algunos sectores."
-    },
-    "axes": { "economic": -0.8 }
+    "axes": {
+      "economic": -0.8
+    }
   },
   {
     "id": "tre-acomiadament",
     "topic": "treball",
     "text": {
-      "ca": "Acomiadar hauria de costar menys a les empreses perquè s'animin a contractar.",
-      "es": "Despedir debería costar menos a las empresas para que se animen a contratar."
+      "ca": "Hauria d'augmentar la indemnització per acomiadament improcedent, avui de 33 dies de salari per any treballat.",
+      "es": "Debería aumentar la indemnización por despido improcedente, hoy de 33 días de salario por año trabajado."
     },
     "context": {
-      "ca": "La indemnització per acomiadament improcedent és de 33 dies per any treballat, amb un màxim de 24 mensualitats. El debat és si abaratir-la crearia ocupació o només en reduiria l'estabilitat.",
-      "es": "La indemnización por despido improcedente es de 33 días por año trabajado, con un máximo de 24 mensualidades. El debate es si abaratarla crearía empleo o solo reduciría su estabilidad."
+      "ca": "L'acomiadament improcedent s'indemnitza amb 33 dies de salari per any treballat, amb un màxim de 24 mensualitats. El setembre de 2025 el Congrés va aprovar per un vot una proposició no de llei que demana una indemnització «dissuasòria i restaurativa», i el juny de 2026 el Comitè de Ministres del Consell d'Europa va demanar a Espanya una reforma que tingui en compte el dany real. Els defensors sostenen que la quantia actual no dissuadeix de l'acomiadament sense causa; els detractors, que el sistema taxat dona seguretat jurídica i que encarir-lo perjudicaria les pimes.",
+      "es": "El despido improcedente se indemniza con 33 días de salario por año trabajado, con un máximo de 24 mensualidades. En septiembre de 2025 el Congreso aprobó por un voto una proposición no de ley que pide una indemnización «disuasoria y restaurativa», y en junio de 2026 el Comité de Ministros del Consejo de Europa pidió a España una reforma que tenga en cuenta el daño real. Sus defensores sostienen que la cuantía actual no disuade del despido sin causa; sus detractores, que el sistema tasado da seguridad jurídica y que encarecerlo perjudicaría a las pymes."
     },
-    "axes": { "economic": 1 }
+    "axes": {
+      "economic": -0.7
+    }
   },
   {
-    "id": "fis-herencies",
-    "topic": "fiscalitat",
+    "id": "tre-smi-autonomic",
+    "topic": "treball",
     "text": {
-      "ca": "Les herències entre pares i fills haurien d'estar exemptes d'impostos.",
-      "es": "Las herencias entre padres e hijos deberían estar exentas de impuestos."
+      "ca": "Les comunitats autònomes haurien de poder fixar un salari mínim propi, superior a l'estatal.",
+      "es": "Las comunidades autónomas deberían poder fijar un salario mínimo propio, superior al estatal."
     },
     "context": {
-      "ca": "L'impost de successions és estatal, però el gestionen les comunitats autònomes, que hi apliquen bonificacions molt diferents. La mateixa herència pot pagar quantitats molt diverses segons on visquis.",
-      "es": "El impuesto de sucesiones es estatal, pero lo gestionan las comunidades autónomas, que aplican bonificaciones muy distintas. La misma herencia puede pagar cantidades muy diferentes según dónde vivas."
+      "ca": "El Govern fixa cada any el salari mínim interprofessional per a tot Espanya. ERC i EH Bildu defensen salaris mínims territorials i Junts va registrar el febrer de 2026 al Parlament una llei per a un salari mínim català de referència de 1.400 euros; el maig de 2026 el Senat va rebutjar una moció d'ERC en aquest sentit. Els defensors argumenten que el cost de la vida varia entre territoris; els detractors, que fragmentaria el mercat laboral i crearia desigualtats.",
+      "es": "El Gobierno fija cada año el salario mínimo interprofesional para toda España. ERC y EH Bildu defienden salarios mínimos territoriales y Junts registró en febrero de 2026 en el Parlament una ley para un salario mínimo catalán de referencia de 1.400 euros; en mayo de 2026 el Senado rechazó una moción de ERC en ese sentido. Sus defensores alegan que el coste de la vida varía entre territorios; sus detractores, que fragmentaría el mercado laboral y crearía desigualdades."
     },
-    "axes": { "economic": 0.8 }
+    "axes": {
+      "territorial": 0.9,
+      "economic": -0.3
+    }
   },
   {
-    "id": "fis-fortunes",
+    "id": "fis-irpf-inflacio",
     "topic": "fiscalitat",
     "text": {
-      "ca": "Les grans fortunes haurien de pagar un impost especial sobre el seu patrimoni.",
-      "es": "Las grandes fortunas deberían pagar un impuesto especial sobre su patrimonio."
+      "ca": "Els trams de l'IRPF s'haurien d'actualitzar cada any segons la inflació.",
+      "es": "Los tramos del IRPF deberían actualizarse cada año según la inflación."
     },
     "context": {
-      "ca": "Hi ha un impost de patrimoni que gestionen les comunitats i, des del 2022, un impost estatal temporal sobre les fortunes més grans. Hi ha qui el veu just i qui creu que fa marxar capital.",
-      "es": "Existe un impuesto de patrimonio que gestionan las comunidades y, desde 2022, un impuesto estatal temporal sobre las mayores fortunas. Hay quien lo ve justo y quien cree que ahuyenta capital."
+      "ca": "La llei de l'IRPF no ajusta la tarifa a la inflació, de manera que les pujades salarials nominals poden elevar el tipus efectiu encara que no augmenti el poder adquisitiu. El 13 de novembre de 2025 el Congrés va aprovar una moció del PP que demanava, juntament amb altres mesures, ajustar a la inflació com a mínim els tres primers trams (171 a favor, 166 en contra). Els partidaris ho presenten com una devolució de poder adquisitiu; els contraris al·leguen la pèrdua de recaptació necessària per als serveis públics.",
+      "es": "La ley del IRPF no ajusta la tarifa a la inflación, de modo que las subidas salariales nominales pueden elevar el tipo efectivo aunque no aumente el poder adquisitivo. El 13 de noviembre de 2025 el Congreso aprobó una moción del PP que pedía, junto con otras medidas, ajustar a la inflación al menos los tres primeros tramos (171 a favor, 166 en contra). Los partidarios lo presentan como una devolución de poder adquisitivo; los contrarios alegan la pérdida de recaudación necesaria para los servicios públicos."
     },
-    "axes": { "economic": -1 }
+    "axes": {
+      "economic": 0.6
+    }
   },
   {
-    "id": "fis-autonomia",
+    "id": "fis-successions",
     "topic": "fiscalitat",
     "text": {
-      "ca": "Cada comunitat autònoma hauria de recaptar i gestionar tots els seus impostos.",
-      "es": "Cada comunidad autónoma debería recaudar y gestionar todos sus impuestos."
+      "ca": "S'hauria de suprimir l'impost de successions i donacions a tot Espanya.",
+      "es": "Debería suprimirse el impuesto de sucesiones y donaciones en toda España."
     },
     "context": {
-      "ca": "El País Basc i Navarra ja recapten els seus impostos amb el concert i el conveni econòmic. La resta de comunitats depenen del sistema comú de finançament.",
-      "es": "El País Vasco y Navarra ya recaudan sus impuestos con el concierto y el convenio económico. El resto de comunidades dependen del sistema común de financiación."
+      "ca": "L'impost de successions i donacions és estatal però està cedit a les comunitats, que apliquen reduccions molt diferents; va recaptar el 0,23 % del PIB el 2023, segons el Banc d'Espanya. A la XV legislatura el PP i Vox van presentar lleis per suprimir-lo, a les quals el Govern es va oposar pel seu impacte pressupostari. Els partidaris el consideren una doble imposició sobre el patrimoni familiar; els contraris, un instrument d'igualtat d'oportunitats i de finançament de les comunitats.",
+      "es": "El impuesto de sucesiones y donaciones es estatal pero está cedido a las comunidades, que aplican reducciones muy distintas; recaudó el 0,23 % del PIB en 2023, según el Banco de España. En la XV legislatura PP y Vox presentaron leyes para suprimirlo, a las que el Gobierno se opuso por su impacto presupuestario. Los partidarios lo consideran una doble imposición sobre el patrimonio familiar; los contrarios, un instrumento de igualdad de oportunidades y de financiación de las comunidades."
     },
-    "axes": { "territorial": 1 }
+    "axes": {
+      "economic": 0.8,
+      "territorial": -0.2
+    }
+  },
+  {
+    "id": "fis-energetiques",
+    "topic": "fiscalitat",
+    "text": {
+      "ca": "Les grans energètiques i petrolieres haurien de pagar un impost permanent sobre els seus beneficis extraordinaris.",
+      "es": "Las grandes energéticas y petroleras deberían pagar un impuesto permanente sobre sus beneficios extraordinarios."
+    },
+    "context": {
+      "ca": "El 2023 i el 2024 les grans energètiques van pagar un gravamen temporal de l'1,2 % de la xifra de negoci, i el gener de 2025 el Congrés va derogar el decret que l'estenia al 2025. Amb la pujada de preus per la crisi del Pròxim Orient, el 30 de setembre de 2026 el Congrés va rebutjar un impost permanent (44 a favor, 181 en contra, 122 abstencions). Els partidaris defensen que hi contribueixi qui obté beneficis extraordinaris en una crisi; els contraris al·leguen que frena la inversió i acaba traslladant-se als preus.",
+      "es": "En 2023 y 2024 las grandes energéticas pagaron un gravamen temporal del 1,2 % de su cifra de negocios, y en enero de 2025 el Congreso derogó el decreto que lo extendía a 2025. Con la subida de precios por la crisis de Oriente Medio, el 30 de septiembre de 2026 el Congreso rechazó un impuesto permanente (44 a favor, 181 en contra, 122 abstenciones). Los partidarios defienden que contribuya quien obtiene beneficios extraordinarios en una crisis; los contrarios alegan que frena la inversión y acaba trasladándose a los precios."
+    },
+    "axes": {
+      "economic": -0.8
+    }
   },
   {
     "id": "ene-nuclear",
     "topic": "energia",
     "text": {
-      "ca": "Les centrals nuclears haurien de funcionar més enllà del calendari de tancament acordat.",
-      "es": "Las centrales nucleares deberían funcionar más allá del calendario de cierre acordado."
+      "ca": "Les centrals nuclears haurien de poder continuar funcionant després del 2035.",
+      "es": "Las centrales nucleares deberían poder seguir funcionando después de 2035."
     },
     "context": {
-      "ca": "El calendari pactat el 2019 preveu tancar els set reactors entre el 2027 i el 2035. El debat enfronta la seguretat de subministrament i les emissions amb el cost i la gestió dels residus.",
-      "es": "El calendario pactado en 2019 prevé cerrar los siete reactores entre 2027 y 2035. El debate enfrenta la seguridad de suministro y las emisiones con el coste y la gestión de los residuos."
+      "ca": "El calendari vigent tanca les centrals nuclears entre el 2027 i el 2035; l'agost de 2026 el Govern va prorrogar Almaraz fins al 2030 sense canviar la data final. El novembre de 2025 el Congrés va rebutjar per un vot suprimir el calendari de tancament (171 a favor, 172 en contra). Els partidaris invoquen la seguretat de subministrament després de l'apagada del 28 d'abril de 2025 i la generació sense CO2; els contraris, el cost dels residus i l'aposta per renovables i emmagatzematge.",
+      "es": "El calendario vigente cierra las centrales nucleares entre 2027 y 2035; en agosto de 2026 el Gobierno prorrogó Almaraz hasta 2030 sin cambiar la fecha final. En noviembre de 2025 el Congreso rechazó por un voto suprimir el calendario de cierre (171 a favor, 172 en contra). Los partidarios invocan la seguridad de suministro tras el apagón del 28 de abril de 2025 y la generación sin CO2; los contrarios, el coste de los residuos y la apuesta por renovables y almacenamiento."
     },
-    "axes": { "economic": 0.5, "social": 0.3 }
+    "axes": {
+      "economic": 0.5
+    }
   },
   {
-    "id": "ene-combustio",
+    "id": "ene-empresa-publica",
     "topic": "energia",
     "text": {
-      "ca": "La venda de cotxes nous de gasolina i dièsel s'hauria de prohibir a partir del 2035.",
-      "es": "La venta de coches nuevos de gasolina y diésel debería prohibirse a partir de 2035."
+      "ca": "L'Estat hauria de crear una empresa pública que produeixi i vengui electricitat.",
+      "es": "El Estado debería crear una empresa pública que produzca y venda electricidad."
     },
     "context": {
-      "ca": "La Unió Europea va aprovar aquest calendari per reduir emissions, i se'n debat la flexibilització. Afecta la indústria de l'automòbil, l'ocupació i el preu dels vehicles.",
-      "es": "La Unión Europea aprobó este calendario para reducir emisiones, y se debate su flexibilización. Afecta a la industria del automóvil, al empleo y al precio de los vehículos."
+      "ca": "A Espanya la generació i la venda d'electricitat són en mans d'empreses privades en un mercat liberalitzat. El 30 de setembre de 2026 el Congrés va rebutjar (39 a favor, 181 en contra, 126 abstencions) crear una empresa pública amb control públic «des de la generació fins als consumidors». Els partidaris sostenen que donaria a l'Estat un instrument per moderar els preus; els contraris, que suposaria un cost públic i una intervenció en un mercat amb competència.",
+      "es": "En España la generación y la venta de electricidad están en manos de empresas privadas en un mercado liberalizado. El 30 de septiembre de 2026 el Congreso rechazó (39 a favor, 181 en contra, 126 abstenciones) crear una empresa pública con control público «desde la generación hasta los consumidores». Los partidarios sostienen que daría al Estado un instrumento para moderar los precios; los contrarios, que supondría un coste público y una intervención en un mercado con competencia."
     },
-    "axes": { "economic": -0.5, "social": -0.4 }
+    "axes": {
+      "economic": -1
+    }
   },
   {
     "id": "ene-transvasaments",
     "topic": "energia",
     "text": {
-      "ca": "S'haurien d'ampliar els transvasaments d'aigua entre conques hidrogràfiques.",
-      "es": "Deberían ampliarse los trasvases de agua entre cuencas hidrográficas."
+      "ca": "Espanya hauria d'aprovar un pla hidrològic nacional que inclogui transvasaments entre conques.",
+      "es": "España debería aprobar un plan hidrológico nacional que incluya trasvases entre cuencas."
     },
     "context": {
-      "ca": "Els transvasaments porten aigua de conques amb més recursos a zones amb sequera. Les comunitats d'origen i de destinació solen tenir interessos oposats.",
-      "es": "Los trasvases llevan agua de cuencas con más recursos a zonas con sequía. Las comunidades de origen y de destino suelen tener intereses opuestos."
+      "ca": "El Pla Hidrològic Nacional del 2001 incloïa un transvasament de l'Ebre cap a la Mediterrània que la Llei 11/2005 va suprimir; continuen en ús transvasaments com el Tajo-Segura. L'abril de 2024 el Congrés va rebutjar un pla nacional de l'aigua amb interconnexió de conques proposat per Vox; el PP es va abstenir i va proposar en canvi un pacte nacional de l'aigua per consens. Els partidaris ho plantegen com a solidaritat entre territoris davant la sequera; els contraris prioritzen la dessalinització, l'estalvi i la protecció de les conques cedents.",
+      "es": "El Plan Hidrológico Nacional de 2001 incluía un trasvase del Ebro hacia el Mediterráneo que la Ley 11/2005 suprimió; siguen en uso trasvases como el Tajo-Segura. En abril de 2024 el Congreso rechazó un plan nacional del agua con interconexión de cuencas propuesto por Vox; el PP se abstuvo y propuso en su lugar un pacto nacional del agua por consenso. Los partidarios lo plantean como solidaridad entre territorios ante la sequía; los contrarios priorizan la desalación, el ahorro y la protección de las cuencas cedentes."
     },
-    "axes": { "territorial": -0.6 }
+    "axes": {
+      "territorial": -0.8
+    }
   },
   {
-    "id": "edu-0-3",
+    "id": "edu-concerts",
     "topic": "educacio",
     "text": {
-      "ca": "L'educació de 0 a 3 anys hauria de ser gratuïta i universal.",
-      "es": "La educación de 0 a 3 años debería ser gratuita y universal."
+      "ca": "Les administracions haurien de poder ampliar o renovar concerts amb escoles privades si les famílies els demanen.",
+      "es": "Las administraciones deberían poder ampliar o renovar conciertos con colegios privados si las familias los piden."
     },
     "context": {
-      "ca": "L'etapa de 0 a 3 anys és voluntària. La gratuïtat i el nombre de places públiques varien molt segons la comunitat autònoma i el municipi.",
-      "es": "La etapa de 0 a 3 años es voluntaria. La gratuidad y el número de plazas públicas varían mucho según la comunidad autónoma y el municipio."
+      "ca": "El curs 2024-2025 el 66,8 % de l'alumnat no universitari estudiava en centres públics, el 24,4 % en concertats i el 8,8 % en privats. La LOMLOE (2020) obliga a promoure l'augment progressiu de places públiques i no recull la «demanda social» com a criteri per programar places. Els partidaris invoquen la llibertat d'elecció de centre; els contraris, la prioritat de la xarxa pública i la lluita contra la segregació escolar.",
+      "es": "En el curso 2024-2025 el 66,8 % del alumnado no universitario estudiaba en centros públicos, el 24,4 % en concertados y el 8,8 % en privados. La LOMLOE (2020) obliga a promover el aumento progresivo de plazas públicas y no recoge la «demanda social» como criterio para programar plazas. Los partidarios invocan la libertad de elección de centro; los contrarios, la prioridad de la red pública y la lucha contra la segregación escolar."
     },
-    "axes": { "economic": -0.7 }
+    "axes": {
+      "economic": 0.6,
+      "social": 0.3
+    }
   },
   {
-    "id": "edu-concertada",
+    "id": "edu-castella",
     "topic": "educacio",
     "text": {
-      "ca": "L'escola concertada hauria de deixar de rebre diners públics.",
-      "es": "La escuela concertada debería dejar de recibir dinero público."
+      "ca": "A les comunitats amb llengua cooficial, almenys un 25 % de les classes s'hauria d'impartir en castellà.",
+      "es": "En las comunidades con lengua cooficial, al menos un 25 % de las clases debería impartirse en castellano."
     },
     "context": {
-      "ca": "Les escoles concertades són privades però reben finançament públic a canvi de ser gratuïtes en les etapes obligatòries. Hi estudia aproximadament un de cada quatre alumnes.",
-      "es": "Los colegios concertados son privados pero reciben financiación pública a cambio de ser gratuitos en las etapas obligatorias. En ellos estudia aproximadamente uno de cada cuatro alumnos."
+      "ca": "A Catalunya el TSJC ha exigit un mínim del 25 % de classes en castellà, mentre que la Llei catalana 8/2022 no fixa percentatges i deixa la presència de cada llengua al projecte de cada centre; el març de 2026 el Tribunal Constitucional encara no s'havia pronunciat sobre aquesta llei. Els partidaris d'un mínim en castellà ho presenten com una garantia del dret a estudiar en la llengua comuna; els contraris defensen la immersió o el projecte lingüístic de cada centre i la competència autonòmica.",
+      "es": "En Cataluña el TSJC ha exigido un mínimo del 25 % de clases en castellano, mientras que la Ley catalana 8/2022 no fija porcentajes y deja la presencia de cada lengua al proyecto de cada centro; en marzo de 2026 el Tribunal Constitucional aún no se había pronunciado sobre esa ley. Los partidarios de un mínimo en castellano lo presentan como garantía del derecho a estudiar en la lengua común; los contrarios defienden la inmersión o el proyecto lingüístico de cada centro y la competencia autonómica."
     },
-    "axes": { "economic": -0.5, "social": -0.6 }
+    "axes": {
+      "territorial": -0.8,
+      "social": 0.2
+    }
   },
   {
-    "id": "edu-religio",
+    "id": "edu-universitats-privades",
     "topic": "educacio",
     "text": {
-      "ca": "La religió hauria de deixar de ser una assignatura a l'escola.",
-      "es": "La religión debería dejar de ser una asignatura en la escuela."
+      "ca": "L'Estat hauria d'exigir requisits més estrictes per autoritzar noves universitats privades.",
+      "es": "El Estado debería exigir requisitos más estrictos para autorizar nuevas universidades privadas."
     },
     "context": {
-      "ca": "Ara els centres l'han d'oferir i les famílies trien si l'alumnat la cursa. Els acords amb la Santa Seu de 1979 en condicionen la regulació.",
-      "es": "Ahora los centros deben ofrecerla y las familias eligen si el alumnado la cursa. Los acuerdos con la Santa Sede de 1979 condicionan su regulación."
+      "ca": "El Reial decret 905/2025 exigia, entre altres requisits, un mínim de 4.500 estudiants, destinar el 5 % del pressupost a recerca i un informe vinculant d'una agència de qualitat per autoritzar universitats. El Tribunal Suprem l'ha anul·lat per no justificar-ne la tramitació urgent, sense pronunciar-se sobre el fons. El Govern i els rectors el defensen com una garantia de qualitat; governs autonòmics del PP i el PNB el consideren una invasió de competències.",
+      "es": "El Real Decreto 905/2025 exigía, entre otros requisitos, un mínimo de 4.500 estudiantes, destinar el 5 % del presupuesto a investigación y un informe vinculante de una agencia de calidad para autorizar universidades. El Tribunal Supremo lo ha anulado por no justificar su tramitación urgente, sin pronunciarse sobre el fondo. El Gobierno y los rectores lo defienden como garantía de calidad; gobiernos autonómicos del PP y el PNV lo consideran una invasión de competencias."
     },
-    "axes": { "social": -1 }
+    "axes": {
+      "economic": -0.4,
+      "territorial": -0.5
+    }
   },
   {
-    "id": "san-derivacions",
+    "id": "san-gestio-publica",
     "topic": "sanitat",
     "text": {
-      "ca": "Per reduir les llistes d'espera, la sanitat pública hauria de derivar més pacients a centres privats.",
-      "es": "Para reducir las listas de espera, la sanidad pública debería derivar más pacientes a centros privados."
+      "ca": "La gestió privada d'hospitals i centres sanitaris públics només s'hauria de permetre de manera excepcional.",
+      "es": "La gestión privada de hospitales y centros sanitarios públicos solo debería permitirse de forma excepcional."
     },
     "context": {
-      "ca": "Moltes comunitats ja concerten proves i operacions amb centres privats. Qui ho defensa vol reduir les esperes de seguida; qui s'hi oposa prefereix reforçar els centres públics.",
-      "es": "Muchas comunidades ya conciertan pruebas y operaciones con centros privados. Quien lo defiende quiere reducir las esperas de inmediato; quien se opone prefiere reforzar los centros públicos."
+      "ca": "La Llei 15/1997 permet a les administracions encarregar a entitats privades la gestió de centres sanitaris públics. El maig de 2026 el Govern va portar al Congrés un projecte que la deroga i fa «estrictament excepcional» la gestió indirecta, sense afectar els contractes vigents; no es va aprovar abans de la dissolució. Els defensors al·leguen més equitat i control dels diners públics; els detractors, que va contra la col·laboració publicoprivada i, a Catalunya, contra el seu model de concerts.",
+      "es": "La Ley 15/1997 permite a las administraciones encargar a entidades privadas la gestión de centros sanitarios públicos. En mayo de 2026 el Gobierno llevó al Congreso un proyecto que la deroga y hace «estrictamente excepcional» la gestión indirecta, sin afectar a los contratos vigentes; no se aprobó antes de la disolución. Sus defensores alegan más equidad y control del dinero público; sus detractores, que va contra la colaboración público-privada y, en Cataluña, contra su modelo de conciertos."
     },
-    "axes": { "economic": 0.8 }
+    "axes": {
+      "economic": -0.8,
+      "territorial": -0.3
+    }
   },
   {
-    "id": "san-eutanasia",
+    "id": "san-muface",
     "topic": "sanitat",
     "text": {
-      "ca": "La llei de l'eutanàsia s'hauria de mantenir tal com és ara.",
-      "es": "La ley de eutanasia debería mantenerse tal como está ahora."
+      "ca": "Els funcionaris haurien de poder continuar triant entre la sanitat pública i una asseguradora privada (model MUFACE).",
+      "es": "Los funcionarios deberían poder seguir eligiendo entre la sanidad pública y una aseguradora privada (modelo MUFACE)."
     },
     "context": {
-      "ca": "Des del 2021, una persona amb una malaltia greu i incurable pot demanar ajuda per morir, amb diversos controls mèdics. Alguns partits en volen la derogació.",
-      "es": "Desde 2021, una persona con una enfermedad grave e incurable puede pedir ayuda para morir, con varios controles médicos. Algunos partidos quieren derogarla."
+      "ca": "Dels prop d'1,5 milions de mutualistes de MUFACE, una mica més d'un milió estan adscrits a asseguradores privades mitjançant un concert de 4.808,5 milions d'euros per al 2025-2027; la resta va triar la sanitat pública. L'AIReF proposa fer voluntària l'adscripció i incorporar progressivament els nous funcionaris al Sistema Nacional de Salut. Els partidaris de mantenir el model al·leguen que evita sobrecarregar la sanitat pública; els contraris, que tots els mutualistes s'hi haurien d'integrar.",
+      "es": "De los cerca de 1,5 millones de mutualistas de MUFACE, algo más de un millón están adscritos a aseguradoras privadas mediante un concierto de 4.808,5 millones de euros para 2025-2027; el resto eligió la sanidad pública. La AIReF propone hacer voluntaria la adscripción e incorporar progresivamente a los nuevos funcionarios al Sistema Nacional de Salud. Los partidarios de mantener el modelo alegan que evita sobrecargar la sanidad pública; los contrarios, que todos los mutualistas deberían integrarse en ella."
     },
-    "axes": { "social": -0.8 }
+    "axes": {
+      "economic": 0.6
+    }
   },
   {
-    "id": "san-dentista",
+    "id": "san-avortament",
     "topic": "sanitat",
     "text": {
-      "ca": "La sanitat pública hauria de cobrir el dentista per a tothom.",
-      "es": "La sanidad pública debería cubrir el dentista para todo el mundo."
+      "ca": "La Constitució hauria de reconèixer expressament el dret de les dones a l'avortament.",
+      "es": "La Constitución debería reconocer expresamente el derecho de las mujeres al aborto."
     },
     "context": {
-      "ca": "Ara la cobertura dental pública és limitada i la majoria de tractaments es paguen de manera privada. Ampliar-la tindria un cost elevat.",
-      "es": "Ahora la cobertura dental pública es limitada y la mayoría de tratamientos se pagan de forma privada. Ampliarla tendría un coste elevado."
+      "ca": "L'avortament està regulat per llei orgànica (2010, reformada el 2023); el 2024 es van practicar 106.172 interrupcions voluntàries de l'embaràs. L'abril de 2026 el Govern va portar al Congrés una reforma de l'article 43 per garantir aquest dret, que va superar les esmenes a la totalitat (177 vots a 171) però necessitava tres cinquens i no consta cap votació final. Els defensors el volen protegir de retrocessos i desigualtats territorials; el PP i Vox la van qualificar de «frau constitucional» i de reforma «propagandística».",
+      "es": "El aborto está regulado por ley orgánica (2010, reformada en 2023); en 2024 se practicaron 106.172 interrupciones voluntarias del embarazo. En abril de 2026 el Gobierno llevó al Congreso una reforma del artículo 43 para garantizar ese derecho, que superó las enmiendas a la totalidad (177 votos a 171) pero necesitaba tres quintos y no consta votación final. Sus defensores quieren protegerlo frente a retrocesos y desigualdades territoriales; PP y Vox la calificaron de «fraude constitucional» y de reforma «propagandística»."
     },
-    "axes": { "economic": -0.7 }
+    "axes": {
+      "social": -1
+    }
   },
   {
     "id": "ter-referendum",
     "topic": "territori",
     "text": {
-      "ca": "Una comunitat autònoma hauria de poder fer un referèndum d'independència acordat amb l'Estat.",
-      "es": "Una comunidad autónoma debería poder celebrar un referéndum de independencia acordado con el Estado."
+      "ca": "L'Estat hauria de permetre un referèndum pactat sobre la independència de Catalunya.",
+      "es": "El Estado debería permitir un referéndum pactado sobre la independencia de Cataluña."
     },
     "context": {
-      "ca": "La Constitució no preveu aquest tipus de consulta. Escòcia i el Quebec en van fer de pactades; aquí el debat divideix partits i territoris.",
-      "es": "La Constitución no prevé este tipo de consulta. Escocia y Quebec celebraron consultas pactadas; aquí el debate divide a partidos y territorios."
+      "ca": "En l'acord d'investidura del novembre de 2023, Junts va plantejar un referèndum emparat en l'article 92 de la Constitució i el PSOE va defensar el desplegament de l'Estatut del 2006, sense acord entre tots dos. Segons el Centre d'Estudis d'Opinió (primera onada del 2026), el 45 % dels catalans és favorable a la independència i el 51 % hi és contrari. Els partidaris hi veuen una via democràtica per resoldre el conflicte; els detractors sostenen que la sobirania correspon al conjunt dels espanyols i que la Constitució no ho permet.",
+      "es": "En el acuerdo de investidura de noviembre de 2023, Junts planteó un referéndum amparado en el artículo 92 de la Constitución y el PSOE defendió el desarrollo del Estatut de 2006, sin acuerdo entre ambos. Según el Centre d'Estudis d'Opinió (primera oleada de 2026), el 45 % de los catalanes está a favor de la independencia y el 51 % en contra. Sus partidarios lo ven como una vía democrática para resolver el conflicto; sus detractores sostienen que la soberanía corresponde al conjunto de los españoles y que la Constitución no lo permite."
     },
-    "axes": { "territorial": 1 }
+    "axes": {
+      "territorial": 1
+    }
   },
   {
-    "id": "ter-recentralitzar",
+    "id": "ter-immigracio",
     "topic": "territori",
     "text": {
-      "ca": "Algunes competències, com l'educació o la sanitat, haurien de tornar a l'Estat.",
-      "es": "Algunas competencias, como la educación o la sanidad, deberían volver al Estado."
+      "ca": "L'Estat hauria de delegar a Catalunya la gestió de la immigració, com els permisos de residència i les expulsions.",
+      "es": "El Estado debería delegar en Cataluña la gestión de la inmigración, como los permisos de residencia y las expulsiones."
     },
     "context": {
-      "ca": "L'educació i la sanitat estan transferides a les comunitats autònomes. Qui vol recentralitzar parla d'igualtat entre territoris; qui s'hi oposa, d'autogovern i proximitat.",
-      "es": "La educación y la sanidad están transferidas a las comunidades autónomas. Quien quiere recentralizar habla de igualdad entre territorios; quien se opone, de autogobierno y proximidad."
+      "ca": "El PSOE i Junts van registrar el març de 2025 una llei orgànica per delegar a la Generalitat les autoritzacions d'estada i residència, els expedients d'expulsió i la gestió dels centres d'internament. El Congrés en va rebutjar la tramitació el 23 de setembre de 2025 (173 a favor, 177 en contra). A favor s'invoca l'autogovern i la proximitat en la gestió; en contra, que la política migratòria ha de ser comuna a tot l'Estat i, des de Podem, que la proposta tractava la immigració com un perill social.",
+      "es": "PSOE y Junts registraron en marzo de 2025 una ley orgánica para delegar en la Generalitat las autorizaciones de estancia y residencia, los expedientes de expulsión y la gestión de los centros de internamiento. El Congreso rechazó tramitarla el 23 de septiembre de 2025 (173 a favor, 177 en contra). A favor se invoca el autogobierno y la proximidad en la gestión; en contra, que la política migratoria debe ser común en todo el Estado y, desde Podemos, que la propuesta trataba la inmigración como un peligro social."
     },
-    "axes": { "territorial": -1 }
+    "axes": {
+      "territorial": 0.8
+    }
   },
   {
-    "id": "ter-senat",
+    "id": "ter-amnistia",
     "topic": "territori",
     "text": {
-      "ca": "El Senat s'hauria de convertir en una cambra de representació de les comunitats autònomes.",
-      "es": "El Senado debería convertirse en una cámara de representación de las comunidades autónomas."
+      "ca": "La Llei d'amnistia del 2024 per als encausats del procés s'hauria de derogar.",
+      "es": "La Ley de Amnistía de 2024 para los encausados del procés debería derogarse."
     },
     "context": {
-      "ca": "La Constitució ja el defineix com a cambra de representació territorial, però la majoria de senadors s'escullen per província. Canviar-ho requeriria una reforma constitucional.",
-      "es": "La Constitución ya lo define como cámara de representación territorial, pero la mayoría de senadores se eligen por provincia. Cambiarlo requeriría una reforma constitucional."
+      "ca": "La Llei orgànica 1/2024 es va aprovar el 30 de maig de 2024 per 177 vots a 172. El Tribunal Constitucional la va avalar en l'essencial el juny de 2025 i el Tribunal de Justícia de la UE va concloure el juliol de 2026 que el dret europeu no s'hi oposa. Els defensors la veuen com una eina de normalització política a Catalunya; els detractors, com una ruptura de la igualtat davant la llei pactada a canvi de suports per a la investidura.",
+      "es": "La Ley Orgánica 1/2024 se aprobó el 30 de mayo de 2024 por 177 votos a 172. El Tribunal Constitucional la avaló en lo esencial en junio de 2025 y el Tribunal de Justicia de la UE concluyó en julio de 2026 que el Derecho europeo no se opone a ella. Sus defensores la ven como una herramienta de normalización política en Cataluña; sus detractores, como una ruptura de la igualdad ante la ley pactada a cambio de apoyos para la investidura."
     },
-    "axes": { "territorial": 0.5 }
+    "axes": {
+      "territorial": -0.6,
+      "social": 0.3
+    }
   },
   {
     "id": "dre-regularitzacio",
     "topic": "drets",
     "text": {
-      "ca": "Caldria facilitar la regularització de les persones migrants que ja viuen i treballen a Espanya.",
-      "es": "Habría que facilitar la regularización de las personas migrantes que ya viven y trabajan en España."
+      "ca": "Espanya hauria d'aprovar regularitzacions extraordinàries de migrants en situació irregular, com la del 2026.",
+      "es": "España debería aprobar regularizaciones extraordinarias de migrantes en situación irregular, como la de 2026."
     },
     "context": {
-      "ca": "Centenars de milers de persones viuen a Espanya sense permís de residència. El Congrés va admetre a tràmit una iniciativa legislativa popular per regularitzar-les.",
-      "es": "Cientos de miles de personas viven en España sin permiso de residencia. El Congreso admitió a trámite una iniciativa legislativa popular para regularizarlas."
+      "ca": "El Reial decret 316/2026, aprovat després d'una iniciativa legislativa popular, va obrir entre l'abril i el juny de 2026 una regularització per a persones arribades abans del 2026 i sense antecedents penals; el Govern va rebre 1.174.978 sol·licituds. Vox la va recórrer davant el Tribunal Suprem. Els defensors en destaquen la integració laboral i els drets de qui ja viu aquí; el PP defensa estudiar els casos un per un i Vox s'hi oposa frontalment.",
+      "es": "El Real Decreto 316/2026, aprobado tras una iniciativa legislativa popular, abrió entre abril y junio de 2026 una regularización para personas llegadas antes de 2026 y sin antecedentes penales; el Gobierno recibió 1.174.978 solicitudes. Vox la recurrió ante el Tribunal Supremo. Sus defensores destacan la integración laboral y los derechos de quienes ya viven aquí; el PP defiende estudiar los casos de uno en uno y Vox se opone frontalmente."
     },
-    "axes": { "social": -0.8 }
+    "axes": {
+      "social": -0.8
+    }
   },
   {
-    "id": "dre-penes",
+    "id": "dre-multireincidencia",
     "topic": "drets",
     "text": {
-      "ca": "Les penes de presó per als delictes greus s'haurien d'endurir.",
-      "es": "Las penas de prisión para los delitos graves deberían endurecerse."
+      "ca": "Els furts de poc valor comesos de manera reiterada s'haurien de poder castigar amb presó.",
+      "es": "Los hurtos de poco valor cometidos de forma reiterada deberían poder castigarse con prisión."
     },
     "context": {
-      "ca": "Espanya té una taxa de criminalitat per sota de la mitjana europea. El debat és si endurir les penes reduiria els delictes o si cal invertir més en prevenció i reinserció.",
-      "es": "España tiene una tasa de criminalidad por debajo de la media europea. El debate es si endurecer las penas reduciría los delitos o si hay que invertir más en prevención y reinserción."
+      "ca": "La Llei orgànica 1/2026, impulsada per Junts i vigent des de l'abril de 2026, permet castigar un furt de fins a 400 euros amb presó de 6 a 18 mesos si l'autor té almenys tres condemnes prèvies per delictes de la mateixa naturalesa. El Congrés la va aprovar el 12 de febrer de 2026 (302 a favor, 36 en contra, 8 abstencions). Els defensors la presenten com una resposta a la reincidència; els detractors en qüestionen la proporcionalitat de la presó per a delictes lleus.",
+      "es": "La Ley Orgánica 1/2026, impulsada por Junts y en vigor desde abril de 2026, permite castigar un hurto de hasta 400 euros con prisión de 6 a 18 meses si el autor tiene al menos tres condenas previas por delitos de la misma naturaleza. El Congreso la aprobó el 12 de febrero de 2026 (302 a favor, 36 en contra, 8 abstenciones). Sus defensores la presentan como respuesta a la reincidencia; sus detractores cuestionan la proporcionalidad de la cárcel para delitos leves."
     },
-    "axes": { "social": 0.9 }
+    "axes": {
+      "social": 0.6
+    }
   },
   {
-    "id": "dre-monarquia",
+    "id": "dre-memoria",
     "topic": "drets",
     "text": {
-      "ca": "Espanya hauria de fer un referèndum per triar entre monarquia i república.",
-      "es": "España debería celebrar un referéndum para elegir entre monarquía y república."
+      "ca": "La Llei de memòria democràtica del 2022 s'hauria de derogar.",
+      "es": "La Ley de Memoria Democrática de 2022 debería derogarse."
     },
     "context": {
-      "ca": "La Constitució de 1978 estableix la monarquia parlamentària. Canviar la forma d'Estat requeriria una reforma constitucional amb majories reforçades i un referèndum.",
-      "es": "La Constitución de 1978 establece la monarquía parlamentaria. Cambiar la forma de Estado requeriría una reforma constitucional con mayorías reforzadas y un referéndum."
+      "ca": "La Llei 20/2022 atribueix a l'Estat la recerca de desapareguts de la Guerra Civil i la dictadura, declara nul·les les condemnes dels tribunals franquistes i regula la retirada de símbols de la dictadura. El juliol de 2026 el PP es va comprometre a derogar-la si governa, i diverses comunitats governades pel PP i Vox han substituït les seves lleis autonòmiques de memòria per lleis de «concòrdia». Els defensors la veuen com una reparació a les víctimes del franquisme; els detractors, com una lectura parcial de la història.",
+      "es": "La Ley 20/2022 atribuye al Estado la búsqueda de desaparecidos de la Guerra Civil y la dictadura, declara nulas las condenas de los tribunales franquistas y regula la retirada de símbolos de la dictadura. En julio de 2026 el PP se comprometió a derogarla si gobierna, y varias comunidades gobernadas por PP y Vox han sustituido sus leyes autonómicas de memoria por leyes de «concordia». Sus defensores la ven como una reparación a las víctimas del franquismo; sus detractores, como una lectura parcial de la historia."
     },
-    "axes": { "social": -0.6 }
+    "axes": {
+      "social": 0.7
+    }
   }
 ]

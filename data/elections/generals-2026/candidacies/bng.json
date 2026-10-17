@@ -10,6 +10,272 @@
     "32",
     "36"
   ],
-  "sources": [],
-  "positions": {}
+  "sources": [
+    {
+      "id": "congreso-20261002-hab-renovacio",
+      "title": "Congreso, 2/10/2026. Votó sí: convalidación del Real Decreto-ley 27/2026 (renovación de alquileres)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF",
+      "date": "2026-10-02",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260519-hab-desallotjament",
+      "title": "Congreso, 19/5/2026. Votó no: toma en consideración de la ley del PP contra la ocupación ilegal",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf",
+      "date": "2026-05-19",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260421-hab-zones-tensionades",
+      "title": "Congreso, 21/4/2026. Votó no: toma en consideración de la ley del PP que deroga las zonas de mercado tensionado",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf",
+      "date": "2026-04-21",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250910-tre-jornada",
+      "title": "Congreso, 10/9/2025. Votó no: enmiendas a la totalidad (devolución) al proyecto de ley de reducción de la jornada a 37,5 horas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf",
+      "date": "2025-09-10",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250917-tre-acomiadament",
+      "title": "Congreso, 17/9/2025. Votó sí: proposición no de ley de Sumar por un despido «restaurativo y disuasorio»",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf",
+      "date": "2025-09-17",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20251113-fis-irpf-inflacio",
+      "title": "Congreso, 13/11/2025. Votó no: moción del PP que pide deflactar al menos tres tramos del IRPF",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf",
+      "date": "2025-11-13",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260930-fis-energetiques",
+      "title": "Congreso, 30/9/2026. Votó sí: moción de Podemos, punto 1: impuesto permanente a energéticas y petroleras",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf",
+      "date": "2026-09-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250617-ene-nuclear",
+      "title": "Congreso, 17/6/2025. Votó no: toma en consideración de la ley del PP para mantener la energía nuclear",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf",
+      "date": "2025-06-17",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260930-ene-empresa-publica",
+      "title": "Congreso, 30/9/2026. Votó sí: moción de Podemos, punto 3: empresa pública de energía",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf",
+      "date": "2026-09-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20240423-ene-transvasaments",
+      "title": "Congreso, 23/4/2024. Votó no: moción de Vox, punto 2: Plan Nacional del Agua con interconexión de cuencas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf",
+      "date": "2024-04-23",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260430-san-avortament",
+      "title": "Congreso, 30/4/2026. Votó no: enmiendas a la totalidad (devolución) a la reforma del artículo 43 de la Constitución (aborto)",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf",
+      "date": "2026-04-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250923-ter-immigracio",
+      "title": "Congreso, 23/9/2025. Votó sí: toma en consideración de la ley de delegación en Cataluña de competencias de inmigración",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf",
+      "date": "2025-09-23",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20240530-ter-amnistia",
+      "title": "Congreso, 30/5/2024. Votó sí: votación final de la Ley de Amnistía (levantamiento del veto del Senado)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF",
+      "date": "2024-05-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260212-dre-multireincidencia",
+      "title": "Congreso, 12/2/2026. Votó no: votación final de la ley orgánica de multirreincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf",
+      "date": "2026-02-12",
+      "lang": "es"
+    },
+    {
+      "id": "programa-2023",
+      "title": "Programa electoral do BNG, eleccións xerais 2023 («Que Galiza conte! Con máis forza!»)",
+      "url": "https://www.bng.gal/media/bnggaliza/files/2023/07/05/23_bng_xerais_programa.pdf",
+      "date": "2023-07-05",
+      "lang": "gl"
+    },
+    {
+      "id": "programa-galegas-2024",
+      "title": "Programa de goberno do BNG, eleccións ao Parlamento de Galiza 2024",
+      "url": "https://www.bng.gal/media/bnggaliza/files/2024/01/24/24_bng_galegas_programa_goberno.pdf",
+      "date": "2024-01-24",
+      "lang": "gl"
+    },
+    {
+      "id": "congreso-2022-isd",
+      "title": "Congreso, 5/4/2022, votación 2: toma en consideración de la PL de Vox de supresión del Impuesto sobre Sucesiones y Donaciones (Néstor Rego: no)",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg14/Sesion169/20220405/Votacion002/VOT_20230302191424.pdf",
+      "date": "2022-04-05",
+      "lang": "es"
+    },
+    {
+      "id": "galiciapress-2026-universidades",
+      "title": "Galiciapress (Europa Press), «Vivienda y la \"irrupción\" de universidades privadas marcan la primera reunión entre la rectora de la USC y Pontón (BNG)», recogido en el dosier de prensa de la Universidade de Vigo",
+      "url": "https://novo.uvigo.gal/sites/uvigo.gal/files/contents/clipping/2026-07/glipe080726.pdf",
+      "date": "2026-07-07",
+      "lang": "es"
+    },
+    {
+      "id": "redaccionmedica-2021-muface",
+      "title": "Redacción Médica, «Muface: el PSOE, solo ante sus socios de Gobierno en la defensa del modelo» (posiciones de los partidos)",
+      "url": "https://www.redaccionmedica.com/politica/20210217/muface-el-psoe-solo-ante-sus-socios-de-gobierno-en-la-defensa-del-modelo/158988_0.amp.html",
+      "date": "2021-02-17",
+      "lang": "es"
+    }
+  ],
+  "positions": {
+    "hab-renovacio": {
+      "value": 2,
+      "source": "congreso-20261002-hab-renovacio",
+      "page": 63,
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF#page=63"
+    },
+    "hab-desallotjament": {
+      "value": -1,
+      "source": "congreso-20260519-hab-desallotjament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf"
+    },
+    "hab-zones-tensionades": {
+      "value": -1,
+      "source": "congreso-20260421-hab-zones-tensionades",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf"
+    },
+    "tre-jornada": {
+      "value": 1,
+      "source": "congreso-20250910-tre-jornada",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf"
+    },
+    "tre-acomiadament": {
+      "value": 1,
+      "source": "congreso-20250917-tre-acomiadament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf"
+    },
+    "tre-smi-autonomic": {
+      "value": 1,
+      "source": "programa-2023",
+      "page": 11,
+      "quote": "Transferencia das competencias en materia de relacións laborais, co obxectivo de que a Galiza teña plena capacidade lexislativa e normativa para estabelecer un marco galego de relacións laborais visando blindar a negociación colectiva e garantir traballo digno e con dereitos para toda a poboación."
+    },
+    "fis-irpf-inflacio": {
+      "value": -1,
+      "source": "congreso-20251113-fis-irpf-inflacio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf"
+    },
+    "fis-successions": {
+      "value": -1,
+      "source": "congreso-2022-isd",
+      "page": 1
+    },
+    "fis-energetiques": {
+      "value": 1,
+      "source": "congreso-20260930-fis-energetiques",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf"
+    },
+    "ene-nuclear": {
+      "value": -1,
+      "source": "congreso-20250617-ene-nuclear",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf"
+    },
+    "ene-empresa-publica": {
+      "value": 1,
+      "source": "congreso-20260930-ene-empresa-publica",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf"
+    },
+    "ene-transvasaments": {
+      "value": -1,
+      "source": "congreso-20240423-ene-transvasaments",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf"
+    },
+    "edu-concerts": {
+      "value": -2,
+      "source": "programa-2023",
+      "page": 33,
+      "quote": "No camiño da supresión dos concertos en todos os niveis educativos, eliminación destes no ensino non-obrigatorio e control do financiamento alleo aos concertos nos centros sostidos con fondos públicos."
+    },
+    "edu-castella": {
+      "value": -2,
+      "source": "programa-galegas-2024",
+      "page": 37,
+      "quote": "recoñecer o galego como a lingua vehicular no ensino. Elaborar un modelo de inmersión lingüística co obxecto de conseguir a plena normalización lingüística e un ensino totalmente en galego"
+    },
+    "edu-universitats-privades": {
+      "value": 1,
+      "source": "galiciapress-2026-universidades",
+      "page": 2,
+      "quote": "Pontón ha acusado al Gobierno de Alfonso Rueda de poner una \"alfombra roja\" a la universidad privada."
+    },
+    "san-gestio-publica": {
+      "value": 2,
+      "source": "programa-2023",
+      "page": 35,
+      "quote": "mediante unha modificación da Lei 15/97, sobre habilitación de novas formas de xestión do Sistema de Saúde, que asegure que a titularidade, o financiamento, a xestión e a provisión de servizos sanitarios se fará con entidades exclusivamente públicas."
+    },
+    "san-muface": {
+      "value": -1,
+      "source": "redaccionmedica-2021-muface",
+      "url": "https://www.redaccionmedica.com/politica/20210217/muface-el-psoe-solo-ante-sus-socios-de-gobierno-en-la-defensa-del-modelo/158988_0.amp.html",
+      "quote": "El partido que lidera Néstor Rego afirma que \"se debe caminar hacia la integración en la Seguridad Social del nuevo funcionariado\", aunque \"respetando siempre los derechos adquiridos por el cuerpo funcionarial actual\"."
+    },
+    "san-avortament": {
+      "value": 1,
+      "source": "congreso-20260430-san-avortament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf"
+    },
+    "ter-referendum": {
+      "value": 2,
+      "source": "programa-2023",
+      "page": 28,
+      "quote": "promoveremos e apoiaremos as mudanzas legais precisas que posibilitaren a convocatoria de referendos vinculantes en asuntos de interese, incluído o dereito de autodeterminación"
+    },
+    "ter-immigracio": {
+      "value": 1,
+      "source": "congreso-20250923-ter-immigracio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf"
+    },
+    "ter-amnistia": {
+      "value": -2,
+      "source": "congreso-20240530-ter-amnistia",
+      "page": 25,
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF#page=25"
+    },
+    "dre-regularitzacio": {
+      "value": 1,
+      "source": "programa-2023",
+      "page": 19,
+      "quote": "Impulsar as reformas lexislativas necesarias para garantir os dereitos da poboación migrante (vivenda, traballo, atención sanitaria, educación...) así como favorecer e facilitar os procesos de regularización administrativa."
+    },
+    "dre-multireincidencia": {
+      "value": -2,
+      "source": "congreso-20260212-dre-multireincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf"
+    },
+    "dre-memoria": {
+      "value": -1,
+      "source": "programa-2023",
+      "page": 28,
+      "quote": "Derrogación da Lei de Amnistía de 1977, que segue a impedir as reivindicacións e o amparo xudicial das vítimas de crimes contra a súa vida e dignidade cometidos durante o réxime franquista"
+    }
+  }
 }

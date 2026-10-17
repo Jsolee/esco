@@ -34,6 +34,7 @@ const CONTENT = {
         h: "Les posicions de les candidatures",
         body: [
           "Per a cada afirmació, cada candidatura té un valor de −2 (molt en desacord) a +2 (molt d'acord), o bé «no s'hi pronuncia». Cada valor porta la font: el document, la pàgina o un enllaç. Si una candidatura no diu res sobre un tema, no s'hi inventa cap posició.",
+          "Les posicions surten del programa electoral, d'una votació nominal del Congrés o d'una declaració pública del partit. En una votació, votar-hi a favor o en contra compta com a d'acord o en desacord; abstenir-se, com a neutral; i ser l'autor de la iniciativa, o votar la llei que fa exactament el que diu l'afirmació, com a molt d'acord o molt en desacord.",
           "Les coalicions poden canviar segons el territori; per això les candidatures es defineixen per circumscripció.",
         ],
       },
@@ -99,6 +100,7 @@ const CONTENT = {
         h: "Las posiciones de las candidaturas",
         body: [
           "Para cada afirmación, cada candidatura tiene un valor de −2 (muy en desacuerdo) a +2 (muy de acuerdo), o bien «no se pronuncia». Cada valor lleva su fuente: el documento, la página o un enlace. Si una candidatura no dice nada sobre un tema, no se le inventa ninguna posición.",
+          "Las posiciones salen del programa electoral, de una votación nominal del Congreso o de una declaración pública del partido. En una votación, votar a favor o en contra cuenta como de acuerdo o en desacuerdo; abstenerse, como neutral; y ser el autor de la iniciativa, o votar la ley que hace exactamente lo que dice la afirmación, como muy de acuerdo o muy en desacuerdo.",
           "Las coaliciones pueden cambiar según el territorio; por eso las candidaturas se definen por circunscripción.",
         ],
       },

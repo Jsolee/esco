@@ -17,6 +17,8 @@ Les dates de candidatures surten dels terminis de la LOREG comptats des del 6 d'
 
 ## Candidatures (esquelet provisional)
 
+> Segons la premsa, Podem no es presentarà a Catalunya: el 12/10/2026 va pactar donar-hi suport a ERC. Cal confirmar-ho amb les candidatures proclamades i, si és així, treure les províncies catalanes de `podemos.json`.
+
 Criteri de l'esquelet: partits amb representació al Congrés a la XV legislatura que han anunciat que es presenten, segons la premsa i la [Viquipèdia](https://es.wikipedia.org/wiki/Elecciones_generales_de_Espa%C3%B1a_de_2026) a 16 d'octubre de 2026. **No és la llista oficial.** Totes porten `"provisional": true`, sense fonts ni posicions.
 
 | Fitxer | Candidatura | Circumscripcions | Pendent de confirmar |
@@ -41,11 +43,23 @@ Altres formacions anunciades sense representació al Congrés (Se Acabó La Fies
 
 ## Afirmacions
 
-`questions.json` és una còpia de les 24 afirmacions d'exemple. Cal revisar-les per a aquesta campanya (per exemple, els decrets d'habitatge que van provocar l'avançament electoral) i fer-les validar per persones de sensibilitats diferents.
+`questions.json` té les 24 afirmacions d'aquesta campanya (esborrany del 17/10/2026): 3 per tema, amb context verificable i el sentit de l'acord equilibrat en cada eix. Les fonts, les votacions nominals del Congrés que serviran per codificar les posicions i el que falta verificar són a [`AFIRMACIONS.md`](./AFIRMACIONS.md). Abans d'obrir l'elecció, les han de revisar persones de sensibilitats diferents.
+
+L'avançament electoral el va provocar la derogació dels dos decrets llei d'habitatge (RDL 26/2026 i 27/2026) el 2 d'octubre de 2026 ([Diari de Sessions núm. 210](https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF)); el 5 d'octubre Sánchez va anunciar la convocatòria.
 
 ## Pressupost
 
-El simulador de mandat necessita, per a aquesta elecció, el cost de cada afirmació (`budget`, amb `budgetSource` d'una font neutral com l'AIReF) i la llista de fonts de finançament (`funding` a `election.json`), amb la posició de cada candidatura sobre cada font. Encara no hi són: sense fonts, el joc no demana finançament.
+El simulador de mandat necessita el cost de cada afirmació (`budget`, amb `budgetSource` d'una font neutral com l'AIReF) i les fonts de finançament (`funding` a `election.json`), amb la posició de cada candidatura sobre cada font. Cap de les 24 afirmacions té avui una estimació neutral citable, així que la primera versió s'obrirà **sense** simulador: sense fonts, el joc no demana finançament.
+
+## Pla
+
+Decidit el 17/10/2026:
+1. **Fins al 26/10:** afirmacions i primera versió de les posicions (fet el 17/10: 312 posicions de 13 candidatures, a partir de votacions de la XV legislatura, programes del 2023 i declaracions; metodologia, matriu i cel·les dubtoses a `AFIRMACIONS.md`).
+2. **3/11:** candidatures proclamades al BOE.
+3. **Quan es publiquin els programes del 29-N:** confirmar o corregir cada posició amb el programa i la pàgina.
+4. **Abans del 13/11:** revisió humana i obertura.
+
+A finals d'octubre s'enviaran les 24 afirmacions a cada partit perquè hi respongui, com fan altres orientadors de vot; la seva resposta es publicarà al costat de la nostra codificació.
 
 ## Per poder obrir l'elecció
 

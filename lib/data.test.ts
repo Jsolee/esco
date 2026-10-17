@@ -27,9 +27,13 @@ describe("dades del repo", () => {
     expect(() => loadData(raw)).toThrow(/pàgina o URL/);
   });
 
-  it("accepten candidatures provisionals sense posicions en una elecció propera", () => {
+  it("accepten candidatures provisionals amb posicions incompletes en una elecció propera", () => {
     const upcoming = DATA.elections.find((e) => e.election.status === "upcoming");
-    expect(upcoming?.candidacies.every((c) => c.provisional && Object.keys(c.positions).length === 0)).toBe(true);
+    expect(upcoming?.candidacies.every((c) => c.provisional)).toBe(true);
+    const raw = clone();
+    const c = raw.elections[1].candidacies[0] as { positions: Record<string, unknown> };
+    c.positions = {};
+    expect(() => loadData(raw)).not.toThrow();
   });
 
   it("fallen si una elecció oberta té candidatures provisionals o sense fonts", () => {
@@ -39,6 +43,7 @@ describe("dades del repo", () => {
     const noSources = clone();
     const g26 = noSources.elections[1];
     (g26.election as Record<string, unknown>).status = "open";
+    Object.assign(g26.candidacies[0], { sources: [], positions: {} });
     expect(() => loadData(noSources)).toThrow(/necessita almenys una font/);
   });
 

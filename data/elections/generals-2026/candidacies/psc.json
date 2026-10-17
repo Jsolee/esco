@@ -10,6 +10,286 @@
     "25",
     "43"
   ],
-  "sources": [],
-  "positions": {}
+  "sources": [
+    {
+      "id": "congreso-20261002-hab-renovacio",
+      "title": "Congreso, 2/10/2026. Votó sí: convalidación del Real Decreto-ley 27/2026 (renovación de alquileres)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF",
+      "date": "2026-10-02",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260519-hab-desallotjament",
+      "title": "Congreso, 19/5/2026. Votó no: toma en consideración de la ley del PP contra la ocupación ilegal",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf",
+      "date": "2026-05-19",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260421-hab-zones-tensionades",
+      "title": "Congreso, 21/4/2026. Votó no: toma en consideración de la ley del PP que deroga las zonas de mercado tensionado",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf",
+      "date": "2026-04-21",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250910-tre-jornada",
+      "title": "Congreso, 10/9/2025. Votó no: enmiendas a la totalidad (devolución) al proyecto de ley de reducción de la jornada a 37,5 horas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf",
+      "date": "2025-09-10",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250917-tre-acomiadament",
+      "title": "Congreso, 17/9/2025. Votó sí: proposición no de ley de Sumar por un despido «restaurativo y disuasorio»",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf",
+      "date": "2025-09-17",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20251113-fis-irpf-inflacio",
+      "title": "Congreso, 13/11/2025. Votó no: moción del PP que pide deflactar al menos tres tramos del IRPF",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf",
+      "date": "2025-11-13",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260930-fis-energetiques",
+      "title": "Congreso, 30/9/2026. Se abstuvo: moción de Podemos, punto 1: impuesto permanente a energéticas y petroleras",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf",
+      "date": "2026-09-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250617-ene-nuclear",
+      "title": "Congreso, 17/6/2025. Votó no: toma en consideración de la ley del PP para mantener la energía nuclear",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf",
+      "date": "2025-06-17",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260930-ene-empresa-publica",
+      "title": "Congreso, 30/9/2026. Se abstuvo: moción de Podemos, punto 3: empresa pública de energía",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf",
+      "date": "2026-09-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20240423-ene-transvasaments",
+      "title": "Congreso, 23/4/2024. Votó no: moción de Vox, punto 2: Plan Nacional del Agua con interconexión de cuencas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf",
+      "date": "2024-04-23",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260430-san-avortament",
+      "title": "Congreso, 30/4/2026. Votó no: enmiendas a la totalidad (devolución) a la reforma del artículo 43 de la Constitución (aborto)",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf",
+      "date": "2026-04-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250923-ter-immigracio",
+      "title": "Congreso, 23/9/2025. Votó sí: toma en consideración de la ley de delegación en Cataluña de competencias de inmigración",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf",
+      "date": "2025-09-23",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20240530-ter-amnistia",
+      "title": "Congreso, 30/5/2024. Votó sí: votación final de la Ley de Amnistía (levantamiento del veto del Senado)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF",
+      "date": "2024-05-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260212-dre-multireincidencia",
+      "title": "Congreso, 12/2/2026. Votó sí: votación final de la ley orgánica de multirreincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf",
+      "date": "2026-02-12",
+      "lang": "es"
+    },
+    {
+      "id": "programa-parlament-2024",
+      "title": "Programa electoral del PSC, eleccions al Parlament de Catalunya del 12 de maig de 2024",
+      "url": "https://www.socialistes.cat/wp-content/uploads/2024/04/Programa-electoral-PSC-Eleccions-12-maig-2024.pdf",
+      "date": "2024-04-24",
+      "lang": "ca"
+    },
+    {
+      "id": "programa-2023",
+      "title": "Programa electoral del PSOE, elecciones generales 2023 (programa con el que concurrió la candidatura PSC-PSOE en Cataluña)",
+      "url": "https://www.psoe.es/media-content/2023/07/PROGRAMA_ELECTORAL-GENERALES-2023.pdf",
+      "date": "2023-07-07",
+      "lang": "es"
+    },
+    {
+      "id": "lomloe-2020",
+      "title": "Ley Orgánica 3/2020, de 29 de diciembre, por la que se modifica la Ley Orgánica 2/2006, de Educación (LOMLOE)",
+      "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2020-17264",
+      "date": "2020-12-29",
+      "lang": "es"
+    },
+    {
+      "id": "concierto-muface-2025",
+      "title": "Nota de prensa del Ministerio para la Transformación Digital y de la Función Pública: MUFACE firma con Adeslas y Asisa el concierto 2025-2027",
+      "url": "https://digital.gob.es/content/dam/portal-mtdfp/comunicacion/comunicacion_sefp/2025/04/2025-04-30-2/NPConciertoMUFACE.pdf",
+      "date": "2025-04-30",
+      "lang": "es"
+    },
+    {
+      "id": "illa-referendum-2023",
+      "title": "Europa Press: Illa (PSC) rechaza un referéndum para la investidura",
+      "url": "https://www.ultimahora.es/noticias/comunidades/2023/09/29/2021315/illa-psc-rechaza-referendum-para-investidura-hay-volver-elecciones-iremos.html",
+      "date": "2023-09-29",
+      "lang": "es"
+    },
+    {
+      "id": "rd-316-2026",
+      "title": "Real Decreto 316/2026, de 14 de abril, por el que se modifica el Reglamento de extranjería (regularización extraordinaria)",
+      "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2026-8284",
+      "date": "2026-04-14",
+      "lang": "es"
+    },
+    {
+      "id": "rd-905-2025",
+      "title": "Real Decreto 905/2025, de 7 de octubre, de creación, reconocimiento y autorización de universidades (aprobado por el Gobierno)",
+      "url": "https://www.boe.es/eli/es/rd/2025/10/07/905",
+      "date": "2025-10-07",
+      "lang": "es"
+    }
+  ],
+  "positions": {
+    "hab-renovacio": {
+      "value": 2,
+      "source": "congreso-20261002-hab-renovacio",
+      "page": 63,
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF#page=63"
+    },
+    "hab-desallotjament": {
+      "value": -1,
+      "source": "congreso-20260519-hab-desallotjament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf"
+    },
+    "hab-zones-tensionades": {
+      "value": -1,
+      "source": "congreso-20260421-hab-zones-tensionades",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf"
+    },
+    "tre-jornada": {
+      "value": 2,
+      "source": "congreso-20250910-tre-jornada",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf"
+    },
+    "tre-acomiadament": {
+      "value": 1,
+      "source": "congreso-20250917-tre-acomiadament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf"
+    },
+    "tre-smi-autonomic": {
+      "value": 0,
+      "source": "programa-parlament-2024",
+      "page": 17,
+      "quote": "Estudiarem amb els agents socials i econòmics l’aplicació d’un Salari Mínim de Referència a Catalunya per tal de garantir un poder adquisitiu alineat amb el nivell de vida del nostre territori."
+    },
+    "fis-irpf-inflacio": {
+      "value": -1,
+      "source": "congreso-20251113-fis-irpf-inflacio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf"
+    },
+    "fis-successions": {
+      "value": -1,
+      "source": "programa-2023",
+      "page": 39,
+      "quote": "Evaluaremos los resultados del Impuesto Temporal de Solidaridad de las Grandes Fortunas y, en su caso, avanzaremos en el debate sobre la tributación de la riqueza en el marco del modelo de financiación autonómica para acabar con la competencia fiscal desleal entre territorios."
+    },
+    "fis-energetiques": {
+      "value": 0,
+      "source": "congreso-20260930-fis-energetiques",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf"
+    },
+    "ene-nuclear": {
+      "value": -1,
+      "source": "congreso-20250617-ene-nuclear",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf"
+    },
+    "ene-empresa-publica": {
+      "value": 0,
+      "source": "congreso-20260930-ene-empresa-publica",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf"
+    },
+    "ene-transvasaments": {
+      "value": -1,
+      "source": "congreso-20240423-ene-transvasaments",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf"
+    },
+    "edu-concerts": {
+      "value": -1,
+      "source": "lomloe-2020",
+      "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2020-17264",
+      "quote": "Las Administraciones educativas promoverán un incremento progresivo de puestos escolares en la red de centros de titularidad pública."
+    },
+    "edu-castella": {
+      "value": -1,
+      "source": "programa-parlament-2024",
+      "page": 70,
+      "quote": "preservar el consens acordat a la Llei 8/2022, del 9 de juny, sobre l'ús i l'aprenentatge de les llengües oficials en l'ensenyament no universitari, vetllant per la no politització de la llengua i de l’escola, la no separació dels nens i nenes per raó de llengua"
+    },
+    "edu-universitats-privades": {
+      "value": 2,
+      "source": "rd-905-2025",
+      "url": "https://www.boe.es/eli/es/rd/2025/10/07/905"
+    },
+    "san-gestio-publica": {
+      "value": 1,
+      "source": "programa-2023",
+      "page": 196,
+      "quote": "Frente a la derecha, que entiende la sanidad como un servicio público más que se puede privatizar, y ante cualquier intento de desmantelamiento del sistema público de salud, queremos dejar muy claro que contará con el rechazo frontal de nuestro partido"
+    },
+    "san-muface": {
+      "value": 1,
+      "source": "concierto-muface-2025",
+      "page": 2,
+      "quote": "a partir de ahora los mutualistas podrán pedir también en junio el cambio de entidad, (de la pública a la privada, viceversa o entre aseguradoras)."
+    },
+    "san-avortament": {
+      "value": 2,
+      "source": "congreso-20260430-san-avortament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf"
+    },
+    "ter-referendum": {
+      "value": -2,
+      "source": "illa-referendum-2023",
+      "url": "https://www.ultimahora.es/noticias/comunidades/2023/09/29/2021315/illa-psc-rechaza-referendum-para-investidura-hay-volver-elecciones-iremos.html",
+      "quote": "El primer secretario del PSC, Salvador Illa, ha rechazado pactar un referéndum con los partidos independentistas catalanes para investir al presidente del Gobierno en funciones y candidato del PSOE a la reelección, Pedro Sánchez"
+    },
+    "ter-immigracio": {
+      "value": 2,
+      "source": "congreso-20250923-ter-immigracio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf"
+    },
+    "ter-amnistia": {
+      "value": -2,
+      "source": "congreso-20240530-ter-amnistia",
+      "page": 25,
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF#page=25"
+    },
+    "dre-regularitzacio": {
+      "value": 2,
+      "source": "rd-316-2026",
+      "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2026-8284",
+      "quote": "La disposición adicional vigesimoprimera prevé una autorización de residencia temporal por circunstancias excepcionales por razón de arraigo extraordinario para aquellas personas que estuvieran en España antes del 1 de enero de 2026"
+    },
+    "dre-multireincidencia": {
+      "value": 2,
+      "source": "congreso-20260212-dre-multireincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf"
+    },
+    "dre-memoria": {
+      "value": -2,
+      "source": "programa-2023",
+      "page": 252,
+      "quote": "Desarrollaremos en su integridad la Ley de Memoria Democrática, completando las actuaciones del Plan de Exhumaciones"
+    }
+  }
 }

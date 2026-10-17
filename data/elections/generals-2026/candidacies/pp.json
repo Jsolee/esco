@@ -5,6 +5,287 @@
   "color": "#1D84CE",
   "provisional": true,
   "circumscriptions": "all",
-  "sources": [],
-  "positions": {}
+  "sources": [
+    {
+      "id": "congreso-20261002-hab-renovacio",
+      "title": "Congreso, 2/10/2026. Votó no: convalidación del Real Decreto-ley 27/2026 (renovación de alquileres)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF",
+      "date": "2026-10-02",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260519-hab-desallotjament",
+      "title": "Congreso, 19/5/2026. Votó sí: toma en consideración de la ley del PP contra la ocupación ilegal",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf",
+      "date": "2026-05-19",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260421-hab-zones-tensionades",
+      "title": "Congreso, 21/4/2026. Votó sí: toma en consideración de la ley del PP que deroga las zonas de mercado tensionado",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf",
+      "date": "2026-04-21",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250910-tre-jornada",
+      "title": "Congreso, 10/9/2025. Votó sí: enmiendas a la totalidad (devolución) al proyecto de ley de reducción de la jornada a 37,5 horas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf",
+      "date": "2025-09-10",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250917-tre-acomiadament",
+      "title": "Congreso, 17/9/2025. Votó no: proposición no de ley de Sumar por un despido «restaurativo y disuasorio»",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf",
+      "date": "2025-09-17",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20251113-fis-irpf-inflacio",
+      "title": "Congreso, 13/11/2025. Votó sí: moción del PP que pide deflactar al menos tres tramos del IRPF",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf",
+      "date": "2025-11-13",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260930-fis-energetiques",
+      "title": "Congreso, 30/9/2026. Votó no: moción de Podemos, punto 1: impuesto permanente a energéticas y petroleras",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf",
+      "date": "2026-09-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250617-ene-nuclear",
+      "title": "Congreso, 17/6/2025. Votó sí: toma en consideración de la ley del PP para mantener la energía nuclear",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf",
+      "date": "2025-06-17",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260930-ene-empresa-publica",
+      "title": "Congreso, 30/9/2026. Votó no: moción de Podemos, punto 3: empresa pública de energía",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf",
+      "date": "2026-09-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20240423-ene-transvasaments",
+      "title": "Congreso, 23/4/2024. Se abstuvo: moción de Vox, punto 2: Plan Nacional del Agua con interconexión de cuencas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf",
+      "date": "2024-04-23",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260430-san-avortament",
+      "title": "Congreso, 30/4/2026. Votó sí: enmiendas a la totalidad (devolución) a la reforma del artículo 43 de la Constitución (aborto)",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf",
+      "date": "2026-04-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20250923-ter-immigracio",
+      "title": "Congreso, 23/9/2025. Votó no: toma en consideración de la ley de delegación en Cataluña de competencias de inmigración",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf",
+      "date": "2025-09-23",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20240530-ter-amnistia",
+      "title": "Congreso, 30/5/2024. Votó no: votación final de la Ley de Amnistía (levantamiento del veto del Senado)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF",
+      "date": "2024-05-30",
+      "lang": "es"
+    },
+    {
+      "id": "congreso-20260212-dre-multireincidencia",
+      "title": "Congreso, 12/2/2026. Votó sí: votación final de la ley orgánica de multirreincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf",
+      "date": "2026-02-12",
+      "lang": "es"
+    },
+    {
+      "id": "programa-2023",
+      "title": "Programa electoral del PP, elecciones generales 2023",
+      "url": "https://www.pp.es/storage/2023/07/programa_electoral_pp_23j_feijoo_2023.pdf",
+      "date": "2023-07-04",
+      "lang": "es"
+    },
+    {
+      "id": "bocg-senado-622-14",
+      "title": "BOCG Senado núm. 26: Proposición de Ley del GPP por la que se deroga la Ley 29/1987 del Impuesto sobre Sucesiones y Donaciones (622/000014)",
+      "url": "https://www.senado.es/legis15/publicaciones/pdf/senado/bocg/BOCG_D_15_26_706.PDF",
+      "date": "2023-11-03",
+      "lang": "es"
+    },
+    {
+      "id": "ds-senado-pleno-126",
+      "title": "Diario de Sesiones del Senado, Pleno núm. 126: moción de ERC-Bildu sobre salario mínimo propio en Cataluña (662/000202)",
+      "url": "https://www.senado.es/legis15/publicaciones/pdf/senado/ds/DS_P_15_126.PDF",
+      "date": "2026-05-13",
+      "lang": "es"
+    },
+    {
+      "id": "bocg-congreso-b-219-4",
+      "title": "BOCG Congreso, serie B, núm. 219-4: enmienda a la totalidad del GPP a la reforma de la LOSU (deroga el art. 1 del RD 905/2025)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/BOCG/B/BOCG-15-B-219-4.PDF",
+      "date": "2026-02-19",
+      "lang": "es"
+    },
+    {
+      "id": "pp-es-2024-05-17-sanidad",
+      "title": "pp.es: Ester Muñoz censura a Mónica García por apostar por modelos sanitarios fracasados como el de la Generalitat de Cataluña",
+      "url": "https://www.pp.es/actualidad/articulos/ester-munoz-censura-monica-garcia-por-apostar-por-modelos-sanitarios-fracasados/",
+      "date": "2024-05-17",
+      "lang": "es"
+    },
+    {
+      "id": "ds-senado-funcion-publica-283",
+      "title": "Diario de Sesiones del Senado, Comisión de Función Pública núm. 283: comparecencia del ministro sobre MUFACE",
+      "url": "https://www.senado.es/legis15/publicaciones/pdf/senado/ds/DS_C_15_283.PDF",
+      "date": "2025-01-29",
+      "lang": "es"
+    },
+    {
+      "id": "pp-es-2026-02-01-regularizacion",
+      "title": "pp.es: Feijóo critica la regularización masiva de inmigrantes del Gobierno: «No es un reparto de papeles, es un reparto de papeletas»",
+      "url": "https://www.pp.es/actualidad/articulos/feijoo-critica-la-regularizacion-masiva-de-inmigrantes-del-gobierno-no-es-un-reparto-de-papeles-es-un-reparto-de-papeletas/",
+      "date": "2026-02-01",
+      "lang": "es"
+    }
+  ],
+  "positions": {
+    "hab-renovacio": {
+      "value": -2,
+      "source": "congreso-20261002-hab-renovacio",
+      "page": 63,
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF#page=63"
+    },
+    "hab-desallotjament": {
+      "value": 2,
+      "source": "congreso-20260519-hab-desallotjament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf"
+    },
+    "hab-zones-tensionades": {
+      "value": 2,
+      "source": "congreso-20260421-hab-zones-tensionades",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf"
+    },
+    "tre-jornada": {
+      "value": -2,
+      "source": "congreso-20250910-tre-jornada",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf"
+    },
+    "tre-acomiadament": {
+      "value": -1,
+      "source": "congreso-20250917-tre-acomiadament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf"
+    },
+    "tre-smi-autonomic": {
+      "value": -2,
+      "source": "ds-senado-pleno-126",
+      "page": 29,
+      "quote": "Primer punto, salarios. Esquerra propone fragmentar el mercado laboral con un salario mínimo territorializado. Nosotros defendemos salarios dignos y sostenibles, porque los salarios no mejoran de verdad cuando un político firma un decreto"
+    },
+    "fis-irpf-inflacio": {
+      "value": 2,
+      "source": "congreso-20251113-fis-irpf-inflacio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf"
+    },
+    "fis-successions": {
+      "value": 2,
+      "source": "bocg-senado-622-14",
+      "page": 3,
+      "quote": "Se deroga la Ley 29/1987, de 18 de diciembre, del Impuesto sobre Sucesiones y Donaciones, quedando definitivamente suprimido este impuesto del ordenamiento tributario español."
+    },
+    "fis-energetiques": {
+      "value": -1,
+      "source": "congreso-20260930-fis-energetiques",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf"
+    },
+    "ene-nuclear": {
+      "value": 2,
+      "source": "congreso-20250617-ene-nuclear",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf"
+    },
+    "ene-empresa-publica": {
+      "value": -1,
+      "source": "congreso-20260930-ene-empresa-publica",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf"
+    },
+    "ene-transvasaments": {
+      "value": 0,
+      "source": "congreso-20240423-ene-transvasaments",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf"
+    },
+    "edu-concerts": {
+      "value": 1,
+      "source": "programa-2023",
+      "page": 51,
+      "quote": "149 DEFENDEREMOS LA LIBERTAD DE LOS PADRES PARA ELEGIR EL CENTRO Y EL TIPO DE EDUCACIÓN que quieren para sus hijos: ya sean éstos centros públicos, privados o concertados, ordinarios o de educación especial, dentro de las posibilidades existentes."
+    },
+    "edu-castella": {
+      "value": 1,
+      "source": "programa-2023",
+      "page": 51,
+      "quote": "151 GARANTIZAREMOS QUE, EN LAS COMUNIDADES AUTÓNOMAS CON MÁS DE UNA LENGUA OFICIAL, ambas tendrán la consideración de vehiculares de acuerdo con el patrón de equilibrio lingüístico"
+    },
+    "edu-universitats-privades": {
+      "value": -1,
+      "source": "bocg-congreso-b-219-4",
+      "page": 2,
+      "quote": "se introduce una disposición derogatoria relativa al Real Decreto 905/2025, de 7 de octubre, de creación, reconocimiento y autorización de universidades, al haberse extralimitado en la regulación de una materia que precisa rango de Ley, generar inseguridad jurídica"
+    },
+    "san-gestio-publica": {
+      "value": -1,
+      "source": "pp-es-2024-05-17-sanidad",
+      "url": "https://www.pp.es/actualidad/articulos/ester-munoz-censura-monica-garcia-por-apostar-por-modelos-sanitarios-fracasados/",
+      "quote": "Considera que el modelo de colaboración público-privado ha sido positivo en España y lamenta que para la ministra “por encima de los intereses de los ciudadanos está su ideología sectaria”"
+    },
+    "san-muface": {
+      "value": 2,
+      "source": "ds-senado-funcion-publica-283",
+      "page": 8,
+      "quote": "Rechazamos cualquier propuesta de eliminar Muface e integrar a los mutualistas en el Sistema Nacional de Salud y defendemos un sistema dual que permita a los mutualistas elegir entre la sanidad privada y la pública"
+    },
+    "san-avortament": {
+      "value": -2,
+      "source": "congreso-20260430-san-avortament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf"
+    },
+    "ter-referendum": {
+      "value": -1,
+      "source": "programa-2023",
+      "page": 72,
+      "quote": "Regularemos también otras conductas de deslealtad de las instituciones dirigidas a poner en peligro la paz y el orden constitucional, ya sea mediante la convocatoria de referendos o consultas no autorizadas"
+    },
+    "ter-immigracio": {
+      "value": -1,
+      "source": "congreso-20250923-ter-immigracio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf"
+    },
+    "ter-amnistia": {
+      "value": 1,
+      "source": "congreso-20240530-ter-amnistia",
+      "page": 25,
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF#page=25"
+    },
+    "dre-regularitzacio": {
+      "value": -2,
+      "source": "pp-es-2026-02-01-regularizacion",
+      "url": "https://www.pp.es/actualidad/articulos/feijoo-critica-la-regularizacion-masiva-de-inmigrantes-del-gobierno-no-es-un-reparto-de-papeles-es-un-reparto-de-papeletas/",
+      "quote": "Argumenta su negativa a la regularización masiva porque “no es humanidad, es electoralismo; no es ayudar a quien lo necesita, es intentar comprar votantes para el futuro; no es un reparto de papeles, es un reparto de papeletas”"
+    },
+    "dre-multireincidencia": {
+      "value": 2,
+      "source": "congreso-20260212-dre-multireincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf"
+    },
+    "dre-memoria": {
+      "value": 2,
+      "source": "programa-2023",
+      "page": 72,
+      "quote": "222 IMPULSAREMOS, DEROGANDO LA MAL LLAMADA LEY DE MEMORIA DEMOCRÁTICA, una nueva norma consensuada que refuerce los principios democráticos y la reconciliación nacional"
+    }
+  }
 }
