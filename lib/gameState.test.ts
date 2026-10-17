@@ -3,7 +3,7 @@ import { achievementsOf, progressOf } from "./achievements";
 import { TOKENS } from "./budget";
 import type { GQuestion } from "./game";
 import type { Answers } from "./match";
-import { buildItems, fresh, reducer, restore, type State } from "./gameState";
+import { buildItems, fresh, fromSaved, reducer, restore, type State } from "./gameState";
 
 const qs: GQuestion[] = Array.from({ length: 24 }, (_, i) => ({ id: `q${i}`, topic: `t${i % 8}`, text: "", context: "", axes: {} }));
 const facts = ["f1", "f2", "f3"];
@@ -58,6 +58,18 @@ describe("partida", () => {
     expect(s.tokens.t0).toBe(TOKENS);
     s = reducer(s, { type: "token", topic: "t1", delta: -1 });
     expect(s.tokens.t1).toBeUndefined();
+  });
+
+  it("canviar una resposta des del repàs no avança i esborra el finançament d'aquella proposta", () => {
+    const s0 = { ...playing(), phase: "results" as const, index: total - 1, answers: { q0: 2 as const }, alloc: { q0: { deute: 3 } } };
+    const s = reducer(s0, { type: "answer", id: "q0", value: -1 });
+    expect(s).toMatchObject({ phase: "results", index: total - 1, answers: { q0: -1 }, alloc: {} });
+  });
+
+  it("una partida desada torna directament als resultats i és vàlida", () => {
+    const s = fromSaved({ province: "08", answers: { q0: 1, q1: null }, tokens: { t0: 2 } }, qs, facts);
+    expect(s).toMatchObject({ phase: "results", province: "08", answers: { q0: 1, q1: null }, tokens: { t0: 2 } });
+    expect(restore(s, qs, facts)).toEqual(s);
   });
 
   it("tornar a jugar conserva la província i res més", () => {

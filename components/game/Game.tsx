@@ -5,10 +5,11 @@ import { useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { achievementsOf, progressOf, type Achievement } from "@/lib/achievements";
 import { balanceOf, needFor, remainingOf } from "@/lib/budget";
 import type { GameData } from "@/lib/game";
-import { buildItems, fresh, newSeed, reducer, restore, type Phase, type State } from "@/lib/gameState";
+import { buildItems, fresh, fromSaved, newSeed, reducer, restore, type Phase, type State } from "@/lib/gameState";
 import { FILL, RANK, SEATS } from "@/lib/hemicycle";
 import { inCircumscription, seededShuffle, type Answers } from "@/lib/match";
 import type { Answer } from "@/lib/schema";
+import { clearSaved, decodeSaved, LINK_PREFIX, loadSaved, storeSaved } from "@/lib/saved";
 import { readJSON, readProvince, rememberProvince, writeJSON } from "@/lib/storage";
 import { format, pad2 } from "@/lib/text";
 import { useI18n } from "../I18n";
@@ -18,6 +19,7 @@ import { Wordmark } from "../Wordmark";
 import { Deck } from "./Deck";
 import { BudgetChip } from "./Funding";
 import { Gavel, RoundSplash, Toasts } from "./Overlays";
+import { Compass } from "./Compass";
 import { Results } from "./Results";
 import { Counting, Intro, SoundToggle, Tokens } from "./Stages";
 
@@ -29,12 +31,22 @@ const YOU = FILL.find((i) => SEATS[i].row === 6)!;
 export function Game({ data }: { data: GameData }) {
   const { m, locale } = useI18n();
   const key = `esco:${data.electionId}`;
-  const [s, dispatch] = useReducer(reducer, null, (): State => {
-    const restored = restore(readJSON(key), data.questions, data.facts);
-    if (restored) return restored;
+  // En arrencar: un enllaç privat (#respostes=…) o unes respostes desades porten directament als resultats.
+  const [boot] = useState(() => {
+    const qids = data.questions.map((q) => q.id);
+    const tids = data.topics.map((t) => t.id);
+    const link = location.hash.startsWith(LINK_PREFIX) ? decodeSaved(decodeURIComponent(location.hash.slice(LINK_PREFIX.length)), qids, tids) : null;
+    if (link) storeSaved(data.electionId, link);
+    const saved = link ?? loadSaved(data.electionId, qids, tids);
+    const restored = link ? null : restore(readJSON(key), data.questions, data.facts);
+    if (restored && !(saved && restored.phase === "intro")) return { state: restored, fromSaved: false, link: false };
+    if (saved) return { state: fromSaved(saved, data.questions, data.facts), fromSaved: true, link: !!link };
     const p = readProvince();
-    return fresh(p && data.provinces.some((x) => x.id === p) ? p : null);
+    return { state: fresh(p && data.provinces.some((x) => x.id === p) ? p : null), fromSaved: false, link: false };
   });
+  const [s, dispatch] = useReducer(reducer, boot.state);
+  // Quan l'elecció ja és oberta i la persona torna amb respostes desades, primer «obre el vot».
+  const [sealed, setSealed] = useState(boot.fromSaved && !data.reveal);
   const chamber = useRef<ChamberHandle>(null);
   const [live, setLive] = useState("");
   const [gavel, setGavel] = useState<null | "open" | "close">(null);
@@ -49,6 +61,10 @@ export function Game({ data }: { data: GameData }) {
   );
 
   useEffect(() => writeJSON(key, s), [key, s]);
+  // Mode brúixola: les respostes es desen en aquest dispositiu per veure les candidatures el dia de la revelació.
+  useEffect(() => {
+    if (data.reveal && s.phase === "results") storeSaved(data.electionId, { province: s.province, answers: s.answers, tokens: s.tokens });
+  }, [data.reveal, data.electionId, s.phase, s.province, s.answers, s.tokens]);
 
   // El pas va després del # (no arriba mai al servidor): el gest d'enrere del mòbil desfà l'últim vot.
   const token = tokenOf(s);
@@ -132,6 +148,26 @@ export function Game({ data }: { data: GameData }) {
     if (i < 0) dispatch({ type: "phase", phase: "intro" });
     else dispatch({ type: "goto", index: i });
   }
+
+  if (s.phase === "results" && (data.reveal || sealed))
+    return (
+      <Compass
+        data={data}
+        answers={s.answers}
+        tokens={s.tokens}
+        province={s.province}
+        ready={!data.reveal}
+        restored={boot.link}
+        onAnswer={(id, value) => dispatch({ type: "answer", id, value })}
+        onToken={(topic, delta) => dispatch({ type: "token", topic, delta })}
+        onOpen={() => setSealed(false)}
+        onReplay={() => dispatch({ type: "restart", seed: newSeed() })}
+        onClear={() => {
+          clearSaved(data.electionId);
+          dispatch({ type: "restart", seed: newSeed() });
+        }}
+      />
+    );
 
   if (s.phase === "results")
     return (

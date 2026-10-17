@@ -8,9 +8,10 @@ import { axesOf, positionsOf } from "@/lib/match";
 import { tx } from "@/lib/text";
 
 export const dynamicParams = false;
-// Només les eleccions obertes es poden jugar; les properes surten a la portada sense enllaç.
+// Es poden jugar les eleccions obertes i les que estan en mode brúixola; les properes surten a la portada sense enllaç.
+const playable = (status: string) => status === "open" || status === "preview";
 export const generateStaticParams = () =>
-  DATA.elections.filter((e) => e.election.status === "open").map((e) => ({ election: e.election.id }));
+  DATA.elections.filter((e) => playable(e.election.status)).map((e) => ({ election: e.election.id }));
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/[election]">): Promise<Metadata> {
   const { locale, election } = await params;
@@ -21,11 +22,14 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/[electio
 export default async function ElectionPage({ params }: PageProps<"/[locale]/[election]">) {
   const { locale, election: id } = await params;
   const e = getElection(id);
-  if (!e || e.election.status !== "open" || !isLocale(locale)) notFound();
+  if (!e || !playable(e.election.status) || !isLocale(locale)) notFound();
+  // En mode brúixola les posicions de les candidatures no arriben al navegador fins a la revelació.
+  const preview = e.election.status === "preview";
 
   const usedTopics = new Set(e.questions.map((q) => q.topic));
   const data: GameData = {
     electionId: e.election.id,
+    reveal: preview ? e.election.reveal : undefined,
     name: tx(e.election.name, locale),
     fictional: e.election.fictional,
     axes: e.election.axes,
@@ -48,7 +52,7 @@ export default async function ElectionPage({ params }: PageProps<"/[locale]/[ele
       axes: f.axes,
     })),
     topics: DATA.topics.filter((t) => usedTopics.has(t.id)).map((t) => ({ id: t.id, name: tx(t.name, locale) })),
-    candidacies: e.candidacies.map((c) => ({
+    candidacies: (preview ? [] : e.candidacies).map((c) => ({
       id: c.id,
       name: c.name,
       short: c.short,

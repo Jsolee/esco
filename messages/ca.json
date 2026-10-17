@@ -69,10 +69,12 @@
     "fictional": "Fictícia",
     "status": {
       "open": "Oberta",
+      "preview": "Versió preliminar",
       "upcoming": "Propera",
       "archived": "Arxivada"
     },
-    "pending": "Es podrà jugar quan es proclamin les candidatures i es publiquin els programes electorals."
+    "pending": "Es podrà jugar quan es proclamin les candidatures i es publiquin els programes electorals.",
+    "revealOn": "partits a partir del {date}"
   },
   "game": {
     "fictional": "Dades fictícies",
@@ -287,7 +289,9 @@
     "title": "Un resultat d'Escó",
     "lead": "Algú ha jugat a Escó. Així ha quedat el seu escó:",
     "cta": "Fes el teu test",
-    "note": "Aquest enllaç només conté percentatges arrodonits, cap resposta. Les xifres surten de l'enllaç: Escó no pot comprovar que siguin d'una partida real."
+    "note": "Aquest enllaç només conté percentatges arrodonits, cap resposta. Les xifres surten de l'enllaç: Escó no pot comprovar que siguin d'una partida real.",
+    "compassTitle": "Una brúixola d'Escó",
+    "compassLead": "Algú ha jugat a Escó. Així se situa respecte a aquestes propostes:"
   },
   "footer": {
     "text": "Escó és una eina orientativa i neutral. Tot es calcula al teu dispositiu.",
@@ -297,5 +301,68 @@
   "notFound": {
     "title": "Aquesta pàgina no existeix.",
     "back": "Torna a l'inici"
+  },
+  "compass": {
+    "kicker": "Versió preliminar",
+    "sealedTitle": "El teu vot és a l'urna.",
+    "sealedText": "El {date}, amb les candidatures oficials, veuràs quines candidatures coincideixen més amb les teves respostes. No cal tornar a jugar: les teves respostes t'esperen aquí.",
+    "days": {
+      "one": "Falta 1 dia",
+      "other": "Falten {n} dies"
+    },
+    "soon": "Molt aviat podràs obrir el teu vot.",
+    "readyKicker": "Ja hi ha candidatures",
+    "readyTitle": "Ja pots obrir el teu vot.",
+    "readyText": "Vas respondre {n} propostes. Ara veuràs amb quines candidatures coincideixes, amb la font de cada posició.",
+    "open": "Obre el meu vot",
+    "compassTitle": "La teva brúixola",
+    "compassLead": "Segons les teves respostes a aquestes {n} propostes:",
+    "notEnough": "Has respost massa poques propostes per situar-te en aquest eix.",
+    "strongest": "On tens opinions més marcades: {topics}.",
+    "relative": "És la teva posició respecte a aquestes propostes, no una etiqueta. Cada proposta pesa en un o més eixos; ho pots veure a la metodologia.",
+    "showMap": "Mostra el mapa",
+    "levels": {
+      "economic": {
+        "center": "En economia ets al centre",
+        "neg1": "En economia ets al centre-esquerra",
+        "neg2": "En economia ets a l'esquerra",
+        "pos1": "En economia ets al centre-dreta",
+        "pos2": "En economia ets a la dreta"
+      },
+      "social": {
+        "center": "en temes socials, al centre",
+        "neg1": "en temes socials, més aviat liberal",
+        "neg2": "en temes socials, liberal",
+        "pos1": "en temes socials, més aviat conservador",
+        "pos2": "en temes socials, conservador"
+      },
+      "territorial": {
+        "center": "i en el model territorial, al centre",
+        "neg1": "i en el model territorial, una mica més a prop de donar competències a l'Estat",
+        "neg2": "i en el model territorial, a favor de més competències per a l'Estat",
+        "pos1": "i en el model territorial, una mica més a prop de més autogovern",
+        "pos2": "i en el model territorial, a favor de més autogovern"
+      }
+    },
+    "reviewTitle": "Les teves respostes",
+    "review": "Repassa o canvia les teves respostes",
+    "reviewHide": "Amaga les teves respostes",
+    "reviewHint": "Els canvis es desen sols i la brúixola s'actualitza.",
+    "tokensLabel": "Fitxes d'influència: {n}",
+    "tokensLeft": "Et queden {n} fitxes per repartir.",
+    "more": "Una fitxa més a {topic}",
+    "less": "Una fitxa menys a {topic}",
+    "saveTitle": "Desar",
+    "savedHere": "Desat en aquest dispositiu. Les teves respostes no en surten: no les enviem a cap servidor.",
+    "link": "Copia el teu enllaç privat",
+    "linkCopied": "Enllaç copiat. Desa'l on vulguis.",
+    "linkText": "Serveix per recuperar les teves respostes en un altre dispositiu. Qui tingui aquest enllaç veurà el que has respost.",
+    "share": "Comparteix la teva brúixola",
+    "shareText": "La meva brúixola a Escó",
+    "shareNote": "Només comparteix la teva posició als eixos, mai les teves respostes.",
+    "clear": "Esborra les meves respostes",
+    "clearConfirm": "Segur que vols esborrar les teves respostes d'aquest dispositiu? No es poden recuperar si no tens l'enllaç privat.",
+    "replay": "Torna a jugar",
+    "restored": "Hem recuperat les teves respostes de l'enllaç privat."
   }
 }

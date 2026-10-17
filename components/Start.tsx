@@ -11,7 +11,8 @@ export type ElectionSummary = {
   id: string;
   name: string;
   date: string;
-  status: "open" | "upcoming" | "archived";
+  status: "open" | "preview" | "upcoming" | "archived";
+  reveal?: string;
   fictional: boolean;
   scope: "ES" | { community: string };
   statements: number;
@@ -174,7 +175,7 @@ export function Start({
           {available.length === 0 && <p className="text-chalk-2">{m.start.noElections}</p>}
           {available.map((e) => {
             const count = e.circs.filter((c) => c === "all" || c.includes(province.id)).length;
-            if (e.status !== "open")
+            if (e.status !== "open" && e.status !== "preview")
               return (
                 <div key={e.id} className="grid gap-3 rounded-2xl border border-dashed border-chalk-3/70 p-5">
                   <span className="flex flex-wrap items-center gap-2">
@@ -199,7 +200,9 @@ export function Start({
                 <span className="font-serif text-3xl leading-tight">{e.name}</span>
                 <span className="text-sm opacity-80">
                   {dateFmt.format(new Date(e.date))} · {format(m.start.statements, { n: e.statements })} ·{" "}
-                  {format(m.start.candidacies, { n: count, place: province.name })}
+                  {e.status === "preview" && e.reveal
+                    ? format(m.start.revealOn, { date: dateFmt.format(new Date(e.reveal)) })
+                    : format(m.start.candidacies, { n: count, place: province.name })}
                 </span>
                 <span className="mt-1 inline-flex items-center gap-2 font-semibold">
                   {m.start.enter}

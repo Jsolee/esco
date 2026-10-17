@@ -40,7 +40,8 @@ Tots els identificadors (`id`) són en minúscules, sense accents ni espais: `[a
 |---|---|
 | `type` | `general`, `autonomica`, `europea`, `municipal` |
 | `scope` | `"ES"` per a tot l'Estat, o `{ "community": "<codi INE de la comunitat>" }` |
-| `status` | `open` (es pot jugar), `upcoming` (surt a la portada com a propera, sense enllaç al joc), `archived` (no es mostra) |
+| `status` | `open` (es pot jugar), `preview` (mode brúixola: es pot jugar, però el resultat només mostra la posició als eixos fins a la data `reveal`; les posicions de les candidatures no arriben al navegador), `upcoming` (surt a la portada com a propera, sense enllaç al joc), `archived` (no es mostra) |
+| `reveal` | Només amb `preview`: data (AAAA-MM-DD) que es mostra com a dia de la revelació. Per revelar, cal canviar `status` a `open`; les respostes desades en el dispositiu porten directament als resultats amb candidatures |
 | `fictional` | `true` mostra l'avís «Dades fictícies» a totes les pantalles |
 | `axes` | eixos del mapa; mínim dos |
 | `facts` | dades curioses i verificables per a les pauses del joc (es fan servir les tres primeres) |

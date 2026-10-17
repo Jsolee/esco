@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { RAW } from "@/data";
 import { DATA, loadData } from "./data";
-import { decodeShare, encodeShare } from "./share";
+import { decodeCompass, decodeShare, encodeCompass, encodeShare } from "./share";
 import { provinceFromPostcode, searchProvinces } from "./territory";
 import { SEATS, FILL } from "./hemicycle";
 
@@ -27,9 +27,9 @@ describe("dades del repo", () => {
     expect(() => loadData(raw)).toThrow(/pàgina o URL/);
   });
 
-  it("accepten candidatures provisionals amb posicions incompletes en una elecció propera", () => {
-    const upcoming = DATA.elections.find((e) => e.election.status === "upcoming");
-    expect(upcoming?.candidacies.every((c) => c.provisional)).toBe(true);
+  it("accepten candidatures provisionals amb posicions incompletes en una elecció que encara no és oberta", () => {
+    const notOpen = DATA.elections.find((e) => e.election.status === "upcoming" || e.election.status === "preview");
+    expect(notOpen?.candidacies.every((c) => c.provisional)).toBe(true);
     const raw = clone();
     const c = raw.elections[1].candidacies[0] as { positions: Record<string, unknown> };
     c.positions = {};
@@ -60,6 +60,14 @@ describe("dades del repo", () => {
     for (const c of empty.elections[0].candidacies) (c as { positions: unknown }).positions = {};
     (empty.elections[0].election as { funding?: unknown }).funding = [];
     expect(() => loadData(empty)).toThrow(/almenys una afirmació/);
+  });
+
+  it("fallen si una elecció en mode brúixola no té data de revelació", () => {
+    const raw = clone();
+    const e = raw.elections[1].election as Record<string, unknown>;
+    e.status = "preview";
+    delete e.reveal;
+    expect(() => loadData(raw)).toThrow(/necessita la data «reveal»/);
   });
 
   it("fallen si es cita una font inexistent", () => {
@@ -104,6 +112,22 @@ describe("enllaç compartit", () => {
     expect(decodeShare("e~<script>.1", known)).toBeNull();
     expect(decodeShare("e~b.40~a.60", known)).toBeNull(); // desordenat
     expect(decodeShare("e~a.60~b.60", known)).not.toBeNull(); // empat
+  });
+});
+
+describe("brúixola compartida", () => {
+  const known = (id: string) => id === "e";
+  it("codifica i descodifica la posició als eixos", () => {
+    const code = encodeCompass("e", { economic: -0.354, social: 0.2, territorial: 1 });
+    expect(code).toBe("e~b~e-35~s20~t100");
+    expect(decodeCompass(code, known)).toEqual({ electionId: "e", point: { economic: -0.35, social: 0.2, territorial: 1 } });
+  });
+  it("rebutja codis estranys", () => {
+    expect(decodeCompass("x~b~e10", known)).toBeNull();
+    expect(decodeCompass("e~b~e101", known)).toBeNull();
+    expect(decodeCompass("e~b~e1~e2", known)).toBeNull();
+    expect(decodeCompass("e~b~z1", known)).toBeNull();
+    expect(decodeCompass("e~b", known)).toBeNull();
   });
 });
 

@@ -27,6 +27,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       name: tx(election.name, locale),
       date: election.date,
       status: election.status,
+      reveal: election.reveal,
       fictional: election.fictional,
       scope: election.scope,
       statements: questions.length,

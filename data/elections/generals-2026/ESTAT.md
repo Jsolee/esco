@@ -1,6 +1,6 @@
 # Eleccions generals del 29 de novembre de 2026: estat de les dades
 
-Elecció real, convocada pel Real Decret 806/2026, de 5 d'octubre ([BOE núm. 248, de 6 d'octubre de 2026](https://www.boe.es/boe/dias/2026/10/06/pdfs/BOE-A-2026-20742.pdf)). A l'app surt com a **propera** (`"status": "upcoming"`) i no es pot jugar fins que les dades estiguin completes.
+Elecció real, convocada pel Real Decret 806/2026, de 5 d'octubre ([BOE núm. 248, de 6 d'octubre de 2026](https://www.boe.es/boe/dias/2026/10/06/pdfs/BOE-A-2026-20742.pdf)). Des del 17/10 està en **mode brúixola** (`"status": "preview"`, `"reveal": "2026-11-03"`): es pot jugar i el resultat mostra només la posició als eixos; les respostes es desen al dispositiu. Per revelar les candidatures, canviar `status` a `open` quan les dades estiguin completes (i ajustar `reveal` si la data es mou).
 
 ## Calendari
 

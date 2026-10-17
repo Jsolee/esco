@@ -7,7 +7,7 @@ Orientador de vot per a l'Estat espanyol en format de joc. Tens un escó dins d'
 ## Principis
 
 - **Neutral.** Propostes i candidatures en ordre aleatori per sessió. Interfície acromàtica: el color de partit només apareix als resultats. Metodologia pública a `/metodologia`.
-- **Privat.** Tot el càlcul es fa al navegador. Sense comptes, galetes de seguiment ni analítica. El progrés viu a `sessionStorage` i la capçalera CSP (`connect-src 'self'`) impedeix enviar dades a altres dominis.
+- **Privat.** Tot el càlcul es fa al navegador. Sense comptes, galetes de seguiment ni analítica. El progrés viu a `sessionStorage`; en el mode brúixola, les respostes es desen a `localStorage` del dispositiu i l'enllaç privat les porta després del `#`, que no arriba mai al servidor. La capçalera CSP (`connect-src 'self'`) impedeix enviar dades a altres dominis.
 - **Verificable.** Cada posició porta document i pàgina o URL.
 
 ## Stack

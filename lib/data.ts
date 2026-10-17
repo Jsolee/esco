@@ -51,6 +51,8 @@ export function loadData(raw: unknown = RAW) {
     // Una elecció oberta s'ha de poder jugar: candidatures oficials, amb fonts i posició a cada afirmació.
     const open = election.status === "open";
     if (open && questions.length === 0) errors.push(`${base}: una elecció oberta necessita almenys una afirmació`);
+    if (election.status === "preview" && questions.length === 0) errors.push(`${base}: una elecció en mode brúixola necessita almenys una afirmació`);
+    if (election.status === "preview" && !election.reveal) errors.push(`${base}: una elecció en mode brúixola necessita la data «reveal»`);
     const namesByCirc = new Map<string, string>();
     const cIds = new Set<string>();
     for (const c of candidacies) {

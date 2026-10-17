@@ -17,6 +17,7 @@ export type GCandidacy = {
 };
 export type GameData = {
   electionId: string;
+  reveal?: string; // mode brúixola: encara no hi ha candidatures; es revelaran en aquesta data
   name: string;
   fictional: boolean;
   axes: Axis[];

@@ -37,7 +37,9 @@ export const Election = z.object({
   type: z.enum(["general", "autonomica", "europea", "municipal"]),
   scope: z.union([z.literal("ES"), z.object({ community: Ine2 })]),
   date: z.iso.date(),
-  status: z.enum(["open", "upcoming", "archived"]),
+  // preview: es pot jugar però encara no es mostren candidatures (fins a `reveal`)
+  status: z.enum(["open", "preview", "upcoming", "archived"]),
+  reveal: z.iso.date().optional(), // data a partir de la qual es veuran les candidatures, en una elecció «preview»
   name: Text,
   fictional: z.boolean(),
   axes: z.array(Axis).min(2),

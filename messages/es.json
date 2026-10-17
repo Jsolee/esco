@@ -69,10 +69,12 @@
     "fictional": "Ficticia",
     "status": {
       "open": "Abierta",
+      "preview": "Versión preliminar",
       "upcoming": "Próxima",
       "archived": "Archivada"
     },
-    "pending": "Se podrá jugar cuando se proclamen las candidaturas y se publiquen los programas electorales."
+    "pending": "Se podrá jugar cuando se proclamen las candidaturas y se publiquen los programas electorales.",
+    "revealOn": "partidos a partir del {date}"
   },
   "game": {
     "fictional": "Datos ficticios",
@@ -287,7 +289,9 @@
     "title": "Un resultado de Escó",
     "lead": "Alguien ha jugado a Escó. Así ha quedado su escaño:",
     "cta": "Haz tu test",
-    "note": "Este enlace solo contiene porcentajes redondeados, ninguna respuesta. Las cifras vienen del enlace: Escó no puede comprobar que sean de una partida real."
+    "note": "Este enlace solo contiene porcentajes redondeados, ninguna respuesta. Las cifras vienen del enlace: Escó no puede comprobar que sean de una partida real.",
+    "compassTitle": "Una brújula de Escó",
+    "compassLead": "Alguien ha jugado a Escó. Así se sitúa respecto a estas propuestas:"
   },
   "footer": {
     "text": "Escó es una herramienta orientativa y neutral. Todo se calcula en tu dispositivo.",
@@ -297,5 +301,68 @@
   "notFound": {
     "title": "Esta página no existe.",
     "back": "Vuelve al inicio"
+  },
+  "compass": {
+    "kicker": "Versión preliminar",
+    "sealedTitle": "Tu voto está en la urna.",
+    "sealedText": "El {date}, con las candidaturas oficiales, verás qué candidaturas coinciden más con tus respuestas. No hace falta volver a jugar: tus respuestas te esperan aquí.",
+    "days": {
+      "one": "Falta 1 día",
+      "other": "Faltan {n} días"
+    },
+    "soon": "Muy pronto podrás abrir tu voto.",
+    "readyKicker": "Ya hay candidaturas",
+    "readyTitle": "Ya puedes abrir tu voto.",
+    "readyText": "Respondiste {n} propuestas. Ahora verás con qué candidaturas coincides, con la fuente de cada posición.",
+    "open": "Abre mi voto",
+    "compassTitle": "Tu brújula",
+    "compassLead": "Según tus respuestas a estas {n} propuestas:",
+    "notEnough": "Has respondido demasiado pocas propuestas para situarte en este eje.",
+    "strongest": "Donde tienes opiniones más marcadas: {topics}.",
+    "relative": "Es tu posición respecto a estas propuestas, no una etiqueta. Cada propuesta pesa en uno o más ejes; puedes verlo en la metodología.",
+    "showMap": "Ver el mapa",
+    "levels": {
+      "economic": {
+        "center": "En economía estás en el centro",
+        "neg1": "En economía estás en el centro-izquierda",
+        "neg2": "En economía estás a la izquierda",
+        "pos1": "En economía estás en el centro-derecha",
+        "pos2": "En economía estás a la derecha"
+      },
+      "social": {
+        "center": "en temas sociales, en el centro",
+        "neg1": "en temas sociales, más bien liberal",
+        "neg2": "en temas sociales, liberal",
+        "pos1": "en temas sociales, más bien conservador",
+        "pos2": "en temas sociales, conservador"
+      },
+      "territorial": {
+        "center": "y en lo territorial, en el centro",
+        "neg1": "y en lo territorial, algo más cerca de dar competencias al Estado",
+        "neg2": "y en lo territorial, a favor de más competencias para el Estado",
+        "pos1": "y en lo territorial, algo más cerca de más autogobierno",
+        "pos2": "y en lo territorial, a favor de más autogobierno"
+      }
+    },
+    "reviewTitle": "Tus respuestas",
+    "review": "Repasa o cambia tus respuestas",
+    "reviewHide": "Ocultar tus respuestas",
+    "reviewHint": "Los cambios se guardan solos y la brújula se actualiza.",
+    "tokensLabel": "Fichas de influencia: {n}",
+    "tokensLeft": "Te quedan {n} fichas por repartir.",
+    "more": "Una ficha más en {topic}",
+    "less": "Una ficha menos en {topic}",
+    "saveTitle": "Guardar",
+    "savedHere": "Guardado en este dispositivo. Tus respuestas no salen de él: no las enviamos a ningún servidor.",
+    "link": "Copia tu enlace privado",
+    "linkCopied": "Enlace copiado. Guárdalo donde quieras.",
+    "linkText": "Sirve para recuperar tus respuestas en otro dispositivo. Quien tenga este enlace verá lo que has respondido.",
+    "share": "Comparte tu brújula",
+    "shareText": "Mi brújula en Escó",
+    "shareNote": "Solo comparte tu posición en los ejes, nunca tus respuestas.",
+    "clear": "Borra mis respuestas",
+    "clearConfirm": "¿Seguro que quieres borrar tus respuestas de este dispositivo? No se pueden recuperar si no tienes el enlace privado.",
+    "replay": "Vuelve a jugar",
+    "restored": "Hemos recuperado tus respuestas del enlace privado."
   }
 }

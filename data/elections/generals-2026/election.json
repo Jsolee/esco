@@ -3,7 +3,8 @@
   "type": "general",
   "scope": "ES",
   "date": "2026-11-29",
-  "status": "upcoming",
+  "status": "preview",
+  "reveal": "2026-11-03",
   "name": {
     "ca": "Eleccions generals 2026",
     "es": "Elecciones generales 2026"

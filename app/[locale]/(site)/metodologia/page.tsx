@@ -72,7 +72,7 @@ const CONTENT = {
       {
         h: "Privacitat",
         body: [
-          "Tot el càlcul es fa al teu navegador. No hi ha comptes, galetes de seguiment ni cap servidor que rebi les respostes. El progrés es desa a la memòria de la pestanya i s'esborra quan la tanques.",
+          "Tot el càlcul es fa al teu navegador. No hi ha comptes, galetes de seguiment ni cap servidor que rebi les respostes. El progrés es desa a la memòria de la pestanya i s'esborra quan la tanques. En una elecció en versió preliminar, les respostes es desen en aquest dispositiu perquè puguis veure les candidatures el dia que es revelin; les pots esborrar quan vulguis, i l'enllaç privat les porta a la part de l'adreça que no arriba mai al servidor.",
           "La província només serveix per saber quines candidatures es presenten on votes, i tampoc no surt del navegador. Si comparteixes el resultat, l'enllaç només conté les candidatures i els percentatges arrodonits.",
         ],
       },
@@ -138,7 +138,7 @@ const CONTENT = {
       {
         h: "Privacidad",
         body: [
-          "Todo el cálculo se hace en tu navegador. No hay cuentas, cookies de seguimiento ni ningún servidor que reciba las respuestas. El progreso se guarda en la memoria de la pestaña y se borra al cerrarla.",
+          "Todo el cálculo se hace en tu navegador. No hay cuentas, cookies de seguimiento ni ningún servidor que reciba las respuestas. El progreso se guarda en la memoria de la pestaña y se borra al cerrarla. En una elección en versión preliminar, las respuestas se guardan en este dispositivo para que puedas ver las candidaturas el día que se revelen; puedes borrarlas cuando quieras, y el enlace privado las lleva en la parte de la dirección que nunca llega al servidor.",
           "La provincia solo sirve para saber qué candidaturas se presentan donde votas, y tampoco sale del navegador. Si compartes el resultado, el enlace solo contiene las candidaturas y los porcentajes redondeados.",
         ],
       },

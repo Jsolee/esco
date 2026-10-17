@@ -1,6 +1,7 @@
 import type { Achievement } from "./achievements";
 import { TOKENS, type Alloc } from "./budget";
 import type { GQuestion } from "./game";
+import type { Saved } from "./saved";
 import { seededShuffle, type Answers } from "./match";
 import type { Answer } from "./schema";
 
@@ -24,6 +25,7 @@ export type Action =
   | { type: "province"; id: string }
   | { type: "start" }
   | { type: "vote"; id: string; value: Answer | null; total: number; from?: Record<string, number> }
+  | { type: "answer"; id: string; value: Answer | null } // canviar una resposta des del repàs, sense avançar
   | { type: "next"; total: number }
   | { type: "goto"; index: number }
   | { type: "phase"; phase: Phase }
@@ -60,6 +62,11 @@ export function reducer(s: State, a: Action): State {
       if (a.from) alloc[a.id] = a.from;
       else delete alloc[a.id];
       return advance({ ...s, answers: { ...s.answers, [a.id]: a.value }, alloc }, a.total);
+    }
+    case "answer": {
+      const alloc = { ...s.alloc };
+      delete alloc[a.id];
+      return { ...s, answers: { ...s.answers, [a.id]: a.value }, alloc };
     }
     case "next":
       return advance(s, a.total);
@@ -109,4 +116,10 @@ export function restore(raw: unknown, questions: GQuestion[], facts: string[]): 
   const stale = Object.keys(st.answers).some((id) => !ids.has(id)) || st.index >= buildItems(questions, facts, st.seed).length;
   if (stale) return null;
   return st.phase === "counting" ? { ...st, phase: "results" } : st;
+}
+
+// Partida que torna de respostes desades (mode brúixola): directament als resultats.
+export function fromSaved(saved: Saved, questions: GQuestion[], facts: string[]): State {
+  const s: State = { ...fresh(saved.province), answers: saved.answers, tokens: saved.tokens, phase: "results" };
+  return { ...s, index: buildItems(questions, facts, s.seed).length - 1 };
 }
