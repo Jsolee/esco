@@ -7,7 +7,7 @@ import type { Answers } from "@/lib/match";
 import type { Answer } from "@/lib/schema";
 import { format, pad2 } from "@/lib/text";
 import { useI18n } from "../I18n";
-import type { Item } from "./Game";
+import type { Item } from "@/lib/gameState";
 import { CostTag, FundingSheet, type FundResult, type FundSource } from "./Funding";
 import { RoundComplete } from "./Overlays";
 

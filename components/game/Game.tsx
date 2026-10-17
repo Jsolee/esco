@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { achievementsOf, progressOf, type Achievement } from "@/lib/achievements";
-import { balanceOf, needFor, remainingOf, TOKENS, type Alloc } from "@/lib/budget";
-import type { GameData, GQuestion } from "@/lib/game";
+import { balanceOf, needFor, remainingOf } from "@/lib/budget";
+import type { GameData } from "@/lib/game";
+import { buildItems, fresh, newSeed, reducer, restore, type Phase, type State } from "@/lib/gameState";
 import { FILL, RANK, SEATS } from "@/lib/hemicycle";
 import { inCircumscription, seededShuffle, type Answers } from "@/lib/match";
 import type { Answer } from "@/lib/schema";
@@ -20,93 +21,6 @@ import { Gavel, RoundSplash, Toasts } from "./Overlays";
 import { Results } from "./Results";
 import { Counting, Intro, SoundToggle, Tokens } from "./Stages";
 
-export type Item = { kind: "q"; q: GQuestion; n: number } | { kind: "pause"; fact: string; n: number };
-type Phase = "intro" | "play" | "priorities" | "counting" | "results";
-type State = {
-  v: 3;
-  seed: number;
-  province: string | null;
-  phase: Phase;
-  index: number; // posició dins de la baralla (afirmacions + finals de ronda)
-  answers: Answers;
-  tokens: Record<string, number>; // fitxes d'influència per tema
-  alloc: Alloc; // d'on ha sortit el finançament de cada proposta aprovada
-  read: string[]; // afirmacions de les quals s'ha llegit el context
-  ach: Achievement[];
-  back: boolean; // l'últim moviment ha estat enrere
-};
-type Action =
-  | { type: "province"; id: string }
-  | { type: "start" }
-  | { type: "vote"; id: string; value: Answer | null; total: number; from?: Record<string, number> }
-  | { type: "next"; total: number }
-  | { type: "goto"; index: number }
-  | { type: "phase"; phase: Phase }
-  | { type: "token"; topic: string; delta: 1 | -1 }
-  | { type: "read"; id: string }
-  | { type: "unlock"; ids: Achievement[] }
-  | { type: "restart"; seed: number };
-
-const newSeed = () => Math.floor(Math.random() * 2 ** 31);
-const fresh = (province: string | null): State => ({
-  v: 3,
-  seed: newSeed(),
-  province,
-  phase: "intro",
-  index: 0,
-  answers: {},
-  tokens: {},
-  alloc: {},
-  read: [],
-  ach: [],
-  back: false,
-});
-const advance = (s: State, total: number): State =>
-  s.index + 1 >= total ? { ...s, phase: "priorities", back: false } : { ...s, index: s.index + 1, back: false };
-
-function reducer(s: State, a: Action): State {
-  switch (a.type) {
-    case "province":
-      return { ...s, province: a.id };
-    case "start":
-      return { ...s, phase: "play", index: 0, back: false };
-    case "vote": {
-      const alloc = { ...s.alloc };
-      if (a.from) alloc[a.id] = a.from;
-      else delete alloc[a.id];
-      return advance({ ...s, answers: { ...s.answers, [a.id]: a.value }, alloc }, a.total);
-    }
-    case "next":
-      return advance(s, a.total);
-    case "goto":
-      return { ...s, phase: "play", index: a.index, back: a.index < s.index || s.phase !== "play" };
-    case "phase":
-      return { ...s, phase: a.phase, back: false };
-    case "token": {
-      const used = Object.values(s.tokens).reduce((x, y) => x + y, 0);
-      const cur = s.tokens[a.topic] ?? 0;
-      if ((a.delta > 0 && used >= TOKENS) || (a.delta < 0 && cur === 0)) return s;
-      return { ...s, tokens: { ...s.tokens, [a.topic]: cur + a.delta } };
-    }
-    case "read":
-      return s.read.includes(a.id) ? s : { ...s, read: [...s.read, a.id] };
-    case "unlock":
-      return { ...s, ach: [...s.ach, ...a.ids.filter((x) => !s.ach.includes(x))] };
-    case "restart":
-      return { ...fresh(s.province), seed: a.seed };
-  }
-}
-
-function buildItems(questions: GQuestion[], facts: string[], seed: number): Item[] {
-  const order = seededShuffle(questions, seed);
-  const stops = order.length >= 12 ? [Math.round(order.length / 3), Math.round((2 * order.length) / 3)] : [];
-  return order.flatMap((q, i): Item[] => {
-    const k = stops.indexOf(i + 1);
-    const card: Item = { kind: "q", q, n: i + 1 };
-    return k >= 0 && facts[k] ? [card, { kind: "pause", fact: facts[k], n: i + 1 }] : [card];
-  });
-}
-
 const tokenOf = (s: State) =>
   s.phase === "play" ? `v${s.index + 1}` : s.phase === "intro" ? "inici" : s.phase === "priorities" ? "prioritats" : "resultat";
 const MODE: Record<Phase, ChamberMode> = { intro: "idle", play: "play", priorities: "idle", counting: "count", results: "reveal" };
@@ -116,21 +30,8 @@ export function Game({ data }: { data: GameData }) {
   const { m, locale } = useI18n();
   const key = `esco:${data.electionId}`;
   const [s, dispatch] = useReducer(reducer, null, (): State => {
-    type Old = Omit<State, "v" | "tokens" | "alloc" | "read" | "ach"> & { v: 1 | 2; priorities?: string[]; read?: string[]; ach?: Achievement[] };
-    const saved = readJSON<State | Old>(key);
-    if (saved && (saved.v === 1 || saved.v === 2 || saved.v === 3)) {
-      // Les partides antigues passen els temes ×2 a dues fitxes cadascun.
-      const old = saved as Old;
-      const st: State =
-        saved.v === 3
-          ? (saved as State)
-          : { read: [], ach: [], ...old, v: 3, alloc: {}, tokens: Object.fromEntries((old.priorities ?? []).map((t) => [t, 2])) };
-      // Si les afirmacions han canviat des que es va desar (un desplegament nou), la partida ja no quadra: es comença de nou.
-      const ids = new Set(data.questions.map((q) => q.id));
-      const stale =
-        Object.keys(st.answers).some((id) => !ids.has(id)) || st.index >= buildItems(data.questions, data.facts, st.seed).length;
-      if (!stale) return st.phase === "counting" ? { ...st, phase: "results" } : st;
-    }
+    const restored = restore(readJSON(key), data.questions, data.facts);
+    if (restored) return restored;
     const p = readProvince();
     return fresh(p && data.provinces.some((x) => x.id === p) ? p : null);
   });
