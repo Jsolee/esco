@@ -270,14 +270,20 @@ export function Game({ data }: { data: GameData }) {
         className={`pointer-events-none absolute inset-0 bg-stage/60 transition-opacity duration-700 ${s.phase === "priorities" ? "opacity-100" : "opacity-0"}`}
       />
 
+      {/* Els escons encesos no han de tapar el comptador ni els botons de la capçalera. */}
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-10 h-28 bg-gradient-to-b from-stage via-stage/75 to-transparent" />
       <header className="relative z-20 grid gap-2 px-4 pt-[max(10px,env(safe-area-inset-top))] sm:px-6">
         <div className="flex items-center justify-between gap-3">
           <Link href={`/${locale}`} aria-label={m.nav.home} className="inline-flex min-h-11 items-center">
             <Wordmark className="text-[1.35rem]" />
           </Link>
           {s.phase === "play" && (
-            <p className="kicker num text-chalk-2" aria-hidden>
-              {format(m.game.round, { n: round })} <span className="text-chalk-3">·</span> {pad2(item?.kind === "q" ? item.n : qDone)}
+            <p className="kicker num whitespace-nowrap text-chalk-2" aria-hidden>
+              {/* En mòbil no hi cap: la barra de sota ja separa les rondes. */}
+              <span className="hidden sm:inline">
+                {format(m.game.round, { n: round })} <span className="text-chalk-3">·</span>{" "}
+              </span>
+              {pad2(item?.kind === "q" ? item.n : qDone)}
               <span className="text-chalk-3">/{pad2(Q)}</span>
             </p>
           )}

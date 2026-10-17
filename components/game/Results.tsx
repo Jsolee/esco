@@ -141,13 +141,14 @@ export function Results({
         <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-stage via-stage/85 to-transparent" />
         <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-2/3 bg-gradient-to-r from-stage/80 to-transparent" />
         {data.fictional && (
-          <p className="relative z-10 m-4 self-start rounded-full border border-dashed border-chalk-3 px-3 py-1.5 text-xs text-chalk-2 sm:m-6">
+          <p className="relative z-10 m-4 self-start rounded-full border border-dashed border-chalk-3 bg-stage/70 px-3 py-1.5 text-xs text-chalk-2 backdrop-blur sm:m-6">
             <strong className="kicker mr-2 text-chalk">{m.game.fictional}</strong>
             {m.game.fictionalBanner}
           </p>
         )}
         <div className="relative z-10 mt-auto grid gap-8 p-6 sm:p-10 lg:grid-cols-[1.4fr_1fr] lg:items-end">
-          <div>
+          {/* En mòbil el text queda damunt dels escons de colors: una ombra del color de l'escenari el fa llegible. */}
+          <div className="max-sm:[text-shadow:0_0_6px_var(--color-stage),0_0_18px_var(--color-stage)]">
             <p className="res-kicker kicker text-chalk-2">
               {r.kicker} · {data.name}
             </p>

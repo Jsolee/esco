@@ -72,13 +72,14 @@ export function Intro({
       ref={root}
       className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-end gap-12 px-5 pb-10 pt-[32dvh] sm:px-8 lg:flex-row lg:items-end lg:justify-between lg:pt-[24dvh]"
     >
-      <div className="max-w-xl">
+      {/* En mòbil, l'inici va abans dels gestos perquè «Abre la sesión» quedi dins la pantalla. */}
+      <div className="flex max-w-xl flex-col">
         <p className="intro-item kicker text-chalk-2">
           {i.kicker} · {data.name}
         </p>
         <h1 className="intro-title display mt-4 text-[clamp(2.9rem,1.6rem+5.2vw,5.8rem)]">{i.title}</h1>
         <p className="intro-item mt-5 text-lg text-chalk-2">{format(i.text, { n: count })}</p>
-        <ul className="mt-6 grid gap-2.5">
+        <ul className="mt-6 grid gap-2.5 max-sm:order-1">
           {i.gestures.map((g) => (
             <li key={g.dir} className="intro-item flex items-center gap-3">
               <span aria-hidden className="grid size-9 place-items-center rounded-full border border-chalk-3/60 bg-stage/60 text-chalk backdrop-blur">
@@ -117,9 +118,9 @@ export function Intro({
           </span>
           <SoundToggle />
         </div>
-        <p className="intro-item mt-4 hidden text-sm text-chalk-3 [@media(hover:hover)]:block">{i.keys}</p>
+        <p className="intro-item mt-4 hidden text-sm text-chalk-3 max-sm:order-2 [@media(hover:hover)]:block">{i.keys}</p>
         {data.fictional && (
-          <p className="intro-item mt-6 max-w-md border-l-2 border-dashed border-chalk-3 pl-3 text-sm text-chalk-2">
+          <p className="intro-item mt-6 max-w-md border-l-2 border-dashed max-sm:order-2 border-chalk-3 pl-3 text-sm text-chalk-2">
             <strong className="kicker mr-2 text-chalk">{m.game.fictional}</strong>
             {m.game.fictionalBanner}
           </p>
