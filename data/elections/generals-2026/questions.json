@@ -12,6 +12,14 @@
     },
     "axes": {
       "economic": -0.8
+    },
+    "congress": {
+      "date": "2026-10-02",
+      "text": {
+        "ca": "El Congrés va derogar el decret que ho establia: 166 vots a favor de mantenir-lo i 184 en contra.",
+        "es": "El Congreso derogó el decreto que lo establecía: 166 votos a favor de mantenerlo y 184 en contra."
+      },
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF#page=63"
     }
   },
   {
@@ -28,6 +36,14 @@
     "axes": {
       "economic": 0.5,
       "social": 0.4
+    },
+    "congress": {
+      "date": "2026-05-19",
+      "text": {
+        "ca": "El Congrés va acceptar tramitar una llei amb desallotjaments en 24 hores: 171 a favor, 164 en contra i 11 abstencions. No es va arribar a aprovar.",
+        "es": "El Congreso aceptó tramitar una ley con desalojos en 24 horas: 171 a favor, 164 en contra y 11 abstenciones. No llegó a aprobarse."
+      },
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf"
     }
   },
   {
@@ -43,6 +59,14 @@
     },
     "axes": {
       "economic": 0.8
+    },
+    "congress": {
+      "date": "2026-04-21",
+      "text": {
+        "ca": "El Congrés va acceptar tramitar una llei que suprimia les zones tensionades: 178 a favor, 163 en contra i 6 abstencions. No es va arribar a aprovar.",
+        "es": "El Congreso aceptó tramitar una ley que suprimía las zonas tensionadas: 178 a favor, 163 en contra y 6 abstenciones. No llegó a aprobarse."
+      },
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf"
     }
   },
   {
@@ -58,6 +82,14 @@
     },
     "axes": {
       "economic": -0.8
+    },
+    "congress": {
+      "date": "2025-09-10",
+      "text": {
+        "ca": "El Congrés va tombar la llei de les 37,5 hores: 178 vots per retornar-la al Govern i 170 en contra.",
+        "es": "El Congreso tumbó la ley de las 37,5 horas: 178 votos para devolverla al Gobierno y 170 en contra."
+      },
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf"
     }
   },
   {
@@ -73,6 +105,14 @@
     },
     "axes": {
       "economic": -0.7
+    },
+    "congress": {
+      "date": "2025-09-17",
+      "text": {
+        "ca": "El Congrés va demanar un acomiadament més dissuasiu, sense caràcter vinculant: 171 vots a favor i 170 en contra. Es va decidir per un vot.",
+        "es": "El Congreso pidió un despido más disuasorio, sin carácter vinculante: 171 votos a favor y 170 en contra. Se decidió por un voto."
+      },
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf"
     }
   },
   {
@@ -104,6 +144,14 @@
     },
     "axes": {
       "economic": 0.6
+    },
+    "congress": {
+      "date": "2025-11-13",
+      "text": {
+        "ca": "El Congrés ho va demanar en una moció amb més mesures: 171 a favor, 166 en contra i 12 abstencions.",
+        "es": "El Congreso lo pidió en una moción con más medidas: 171 a favor, 166 en contra y 12 abstenciones."
+      },
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf"
     }
   },
   {
@@ -135,6 +183,14 @@
     },
     "axes": {
       "economic": -0.8
+    },
+    "congress": {
+      "date": "2026-09-30",
+      "text": {
+        "ca": "El Congrés va rebutjar un impost permanent: 44 a favor, 181 en contra i 122 abstencions.",
+        "es": "El Congreso rechazó un impuesto permanente: 44 a favor, 181 en contra y 122 abstenciones."
+      },
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf"
     }
   },
   {
@@ -150,6 +206,14 @@
     },
     "axes": {
       "economic": 0.5
+    },
+    "congress": {
+      "date": "2025-06-17",
+      "text": {
+        "ca": "El Congrés va acceptar tramitar una llei per allargar la vida de les nuclears: 171 a favor, 166 en contra i 7 abstencions. No es va arribar a aprovar.",
+        "es": "El Congreso aceptó tramitar una ley para alargar la vida de las nucleares: 171 a favor, 166 en contra y 7 abstenciones. No llegó a aprobarse."
+      },
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf"
     }
   },
   {
@@ -165,6 +229,14 @@
     },
     "axes": {
       "economic": -1
+    },
+    "congress": {
+      "date": "2026-09-30",
+      "text": {
+        "ca": "El Congrés va rebutjar crear una empresa pública d'energia: 39 a favor, 181 en contra i 126 abstencions.",
+        "es": "El Congreso rechazó crear una empresa pública de energía: 39 a favor, 181 en contra y 126 abstenciones."
+      },
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf"
     }
   },
   {
@@ -180,6 +252,14 @@
     },
     "axes": {
       "territorial": -0.8
+    },
+    "congress": {
+      "date": "2024-04-23",
+      "text": {
+        "ca": "El Congrés va rebutjar un pla nacional de l'aigua amb transvasaments: 32 a favor, 174 en contra i 135 abstencions.",
+        "es": "El Congreso rechazó un plan nacional del agua con trasvases: 32 a favor, 174 en contra y 135 abstenciones."
+      },
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf"
     }
   },
   {
@@ -274,6 +354,14 @@
     },
     "axes": {
       "social": -1
+    },
+    "congress": {
+      "date": "2026-04-30",
+      "text": {
+        "ca": "El Congrés va decidir continuar tramitant la reforma: 177 vots contra retornar-la al Govern i 171 a favor. No es va arribar a aprovar.",
+        "es": "El Congreso decidió seguir tramitando la reforma: 177 votos contra devolverla al Gobierno y 171 a favor. No llegó a aprobarse."
+      },
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf"
     }
   },
   {
@@ -304,6 +392,14 @@
     },
     "axes": {
       "territorial": 0.8
+    },
+    "congress": {
+      "date": "2025-09-23",
+      "text": {
+        "ca": "El Congrés va rebutjar tramitar la llei: 173 a favor i 177 en contra.",
+        "es": "El Congreso rechazó tramitar la ley: 173 a favor y 177 en contra."
+      },
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf"
     }
   },
   {
@@ -320,6 +416,14 @@
     "axes": {
       "territorial": -0.6,
       "social": 0.3
+    },
+    "congress": {
+      "date": "2024-05-30",
+      "text": {
+        "ca": "El Congrés va aprovar la llei d'amnistia: 177 vots a favor i 172 en contra.",
+        "es": "El Congreso aprobó la ley de amnistía: 177 votos a favor y 172 en contra."
+      },
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF#page=25"
     }
   },
   {
@@ -350,6 +454,14 @@
     },
     "axes": {
       "social": 0.6
+    },
+    "congress": {
+      "date": "2026-02-12",
+      "text": {
+        "ca": "El Congrés va aprovar la llei: 302 a favor, 36 en contra i 8 abstencions. És vigent.",
+        "es": "El Congreso aprobó la ley: 302 a favor, 36 en contra y 8 abstenciones. Está en vigor."
+      },
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf"
     }
   },
   {

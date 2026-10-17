@@ -51,6 +51,13 @@ export function Game({ data }: { data: GameData }) {
   const [live, setLive] = useState("");
   const [gavel, setGavel] = useState<null | "open" | "close">(null);
   const [toasts, setToasts] = useState<Achievement[]>([]);
+  // «Així va votar el Congrés»: es mostra uns segons després de votar una proposta amb votació real.
+  const [congress, setCongress] = useState<{ id: string; date: string; text: string; url: string; you: Answer } | null>(null);
+  useEffect(() => {
+    if (!congress) return;
+    const t = setTimeout(() => setCongress(null), 6000);
+    return () => clearTimeout(t);
+  }, [congress]);
 
   const items = useMemo(() => buildItems(data.questions, data.facts, s.seed), [data, s.seed]);
   const order = useMemo(() => items.flatMap((it) => (it.kind === "q" ? [it.q] : [])), [items]);
@@ -63,8 +70,8 @@ export function Game({ data }: { data: GameData }) {
   useEffect(() => writeJSON(key, s), [key, s]);
   // Mode brúixola: les respostes es desen en aquest dispositiu per veure les candidatures el dia de la revelació.
   useEffect(() => {
-    if (data.reveal && s.phase === "results") storeSaved(data.electionId, { province: s.province, answers: s.answers, tokens: s.tokens });
-  }, [data.reveal, data.electionId, s.phase, s.province, s.answers, s.tokens]);
+    if (data.reveal && s.phase === "results") storeSaved(data.electionId, { province: s.province, answers: s.answers, tokens: s.tokens, red: s.red });
+  }, [data.reveal, data.electionId, s.phase, s.province, s.answers, s.tokens, s.red]);
 
   // El pas va després del # (no arriba mai al servidor): el gest d'enrere del mòbil desfà l'últim vot.
   const token = tokenOf(s);
@@ -127,12 +134,13 @@ export function Game({ data }: { data: GameData }) {
   const need = (v: Answer) =>
     item?.kind === "q" && data.funding.length ? needFor(item.q, v, data.questions, s.answers, s.alloc) : 0;
 
-  function vote(value: Answer | null, from?: Record<string, number>) {
+  function vote(value: Answer | null, from?: Record<string, number>, red?: boolean) {
     if (item?.kind !== "q") return;
     // Amb el número, dos vots iguals seguits no deixen el text igual i el lector de pantalla els torna a anunciar.
-    setLive(`${item.n}. ${value === null ? m.game.live.skipped : format(m.game.live.voted, { v: m.game.votes[String(value) as "0"] })}`);
+    setLive(`${item.n}. ${value === null ? m.game.live.skipped : format(m.game.live.voted, { v: m.game.ballot[String(Math.sign(value)) as "0"] })}`);
     const answers = { ...s.answers, [item.q.id]: value };
-    dispatch({ type: "vote", id: item.q.id, value, total, from });
+    dispatch({ type: "vote", id: item.q.id, value, total, from, red });
+    setCongress(item.q.congress && value !== null ? { id: item.q.id, ...item.q.congress, you: value } : null);
     if (value !== null) chamber.current?.pulse(batches[item.n - 1]);
     unlock(answers, s.read.length, s.index + 1 >= total);
   }
@@ -155,11 +163,13 @@ export function Game({ data }: { data: GameData }) {
         data={data}
         answers={s.answers}
         tokens={s.tokens}
+        red={s.red}
         province={s.province}
         ready={!data.reveal}
         restored={boot.link}
         onAnswer={(id, value) => dispatch({ type: "answer", id, value })}
         onToken={(topic, delta) => dispatch({ type: "token", topic, delta })}
+        onRed={(id) => dispatch({ type: "red", id })}
         onOpen={() => setSealed(false)}
         onReplay={() => dispatch({ type: "restart", seed: newSeed() })}
         onClear={() => {
@@ -177,6 +187,7 @@ export function Game({ data }: { data: GameData }) {
         answers={s.answers}
         tokens={s.tokens}
         alloc={s.alloc}
+        red={s.red}
         candidacies={candidacies}
         onRestart={() => dispatch({ type: "restart", seed: newSeed() })}
         onFirst={() => dispatch({ type: "goto", index: 0 })}
@@ -294,6 +305,7 @@ export function Game({ data }: { data: GameData }) {
             canUndo={s.index > 0}
             onImpact={(v) => chamber.current?.shake(v === null ? 0.3 : Math.abs(v) === 2 ? 1.7 : 1)}
             onRead={read}
+            redIds={s.red}
             needFor={need}
             sources={sources}
           />
@@ -332,6 +344,25 @@ export function Game({ data }: { data: GameData }) {
             dispatch(gavel === "open" ? { type: "start" } : { type: "phase", phase: "counting" });
           }}
         />
+      )}
+      {congress && s.phase === "play" && (
+        <div role="status" className="rise absolute inset-x-0 top-[5.5rem] z-30 mx-auto w-[min(92vw,420px)] rounded-2xl border border-chalk-3/60 bg-stage-2/95 p-4 text-chalk shadow-2xl backdrop-blur sm:top-24">
+          <div className="flex items-start justify-between gap-3">
+            <p className="kicker text-chalk-2">
+              {m.game.congress.kicker} · {new Intl.DateTimeFormat(locale, { day: "numeric", month: "short", year: "numeric" }).format(new Date(`${congress.date}T00:00:00`))}
+            </p>
+            <button type="button" onClick={() => setCongress(null)} aria-label={m.game.congress.close} className="-mr-2 -mt-2 grid size-11 shrink-0 place-items-center text-chalk-2 hover:text-chalk">
+              ×
+            </button>
+          </div>
+          <p className="mt-1 text-[0.95rem] leading-snug">{congress.text}</p>
+          <p className="mt-2 flex flex-wrap items-center justify-between gap-2 text-sm text-chalk-2">
+            <span>{format(m.game.congress.you, { v: m.game.ballot[String(Math.sign(congress.you)) as "0"] })}</span>
+            <a href={congress.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-chalk">
+              {m.game.congress.source}
+            </a>
+          </p>
+        </div>
       )}
       <Toasts items={toasts} onDone={(id) => setToasts((t) => t.filter((x) => x !== id))} />
       <p className="sr-only" aria-live="polite">

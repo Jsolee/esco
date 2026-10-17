@@ -3,7 +3,7 @@
 import { useEffect, useImperativeHandle, useRef, useState } from "react";
 import type { Achievement } from "@/lib/achievements";
 import { Draggable, gsap, reducedMotion, sfx, SplitText, useGSAP, useReducedMotion } from "@/lib/fx";
-import type { Answers } from "@/lib/match";
+import { RED_LINES, type Answers } from "@/lib/match";
 import type { Answer } from "@/lib/schema";
 import { format, pad2 } from "@/lib/text";
 import { useI18n } from "../I18n";
@@ -12,19 +12,18 @@ import { CostTag, FundingSheet, type FundResult, type FundSource } from "./Fundi
 import { RoundComplete } from "./Overlays";
 
 const THRESH = 90; // px per comptar com a vot
-const STRONG = 190; // px per a «molt»
-const VALUES: Answer[] = [-2, -1, 0, 1, 2];
+const VALUES: Answer[] = [-1, 0, 1]; // no, abstenció, sí
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 
 export type Outcome = Answer | null | "go"; // null = saltada, "go" = continuar després d'una ronda
 type CardHandle = { fling: (o: Outcome) => void; busy?: () => boolean; flipped?: () => boolean };
 
 const previewOf = (dx: number, dy: number): Answer | undefined =>
-  dx > STRONG ? 2 : dx > THRESH ? 1 : dx < -STRONG ? -2 : dx < -THRESH ? -1 : dy < -THRESH ? 0 : undefined;
+  dx > THRESH ? 1 : dx < -THRESH ? -1 : dy < -THRESH ? 0 : undefined;
 
 function decide(dx: number, dy: number, vx: number, vy: number): Answer | undefined {
   if (Math.abs(dx) > THRESH || (Math.abs(vx) > 700 && Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)))
-    return (Math.sign(dx) * (Math.abs(dx) > STRONG || Math.abs(vx) > 1800 ? 2 : 1)) as Answer;
+    return Math.sign(dx) as Answer;
   if (dy < -THRESH || (vy < -700 && dy < -40)) return 0;
   return undefined;
 }
@@ -48,6 +47,7 @@ export function Deck({
   onRead,
   needFor,
   sources,
+  redIds,
 }: {
   item: Item;
   upcoming: Item[];
@@ -59,7 +59,7 @@ export function Deck({
   stats: (Answer | null | undefined)[];
   ach: Achievement[];
   topics: { id: string; name: string }[];
-  onVote: (v: Answer | null, from?: Record<string, number>) => void;
+  onVote: (v: Answer | null, from?: Record<string, number>, red?: boolean) => void;
   onContinue: () => void;
   onUndo: () => void;
   canUndo: boolean;
@@ -67,6 +67,7 @@ export function Deck({
   onRead: (qid: string) => void;
   needFor: (v: Answer) => number; // punts que cal finançar si votes `v`
   sources: FundSource[];
+  redIds: string[]; // línies vermelles ja marcades
 }) {
   const { m: t } = useI18n();
   const card = useRef<CardHandle>(null);
@@ -76,6 +77,12 @@ export function Deck({
   const [hint, setHint] = useState<Answer | undefined>();
   const keyOf = (it: Item) => (it.kind === "q" ? it.q.id : `pause-${it.n}`);
   const prev = item.kind === "q" ? answers[item.q.id] : undefined;
+  // Línia vermella de la carta actual: la que ja tenia, o la que s'hi acaba de marcar.
+  const [redToggle, setRedToggle] = useState<{ id: string; on: boolean } | null>(null);
+  const qid = item.kind === "q" ? item.q.id : null;
+  const red = qid !== null && (redToggle?.id === qid ? redToggle.on : redIds.includes(qid));
+  const redLeft = RED_LINES - redIds.filter((id) => id !== qid).length;
+  const toggleRed = () => qid && (red || redLeft > 0) && setRedToggle({ id: qid, on: !red });
   // Desfer mentre la carta vola deixaria la seva animació votant sobre la carta que torna.
   const undo = () => {
     if (canUndo && !card.current?.busy?.()) onUndo();
@@ -96,9 +103,12 @@ export function Deck({
         if (!["enter", " ", "arrowright", "arrowleft", "arrowup"].includes(k)) return;
         c.fling("go");
       } else if (c.flipped?.()) return; // amb el context a la vista, les fletxes desplacen el text, no voten
-      else if (k >= "1" && k <= "5" && k.length === 1) c.fling(VALUES[Number(k) - 1]);
-      else if (k === "arrowright") c.fling(e.shiftKey ? 2 : 1);
-      else if (k === "arrowleft") c.fling(e.shiftKey ? -2 : -1);
+      else if (k >= "1" && k <= "3" && k.length === 1) c.fling(VALUES[Number(k) - 1]);
+      else if (k === "arrowright") c.fling(1);
+      else if (k === "arrowleft") c.fling(-1);
+      else if (k === "r") {
+        if (qid && (red || redLeft > 0)) setRedToggle({ id: qid, on: !red });
+      }
       else if (k === "arrowup") c.fling(0);
       else if (k === "arrowdown" || k === "s") c.fling(null);
       else return;
@@ -106,7 +116,7 @@ export function Deck({
     }
     addEventListener("keydown", onKey);
     return () => removeEventListener("keydown", onKey);
-  }, [item, canUndo, onUndo, fund]);
+  }, [item, canUndo, onUndo, fund, qid, red, redLeft]);
 
   useGSAP(
     () => {
@@ -119,7 +129,7 @@ export function Deck({
   function done(o: Outcome, from?: Record<string, number>) {
     setHint(undefined);
     if (o === "go") onContinue();
-    else onVote(o, from);
+    else onVote(o, from, red && (o === 1 || o === -1));
   }
 
   return (
@@ -164,6 +174,7 @@ export function Deck({
             onRead={() => onRead(item.q.id)}
             needFor={needFor}
             onFund={onFund}
+            red={red}
           />
         )}
       </div>
@@ -180,12 +191,13 @@ export function Deck({
 
       <div ref={pad} className="w-full">
         {item.kind === "q" ? (
+          <>
           <div role="group" aria-label={t.game.votePad} className="mt-7 flex items-start justify-center gap-1.5 sm:gap-3">
             {VALUES.map((v, i) => {
-              const label = t.game.votes[String(v) as "0"];
-              const size = Math.abs(v) === 2 ? "size-15" : Math.abs(v) === 1 ? "size-13" : "size-11";
+              const label = t.game.ballot[String(v) as "0"];
+              const size = v === 0 ? "size-12" : "size-15";
               return (
-                <div key={v} className="pad-btn flex w-[4.1rem] flex-col items-center gap-1.5">
+                <div key={v} className="pad-btn flex w-[5.2rem] flex-col items-center gap-1.5">
                   <button
                     type="button"
                     aria-label={label}
@@ -199,13 +211,33 @@ export function Deck({
                   >
                     <Glyph v={v} />
                   </button>
-                  <span aria-hidden className={`text-center text-[0.68rem] leading-tight ${hint === v ? "text-chalk" : "text-chalk-2"}`}>
+                  <span aria-hidden className={`text-center text-[0.8rem] font-semibold leading-tight ${hint === v ? "text-chalk" : "text-chalk-2"}`}>
                     {label}
                   </span>
                 </div>
               );
             })}
           </div>
+            <div className="mt-3 flex justify-center">
+              <button
+                type="button"
+                aria-pressed={red}
+                aria-keyshortcuts="R"
+                onClick={toggleRed}
+                disabled={!red && redLeft <= 0}
+                title={t.game.red.hint}
+                className={`pad-btn inline-flex min-h-11 items-center gap-2 rounded-full border-2 px-4 text-sm font-semibold uppercase tracking-wider transition-colors disabled:opacity-35 ${
+                  red ? "border-chalk bg-chalk text-stage" : "border-dashed border-chalk-3 text-chalk-2 hover:border-chalk hover:text-chalk"
+                }`}
+              >
+                <span aria-hidden>⊘</span>
+                {red ? t.game.red.on : t.game.red.mark}
+                <span className="font-normal normal-case tracking-normal opacity-80">
+                  · {redLeft > 0 || red ? format(t.game.red.left, { n: red ? redLeft - 1 : redLeft }) : t.game.red.none}
+                </span>
+              </button>
+            </div>
+          </>
         ) : (
           <div className="mt-7 flex justify-center">
             <button type="button" onClick={() => card.current?.fling("go")} className="btn bg-chalk px-8 text-stage">
@@ -255,6 +287,7 @@ function SwipeCard({
   onRead,
   needFor,
   onFund,
+  red = false,
 }: {
   ref: React.Ref<CardHandle>;
   item: Extract<Item, { kind: "q" }>;
@@ -269,6 +302,7 @@ function SwipeCard({
   onRead: () => void;
   needFor: (v: Answer) => number;
   onFund: (need: number) => Promise<FundResult>;
+  red?: boolean;
 }) {
   const { m: t } = useI18n();
   const reduced = useReducedMotion();
@@ -282,7 +316,7 @@ function SwipeCard({
   const preview = useRef<Answer | undefined>(undefined);
   const vel = useRef({ x: 0, y: 0, lx: 0, ly: 0, t: 0 });
   const from = useRef<Record<string, number> | undefined>(undefined);
-  const [label, setLabel] = useState<Answer | undefined>();
+  const [, setLabel] = useState<Answer | undefined>();
   const [flipped, setFlipped] = useState(false);
 
   const q = (sel: string) => wrap.current!.querySelector<HTMLElement>(sel)!;
@@ -507,7 +541,12 @@ function SwipeCard({
           className="absolute inset-0 [perspective:1400px] [transform-style:preserve-3d]"
         >
           <div ref={inner} className="card-face relative size-full [transform-style:preserve-3d]">
-            <article inert={flipped} className={`${face} bg-card`}>
+            <article inert={flipped} className={`${face} bg-card ${red ? "outline outline-[6px] -outline-offset-[10px] outline-card-ink" : ""}`}>
+              {red && (
+                <span className="kicker absolute right-5 top-14 z-10 rotate-6 rounded-md border-2 border-card-ink bg-card px-2 py-1 text-card-ink">
+                  ⊘ {t.game.red.mark}
+                </span>
+              )}
               <span
                 aria-hidden
                 className="gloss pointer-events-none absolute inset-0 opacity-25 mix-blend-soft-light [background-image:linear-gradient(115deg,transparent_30%,rgba(255,255,255,0.9)_48%,transparent_62%)] [background-size:250%_250%]"
@@ -544,18 +583,18 @@ function SwipeCard({
                 </button>
                 {prev !== undefined && (
                   <span className="text-right text-xs text-card-ink-2">
-                    {format(t.game.previously, { v: prev === null ? t.game.skip : t.game.votes[String(prev) as "0"] })}
+                    {format(t.game.previously, { v: prev === null ? t.game.skip : t.game.ballot[String(Math.sign(prev)) as "0"] })}
                   </span>
                 )}
               </div>
-              <span aria-hidden className={`stamp-yes ${stamp} left-5 top-16 border-card-ink ${label === 2 ? "bg-card-ink text-card" : ""}`}>
-                {t.game.votes[label === 2 ? "2" : "1"]}
+              <span aria-hidden className={`stamp-yes ${stamp} left-5 top-16 border-card-ink ${red ? "bg-card-ink text-card" : ""}`}>
+                {t.game.ballot["1"]}
               </span>
-              <span aria-hidden className={`stamp-no ${stamp} right-5 top-16 border-card-ink ${label === -2 ? "bg-card-ink text-card" : ""}`}>
-                {t.game.votes[label === -2 ? "-2" : "-1"]}
+              <span aria-hidden className={`stamp-no ${stamp} right-5 top-16 border-card-ink ${red ? "bg-card-ink text-card" : ""}`}>
+                {t.game.ballot["-1"]}
               </span>
               <span aria-hidden className={`stamp-meh ${stamp} bottom-20 left-1/2 border-dashed border-card-ink`}>
-                {t.game.votes["0"]}
+                {t.game.ballot["0"]}
               </span>
             </article>
 

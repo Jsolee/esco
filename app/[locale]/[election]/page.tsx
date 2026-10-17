@@ -41,6 +41,7 @@ export default async function ElectionPage({ params }: PageProps<"/[locale]/[ele
       context: tx(q.context, locale),
       axes: q.axes,
       budget: q.budget,
+      congress: q.congress && { date: q.congress.date, text: tx(q.congress.text, locale), url: q.congress.url },
     })),
     funding: e.election.funding.map((f) => ({
       id: f.id,

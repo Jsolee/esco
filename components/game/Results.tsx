@@ -25,6 +25,7 @@ export function Results({
   answers,
   tokens,
   alloc,
+  red = [],
   candidacies,
   onRestart,
   onFirst,
@@ -34,6 +35,7 @@ export function Results({
   answers: Answers;
   tokens: Record<string, number>;
   alloc: Alloc;
+  red?: string[];
   candidacies: GCandidacy[];
   onRestart: () => void;
   onFirst: () => void;
@@ -54,10 +56,11 @@ export function Results({
         questions: [...order, ...data.funding],
         answers: { ...answers, ...fundAnswers },
         weights: Object.fromEntries(Object.entries(tokens).map(([t, n]) => [t, weightOf(n)])),
+        red,
         candidacies,
         order: candidacies.map((c) => c.id),
       }),
-    [order, data.funding, answers, fundAnswers, tokens, candidacies],
+    [order, data.funding, answers, fundAnswers, tokens, red, candidacies],
   );
   const voted = order.filter((q) => typeof answers[q.id] === "number").length;
   const top = result.ranked.filter((x) => x.rank === 1);
@@ -236,8 +239,13 @@ export function Results({
                       <div className="h-2.5 overflow-hidden rounded-full bg-sunken">
                         <div className="rank-bar h-full origin-left rounded-full" style={{ width: `${x.affinity}%`, background: c.color }} />
                       </div>
+                      {x.clash > 0 && (
+                        <p className="text-sm font-semibold">
+                          ⊘ {format(x.clash === 1 ? r.clash.one : r.clash.other, { n: x.clash })}
+                        </p>
+                      )}
                       {x.coverage < 1 && <p className="text-sm text-ink-3">{format(r.coverage, { n: Math.round(x.coverage * 100) })}</p>}
-                      <Comparison c={c} order={order} answers={answers} funding={data.funding} fundAnswers={fundAnswers} />
+                      <Comparison c={c} order={order} answers={answers} funding={data.funding} fundAnswers={fundAnswers} red={red} />
                     </div>
                   </li>
                 );
@@ -259,7 +267,7 @@ export function Results({
                     <span className="font-semibold">{byId[x.id].name}</span>
                     <span className="num text-sm text-ink-3">{Math.round(x.coverage * 100)} %</span>
                   </p>
-                  <Comparison c={byId[x.id]} order={order} answers={answers} funding={data.funding} fundAnswers={fundAnswers} />
+                  <Comparison c={byId[x.id]} order={order} answers={answers} funding={data.funding} fundAnswers={fundAnswers} red={red} />
                 </li>
               ))}
             </ul>
@@ -387,12 +395,14 @@ function Comparison({
   answers,
   funding,
   fundAnswers,
+  red,
 }: {
   c: GCandidacy;
   order: GQuestion[];
   answers: Answers;
   funding: GFunding[];
   fundAnswers: Answers;
+  red: string[];
 }) {
   const { m } = useI18n();
   const r = m.results;
@@ -419,7 +429,10 @@ function Comparison({
               const src = p && c.sources[p.source];
               return (
                 <tr key={q.id} className="border-b border-rule align-top">
-                  <td className="max-w-[24rem] py-3 pr-4">{q.text}</td>
+                  <td className="max-w-[24rem] py-3 pr-4">
+                    {q.text}
+                    {red.includes(q.id) && <span className="kicker mt-1 block text-ink">⊘ {r.redRow}</span>}
+                  </td>
                   <td className="py-3 pr-4">
                     {typeof a === "number" ? <ScaleGlyph value={a} label={label(a)} /> : <span className="text-ink-3">{a === null ? r.skipped : "—"}</span>}
                   </td>

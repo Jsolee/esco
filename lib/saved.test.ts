@@ -10,6 +10,7 @@ const saved: Saved = {
   province: "08",
   answers: Object.fromEntries(qids.map((id, i) => [id, values[i % values.length]])),
   tokens: { habitatge: 4, sanitat: 6 },
+  red: [qids[0], qids[3]], // +2 i −1: dues línies vermelles
 };
 
 describe("respostes desades", () => {
@@ -25,6 +26,11 @@ describe("respostes desades", () => {
       const code = encodeSaved({ province: null, answers: Object.fromEntries(el.questions.map((q) => [q.id, 1])), tokens: {} }, el.questions.map((q) => q.id), tids);
       expect(Object.keys(decodeSaved(code, el.questions.map((q) => q.id), tids)!.answers)).toHaveLength(el.questions.length);
     }
+  });
+
+  it("les línies vermelles només valen amb un sí o un no, i com a màxim tres", () => {
+    const many = { ...saved, red: [qids[0], qids[2], qids[5], qids[3], qids[6], qids[1]] }; // qids[2] és 0 i qids[5] saltada
+    expect(clean(many, qids, tids)!.red).toEqual([qids[0], qids[3], qids[6]]);
   });
 
   it("si una afirmació canvia d'id, només es perd aquella resposta", () => {
@@ -44,6 +50,6 @@ describe("respostes desades", () => {
 
   it("neteja valors fora de rang i províncies estranyes", () => {
     const dirty = { province: "<b>", answers: { [qids[0]]: 7, [qids[1]]: 1, inventada: 2 }, tokens: { habitatge: -1, inventat: 3 } } as unknown as Saved;
-    expect(clean(dirty, qids, tids)).toEqual({ province: null, answers: { [qids[1]]: 1 }, tokens: {} });
+    expect(clean(dirty, qids, tids)).toEqual({ province: null, answers: { [qids[1]]: 1 }, tokens: {}, red: [] });
   });
 });

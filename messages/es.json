@@ -88,21 +88,25 @@
       "gestures": [
         {
           "dir": "right",
-          "text": "Desliza a la derecha si estás de acuerdo"
+          "text": "Desliza a la derecha para votar sí"
         },
         {
           "dir": "left",
-          "text": "A la izquierda si no"
+          "text": "A la izquierda para votar no"
         },
         {
           "dir": "up",
-          "text": "Hacia arriba si te es indiferente"
+          "text": "Hacia arriba para abstenerte"
+        },
+        {
+          "dir": "red",
+          "text": "Tienes 3 líneas rojas: márcalas en lo que no negociarías. Pesan el triple."
         }
       ],
       "circ": "Votas por la circunscripción de",
       "pick": "Elige tu provincia",
       "start": "Abre la sesión",
-      "keys": "Con teclado: flechas o 1–5 para votar, S para saltar, Z para deshacer.",
+      "keys": "Con teclado: flechas o 1–3 para votar, R para línea roja, S para saltar, Z para deshacer.",
       "demoTopic": "Gastronomía",
       "demo": "Las croquetas de casa son las mejores del mundo.",
       "demoLabel": "Ejemplo"
@@ -135,7 +139,7 @@
       "labels": {
         "yes": "A favor",
         "no": "En contra",
-        "neutral": "Neutrales",
+        "neutral": "Abstenciones",
         "skipped": "Saltadas"
       }
     },
@@ -216,6 +220,24 @@
       "remove": "Quita una ficha de {t}",
       "none": "Sin fichas, todas las propuestas pesan igual.",
       "weight": "peso ×{w}"
+    },
+    "ballot": {
+      "-1": "No",
+      "0": "Abstención",
+      "1": "Sí"
+    },
+    "red": {
+      "mark": "Línea roja",
+      "on": "Es una línea roja",
+      "left": "te quedan {n}",
+      "none": "Ya has usado tus 3 líneas rojas",
+      "hint": "Solo con un sí o un no"
+    },
+    "congress": {
+      "kicker": "Así votó el Congreso",
+      "you": "Tu voto: {v}",
+      "source": "Ver la votación",
+      "close": "Cierra"
     }
   },
   "results": {
@@ -283,7 +305,12 @@
       "of": "{n} de {cap}"
     },
     "fundingRows": "Cómo lo financiarías",
-    "usedYes": "Has recurrido a ello"
+    "usedYes": "Has recurrido a ello",
+    "clash": {
+      "one": "Vota en contra de 1 de tus líneas rojas",
+      "other": "Vota en contra de {n} de tus líneas rojas"
+    },
+    "redRow": "Tu línea roja"
   },
   "shared": {
     "title": "Un resultado de Escó",
@@ -363,6 +390,7 @@
     "clear": "Borra mis respuestas",
     "clearConfirm": "¿Seguro que quieres borrar tus respuestas de este dispositivo? No se pueden recuperar si no tienes el enlace privado.",
     "replay": "Vuelve a jugar",
-    "restored": "Hemos recuperado tus respuestas del enlace privado."
+    "restored": "Hemos recuperado tus respuestas del enlace privado.",
+    "redLeft": "Te quedan {n} líneas rojas."
   }
 }

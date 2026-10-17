@@ -2,7 +2,15 @@ import type { Point } from "./match";
 import type { Answer, Axis } from "./schema";
 
 // Dades d'una elecció ja localitzades, tal com arriben al client.
-export type GQuestion = { id: string; topic: string; text: string; context: string; axes: Partial<Record<Axis, number>>; budget?: number };
+export type GQuestion = {
+  id: string;
+  topic: string;
+  text: string;
+  context: string;
+  axes: Partial<Record<Axis, number>>;
+  budget?: number;
+  congress?: { date: string; text: string; url: string }; // resultat real al Congrés, només totals
+};
 export type GFunding = { id: string; kind: "cut" | "tax" | "debt"; topic: string; name: string; detail: string; capacity: number; axes: Partial<Record<Axis, number>> };
 export type GCandidacy = {
   id: string;

@@ -72,6 +72,20 @@ describe("partida", () => {
     expect(restore(s, qs, facts)).toEqual(s);
   });
 
+  it("les línies vermelles: només amb sí o no, com a màxim tres, i es treuen si la resposta passa a abstenció", () => {
+    let s = playing();
+    s = reducer(s, { type: "vote", id: "q0", value: 0, total, red: true });
+    expect(s.red).toEqual([]);
+    for (const id of ["q1", "q2", "q3", "q4"]) s = reducer({ ...s, index: 0 }, { type: "vote", id, value: 1, total, red: true });
+    expect(s.red).toEqual(["q1", "q2", "q3"]);
+    s = reducer(s, { type: "answer", id: "q2", value: 0 });
+    expect(s.red).toEqual(["q1", "q3"]);
+    s = reducer(s, { type: "red", id: "q4" });
+    expect(s.red).toEqual(["q1", "q3", "q4"]);
+    s = reducer(s, { type: "red", id: "q1" });
+    expect(s.red).toEqual(["q3", "q4"]);
+  });
+
   it("tornar a jugar conserva la província i res més", () => {
     const s = reducer({ ...playing(), answers: { q0: 1 }, tokens: { t0: 2 } }, { type: "restart", seed: 99 });
     expect(s).toMatchObject({ province: "08", seed: 99, phase: "intro", answers: {}, tokens: {} });

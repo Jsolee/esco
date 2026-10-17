@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import { TOKENS } from "@/lib/budget";
 import { sentenceOf } from "@/lib/compass";
 import type { GameData } from "@/lib/game";
-import { AXES, axesOf, type Answers } from "@/lib/match";
+import { AXES, axesOf, RED_LINES, type Answers } from "@/lib/match";
 import { encodeSaved, LINK_PREFIX } from "@/lib/saved";
 import type { Answer, Axis } from "@/lib/schema";
 import { encodeCompass } from "@/lib/share";
@@ -16,7 +16,7 @@ import { ThemeToggle } from "../ThemeToggle";
 import { Wordmark } from "../Wordmark";
 import { PoliticalMap } from "./PoliticalMap";
 
-const VALUES: Answer[] = [-2, -1, 0, 1, 2];
+const VALUES: Answer[] = [-1, 0, 1];
 
 // Pantalla final del mode brúixola: el vot queda «a l'urna» fins que hi hagi candidatures oficials.
 // Amb `ready`, les candidatures ja hi són i la persona torna amb respostes desades: només cal obrir el vot.
@@ -24,11 +24,13 @@ export function Compass({
   data,
   answers,
   tokens,
+  red,
   province,
   ready = false,
   restored = false,
   onAnswer,
   onToken,
+  onRed,
   onOpen,
   onReplay,
   onClear,
@@ -36,11 +38,13 @@ export function Compass({
   data: GameData;
   answers: Answers;
   tokens: Record<string, number>;
+  red: string[];
   province: string | null;
   ready?: boolean;
   restored?: boolean;
   onAnswer: (id: string, value: Answer | null) => void;
   onToken: (topic: string, delta: 1 | -1) => void;
+  onRed: (id: string) => void;
   onOpen?: () => void;
   onReplay: () => void;
   onClear: () => void;
@@ -86,7 +90,7 @@ export function Compass({
   }
 
   function privateLink() {
-    const code = encodeSaved({ province, answers, tokens }, data.questions.map((q) => q.id), data.topics.map((t) => t.id));
+    const code = encodeSaved({ province, answers, tokens, red }, data.questions.map((q) => q.id), data.topics.map((t) => t.id));
     void copy(`${location.origin}/${locale}/${data.electionId}${LINK_PREFIX}${code}`, c.linkCopied);
   }
 
@@ -184,7 +188,7 @@ export function Compass({
           {review && (
             <div className="grid gap-10">
               <p className="text-sm text-ink-2">
-                {c.reviewHint} {format(c.tokensLeft, { n: TOKENS - used })}
+                {c.reviewHint} {format(c.tokensLeft, { n: TOKENS - used })} {format(c.redLeft, { n: RED_LINES - red.length })}
               </p>
               {data.topics.map((t) => {
                 const qs = data.questions.filter((q) => q.topic === t.id);
@@ -208,9 +212,19 @@ export function Compass({
                     {qs.map((q) => (
                       <div key={q.id} role="radiogroup" aria-label={q.text} className="grid gap-2.5">
                         <p className="font-serif text-xl leading-snug">{q.text}</p>
+                        {q.congress && (
+                          <p className="text-sm text-ink-2">
+                            <span className="kicker mr-1.5 text-ink">{m.game.congress.kicker}:</span>
+                            {q.congress.text}{" "}
+                            <a href={q.congress.url} target="_blank" rel="noopener noreferrer" className="underline decoration-ink-3 underline-offset-4">
+                              {m.game.congress.source}
+                            </a>
+                          </p>
+                        )}
                         <div className="flex flex-wrap gap-1.5">
                           {[...VALUES, null].map((v) => {
-                            const on = answers[q.id] === v;
+                            const a = answers[q.id];
+                            const on = v === null ? a === null : typeof a === "number" && Math.sign(a) === v;
                             return (
                               <button
                                 key={String(v)}
@@ -222,10 +236,28 @@ export function Compass({
                                   on ? "border-ink bg-ink text-paper" : "border-ink-3 text-ink-2 hover:border-ink hover:text-ink"
                                 }`}
                               >
-                                {v === null ? m.game.skip : m.game.votes[String(v) as "0"]}
+                                {v === null ? m.game.skip : m.game.ballot[String(v) as "0"]}
                               </button>
                             );
                           })}
+                          {(() => {
+                            const isRed = red.includes(q.id);
+                            const firm = typeof answers[q.id] === "number" && answers[q.id] !== 0;
+                            return (
+                              <button
+                                type="button"
+                                aria-pressed={isRed}
+                                onClick={() => onRed(q.id)}
+                                disabled={!isRed && (!firm || red.length >= RED_LINES)}
+                                title={m.game.red.hint}
+                                className={`min-h-11 rounded-full border-2 px-3.5 text-sm font-semibold transition-colors disabled:opacity-30 ${
+                                  isRed ? "border-ink bg-ink text-paper" : "border-dashed border-ink-3 text-ink-2 hover:border-ink hover:text-ink"
+                                }`}
+                              >
+                                ⊘ {m.game.red.mark}
+                              </button>
+                            );
+                          })()}
                         </div>
                       </div>
                     ))}

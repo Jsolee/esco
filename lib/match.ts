@@ -5,22 +5,26 @@ type MQuestion = Pick<Question, "id" | "topic" | "axes">;
 type MCandidacy = { id: string; circumscriptions?: "all" | string[]; positions: Record<string, { value: number | null } | undefined> };
 
 export const MIN_COVERAGE = 0.5;
+export const RED_LINES = 3; // línies vermelles per partida
+export const RED_WEIGHT = 3; // una línia vermella pesa el triple
 export const AXES: Axis[] = ["economic", "social", "territorial"];
 
 export type Answers = Record<string, Answer | null>; // null = saltada; absent = encara no vista
 export type Point = Partial<Record<Axis, number>>;
-export type Ranked = { id: string; affinity: number; rank: number; coverage: number };
+export type Ranked = { id: string; affinity: number; rank: number; coverage: number; clash: number }; // clash: línies vermelles que vota al revés
 export type Insufficient = { id: string; coverage: number };
 
 export function match(input: {
   questions: MQuestion[];
   answers: Answers;
   weights?: Record<string, number>; // multiplicador per tema (fitxes d'influència); per defecte 1
+  red?: string[]; // afirmacions marcades com a línia vermella
   candidacies: MCandidacy[]; // ja filtrades per circumscripció
   order: string[]; // ordre aleatori de la sessió: desfà empats sense afavorir ningú
 }): { ranked: Ranked[]; insufficient: Insufficient[]; user: Point } {
   const { questions, answers, candidacies, order } = input;
   const weights = input.weights ?? {};
+  const red = new Set(input.red ?? []);
   const answered = questions.filter((q) => typeof answers[q.id] === "number");
   const pos = (id: string) => (order.indexOf(id) + 1 || Infinity);
 
@@ -30,17 +34,23 @@ export function match(input: {
     let distance = 0;
     let max = 0;
     let n = 0;
+    let clash = 0;
     for (const q of answered) {
       const v = c.positions[q.id]?.value;
       if (v === null || v === undefined) continue;
-      const w = weights[q.topic] ?? 1;
-      distance += w * Math.abs((answers[q.id] as number) - v);
-      max += w * 4;
+      // Només es compara el sentit (sí, abstenció, no): la intensitat d'un partit no es pot mesurar bé.
+      const u = Math.sign(answers[q.id] as number);
+      const p = Math.sign(v);
+      const isRed = red.has(q.id) && u !== 0;
+      const w = (weights[q.topic] ?? 1) * (isRed ? RED_WEIGHT : 1);
+      distance += (w * Math.abs(u - p)) / 2;
+      max += w;
       n++;
+      if (isRed && p === -u) clash++;
     }
     const coverage = answered.length ? n / answered.length : 0;
     if (n === 0 || coverage < MIN_COVERAGE) insufficient.push({ id: c.id, coverage });
-    else scored.push({ id: c.id, affinity: Math.round(100 * (1 - distance / max)), coverage });
+    else scored.push({ id: c.id, affinity: Math.round(100 * (1 - distance / max)), coverage, clash });
   }
 
   // Els empats es decideixen sobre la xifra arrodonida, la que es veu.

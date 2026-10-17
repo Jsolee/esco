@@ -88,21 +88,25 @@
       "gestures": [
         {
           "dir": "right",
-          "text": "Llisca a la dreta si hi estàs d'acord"
+          "text": "Llisca a la dreta per votar sí"
         },
         {
           "dir": "left",
-          "text": "A l'esquerra si no"
+          "text": "A l'esquerra per votar no"
         },
         {
           "dir": "up",
-          "text": "Amunt si et deixa indiferent"
+          "text": "Amunt per abstenir-te"
+        },
+        {
+          "dir": "red",
+          "text": "Tens 3 línies vermelles: marca-les en el que no negociaries. Pesen el triple."
         }
       ],
       "circ": "Votes per la circumscripció de",
       "pick": "Tria la teva província",
       "start": "Obre la sessió",
-      "keys": "Amb teclat: fletxes o 1–5 per votar, S per saltar, Z per desfer.",
+      "keys": "Amb teclat: fletxes o 1–3 per votar, R per a línia vermella, S per saltar, Z per desfer.",
       "demoTopic": "Gastronomia",
       "demo": "Les croquetes de casa són les millors del món.",
       "demoLabel": "Exemple"
@@ -135,7 +139,7 @@
       "labels": {
         "yes": "A favor",
         "no": "En contra",
-        "neutral": "Neutrals",
+        "neutral": "Abstencions",
         "skipped": "Saltades"
       }
     },
@@ -216,6 +220,24 @@
       "remove": "Treu una fitxa de {t}",
       "none": "Sense fitxes, totes les propostes pesen igual.",
       "weight": "pes ×{w}"
+    },
+    "ballot": {
+      "-1": "No",
+      "0": "Abstenció",
+      "1": "Sí"
+    },
+    "red": {
+      "mark": "Línia vermella",
+      "on": "És una línia vermella",
+      "left": "te'n queden {n}",
+      "none": "Ja has fet servir les 3 línies vermelles",
+      "hint": "Només amb un sí o un no"
+    },
+    "congress": {
+      "kicker": "Així va votar el Congrés",
+      "you": "El teu vot: {v}",
+      "source": "Mostra la votació",
+      "close": "Tanca"
     }
   },
   "results": {
@@ -283,7 +305,12 @@
       "of": "{n} de {cap}"
     },
     "fundingRows": "Com ho finançaries",
-    "usedYes": "Hi has recorregut"
+    "usedYes": "Hi has recorregut",
+    "clash": {
+      "one": "Vota en contra d'1 de les teves línies vermelles",
+      "other": "Vota en contra de {n} de les teves línies vermelles"
+    },
+    "redRow": "La teva línia vermella"
   },
   "shared": {
     "title": "Un resultat d'Escó",
@@ -363,6 +390,7 @@
     "clear": "Esborra les meves respostes",
     "clearConfirm": "Segur que vols esborrar les teves respostes d'aquest dispositiu? No es poden recuperar si no tens l'enllaç privat.",
     "replay": "Torna a jugar",
-    "restored": "Hem recuperat les teves respostes de l'enllaç privat."
+    "restored": "Hem recuperat les teves respostes de l'enllaç privat.",
+    "redLeft": "Et queden {n} línies vermelles."
   }
 }

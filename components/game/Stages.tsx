@@ -48,7 +48,7 @@ export function Intro({
   const id = useId();
   const root = useRef<HTMLElement>(null);
   const i = m.game.intro;
-  const arrow = { right: "→", left: "←", up: "↑" } as const;
+  const arrow = { right: "→", left: "←", up: "↑", red: "⊘" } as const;
 
   useGSAP(
     () => {

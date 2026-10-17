@@ -57,6 +57,8 @@ export const Question = z.object({
   // Efecte sobre el pressupost si hi estàs d'acord, en punts: negatiu = costa diners, positiu = n'aporta.
   budget: z.int().optional(),
   budgetSource: z.url().optional(), // d'on surt l'estimació del cost (obligatori en eleccions reals obertes)
+  // «Així va votar el Congrés»: resultat real d'una votació sobre aquesta proposta, només amb totals (sense partits)
+  congress: z.object({ date: z.iso.date(), text: Text, url: z.url() }).optional(),
 });
 
 

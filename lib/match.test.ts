@@ -46,12 +46,37 @@ describe("match", () => {
   });
 
   it("el pes d'un tema canvia l'ordre quan ha de canviar-lo", () => {
-    // x encerta tot el tema t1 i falla del tot la d (t2); y s'equivoca per poc a t1 i encerta t2
-    const x = party("x", { a: 2, b: 2, c: 2, d: -2 });
-    const y = party("y", { a: 1, b: 1, c: 1, d: 2 });
-    const answers = { a: 2, b: 2, c: 2, d: 2 } as const;
-    expect(run(answers, [x, y]).ranked.map((r) => r.id)).toEqual(["y", "x"]);
-    expect(run(answers, [x, y], { t1: 2 }).ranked.map((r) => r.id)).toEqual(["x", "y"]);
+    // x encerta a, b i c (t1) i falla la d (t2); y falla a i b i encerta c i d
+    const x = party("x", { a: 1, b: 1, c: 1, d: -1 });
+    const y = party("y", { a: -1, b: -1, c: 1, d: 1 });
+    const answers = { a: 1, b: 1, c: 1, d: 1 } as const;
+    expect(run(answers, [x, y]).ranked.map((r) => r.id)).toEqual(["x", "y"]);
+    expect(run(answers, [x, y], { t2: 5 }).ranked.map((r) => r.id)).toEqual(["y", "x"]);
+  });
+
+  it("només compta el sentit de la posició del partit, no la intensitat", () => {
+    const author = party("author", { a: 2, b: 2, c: 2, d: 2 });
+    const voter = party("voter", { a: 1, b: 1, c: 1, d: 1 });
+    const { ranked } = run({ a: 1, b: 1, c: 1, d: 1 }, [author, voter]);
+    expect(ranked.map((r) => r.affinity)).toEqual([100, 100]);
+    expect(ranked.every((r) => r.rank === 1)).toBe(true);
+  });
+
+  it("una línia vermella pesa el triple i compta els xocs", () => {
+    const p = party("p", { a: -1, b: 1, c: 1, d: 1 });
+    const answers = { a: 1, b: 1, c: 1, d: 1 } as const;
+    const base = match({ questions: Q, answers, candidacies: [p], order: ["p"] }).ranked[0];
+    const red = match({ questions: Q, answers, candidacies: [p], order: ["p"], red: ["a"] }).ranked[0];
+    expect(base).toMatchObject({ affinity: 75, clash: 0 });
+    expect(red).toMatchObject({ affinity: 50, clash: 1 }); // 3 de 6 punts
+  });
+
+  it("una línia vermella sobre una abstenció no té efecte", () => {
+    const p = party("p", { a: -1, b: 1, c: 1, d: 1 });
+    const answers = { a: 0, b: 1, c: 1, d: 1 } as const;
+    const a = match({ questions: Q, answers, candidacies: [p], order: ["p"] }).ranked[0];
+    const b = match({ questions: Q, answers, candidacies: [p], order: ["p"], red: ["a"] }).ranked[0];
+    expect(b).toEqual(a);
   });
 
   it("tot saltat: rànquing buit i eixos sense valor", () => {
@@ -88,11 +113,11 @@ describe("match", () => {
   });
 
   it("decideix els empats sobre la xifra arrodonida", () => {
-    const questions = Array.from({ length: 7 }, (_, i) => q(`q${i}`));
-    const answers = Object.fromEntries(questions.map((x) => [x.id, 2 as Answer]));
-    // 1 punt de distància sobre 28 → 96,4 → 96 ; 1 punt sobre 24 (6 respostes) → 95,8 → 96
-    const a = party("a", { ...Object.fromEntries(questions.map((x) => [x.id, 2])), q0: 1 } as Record<string, Answer>);
-    const b = party("b", { ...Object.fromEntries(questions.map((x) => [x.id, 2])), q0: 1, q6: null } as Record<string, Answer | null>);
+    const questions = Array.from({ length: 13 }, (_, i) => q(`q${i}`));
+    const answers = Object.fromEntries(questions.map((x) => [x.id, 1 as Answer]));
+    // mitja discrepància sobre 13 → 96,2 → 96 ; sobre 12 (una sense posició) → 95,8 → 96
+    const a = party("a", { ...Object.fromEntries(questions.map((x) => [x.id, 1])), q0: 0 } as Record<string, Answer>);
+    const b = party("b", { ...Object.fromEntries(questions.map((x) => [x.id, 1])), q0: 0, q12: null } as Record<string, Answer | null>);
     const r = match({ questions, answers, candidacies: [a, b], order: ["b", "a"] });
     expect(r.ranked.map((x) => [x.id, x.affinity, x.rank])).toEqual([["b", 96, 1], ["a", 96, 1]]);
   });
