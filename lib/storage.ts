@@ -28,3 +28,18 @@ export function writeJSON(key: string, value: unknown) {
     sessionStorage.setItem(key, JSON.stringify(value));
   } catch {}
 }
+
+// Avisos que només es mostren la primera vegada (localStorage: es recorda entre partides en aquest dispositiu).
+export function seen(key: string): boolean {
+  try {
+    return localStorage.getItem(`esco-vist:${key}`) === "1";
+  } catch {
+    return false;
+  }
+}
+
+export function markSeen(key: string) {
+  try {
+    localStorage.setItem(`esco-vist:${key}`, "1");
+  } catch {}
+}

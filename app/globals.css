@@ -126,6 +126,15 @@ body {
     transform: translateY(14px);
   }
 }
+/* Compte enrere visible: la barra es buida en 5 s (resultat del Congrés). */
+.drain {
+  animation: drain 5s linear both;
+}
+@keyframes drain {
+  to {
+    transform: scaleX(0);
+  }
+}
 .bar-grow {
   transform-origin: left;
   animation: bar-grow 0.9s var(--ease-out-quint) both;

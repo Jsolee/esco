@@ -231,13 +231,55 @@
       "on": "Es una línea roja",
       "left": "te quedan {n}",
       "none": "Ya has usado tus 3 líneas rojas",
-      "hint": "Solo con un sí o un no"
+      "hint": "Solo con un sí o un no",
+      "first": "Úsala en lo que no negociarías. Solo tienes 3."
     },
     "congress": {
       "kicker": "Así votó el Congreso",
       "you": "Tu voto: {v}",
       "source": "Ver la votación",
-      "close": "Cierra"
+      "tap": "Toca la tarjeta o pulsa cualquier tecla para continuar.",
+      "first": "Fue una votación real. Solo mostramos el total: los partidos, el día del resultado."
+    },
+    "help": {
+      "button": "Cómo se juega",
+      "title": "Cómo se juega",
+      "close": "Cierra",
+      "method": "Cómo se calcula el resultado",
+      "items": [
+        {
+          "t": "Sí, No, Abstención",
+          "d": "Vota cada propuesta como harías en el Congreso: desliza a la derecha (sí), a la izquierda (no) o hacia arriba (abstención). La abstención cuenta: significa que no estás ni a favor ni en contra."
+        },
+        {
+          "t": "Salta",
+          "d": "Si no quieres votarla o no sabes lo suficiente. Una propuesta saltada no cuenta para nada."
+        },
+        {
+          "t": "¿Por qué se habla de esto?",
+          "d": "Gira la tarjeta para leer el contexto: la situación actual y los argumentos de cada lado."
+        },
+        {
+          "t": "Líneas rojas",
+          "d": "Marca hasta 3 propuestas que no negociarías. Pesan el triple y, al final, verás qué candidaturas votan en contra."
+        },
+        {
+          "t": "Así votó el Congreso",
+          "d": "Algunas propuestas ya se votaron en el Congreso. Después de votarlas, verás el resultado real, solo con el total de votos, sin partidos."
+        },
+        {
+          "t": "Fichas de influencia",
+          "d": "Al final repartes 10 fichas entre los temas que más te importan. Las propuestas de esos temas pesan más."
+        },
+        {
+          "t": "Deshaz",
+          "d": "Vuelve a la tarjeta anterior para cambiar tu voto."
+        }
+      ],
+      "budget": {
+        "t": "Presupuesto",
+        "d": "Algunas propuestas cuestan dinero. Si votas una a favor y no hay margen, tienes que decir de dónde sale: recortar, subir un impuesto o endeudarte."
+      }
     }
   },
   "results": {

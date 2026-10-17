@@ -231,13 +231,55 @@
       "on": "És una línia vermella",
       "left": "te'n queden {n}",
       "none": "Ja has fet servir les 3 línies vermelles",
-      "hint": "Només amb un sí o un no"
+      "hint": "Només amb un sí o un no",
+      "first": "Fes-la servir en el que no negociaries. Només en tens 3."
     },
     "congress": {
       "kicker": "Així va votar el Congrés",
       "you": "El teu vot: {v}",
       "source": "Mostra la votació",
-      "close": "Tanca"
+      "tap": "Toca la carta o prem qualsevol tecla per continuar.",
+      "first": "Era una votació real. Només mostrem el total: els partits, el dia del resultat."
+    },
+    "help": {
+      "button": "Com es juga",
+      "title": "Com es juga",
+      "close": "Tanca",
+      "method": "Com es calcula el resultat",
+      "items": [
+        {
+          "t": "Sí, No, Abstenció",
+          "d": "Vota cada proposta com faries al Congrés: llisca a la dreta (sí), a l'esquerra (no) o amunt (abstenció). L'abstenció compta: vol dir que no estàs ni a favor ni en contra."
+        },
+        {
+          "t": "Salta",
+          "d": "Si no la vols votar o no en saps prou. Una proposta saltada no compta per a res."
+        },
+        {
+          "t": "Per què se'n parla?",
+          "d": "Gira la carta per llegir el context: la situació actual i els arguments de cada banda."
+        },
+        {
+          "t": "Línies vermelles",
+          "d": "Marca fins a 3 propostes que no negociaries. Pesen el triple i, al final, veuràs quines candidatures hi voten en contra."
+        },
+        {
+          "t": "Així va votar el Congrés",
+          "d": "Algunes propostes ja es van votar al Congrés. Després de votar-les, veuràs el resultat real, només amb el total de vots, sense partits."
+        },
+        {
+          "t": "Fitxes d'influència",
+          "d": "Al final reparteixes 10 fitxes entre els temes que més t'importen. Les propostes d'aquells temes pesen més."
+        },
+        {
+          "t": "Desfés",
+          "d": "Torna a la carta anterior per canviar el vot."
+        }
+      ],
+      "budget": {
+        "t": "Pressupost",
+        "d": "Algunes propostes costen diners. Si en votes una a favor i no hi ha marge, has de dir d'on surten: retallar, pujar un impost o endeutar-te."
+      }
     }
   },
   "results": {

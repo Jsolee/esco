@@ -5,6 +5,7 @@ import type { Achievement } from "@/lib/achievements";
 import { Draggable, gsap, reducedMotion, sfx, SplitText, useGSAP, useReducedMotion } from "@/lib/fx";
 import { RED_LINES, type Answers } from "@/lib/match";
 import type { Answer } from "@/lib/schema";
+import { markSeen, seen } from "@/lib/storage";
 import { format, pad2 } from "@/lib/text";
 import { useI18n } from "../I18n";
 import type { Item } from "@/lib/gameState";
@@ -16,7 +17,7 @@ const VALUES: Answer[] = [-1, 0, 1]; // no, abstenció, sí
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 
 export type Outcome = Answer | null | "go"; // null = saltada, "go" = continuar després d'una ronda
-type CardHandle = { fling: (o: Outcome) => void; busy?: () => boolean; flipped?: () => boolean };
+type CardHandle = { fling: (o: Outcome) => void; busy?: () => boolean; flipped?: () => boolean; cont?: () => boolean };
 
 const previewOf = (dx: number, dy: number): Answer | undefined =>
   dx > THRESH ? 1 : dx < -THRESH ? -1 : dy < -THRESH ? 0 : undefined;
@@ -82,7 +83,17 @@ export function Deck({
   const qid = item.kind === "q" ? item.q.id : null;
   const red = qid !== null && (redToggle?.id === qid ? redToggle.on : redIds.includes(qid));
   const redLeft = RED_LINES - redIds.filter((id) => id !== qid).length;
-  const toggleRed = () => qid && (red || redLeft > 0) && setRedToggle({ id: qid, on: !red });
+  const toggleRed = () => {
+    if (qid && (red || redLeft > 0)) setRedToggle({ id: qid, on: !red });
+    seeRed();
+  };
+  // Primer cop: una línia sota el botó explica què és una línia vermella.
+  const [redSeen, setRedSeen] = useState(() => seen("linia-vermella"));
+  const seeRed = () => {
+    if (redSeen) return;
+    markSeen("linia-vermella");
+    setRedSeen(true);
+  };
   // Desfer mentre la carta vola deixaria la seva animació votant sobre la carta que torna.
   const undo = () => {
     if (canUndo && !card.current?.busy?.()) onUndo();
@@ -96,6 +107,7 @@ export function Deck({
       if ((e.key === "Enter" || e.key === " ") && target?.closest("button, a, summary")) return;
       const c = card.current;
       if (!c) return;
+      if (c.cont?.()) return e.preventDefault(); // amb el resultat del Congrés a la vista, qualsevol tecla continua
       const k = e.key.toLowerCase();
       if (k === "z" || e.key === "Backspace") {
         if (canUndo && !c.busy?.()) onUndo();
@@ -106,9 +118,7 @@ export function Deck({
       else if (k >= "1" && k <= "3" && k.length === 1) c.fling(VALUES[Number(k) - 1]);
       else if (k === "arrowright") c.fling(1);
       else if (k === "arrowleft") c.fling(-1);
-      else if (k === "r") {
-        if (qid && (red || redLeft > 0)) setRedToggle({ id: qid, on: !red });
-      }
+      else if (k === "r") toggleRed();
       else if (k === "arrowup") c.fling(0);
       else if (k === "arrowdown" || k === "s") c.fling(null);
       else return;
@@ -116,7 +126,7 @@ export function Deck({
     }
     addEventListener("keydown", onKey);
     return () => removeEventListener("keydown", onKey);
-  }, [item, canUndo, onUndo, fund, qid, red, redLeft]);
+  }); // es torna a subscriure a cada render: el gestor sempre veu l'estat actual
 
   useGSAP(
     () => {
@@ -129,7 +139,10 @@ export function Deck({
   function done(o: Outcome, from?: Record<string, number>) {
     setHint(undefined);
     if (o === "go") onContinue();
-    else onVote(o, from, red && (o === 1 || o === -1));
+    else {
+      seeRed();
+      onVote(o, from, red && (o === 1 || o === -1));
+    }
   }
 
   return (
@@ -202,7 +215,7 @@ export function Deck({
                     type="button"
                     aria-label={label}
                     aria-keyshortcuts={String(i + 1)}
-                    onClick={() => card.current?.fling(v)}
+                    onClick={() => card.current?.cont?.() || card.current?.fling(v)}
                     className={`grid ${size} place-items-center rounded-full border backdrop-blur transition duration-150 ease-out-quint active:scale-90 ${
                       hint === v
                         ? "scale-115 border-chalk bg-chalk text-stage shadow-[0_0_40px_rgba(242,241,236,0.45)]"
@@ -237,6 +250,7 @@ export function Deck({
                 </span>
               </button>
             </div>
+            {!redSeen && <p className="mx-auto mt-2 max-w-[22rem] text-center text-xs text-chalk-2">{t.game.red.first}</p>}
           </>
         ) : (
           <div className="mt-7 flex justify-center">
@@ -260,7 +274,7 @@ export function Deck({
         {item.kind === "q" ? (
           <button
             type="button"
-            onClick={() => card.current?.fling(null)}
+            onClick={() => card.current?.cont?.() || card.current?.fling(null)}
             className="inline-flex min-h-11 items-center gap-2 px-2 text-sm font-medium text-chalk-2 hover:text-chalk"
           >
             {t.game.skip} <span aria-hidden>↷</span>
@@ -304,8 +318,9 @@ function SwipeCard({
   onFund: (need: number) => Promise<FundResult>;
   red?: boolean;
 }) {
-  const { m: t } = useI18n();
+  const { m: t, locale } = useI18n();
   const reduced = useReducedMotion();
+  const congress = item.q.congress;
   const wrap = useRef<HTMLDivElement>(null);
   const drag = useRef<HTMLDivElement>(null);
   const tilt = useRef<HTMLDivElement>(null);
@@ -318,6 +333,24 @@ function SwipeCard({
   const from = useRef<Record<string, number> | undefined>(undefined);
   const [, setLabel] = useState<Answer | undefined>();
   const [flipped, setFlipped] = useState(false);
+  // «Així va votar el Congrés»: després del segell, la carta mostra el resultat real i espera abans de marxar.
+  const [result, setResult] = useState<Answer | null>(null);
+  const cont = useRef<(() => void) | null>(null);
+  const [firstResult] = useState(() => !seen("congres"));
+  const hold = (v: Answer, then: () => void) => {
+    setResult(v);
+    cont.current = () => {
+      cont.current = null;
+      markSeen("congres");
+      setResult(null);
+      then();
+    };
+  };
+  useEffect(() => {
+    if (result === null || reduced) return; // amb moviment reduït no avança sol: cal tocar
+    const timer = setTimeout(() => cont.current?.(), 5000);
+    return () => clearTimeout(timer);
+  }, [result, reduced]);
 
   const q = (sel: string) => wrap.current!.querySelector<HTMLElement>(sel)!;
 
@@ -437,15 +470,18 @@ function SwipeCard({
       onPreview(o ?? undefined);
     }
     if (reduced) {
+      const finish = (r?: Record<string, number>) => {
+        onImpact(o === "go" ? null : o);
+        onDone(o, r);
+      };
+      const show = (r?: Record<string, number>) => (congress && typeof o === "number" ? hold(o, () => finish(r)) : finish(r));
       if (need > 0)
         return void onFund(need).then((r) => {
           if (r === "cancel") return reset();
           if (r === "no") return (busy.current = false), fling(null);
-          onImpact(o as Answer);
-          onDone(o, r);
+          show(r);
         });
-      onImpact(o === "go" ? null : o);
-      return onDone(o);
+      return show();
     }
     const el = drag.current!;
     const x0 = Number(gsap.getProperty(el, "x"));
@@ -458,8 +494,9 @@ function SwipeCard({
     }
     if (o === 0) {
       tl.to(el, { y: "+=14", duration: 0.12, ease: "power2.out" })
-        .fromTo(q(".stamp-meh"), { opacity: 0, scale: 2.4 }, { opacity: 1, scale: 1, duration: 0.18, ease: "power4.in", onComplete: () => impact(0) })
-        .to(el, { y: -innerHeight, scale: 0.8, rotation: gsap.utils.random(-10, 10), duration: 0.55, ease: "power2.in", onStart: sfx.whoosh }, "+=0.12");
+        .fromTo(q(".stamp-meh"), { opacity: 0, scale: 2.4 }, { opacity: 1, scale: 1, duration: 0.18, ease: "power4.in", onComplete: () => impact(0) });
+      if (congress) tl.add(() => (tl.pause(), hold(0, () => tl.resume())));
+      tl.to(el, { y: -innerHeight, scale: 0.8, rotation: gsap.utils.random(-10, 10), duration: 0.55, ease: "power2.in", onStart: sfx.whoosh }, "+=0.12");
       return;
     }
     const d = o === "go" ? Math.sign(x0) || 1 : Math.sign(o);
@@ -489,10 +526,15 @@ function SwipeCard({
           tl.resume();
         });
       });
+    if (congress && typeof o === "number") {
+      // La carta torna gairebé al centre perquè el resultat es llegeixi sencer.
+      tl.to(el, { x: d * 10, rotation: d * 1.5, duration: 0.3, ease: "power3.out" });
+      tl.add(() => (tl.pause(), hold(o, () => tl.resume())));
+    }
     tl.to(el, { x: d * (innerWidth + 320), y: "+=90", rotation: d * 40, duration: 0.5, ease: "power2.in", onStart: sfx.whoosh }, "+=0.12");
   }
 
-  useImperativeHandle(ref, () => ({ fling, busy: () => busy.current, flipped: () => flipped }));
+  useImperativeHandle(ref, () => ({ fling, busy: () => busy.current, flipped: () => flipped, cont: () => (cont.current ? (cont.current(), true) : false) }));
 
   function flip(to: boolean) {
     setFlipped(to);
@@ -541,7 +583,11 @@ function SwipeCard({
           className="absolute inset-0 [perspective:1400px] [transform-style:preserve-3d]"
         >
           <div ref={inner} className="card-face relative size-full [transform-style:preserve-3d]">
-            <article inert={flipped} className={`${face} bg-card ${red ? "outline outline-[6px] -outline-offset-[10px] outline-card-ink" : ""}`}>
+            <article
+              inert={flipped}
+              onClick={result !== null ? () => cont.current?.() : undefined}
+              className={`${face} bg-card ${red ? "outline outline-[6px] -outline-offset-[10px] outline-card-ink" : ""} ${result !== null ? "cursor-pointer" : ""}`}
+            >
               {red && (
                 <span className="kicker absolute right-5 top-14 z-10 rotate-6 rounded-md border-2 border-card-ink bg-card px-2 py-1 text-card-ink">
                   ⊘ {t.game.red.mark}
@@ -587,6 +633,23 @@ function SwipeCard({
                   </span>
                 )}
               </div>
+              {result !== null && congress && (
+                <div role="status" onClick={() => cont.current?.()} className="rise absolute inset-x-3 bottom-3 z-20 cursor-pointer overflow-hidden rounded-2xl bg-card-ink p-4 text-card shadow-xl">
+                  <p className="kicker opacity-75">
+                    {t.game.congress.kicker} · {new Intl.DateTimeFormat(locale, { day: "numeric", month: "short", year: "numeric" }).format(new Date(`${congress.date}T00:00:00`))}
+                  </p>
+                  <p className="mt-1.5 text-[0.95rem] leading-snug">{congress.text}</p>
+                  {firstResult && <p className="mt-1.5 text-xs opacity-80">{t.game.congress.first}</p>}
+                  <p className="mt-2.5 flex flex-wrap items-center justify-between gap-2 text-sm">
+                    <span className="font-semibold">{format(t.game.congress.you, { v: t.game.ballot[String(Math.sign(result)) as "0"] })}</span>
+                    <a href={congress.url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="underline underline-offset-4 opacity-80 hover:opacity-100">
+                      {t.game.congress.source}
+                    </a>
+                  </p>
+                  <p className="mt-2 text-xs opacity-70">{t.game.congress.tap}</p>
+                  {!reduced && <span aria-hidden className="drain absolute inset-x-0 bottom-0 h-1 origin-left bg-card" />}
+                </div>
+              )}
               <span aria-hidden className={`stamp-yes ${stamp} left-5 top-16 border-card-ink ${red ? "bg-card-ink text-card" : ""}`}>
                 {t.game.ballot["1"]}
               </span>
