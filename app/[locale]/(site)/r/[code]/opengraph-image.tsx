@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { symbolSvg } from "@/lib/brand";
 import { getMessages, isLocale } from "@/lib/i18n";
 import { AXES } from "@/lib/match";
 import { resolveCompass, resolveShare } from "@/lib/shared";
@@ -10,6 +11,43 @@ export const alt = "Escó";
 
 const INK = "#0e0e0d";
 const PAPER = "#f7f6f2";
+const SYMBOL = `data:image/svg+xml;utf8,${encodeURIComponent(symbolSvg(INK, "#b9b7af"))}`;
+
+// Lockup de la marca: símbol sobre clar + «Escó».
+function Lockup() {
+  return (
+    <span style={{ display: "flex", alignItems: "flex-end", gap: 13, fontFamily: "Newsreader", fontStyle: "italic", fontSize: 48, lineHeight: 1 }}>
+      <img src={SYMBOL} width={43} height={30} alt="" style={{ marginBottom: 7 }} />
+      Escó
+    </span>
+  );
+}
+
+// Tipografies de la marca: Schibsted Grotesk per al text i Newsreader per al nom i els titulars. Satori no llegeix
+// woff2, així que es demana a Google Fonts un subconjunt TTF. Si falla, la imatge surt igual amb la lletra per defecte.
+const LATIN = " !\"#%&'()*+,-./0123456789:;?@ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz·ÀÁÇÈÉÍÏÑÒÓÚÜàáçèéíïñòóúü¿¡«»–—…’";
+async function googleFont(family: string, text: string, style: "normal" | "italic", weight: 300 | 400) {
+  try {
+    const axis = family === "Newsreader" ? `:ital,wght@${style === "italic" ? 1 : 0},${weight}` : `:wght@${weight}`;
+    const css = await (await fetch(`https://fonts.googleapis.com/css2?family=${family.replaceAll(" ", "+")}${axis}&text=${encodeURIComponent(text)}`)).text();
+    const url = /src: url\((.+?)\) format\('(?:opentype|truetype)'\)/.exec(css)?.[1];
+    if (!url) return [];
+    return [{ name: family, data: await (await fetch(url)).arrayBuffer(), style, weight }];
+  } catch {
+    return [];
+  }
+}
+// La primera font és la de per defecte: Schibsted ha d'anar davant perquè Newsreader només surti on es demana.
+const fontsFor = async (title: string) => ({
+  fonts: (
+    await Promise.all([
+      googleFont("Schibsted Grotesk", LATIN, "normal", 400),
+      googleFont("Newsreader", "Escó", "italic", 400),
+      googleFont("Newsreader", title, "normal", 300),
+    ])
+  ).flat(),
+});
+const TITLE = { display: "flex", fontFamily: "Newsreader", fontWeight: 300, letterSpacing: -2, lineHeight: 1 } as const;
 
 export default async function Image({ params }: { params: Promise<{ locale: string; code: string }> }) {
   const { locale, code } = await params;
@@ -25,10 +63,10 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
       (
         <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", background: PAPER, color: INK, padding: "64px 80px" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <span style={{ fontStyle: "italic", fontSize: 48 }}>Escó</span>
+            <Lockup />
             <span style={{ fontSize: 24, letterSpacing: 3, textTransform: "uppercase", opacity: 0.7 }}>{tx(b.election.name, lang)}</span>
           </div>
-          <div style={{ display: "flex", fontSize: 64, marginTop: 36, letterSpacing: -2 }}>{m.shared.compassTitle}</div>
+          <div style={{ ...TITLE, fontSize: 72, marginTop: 36 }}>{m.shared.compassTitle}</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 34, marginTop: 44, flex: 1 }}>
             {AXES.filter((a) => b.axes.includes(a) && b.point[a] !== undefined).map((a) => (
               <div key={a} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -46,14 +84,14 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
           <div style={{ display: "flex", fontSize: 24, opacity: 0.7 }}>{m.results.disclaimer}</div>
         </div>
       ),
-      size,
+      { ...size, ...(await fontsFor(m.shared.compassTitle)) },
     );
 
   return new ImageResponse(
     (
       <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", background: PAPER, color: INK, padding: "64px 80px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 30 }}>
-          <span style={{ fontStyle: "italic", fontSize: 48 }}>Escó</span>
+          <Lockup />
           {s && (
             <span style={{ fontSize: 24, letterSpacing: 3, textTransform: "uppercase", opacity: 0.7 }}>
               {tx(s.election.name, locale)}
@@ -61,7 +99,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
             </span>
           )}
         </div>
-        <div style={{ display: "flex", fontSize: 72, marginTop: 40, letterSpacing: -2 }}>{m.results.kicker}</div>
+        <div style={{ ...TITLE, fontSize: 80, marginTop: 40 }}>{m.results.kicker}</div>
         <div style={{ display: "flex", flexDirection: "column", gap: 26, marginTop: 40, flex: 1 }}>
           {rows.map((r) => (
             <div key={r.id} style={{ display: "flex", alignItems: "center", gap: 28, fontSize: 36 }}>
@@ -76,6 +114,6 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
         <div style={{ display: "flex", fontSize: 24, opacity: 0.7 }}>{m.results.disclaimer}</div>
       </div>
     ),
-    size,
+    { ...size, ...(await fontsFor(m.results.kicker)) },
   );
 }

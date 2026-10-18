@@ -1,12 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7" fill="#0e0e0d"/>
-  <g fill="#f2f1ec">
-    <circle cx="5.5" cy="22" r="2.2" opacity=".4"/>
-    <circle cx="7.6" cy="14.2" r="2.2" opacity=".4"/>
-    <circle cx="12.4" cy="9.2" r="2.2" opacity=".4"/>
-    <circle cx="16" cy="8" r="2.6"/>
-    <circle cx="19.6" cy="9.2" r="2.2" opacity=".4"/>
-    <circle cx="24.4" cy="14.2" r="2.2" opacity=".4"/>
-    <circle cx="26.5" cy="22" r="2.2" opacity=".4"/>
+  <!-- Símbol de brand/logo/esco-symbol-on-dark.svg sobre Nit -->
+  <rect width="32" height="32" rx="7" fill="#0c0c0b"/>
+  <g transform="translate(2.8 6.65) scale(0.22)">
+    <rect x="-8" y="-7" width="16" height="14" rx="4.5" fill="#57554f" transform="translate(14.00 66.00) rotate(-90.0)"/>
+    <rect x="-8" y="-7" width="16" height="14" rx="4.5" fill="#57554f" transform="translate(20.16 43.00) rotate(-60.0)"/>
+    <rect x="-8" y="-7" width="16" height="14" rx="4.5" fill="#57554f" transform="translate(37.00 26.16) rotate(-30.0)"/>
+    <rect x="-10.5" y="-9" width="21" height="18" rx="5.5" fill="#f2f1ec" transform="translate(60.00 20.00) rotate(0.0)"/>
+    <rect x="-8" y="-7" width="16" height="14" rx="4.5" fill="#57554f" transform="translate(83.00 26.16) rotate(30.0)"/>
+    <rect x="-8" y="-7" width="16" height="14" rx="4.5" fill="#57554f" transform="translate(99.84 43.00) rotate(60.0)"/>
+    <rect x="-8" y="-7" width="16" height="14" rx="4.5" fill="#57554f" transform="translate(106.00 66.00) rotate(90.0)"/>
   </g>
 </svg>

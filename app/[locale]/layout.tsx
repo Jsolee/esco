@@ -26,7 +26,7 @@ export const generateStaticParams = () => LOCALES.map((locale) => ({ locale }));
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#fbfbfa" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f0f0e" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c0c0b" },
   ],
 };
 

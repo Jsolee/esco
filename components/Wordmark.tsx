@@ -1,14 +1,22 @@
-const DOTS = Array.from({ length: 7 }, (_, i) => {
-  const a = Math.PI * (1 - i / 6);
-  return [12 + 9.5 * Math.cos(a), 12.5 - 9.5 * Math.sin(a)];
-});
+import { SYMBOL_SEATS, SYMBOL_VIEWBOX } from "@/lib/brand";
 
+// Lockup horitzontal de la marca: símbol + «Escó» en Newsreader cursiva (proporcions de brand/source/kit.html).
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
-    <span className={`inline-flex items-end gap-2 font-serif text-[1.65rem] italic leading-none tracking-tight ${className}`}>
-      <svg viewBox="0 0 24 14" className="mb-[0.2em] h-[0.62em] w-auto" aria-hidden>
-        {DOTS.map(([x, y], i) => (
-          <circle key={i} cx={x} cy={y} r={1.7} fill="currentColor" opacity={i === 3 ? 1 : 0.35} />
+    <span className={`inline-flex items-end gap-[0.28em] font-serif text-[1.65rem] font-normal italic leading-none tracking-[-0.01em] ${className}`}>
+      <svg viewBox={SYMBOL_VIEWBOX} className="mb-[0.14em] h-[0.62em] w-auto" aria-hidden>
+        {SYMBOL_SEATS.map((s, i) => (
+          <rect
+            key={i}
+            x={-s.w / 2}
+            y={-s.h / 2}
+            width={s.w}
+            height={s.h}
+            rx={s.rx}
+            fill="currentColor"
+            opacity={s.you ? 1 : 0.3}
+            transform={`translate(${s.x} ${s.y}) rotate(${s.rotate})`}
+          />
         ))}
       </svg>
       Escó
