@@ -76,7 +76,7 @@ Neutral · Privado · Con fuentes
 
 Enllaç de la bio: `https://escon.app`.
 
-Foto de perfil: `instagram/perfil-1080.png`.
+Foto de perfil: `instagram/perfil-1080.png`. És el nom «Escó» en Newsreader cursiva sobre Nit, sense símbol: a la mida en què Instagram ensenya la foto (30-110 px), el símbol sol semblava una icona de càrrega i es llegia malament, i el nom es llegeix fins a 32 px (19/10).
 
 Destacats, amb la seva portada a `instagram/destacat-*.png`: Com es juga · Línies vermelles · Metodologia · Privacitat · Novetats.
 
