@@ -49,3 +49,9 @@ next-env.d.ts
 /brag-output/composition/fonts/
 /brag-output/composition/AGENTS.md
 /brag-output/composition/CLAUDE.md
+/brag-output/presentacio/vendor/
+/brag-output/presentacio/fonts/
+/brag-output/presentacio/renders/
+/brag-output/presentacio/.hyperframes/
+/brag-output/presentacio/AGENTS.md
+/brag-output/presentacio/CLAUDE.md

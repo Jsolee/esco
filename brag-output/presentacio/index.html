@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="ca" data-resolution="portrait" data-composition-variables='[{"id":"lang","type":"string","label":"Idioma (ca o es)","default":"ca"}]'>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="vendor/gsap.min.js"></script>
+    <script type="importmap">
+      { "imports": { "three": "./vendor/three.module.js" } }
+    </script>
+    <style>
+      @font-face { font-family: "Newsreader"; font-style: normal; font-weight: 200 800; src: url(fonts/newsreader.woff2) format("woff2"); }
+      @font-face { font-family: "Newsreader"; font-style: italic; font-weight: 200 800; src: url(fonts/newsreader-italic.woff2) format("woff2"); }
+      @font-face { font-family: "Schibsted Grotesk"; font-weight: 400 900; src: url(fonts/schibsted-grotesk.woff2) format("woff2"); }
+      :root {
+        --nit: #0c0c0b; --fum: #1a1917; --fum-2: #2a2926; --guix: #f2f1ec; --guix-2: #b4b2aa; --grafit: #8e8c85;
+        --carta: #f7f6f2; --carta-3: #c9c6bd; --tinta: #0e0e0d; --tinta-2: #55544f;
+        --serif: "Newsreader", Georgia, serif; --sans: "Schibsted Grotesk", system-ui, sans-serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--nit); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--nit); color: var(--guix); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+      .clip { position: absolute; inset: 0; }
+      #gl { position: absolute; inset: 0; width: 1080px; height: 1920px; display: block; }
+      #shade { background: var(--nit); opacity: 0; }
+      #vig { background:
+        radial-gradient(120% 70% at 50% 42%, transparent 45%, rgba(0,0,0,.55) 100%),
+        linear-gradient(to bottom, rgba(12,12,11,.55), transparent 16%, transparent 72%, rgba(12,12,11,.7)); }
+      .kicker { font: 600 30px/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--guix-2); }
+      .display { font: 400 150px/.98 var(--serif); letter-spacing: -.03em; color: var(--guix); }
+      .it { font-style: italic; }
+      .line { display: block; overflow: hidden; padding: .16em 0 .08em; margin: -.16em 0 -.08em; }
+      .line > span { display: inline-block; }
+      .w { display: inline-block; }
+      .touch { position: absolute; width: 110px; height: 110px; margin: -55px 0 0 -55px; border-radius: 50%; background: rgba(242,241,236,.28); border: 3px solid rgba(242,241,236,.85); opacity: 0; }
+
+      /* 1–2 · ganxo */
+      #youTag { opacity: 0; }
+      #youTagPos { position: absolute; left: 0; top: 0; }
+      .pill { display: inline-flex; align-items: center; gap: 12px; white-space: nowrap; border: 2px solid rgba(142,140,133,.6); border-radius: 999px; background: rgba(12,12,11,.7); padding: 12px 24px; font: 700 26px var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--guix); }
+      #hook { position: absolute; left: 90px; right: 90px; bottom: 430px; }
+
+      /* 3–4 · cartes */
+      #vcap, #rcap { position: absolute; left: 90px; right: 90px; top: 214px; }
+      #vcap .display, #rcap .display { font-size: 88px; margin-top: 14px; }
+      .card { position: absolute; left: 110px; top: 520px; width: 860px; height: 690px; border-radius: 44px; background: var(--carta); color: var(--tinta); padding: 58px 60px; display: flex; flex-direction: column; box-shadow: 0 50px 90px rgba(0,0,0,.55); overflow: hidden; }
+      .card .kicker { color: var(--tinta-2); font-size: 26px; }
+      .card p { position: relative; z-index: 1; margin: auto 0; font: 400 66px/1.06 var(--serif); letter-spacing: -.02em; }
+      .card .num { position: absolute; right: -20px; bottom: -40px; width: 520px; height: 330px; overflow: visible; }
+      .card .why { position: relative; z-index: 1; font: 600 30px var(--sans); text-decoration: underline; text-decoration-color: var(--carta-3); text-underline-offset: 8px; }
+      .card .ring { position: absolute; inset: 14px; border: 8px solid var(--tinta); border-radius: 32px; opacity: 0; }
+      .stamp { position: absolute; z-index: 2; border: 6px solid var(--tinta); border-radius: 14px; padding: 6px 20px; font: 800 46px/1.1 var(--sans); letter-spacing: .06em; text-transform: uppercase; opacity: 0; }
+      .s-yes { left: 52px; top: 120px; transform: rotate(-10deg); background: var(--tinta); color: var(--carta); }
+      .s-no { right: 52px; top: 120px; transform: rotate(10deg); }
+      .s-meh { left: 50%; bottom: 120px; margin-left: -150px; width: 300px; text-align: center; border-style: dashed; background: var(--carta); }
+      .redmark { position: absolute; z-index: 2; right: 56px; bottom: 56px; border: 4px solid var(--tinta); border-radius: 10px; background: var(--carta); padding: 6px 14px; font: 600 24px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; opacity: 0; transform: rotate(6deg); }
+      #pads { position: absolute; left: 80px; width: 920px; top: 1250px; display: flex; justify-content: center; gap: 64px; align-items: flex-start; }
+      .pad { width: 170px; display: grid; justify-items: center; gap: 12px; font: 500 26px/1.2 var(--sans); color: var(--guix-2); text-align: center; }
+      .pad i { display: grid; place-items: center; width: 112px; height: 112px; border-radius: 50%; border: 3px solid #57554f; background: var(--fum); color: var(--guix); font: 600 44px/1 var(--sans); font-style: normal; }
+      .pad.small i { width: 92px; height: 92px; }
+      #redBtn { position: absolute; left: 0; right: 0; top: 1430px; text-align: center; }
+      #redBtn > span { position: relative; display: inline-flex; align-items: center; gap: 12px; border: 3px dashed var(--grafit); border-radius: 999px; padding: 14px 30px; font: 600 26px var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--guix-2); overflow: hidden; }
+      #redBtn .fill { position: absolute; inset: 0; background: var(--guix); opacity: 0; }
+      #redBtn .t { position: relative; }
+
+      /* 5 · resultat del Congrés */
+      #sheet { position: absolute; left: 0; right: 0; top: 400px; height: 1520px; border-radius: 64px 64px 0 0; background: var(--fum); border: 2px solid rgba(142,140,133,.5); border-bottom: 0; }
+      #sheet > * { position: absolute; left: 70px; }
+      #sheet h2 { top: 120px; font: 400 104px/1 var(--serif); letter-spacing: -.03em; }
+      #csub { top: 360px; width: 900px; font: 400 36px/1.3 var(--sans); color: var(--guix-2); }
+      .crow { width: 920px; display: grid; grid-template-columns: 1fr auto; gap: 14px 0; }
+      .crow b { font: 600 36px/1 var(--sans); }
+      .crow .cv { font: 400 66px/.8 var(--serif); text-align: right; }
+      .crow .track { grid-column: 1 / -1; height: 18px; border-radius: 999px; background: var(--fum-2); overflow: hidden; }
+      .crow .track div { width: 0; height: 100%; border-radius: 999px; background: var(--guix); }
+      #cyou { top: 1060px; display: inline-flex; align-items: center; gap: 14px; border: 2px solid var(--guix); border-radius: 999px; padding: 16px 30px; font: 700 34px var(--sans); color: var(--guix); opacity: 0; }
+
+      /* 6 · recompte */
+      #countK { position: absolute; left: 0; right: 0; top: 330px; text-align: center; font-size: 36px; color: var(--guix); letter-spacing: .3em; }
+      #who { position: absolute; left: 0; right: 0; top: 250px; text-align: center; }
+      #who .display { font-size: 140px; }
+      #rank { position: absolute; left: 90px; width: 900px; top: 1130px; }
+      .row { position: relative; height: 112px; display: grid; grid-template-columns: 70px 1fr 190px; align-items: center; }
+      .row .n { font: 400 54px/1 var(--serif); color: var(--grafit); }
+      .row .redact { height: 34px; border-radius: 10px; background: var(--fum-2); }
+      .row .p { text-align: right; font: 400 66px/1 var(--serif); }
+      .row .track { position: absolute; left: 70px; right: 0; bottom: 4px; height: 6px; border-radius: 999px; background: var(--fum-2); overflow: hidden; }
+      .row .track div { width: 0; height: 100%; background: var(--guix); }
+
+      /* 7 · neutral, privat, amb fonts */
+      #trust { position: absolute; left: 90px; right: 90px; top: 520px; }
+      #trust .display { font-size: 168px; }
+      #trustSub { margin-top: 48px; font: 400 40px/1.3 var(--sans); color: var(--guix-2); }
+
+      /* 8 · logo */
+      #soon { position: absolute; left: 0; right: 0; top: 520px; text-align: center; }
+      #lock { position: absolute; left: 0; right: 0; top: 640px; display: flex; justify-content: center; align-items: flex-end; gap: 44px; }
+      #lock svg { width: 230px; height: auto; margin-bottom: 34px; overflow: visible; }
+      #lock .word { font: italic 400 230px/1 var(--serif); letter-spacing: -.02em; padding-right: .06em; }
+      #tagline { position: absolute; left: 0; right: 0; top: 960px; text-align: center; font: 400 66px/1.1 var(--serif); letter-spacing: -.02em; }
+      #url { position: absolute; left: 0; right: 0; top: 1110px; text-align: center; }
+      #url span { display: inline-block; border: 2px solid var(--guix); border-radius: 999px; padding: 22px 44px; font: 600 44px var(--sans); letter-spacing: .01em; }
+      #handle { position: absolute; left: 0; right: 0; top: 1250px; text-align: center; font: 500 36px var(--sans); color: var(--guix-2); }
+      #seal { position: absolute; left: 0; right: 0; top: 1340px; text-align: center; font-size: 28px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="26" data-width="1080" data-height="1920">
+      <div id="stage" class="clip" data-start="0" data-duration="26" data-track-index="0" data-no-timeline data-layout-allow-overflow><canvas id="gl" width="1080" height="1920"></canvas></div>
+      <div id="shade" class="clip" data-start="0" data-duration="26" data-track-index="1"></div>
+      <div id="vig" class="clip" data-start="0" data-duration="26" data-track-index="2"></div>
+
+      <!-- 1–2 · Tens un escó. Fes-lo servir. -->
+      <div id="s-hook" class="clip" data-start="0" data-duration="4.6" data-track-index="3">
+        <div id="youTag"><div id="youTagPos"><span class="pill" data-t="you"></span></div></div>
+        <div id="hook">
+          <p class="kicker" id="hookK" data-t="hookK"></p>
+          <h1 class="display" style="margin-top:26px"><span class="line" id="l1"><span data-t="l1" data-words></span></span><span class="line it" id="l2"><span data-t="l2"></span></span></h1>
+        </div>
+      </div>
+
+      <!-- 3–4 · cartes, gestos i línia vermella -->
+      <div id="s-vote" class="clip" data-start="4.5" data-duration="8.7" data-track-index="3">
+        <div id="vcap"><p class="kicker" data-t="vcapK"></p><h2 class="display"><span class="line"><span data-t="vcap"></span></span></h2></div>
+        <div id="rcap"><p class="kicker" data-t="rcapK"></p><h2 class="display"><span class="line"><span data-t="rcap1"></span></span><span class="line it"><span data-t="rcap2"></span></span></h2></div>
+        <div id="cards"></div>
+        <div id="pads">
+          <div class="pad" id="padNo"><i>‹</i><span data-t="no"></span></div>
+          <div class="pad small" id="padMeh"><i>·</i><span data-t="meh"></span></div>
+          <div class="pad" id="padYes"><i>›</i><span data-t="yes"></span></div>
+        </div>
+        <div id="redBtn"><span><span class="fill"></span><span class="t" id="redT"></span></span></div>
+        <div class="touch" id="tc"></div>
+      </div>
+
+      <!-- 5 · així va votar el Congrés -->
+      <div id="s-congress" class="clip" data-start="13.1" data-duration="3.3" data-track-index="3">
+        <div id="sheet">
+          <p class="kicker" style="top:70px" data-t="cK"></p>
+          <h2 data-t="cH" data-html></h2>
+          <p id="csub" data-t="cSub"></p>
+          <div class="crow" style="top:520px"><b data-t="cFor"></b><span class="cv"><span class="pv">0</span></span><span class="track"><div></div></span></div>
+          <div class="crow" style="top:700px"><b data-t="cAgainst"></b><span class="cv"><span class="pv">0</span></span><span class="track"><div></div></span></div>
+          <div class="crow" style="top:880px"><b data-t="cAbst"></b><span class="cv"><span class="pv">0</span></span><span class="track"><div></div></span></div>
+          <p id="cyou" data-t="cYou"></p>
+          <p class="kicker" style="top:1180px;font-size:26px;color:var(--grafit)" data-t="cNote"></p>
+        </div>
+      </div>
+
+      <!-- 6 · recompte -->
+      <div id="s-count" class="clip" data-start="16.4" data-duration="3.2" data-track-index="3">
+        <p class="kicker" id="countK" data-t="count"></p>
+        <div id="who"><h2 class="display"><span class="line"><span data-t="who1"></span></span><span class="line it"><span data-t="who2"></span></span></h2></div>
+        <div id="rank">
+          <div class="row"><span class="n">1</span><span class="redact" style="width:300px"></span><span class="p"><b class="pv" style="font-weight:400">0</b> %</span><span class="track"><div></div></span></div>
+          <div class="row"><span class="n">2</span><span class="redact" style="width:380px"></span><span class="p"><b class="pv" style="font-weight:400">0</b> %</span><span class="track"><div></div></span></div>
+          <div class="row"><span class="n">3</span><span class="redact" style="width:250px"></span><span class="p"><b class="pv" style="font-weight:400">0</b> %</span><span class="track"><div></div></span></div>
+        </div>
+      </div>
+
+      <!-- 7 · neutral, privat, amb fonts -->
+      <div id="s-trust" class="clip" data-start="19.6" data-duration="2.2" data-track-index="3">
+        <div id="trust">
+          <h2 class="display"><span class="line"><span data-t="tr1"></span></span><span class="line"><span data-t="tr2"></span></span><span class="line it"><span data-t="tr3"></span></span></h2>
+          <p id="trustSub" data-t="trSub"></p>
+        </div>
+      </div>
+
+      <!-- 8 · logo -->
+      <div id="s-end" class="clip" data-start="21.8" data-duration="4.2" data-track-index="3">
+        <p class="kicker" id="soon" data-t="soon"></p>
+        <div id="lock"><svg id="sym" viewBox="0 0 120 84" aria-label="Escó"></svg><span class="line"><span class="word">Escó</span></span></div>
+        <p id="tagline" data-t="tagline" data-html></p>
+        <p id="url"><span>escon.app</span></p>
+        <p id="handle">@esconapp</p>
+        <p class="kicker" id="seal" data-t="seal"></p>
+      </div>
+
+      <!-- Sons sintetitzats (audio/make.sh): cap llicència de tercers. -->
+      <audio id="sfx-01-pop" src="audio/pop.wav" data-start="0.45" data-volume="0.6"></audio>
+      <audio id="sfx-02-whoosh" src="audio/whoosh.wav" data-start="4.7" data-volume="0.35"></audio>
+      <audio id="sfx-03-stamp" src="audio/stamp.wav" data-start="6.1" data-volume="0.6"></audio>
+      <audio id="sfx-04-whoosh" src="audio/whoosh.wav" data-start="6.32" data-volume="0.3"></audio>
+      <audio id="sfx-05-stamp" src="audio/stamp.wav" data-start="7.96" data-volume="0.6"></audio>
+      <audio id="sfx-06-whoosh" src="audio/whoosh.wav" data-start="8.18" data-volume="0.3"></audio>
+      <audio id="sfx-07-stamp" src="audio/stamp.wav" data-start="9.82" data-volume="0.6"></audio>
+      <audio id="sfx-08-whoosh" src="audio/whoosh.wav" data-start="10.05" data-volume="0.3"></audio>
+      <audio id="sfx-09-tick" src="audio/tick.wav" data-start="11.12" data-volume="0.5"></audio>
+      <audio id="sfx-10-stamp" src="audio/stamp.wav" data-start="12.32" data-volume="0.8"></audio>
+      <audio id="sfx-11-whoosh" src="audio/whoosh.wav" data-start="12.62" data-volume="0.3"></audio>
+      <audio id="sfx-12-whoosh" src="audio/whoosh.wav" data-start="13.15" data-volume="0.25"></audio>
+      <audio id="sfx-13-tick" src="audio/tick.wav" data-start="13.95" data-volume="0.3"></audio>
+      <audio id="sfx-14-tick" src="audio/tick.wav" data-start="14.3" data-volume="0.3"></audio>
+      <audio id="sfx-15-tick" src="audio/tick.wav" data-start="14.65" data-volume="0.3"></audio>
+      <audio id="sfx-16-tick" src="audio/tick.wav" data-start="15.6" data-volume="0.4"></audio>
+      <audio id="sfx-17-bell" src="audio/bell.wav" data-start="17.6" data-volume="0.35"></audio>
+      <audio id="sfx-18-stamp" src="audio/stamp.wav" data-start="19.75" data-volume="0.35"></audio>
+      <audio id="sfx-19-pop" src="audio/pop.wav" data-start="22.3" data-volume="0.55"></audio>
+      <audio id="sfx-20-bell" src="audio/bell.wav" data-start="23.85" data-volume="0.28"></audio>
+    </div>
+
+    <script>
+      // Textos en català i castellà. La variable «lang» arriba de `hyperframes render --variables` o de ?lang= al navegador.
+      const TEXT = {
+        ca: {
+          you: "El teu escó", hookK: "29-N · Eleccions generals", l1: "Tens un escó.", l2: "Fes-lo servir.",
+          vcapK: "24 propostes reals", vcap: "Sí, no o abstenció.", rcapK: "El que no negocies", rcap1: "3 línies vermelles.", rcap2: "Pesen el triple.",
+          no: "No", meh: "Abstenció", yes: "Sí", vote: "Votació", why: "↻ Per què se'n parla?",
+          red: "⊘ Línia vermella · te'n queden 3", redOn: "⊘ És una línia vermella · te'n queden 2", redMark: "⊘ Línia vermella",
+          cK: "Així va votar el Congrés · 13 nov. 2025", cH: "Era una votació<br />real.", cSub: "Una moció que ho demanava, entre altres mesures.",
+          cFor: "A favor", cAgainst: "En contra", cAbst: "Abstencions", cYou: "El teu vot: Sí", cNote: "Només el total. Sense partits.",
+          count: "Recompte", who1: "Qui vota", who2: "com tu?",
+          tr1: "Neutral.", tr2: "Privat.", tr3: "Amb fonts.", trSub: "Res no surt del teu mòbil.",
+          soon: "Molt aviat", tagline: "Tens un escó. <i>Fes-lo servir.</i>", seal: "Neutral · Privat · Amb fonts",
+          cards: [
+            { n: "03", topic: "Treball", text: "La jornada laboral màxima s'hauria de reduir per llei de 40 a 37,5 hores setmanals sense rebaixar el sou." },
+            { n: "08", topic: "Fiscalitat", text: "Les grans energètiques i petrolieres haurien de pagar un impost permanent sobre els seus beneficis extraordinaris." },
+            { n: "14", topic: "Habitatge", text: "Qui ocupi un habitatge sense títol legal hauria de poder ser desallotjat en un termini de 24 a 48 hores." },
+            { n: "19", topic: "Fiscalitat", text: "Els trams de l'IRPF s'haurien d'actualitzar cada any segons la inflació." },
+          ],
+        },
+        es: {
+          you: "Tu escaño", hookK: "29-N · Elecciones generales", l1: "Tienes un escaño.", l2: "Úsalo.",
+          vcapK: "24 propuestas reales", vcap: "Sí, no o abstención.", rcapK: "Lo que no negocias", rcap1: "3 líneas rojas.", rcap2: "Pesan el triple.",
+          no: "No", meh: "Abstención", yes: "Sí", vote: "Votación", why: "↻ ¿Por qué se habla de esto?",
+          red: "⊘ Línea roja · te quedan 3", redOn: "⊘ Es una línea roja · te quedan 2", redMark: "⊘ Línea roja",
+          cK: "Así votó el Congreso · 13 nov. 2025", cH: "Fue una votación<br />real.", cSub: "Una moción que lo pedía, entre otras medidas.",
+          cFor: "A favor", cAgainst: "En contra", cAbst: "Abstenciones", cYou: "Tu voto: Sí", cNote: "Solo el total. Sin partidos.",
+          count: "Recuento", who1: "¿Quién vota", who2: "como tú?",
+          tr1: "Neutral.", tr2: "Privado.", tr3: "Con fuentes.", trSub: "Nada sale de tu móvil.",
+          soon: "Muy pronto", tagline: "Tienes un escaño. <i>Úsalo.</i>", seal: "Neutral · Privado · Con fuentes",
+          cards: [
+            { n: "03", topic: "Trabajo", text: "La jornada laboral máxima debería reducirse por ley de 40 a 37,5 horas semanales sin rebajar el sueldo." },
+            { n: "08", topic: "Fiscalidad", text: "Las grandes energéticas y petroleras deberían pagar un impuesto permanente sobre sus beneficios extraordinarios." },
+            { n: "14", topic: "Vivienda", text: "Quien ocupe una vivienda sin título legal debería poder ser desalojado en un plazo de 24 a 48 horas." },
+            { n: "19", topic: "Fiscalidad", text: "Los tramos del IRPF deberían actualizarse cada año según la inflación." },
+          ],
+        },
+      };
+      const vars = window.__hyperframes?.getVariables?.() ?? {};
+      const LANG = (vars.lang || new URLSearchParams(location.search).get("lang")) === "es" ? "es" : "ca";
+      const L = TEXT[LANG];
+      document.documentElement.lang = LANG;
+      document.querySelectorAll("[data-t]").forEach((el) => {
+        const v = L[el.dataset.t];
+        if ("words" in el.dataset) el.innerHTML = v.split(" ").map((w) => `<span class="w">${w}</span>`).join(" ");
+        else if ("html" in el.dataset) el.innerHTML = v;
+        else el.textContent = v;
+      });
+      document.getElementById("redT").textContent = L.red;
+
+      // Cartes: mateix disseny que a l'app (segells Sí/No/Abstenció i marca de línia vermella).
+      document.getElementById("cards").innerHTML = L.cards
+        .map((c, k) => `<div class="card" id="c${k}" data-layout-allow-overflow>
+          <span class="ring"></span>
+          <span class="kicker">${L.vote} ${c.n} / 24 · ${c.topic}</span>
+          <p>${c.text}</p>
+          <svg class="num" viewBox="0 0 520 330" aria-hidden="true"><text x="10" y="300" font-family="Newsreader" font-style="italic" font-size="430" fill="none" stroke="#c9c6bd" stroke-width="3">${c.n}</text></svg>
+          <span class="why">${L.why}</span>
+          <span class="stamp s-yes">${L.yes}</span><span class="stamp s-no">${L.no}</span><span class="stamp s-meh">${L.meh}</span>
+          <span class="redmark">${L.redMark}</span>
+        </div>`)
+        .join("");
+
+      // Logo: hemicicle de set escons, el del mig és el teu (brand/source/kit.html).
+      (() => {
+        let s = "";
+        for (let k = 0; k < 7; k++) {
+          const a = Math.PI * (1 - k / 6), x = 60 + 46 * Math.cos(a), y = 66 - 46 * Math.sin(a), r = 90 - (a * 180) / Math.PI;
+          s += k === 3
+            ? `<g transform="translate(${x} ${y}) rotate(${r})"><rect class="seat you" x="-10.5" y="-9" width="21" height="18" rx="5.5" fill="#f2f1ec"/></g>`
+            : `<g transform="translate(${x} ${y}) rotate(${r})"><rect class="seat" x="-8" y="-7" width="16" height="14" rx="4.5" fill="#57554f"/></g>`;
+        }
+        document.getElementById("sym").innerHTML = s;
+      })();
+
+      const tl = gsap.timeline({ paused: true });
+      const $$ = (s) => [...document.querySelectorAll(s)];
+      const shade = (at, v, d = 0.6) => tl.to("#shade", { opacity: v, duration: d, ease: "power2.inOut" }, at);
+      const rise = (els, at, stagger = 0.1, d = 0.75) => tl.from(els, { yPercent: 135, duration: d, ease: "power4.out", stagger }, at);
+      const out = (els, at, d = 0.35) => tl.to(els, { opacity: 0, y: -30, duration: d, ease: "power2.in" }, at);
+      const counter = (el, at, from, to, d) => {
+        const o = { v: from };
+        tl.to(o, { v: to, duration: d, ease: "power2.out", onUpdate: () => (el.textContent = String(Math.round(o.v))) }, at);
+      };
+      const ON = { backgroundColor: "#f2f1ec", color: "#0c0c0b", borderColor: "#f2f1ec", scale: 1.12, duration: 0.2, ease: "back.out(3)" };
+      const OFF = { backgroundColor: "#1a1917", color: "#f2f1ec", borderColor: "#57554f", scale: 1, duration: 0.2 };
+
+      // 1 · s'encén el teu escó; el text entra de seguida
+      tl.addLabel("hook", 0);
+      tl.to("#youTag", { opacity: 1, duration: 0.35, ease: "power2.out" }, 0.55);
+      tl.to("#youTag", { opacity: 0, duration: 0.35 }, 2.3);
+      tl.from("#hookK", { opacity: 0, duration: 0.4 }, 0.05);
+      tl.from("#l1 .w", { yPercent: 135, duration: 0.6, ease: "power4.out", stagger: 0.09 }, 0.15);
+      // 2 · zoom enrere fins als 350
+      rise("#l2 > span", 2.5, 0, 0.8);
+      out("#hook", 4.2, 0.3);
+
+      // 3 · tres cartes, un gest cadascuna (sí a la dreta, no a l'esquerra, abstenció amunt)
+      tl.addLabel("vote", 4.5);
+      shade(4.5, 0.5, 0.7);
+      tl.set(".card", { opacity: 0 }, 0);
+      tl.from("#vcap .kicker", { opacity: 0, duration: 0.4 }, 4.7);
+      rise("#vcap .line > span", 4.75);
+      tl.from(".pad", { y: 40, opacity: 0, duration: 0.5, ease: "back.out(2)", stagger: 0.05 }, 5.0);
+      tl.from("#redBtn", { opacity: 0, duration: 0.4 }, 5.2);
+      const vote = (k, dir, at, stamp, pad, hit) => {
+        const c = `#c${k}`;
+        const move = { right: { x: 150, rotation: 7 }, left: { x: -150, rotation: -7 }, up: { y: -110, rotation: 0 } }[dir];
+        const fling = { right: { x: 1350, y: -120, rotation: 26 }, left: { x: -1350, y: -120, rotation: -26 }, up: { y: -1500, rotation: 0 } }[dir];
+        const touch0 = { left: 540, top: 860 };
+        tl.set(c, { opacity: 1 }, at);
+        tl.from(c, { y: 1100, rotation: 9, duration: 0.7, ease: "back.out(1.15)" }, at);
+        tl.set("#tc", { left: touch0.left, top: touch0.top, x: 0, y: 0 }, at + 0.85);
+        tl.to("#tc", { opacity: 1, scale: 1, duration: 0.12 }, at + 0.85);
+        tl.to("#tc", { x: (move.x ?? 0) * 1.05, y: (move.y ?? 0) * 1.05, duration: 0.45, ease: "power1.inOut" }, at + 0.9);
+        tl.to(c, { ...move, duration: 0.45, ease: "power1.inOut" }, at + 0.9);
+        tl.to(`${pad} i`, ON, at + 1.15);
+        tl.to(pad, { color: "#f2f1ec", duration: 0.2 }, at + 1.15);
+        tl.fromTo(`${c} ${stamp}`, { opacity: 0, scale: 1.7 }, { opacity: 1, scale: 1, duration: 0.14, ease: "power4.in" }, hit - 0.14);
+        tl.to(c, { keyframes: [{ x: `+=10`, duration: 0.05 }, { x: `-=16`, duration: 0.05 }, { x: `+=6`, duration: 0.06 }] }, hit);
+        tl.to("#tc", { opacity: 0, duration: 0.15 }, hit);
+        tl.to(c, { ...fling, duration: 0.42, ease: "power2.in" }, hit + 0.2);
+        tl.to(`${pad} i`, OFF, hit + 0.35);
+        tl.to(pad, { color: "#b4b2aa", duration: 0.2 }, hit + 0.35);
+      };
+      vote(0, "right", 4.85, ".s-yes", "#padYes", 6.12);
+      vote(1, "left", 6.75, ".s-no", "#padNo", 7.98);
+      vote(2, "up", 8.6, ".s-meh", "#padMeh", 9.84);
+
+      // 4 · línia vermella: toc al botó, la carta es marca i es vota sí
+      out("#vcap", 10.0, 0.3);
+      tl.from("#rcap .kicker", { opacity: 0, duration: 0.4 }, 10.3);
+      rise("#rcap .line > span", 10.35, 0.14);
+      tl.set("#c3", { opacity: 1 }, 10.2);
+      tl.from("#c3", { y: 1100, rotation: 9, duration: 0.7, ease: "back.out(1.15)" }, 10.2);
+      tl.set("#tc", { left: 540, top: 1464, x: 0, y: 0 }, 10.95);
+      tl.to("#tc", { opacity: 1, scale: 1, duration: 0.12 }, 10.95);
+      tl.to("#tc", { opacity: 0, scale: 1.35, duration: 0.3 }, 11.15);
+      tl.to("#redBtn .fill", { opacity: 1, duration: 0.15 }, 11.12);
+      tl.to("#redBtn > span", { borderColor: "#f2f1ec", borderStyle: "solid", duration: 0.15 }, 11.12);
+      tl.to("#redT", { color: "#0c0c0b", duration: 0.15 }, 11.12);
+      tl.set("#redT", { textContent: L.redOn }, 11.12);
+      tl.fromTo("#c3 .ring", { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power3.out" }, 11.15);
+      tl.fromTo("#c3 .redmark", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.16, ease: "power4.in" }, 11.2);
+      tl.set("#tc", { left: 540, top: 860, x: 0, y: 0, scale: 1 }, 11.6);
+      tl.to("#tc", { opacity: 1, duration: 0.12 }, 11.6);
+      tl.to("#tc", { x: 158, duration: 0.45, ease: "power1.inOut" }, 11.65);
+      tl.to("#c3", { x: 150, rotation: 7, duration: 0.45, ease: "power1.inOut" }, 11.65);
+      tl.to("#padYes i", ON, 11.9);
+      tl.to("#padYes", { color: "#f2f1ec", duration: 0.2 }, 11.9);
+      tl.fromTo("#c3 .s-yes", { opacity: 0, scale: 1.8 }, { opacity: 1, scale: 1, duration: 0.14, ease: "power4.in" }, 12.2);
+      tl.to("#c3", { keyframes: [{ x: 164, duration: 0.05 }, { x: 142, duration: 0.05 }, { x: 150, duration: 0.06 }] }, 12.34);
+      tl.to("#tc", { opacity: 0, duration: 0.15 }, 12.34);
+      tl.to("#c3", { x: 1350, y: -120, rotation: 26, duration: 0.45, ease: "power2.in" }, 12.62);
+      out(["#rcap", "#pads", "#redBtn"], 12.75, 0.3);
+
+      // 5 · així va votar el Congrés (moció del 13/11/2025: 171 a favor, 166 en contra, 12 abstencions)
+      tl.addLabel("congress", 13.1);
+      shade(13.1, 0.78, 0.5);
+      tl.from("#sheet", { y: 1500, duration: 0.6, ease: "power3.out" }, 13.12);
+      tl.from("#sheet > :not(#cyou)", { opacity: 0, y: 30, duration: 0.45, ease: "power2.out", stagger: 0.035 }, 13.3);
+      $$(".crow").forEach((r, k) => {
+        const v = [171, 166, 12][k], at = 13.9 + k * 0.35;
+        counter(r.querySelector(".pv"), at, 0, v, 0.75);
+        tl.to(r.querySelector(".track div"), { width: `${(v / 350) * 100}%`, duration: 0.75, ease: "power3.out" }, at);
+      });
+      tl.fromTo("#cyou", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, 15.55);
+      tl.to("#sheet", { y: 1600, duration: 0.42, ease: "power2.in" }, 16.0);
+
+      // 6 · recompte i «Qui vota com tu?» (barres sense noms)
+      tl.addLabel("count", 16.4);
+      shade(16.4, 0, 0.6);
+      tl.from("#countK", { opacity: 0, duration: 0.3 }, 16.55);
+      tl.to("#countK", { keyframes: [{ opacity: 0.35, duration: 0.12 }, { opacity: 1, duration: 0.12 }, { opacity: 0.5, duration: 0.1 }, { opacity: 1, duration: 0.14 }] }, 16.9);
+      tl.to("#countK", { opacity: 0, duration: 0.15 }, 17.4);
+      rise("#who .line > span", 17.55, 0.12, 0.7);
+      tl.from(".row", { opacity: 0, y: 30, duration: 0.4, ease: "power2.out", stagger: 0.08 }, 18.0);
+      $$(".row").forEach((r, k) => {
+        const p = [84, 79, 61][k];
+        counter(r.querySelector(".pv"), 18.1 + k * 0.08, 0, p, 0.9);
+        tl.to(r.querySelector(".track div"), { width: `${p}%`, duration: 0.9, ease: "power2.out" }, 18.1 + k * 0.08);
+      });
+      out(["#who", "#rank"], 19.3, 0.3);
+
+      // 7 · neutral, privat, amb fonts
+      tl.addLabel("trust", 19.6);
+      shade(19.6, 0.78, 0.5);
+      rise("#trust .line > span", 19.7, 0.22, 0.75);
+      tl.from("#trustSub", { opacity: 0, y: 20, duration: 0.45, ease: "power2.out" }, 20.55);
+      out("#trust", 21.5, 0.3);
+
+      // 8 · logo, «Molt aviat», escon.app i @esconapp
+      tl.addLabel("end", 21.8);
+      shade(21.8, 0.45, 0.8);
+      tl.from("#soon", { opacity: 0, y: 16, duration: 0.6, ease: "power3.out" }, 21.9);
+      tl.from("#sym .seat:not(.you)", { scale: 0, transformOrigin: "50% 50%", duration: 0.4, ease: "back.out(3)", stagger: { each: 0.05, from: "edges" } }, 22.0);
+      tl.from("#sym .you", { scale: 0, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(4)" }, 22.3);
+      tl.from("#lock .word", { yPercent: 135, duration: 0.8, ease: "power4.out" }, 22.15);
+      tl.from("#tagline", { opacity: 0, y: 30, duration: 0.6, ease: "power3.out" }, 22.85);
+      tl.from("#url span", { opacity: 0, scale: 0.85, duration: 0.5, ease: "back.out(2.2)" }, 23.85);
+      tl.from("#handle", { opacity: 0, y: 14, duration: 0.45, ease: "power2.out" }, 24.15);
+      tl.from("#seal", { opacity: 0, duration: 0.5 }, 24.45);
+      tl.set({}, {}, 26);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+    <script type="module">
+      import { createChamber } from "./chamber.js";
+      const chamber = createChamber(document.getElementById("gl"), document.getElementById("youTagPos"));
+      const ready = document.fonts.ready.then(() => chamber.render(0));
+      window.__chamber = chamber;
+      window.__hyperframes?.registerFrameSource({
+        element: document.getElementById("stage"),
+        ready,
+        render: (t) => chamber.render(t),
+        dispose: () => chamber.dispose(),
+      });
+    </script>
+  </body>
+</html>
