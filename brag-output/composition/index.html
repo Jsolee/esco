@@ -45,13 +45,11 @@
       #card { position: absolute; left: 110px; top: 470px; width: 860px; height: 760px; border-radius: 44px; background: var(--carta); color: var(--tinta); padding: 60px; display: flex; flex-direction: column; box-shadow: 0 50px 90px rgba(0,0,0,.55); overflow: hidden; }
       #card .top { display: flex; justify-content: space-between; align-items: center; }
       #card .kicker { color: var(--tinta-2); font-size: 26px; }
-      .cost { display: inline-flex; align-items: center; gap: 10px; border: 2px solid rgba(14,14,13,.25); border-radius: 999px; padding: 8px 20px; font: 700 28px var(--sans); }
-      .coin { width: 24px; height: 24px; border-radius: 50%; background: currentColor; box-shadow: inset 0 0 0 5px rgba(12,12,11,.0), inset 0 0 0 7px rgba(255,255,255,.0); }
       #card p { position: relative; z-index: 1; margin: auto 0; font: 400 72px/1.06 var(--serif); letter-spacing: -.02em; }
       #card .num { position: absolute; right: -20px; bottom: -40px; width: 520px; height: 330px; overflow: visible; }
       #card .why { position: relative; z-index: 1; font: 600 30px var(--sans); text-decoration: underline; text-decoration-color: var(--carta-3); text-underline-offset: 8px; }
       #stamp { position: absolute; z-index: 2; left: 52px; top: 128px; border: 6px solid var(--tinta); border-radius: 14px; padding: 6px 20px; background: var(--tinta); color: var(--carta); font: 800 46px/1.1 var(--sans); letter-spacing: .06em; text-transform: uppercase; opacity: 0; transform: rotate(-10deg); }
-      #pads { position: absolute; left: 80px; width: 840px; top: 1290px; display: flex; justify-content: space-between; align-items: flex-start; }
+      #pads { position: absolute; left: 80px; width: 840px; top: 1290px; display: flex; justify-content: center; gap: 70px; align-items: flex-start; }
       .pad { width: 150px; display: grid; justify-items: center; gap: 14px; font: 500 24px/1.2 var(--sans); color: var(--guix-2); text-align: center; }
       .pad i { display: grid; place-items: center; width: 104px; height: 104px; border-radius: 50%; border: 3px solid #57554f; background: var(--fum); color: var(--guix); font: 600 40px/1 var(--sans); font-style: normal; }
       .pad.big i { width: 120px; height: 120px; }
@@ -61,24 +59,20 @@
       #sheet { position: absolute; left: 0; right: 0; top: 400px; height: 1520px; border-radius: 64px 64px 0 0; background: var(--fum); border: 2px solid rgba(142,140,133,.5); border-bottom: 0; }
       #sheet > * { position: absolute; left: 70px; }
       #sheet h2 { top: 120px; font: 400 104px/1 var(--serif); letter-spacing: -.03em; }
-      #fsub { top: 352px; font: 400 36px/1.3 var(--sans); color: var(--guix-2); width: 900px; }
-      #fneed2, #fneed3 { position: absolute; left: 0; top: 0; white-space: nowrap; opacity: 0; }
-      #bar { top: 470px; width: 860px; height: 18px; border-radius: 999px; background: var(--fum-2); overflow: hidden; }
-      #bar > div { width: 0; height: 100%; border-radius: 999px; background: var(--guix); }
-      .flabel { font-size: 26px; }
-      .chip { width: 860px; height: 136px; border-radius: 34px; border: 2px solid rgba(142,140,133,.5); background: var(--nit); padding: 26px 32px; display: grid; gap: 8px; }
-      .chip b { display: flex; justify-content: space-between; align-items: baseline; font: 600 36px/1.15 var(--sans); }
-      .chip b small { display: inline-flex; align-items: center; gap: 10px; font: 500 26px var(--sans); position: relative; }
-      .chip b small .coin { width: 20px; height: 20px; }
-      .chip span { font: 400 26px/1.3 var(--sans); color: var(--guix-2); }
-      .chip .bg { position: absolute; inset: 0; border-radius: 34px; background: var(--guix); opacity: 0; }
-      .chip .fg { position: relative; display: grid; gap: 8px; }
-      .fcoin { position: absolute; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; background: var(--guix); box-shadow: 0 0 18px rgba(242,241,236,.7); opacity: 0; }
-      #fdone { top: 352px; display: inline-flex; align-items: center; gap: 14px; font: 700 36px var(--sans); color: var(--guix); opacity: 0; }
+      #csub { top: 360px; width: 900px; font: 400 36px/1.3 var(--sans); color: var(--guix-2); }
+      .crow { width: 920px; display: grid; grid-template-columns: 1fr auto; gap: 14px 0; }
+      .crow b { font: 600 36px/1 var(--sans); }
+      .crow .cv { font: 400 66px/.8 var(--serif); text-align: right; }
+      .crow .track { grid-column: 1 / -1; height: 18px; border-radius: 999px; background: var(--fum-2); overflow: hidden; }
+      .crow .track div { width: 0; height: 100%; border-radius: 999px; background: var(--guix); }
+      #cyou { top: 1080px; display: inline-flex; align-items: center; gap: 14px; border: 2px solid var(--guix); border-radius: 999px; padding: 16px 30px; font: 700 34px var(--sans); color: var(--guix); opacity: 0; }
+      #cnote { top: 1200px; font: 400 28px var(--sans); color: var(--grafit); }
 
       /* 4b */
-      #preu { position: absolute; left: 80px; right: 80px; top: 700px; }
-      #preu .display { font-size: 210px; }
+      #red { position: absolute; left: 80px; right: 80px; top: 660px; }
+      #red .display { font-size: 180px; }
+      #red .sub { margin-top: 40px; font: 400 40px/1.3 var(--sans); color: var(--guix-2); }
+      #red .mark { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 44px; border: 3px dashed var(--grafit); border-radius: 999px; padding: 14px 28px; font: 600 28px var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--guix-2); }
 
       /* 5 */
       #tokHead { position: absolute; left: 90px; right: 90px; top: 290px; }
@@ -139,46 +133,37 @@
       <div id="s-vote" class="clip" data-start="5.6" data-duration="4" data-track-index="3">
         <div id="vcap"><h2 class="display"><span class="line"><span>Llisca i vota</span></span><span class="line it"><span>24 propostes.</span></span></h2></div>
         <div id="card" data-layout-allow-overflow>
-          <div class="top"><span class="kicker">Votació 07 / 24 · Fiscalitat</span><span class="cost"><span class="coin"></span>Costa 6</span></div>
-          <p>Les herències entre pares i fills haurien d'estar exemptes d'impostos.</p>
+          <div class="top"><span class="kicker">Votació 07 / 24 · Fiscalitat</span></div>
+          <p>Els trams de l'IRPF s'haurien d'actualitzar cada any segons la inflació.</p>
           <svg class="num" viewBox="0 0 520 330" aria-hidden="true"><text x="10" y="300" font-family="Newsreader" font-style="italic" font-size="430" fill="none" stroke="#c9c6bd" stroke-width="3">07</text></svg>
           <span class="why">↻ Per què se'n parla?</span>
-          <span id="stamp">D'acord</span>
+          <span id="stamp">Sí</span>
         </div>
         <div id="pads">
-          <div class="pad big"><i>«</i>Molt en desacord</div>
-          <div class="pad"><i>‹</i>En desacord</div>
-          <div class="pad"><i>·</i>Neutral</div>
-          <div class="pad" id="padYes"><i>›</i>D'acord</div>
-          <div class="pad big"><i>»</i>Molt d'acord</div>
+          <div class="pad big"><i>‹</i>No</div>
+          <div class="pad"><i>·</i>Abstenció</div>
+          <div class="pad big" id="padYes"><i>›</i>Sí</div>
         </div>
         <div class="touch" id="t1" style="left:540px;top:850px"></div>
       </div>
 
-      <!-- 4 · d'on surten els diners -->
+      <!-- 4 · així va votar el Congrés -->
       <div id="s-fund" class="clip" data-start="9.4" data-duration="3.6" data-track-index="3">
         <div id="sheet">
-          <p class="kicker" style="top:70px">Simulador de mandat</p>
-          <h2>D'on surten<br />els diners?</h2>
-          <p id="fsub"><span id="fs1">Aquesta proposta costa 6 punts.<br /><span style="position:relative;display:inline-block"><span id="fneed1">Te'n falten 6.</span><span id="fneed2">Te'n falten 3.</span></span></span></p>
-          <p id="fdone"><span class="coin" style="width:30px;height:30px;color:var(--guix)"></span>Finançada</p>
-          <div id="bar"><div></div></div>
-          <p class="kicker flabel" style="top:530px">Retallar</p>
-          <div class="chip" style="top:570px"><div class="fg"><b>Retallar la despesa en defensa<small><span class="coin"></span>queden 6</small></b><span>Menys pressupost militar i menys compres d'armament.</span></div></div>
-          <p class="kicker flabel" style="top:742px">Pujar impostos</p>
-          <div class="chip" id="chIva" style="top:782px"><div class="bg"></div><div class="fg"><b>Pujar l'IVA<small><span class="coin"></span><span class="q">queden 8</span></small></b><span>Un impost que paga tothom en comprar.</span></div></div>
-          <p class="kicker flabel" style="top:954px">Endeutar-se</p>
-          <div class="chip" id="chDeute" style="top:994px"><div class="bg"></div><div class="fg"><b>Endeutar-se<small><span class="coin"></span><span class="q">queden 10</span></small></b><span>Ho pagarà el pròxim govern, amb interessos.</span></div></div>
-          <div class="fcoin c1" style="left:850px;top:822px"></div><div class="fcoin c1" style="left:850px;top:822px"></div><div class="fcoin c1" style="left:850px;top:822px"></div>
-          <div class="fcoin c2" style="left:850px;top:1034px"></div><div class="fcoin c2" style="left:850px;top:1034px"></div><div class="fcoin c2" style="left:850px;top:1034px"></div>
-          <div class="touch" id="t2" style="left:470px;top:850px"></div>
-          <div class="touch" id="t3" style="left:470px;top:1062px"></div>
+          <p class="kicker" style="top:70px">Així va votar el Congrés · 13 nov. 2025</p>
+          <h2>Era una votació<br />real.</h2>
+          <p id="csub">Una moció que ho demanava, entre altres mesures.</p>
+          <div class="crow" style="top:520px"><b>A favor</b><span class="cv"><span class="pv">0</span></span><span class="track"><div></div></span></div>
+          <div class="crow" style="top:700px"><b>En contra</b><span class="cv"><span class="pv">0</span></span><span class="track"><div></div></span></div>
+          <div class="crow" style="top:880px"><b>Abstencions</b><span class="cv"><span class="pv">0</span></span><span class="track"><div></div></span></div>
+          <p id="cyou">El teu vot: Sí</p>
+          <p id="cnote">Només el total. Sense partits.</p>
         </div>
       </div>
 
-      <!-- 4b · Cada sí té un preu. -->
+      <!-- 4b · Tres línies vermelles. -->
       <div id="s-preu" class="clip" data-start="12.9" data-duration="2" data-track-index="3">
-        <div id="preu"><h2 class="display"><span class="line"><span>Cada sí</span></span><span class="line it"><span>té un preu.</span></span></h2></div>
+        <div id="red"><p class="mark">⊘ Línia vermella</p><h2 class="display"><span class="line"><span>Tres línies</span></span><span class="line it"><span>vermelles.</span></span></h2><p class="sub">El que no negocies pesa el triple.</p></div>
       </div>
 
       <!-- 5 · fitxes d'influència -->
@@ -204,7 +189,7 @@
       <div id="s-end" class="clip" data-start="20.3" data-duration="3.7" data-track-index="3">
         <div id="lock"><svg id="sym" viewBox="0 0 120 84" aria-label="Escó"></svg><span class="line"><span class="word">Escó</span></span></div>
         <p id="tagline">Tens un escó. <i>Fes-lo servir.</i></p>
-        <p id="url"><span>esco-psi.vercel.app</span></p>
+        <p id="url"><span>escon.app</span></p>
         <p class="kicker" id="seal">Neutral · Privat · Amb fonts</p>
       </div>
 
@@ -216,7 +201,7 @@
       <audio id="sfx-sheet" src="audio/card-slide-1.ogg" data-start="9.45" data-volume="0.2"></audio>
       <audio id="sfx-c1" src="audio/chip-lay-1.ogg" data-start="11.05" data-volume="0.2"></audio>
       <audio id="sfx-c2" src="audio/chip-lay-2.ogg" data-start="11.85" data-volume="0.2"></audio>
-      <audio id="sfx-preu" src="audio/impactSoft_medium_004.ogg" data-start="13.1" data-volume="0.5"></audio>
+      <audio id="sfx-red" src="audio/impactSoft_medium_004.ogg" data-start="13.1" data-volume="0.5"></audio>
       <audio id="sfx-t1" src="audio/chip-lay-3.ogg" data-start="15.83" data-volume="0.16"></audio>
       <audio id="sfx-t2" src="audio/chip-lay-1.ogg" data-start="16.43" data-volume="0.16"></audio>
       <audio id="sfx-t3" src="audio/chip-lay-2.ogg" data-start="17.03" data-volume="0.16"></audio>
@@ -302,39 +287,25 @@
       tl.to("#card", { x: 1350, y: -120, rotation: 26, duration: 0.5, ease: "power2.in" }, 9.0);
       out(["#vcap", "#pads"], 9.2, 0.3);
 
-      // 4 · d'on surten els diners
+      // 4 · així va votar el Congrés (171 a favor, 166 en contra, 12 abstencions; 350 escons)
       shade(9.4, 0.78, 0.5);
       tl.from("#sheet", { y: 1500, duration: 0.65, ease: "power3.out" }, 9.42);
-      tl.from("#sheet > :not(.fcoin):not(.touch)", { opacity: 0, y: 30, duration: 0.45, ease: "power2.out", stagger: 0.035 }, 9.6);
-      const pick = (chip, coins, at, q, fromPct, toPct) => {
-        touch(chip === "#chIva" ? "#t2" : "#t3", at - 0.05);
-        tl.to(`${chip} .bg`, { opacity: 1, duration: 0.2 }, at);
-        tl.to(`${chip} b, ${chip} small, ${chip} .q`, { color: "#0c0c0b", duration: 0.2 }, at);
-        tl.to(`${chip} .fg > span`, { color: "rgba(12,12,11,.7)", duration: 0.2 }, at);
-        tl.set(`${chip} .q`, { textContent: q }, at);
-        $$(coins).forEach((c, k) => {
-          const t0 = at + 0.12 + k * 0.08;
-          const tx = 70 + (860 * (fromPct + ((toPct - fromPct) * (k + 1)) / 3)) / 100 - 10;
-          const y0 = parseFloat(c.style.top);
-          tl.set(c, { opacity: 1 }, t0);
-          tl.to(c, { x: tx - 850, duration: 0.42, ease: "power2.inOut" }, t0);
-          tl.to(c, { y: 479 - y0, duration: 0.42, ease: "back.in(1.4)" }, t0);
-          tl.to(c, { opacity: 0, scale: 0.4, duration: 0.1 }, t0 + 0.4);
-        });
-        tl.to("#bar > div", { width: `${toPct}%`, duration: 0.45, ease: "power3.out" }, at + 0.45);
-      };
-      pick("#chIva", ".c1", 10.65, "−3", 0, 50);
-      tl.set("#fneed1", { opacity: 0 }, 11.1);
-      tl.set("#fneed2", { opacity: 1 }, 11.1);
-      pick("#chDeute", ".c2", 11.45, "−3", 50, 100);
-      tl.to("#fs1", { opacity: 0, duration: 0.2 }, 11.95);
-      tl.fromTo("#fdone", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, 12.0);
+      tl.from("#sheet > *", { opacity: 0, y: 30, duration: 0.45, ease: "power2.out", stagger: 0.035 }, 9.6);
+      tl.set("#cyou", { opacity: 0 }, 9.6);
+      $$(".crow").forEach((r, k) => {
+        const v = [171, 166, 12][k], at = 10.65 + k * 0.4;
+        counter(r.querySelector(".pv"), at, 0, v, 0.8);
+        tl.to(r.querySelector(".track div"), { width: `${(v / 350) * 100}%`, duration: 0.8, ease: "power3.out" }, at);
+      });
+      tl.fromTo("#cyou", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, 12.0);
       tl.to("#sheet", { y: 1600, duration: 0.42, ease: "power2.in" }, 12.55);
 
-      // 4b · Cada sí té un preu.
+      // 4b · Tres línies vermelles.
       shade(12.9, 0.5, 0.5);
-      rise("#preu .line > span", 12.95, 0.16, 0.8);
-      out("#preu", 14.6, 0.3);
+      tl.from("#red .mark", { opacity: 0, scale: 0.8, duration: 0.35, ease: "back.out(2.5)" }, 12.92);
+      rise("#red .line > span", 12.95, 0.16, 0.8);
+      tl.from("#red .sub", { opacity: 0, y: 20, duration: 0.4, ease: "power2.out" }, 13.5);
+      out("#red", 14.6, 0.3);
 
       // 5 · fitxes
       shade(14.75, 0.55, 0.6);

@@ -1,5 +1,5 @@
 Tens un escó. Fes-lo servir. 🏛️
-A Escó votes 24 propostes lliscant cartes, però cada sí té un preu: retalla, puja impostos o endeuta't. Al final, mira quines candidatures voten com tu.
-Neutral, privat i amb fonts → esco-psi.vercel.app
+A Escó votes 24 propostes reals lliscant cartes: sí, no o abstenció. Tens 3 línies vermelles, i quan una proposta ja s'ha votat al Congrés en veus el resultat. Al final, mira quines candidatures voten com tu.
+Neutral, privat i amb fonts → escon.app
 
 #Escó #EleccionsGenerals #EleccionesGenerales #VotaInformat

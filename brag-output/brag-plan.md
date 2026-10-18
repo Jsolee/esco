@@ -5,16 +5,16 @@
 
 ## Rubric
 
-- **What it is:** a game in which you get a seat in the Congress, vote 24 proposals by swiping cards, fund every costly yes, and see which candidacies vote like you.
+- **What it is:** a game in which you get a seat in the Congress, vote 24 real proposals by swiping cards (yes, no or abstain), mark 3 red lines and see which candidacies vote like you.
 - **Who it's for:** voters, above all young ones, who would never fill in a questionnaire.
 - **What sets it apart:**
-  - It is a mandate simulator. Money is limited, so a yes that costs money has to come out of a cut, a tax or debt.
+  - It feels like a seat: when a proposal was already voted in the Congress, you see the real result (totals only, no parties).
   - Neutral, private (everything is computed on the phone), and every position has a source.
-- **Sharpest claim:** "Cada sí té un preu." Even a tax cut has a cost.
+- **Sharpest claim:** "Tres línies vermelles." What you would not negotiate weighs three times as much.
 - **Visual hook:** a single seat lights up in a dark hemicycle of 350.
 - **Real UI:**
-  - The vote card with its "Costa" pill and the 5 vote pads.
-  - The "D'on surten els diners?" sheet.
+  - The vote card with the 3 vote pads (No, Abstenció, Sí).
+  - The "Així va votar el Congrés" result.
   - The influence tokens.
   - The overhead count of the 3D chamber.
 - **Share line:** "Tens un escó. Fes-lo servir."
@@ -22,10 +22,11 @@
 ## Neutrality
 
 - No party names or colors.
-- The proposal shown is the inheritance-tax one (tax cut, right-coded). It balances post 02 (public housing, left-coded) and shows that lowering taxes also costs money.
-- The funding sheet shows one option of each kind.
+- The proposal shown is the IRPF-indexation one (tax measure, right-coded), a real 2026 statement with a real Congress vote (13/11/2025: 171 for, 166 against, 12 abstentions). It balances post 03 (the 37.5-hour week, left-coded).
+- The Congress result shows totals only, never parties.
+- No budget: the 29-N election has no mandate simulator, so the Reel does not promise one.
 - The ranking appears with names hidden.
-- Nothing claims that the 29-N election can already be played.
+- Nothing shows the candidacies of the 29-N before they are official (3/11); until then the game ends in the compass.
 
 ## Storyboard
 
@@ -33,9 +34,9 @@
 |---|---|---|---|---|
 | 1 | 0.0–3.3 | Close-up in the dark: the center seat lights up with a pop and a ripple on the floor; "EL TEU ESCÓ" label | **Tens un escó.** | Quiet music intro; soft impact at 0.7 |
 | 2 | 3.3–5.7 | The camera pulls back to the full hemicycle; seats come on from the centre out | **Fes-lo servir.** (under line 1) | — |
-| 3 | 5.7–9.5 | The chamber dims and a card is dealt: "Les herències entre pares i fills haurien d'estar exemptes d'impostos" (Costa 6). Drag right; the "D'acord" pad is pressed; the D'ACORD stamp hits on the drop at 8.74; the card flies off; a wedge of seats pulses | **Llisca i vota 24 propostes.** | card-slide at the deal and the fling; impact at the stamp |
-| 4 | 9.5–12.9 | The funding sheet comes up: "D'on surten els diners?", "Costa 6 punts. Te'n falten 6." Taps on Pujar l'IVA (+3) and Endeutar-se (+3); coins fly into the bar; "Finançada" | title + subtitle | card-slide; chip-lay on each coin, quiet |
-| 5 | 12.9–14.9 | Full-screen type over the chamber | **Cada sí / *té un preu.*** | soft impact at 13.11 |
+| 3 | 5.7–9.5 | The chamber dims and a card is dealt: "Els trams de l'IRPF s'haurien d'actualitzar cada any segons la inflació". Drag right; the "Sí" pad is pressed; the SÍ stamp hits on the drop at 8.74; the card flies off; a wedge of seats pulses | **Llisca i vota 24 propostes.** | card-slide at the deal and the fling; impact at the stamp |
+| 4 | 9.5–12.9 | A sheet comes up: "Així va votar el Congrés · 13 nov. 2025", "Era una votació real." Bars count up to 171 a favor, 166 en contra, 12 abstencions; "El teu vot: Sí"; "Només el total. Sense partits." | title + totals | card-slide; chip-lay on the counts, quiet |
+| 5 | 12.9–14.9 | Full-screen type over the chamber, with a dashed "⊘ Línia vermella" pill | **Tres línies / *vermelles.*** "El que no negocies pesa el triple." | soft impact at 13.11 |
 | 6 | 14.9–17.5 | Tokens: "Reparteix la teva influència", a pool of 10, 2×2 topic tiles; 5 tokens fly in and the tiles turn chalk with "pes ×2" | title | chip-lay, quiet |
 | 7 | 17.5–20.4 | Overhead "Recompte" with flicker; seats light up in fill order; at 18.56 "Qui vota com tu?" appears; bars with hidden names count up | **Qui vota com tu?** | bell at 18.56 |
 | 8 | 20.4–24.0 | Logo lockup, "Tens un escó. Fes-lo servir.", URL pill, "Neutral · Privat · Amb fonts" | logo + URL | bell at 20.75; music fades out 23–24 |
@@ -46,6 +47,7 @@ Track: `happy-beats-business-moves-vol-12` (109.96 BPM).
 
 - The intro is quiet until about 8.5 s, then there is a step up at 8.74 (the stamp), and the full level arrives around 19 s (the reveal).
 - Strong cues used: 8.74, 13.11, 18.56, 20.75 and 22.37.
+- `audio/impactSoft_medium_004.ogg` now plays as `sfx-red` (scene 5); the timing did not change.
 - The license is from ende.app and has to be checked before publishing.
 
 ## Poster

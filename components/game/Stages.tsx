@@ -78,7 +78,9 @@ export function Intro({
           {i.kicker} · {data.name}
         </p>
         <h1 className="intro-title display mt-4 text-[clamp(2.9rem,1.6rem+5.2vw,5.8rem)]">{i.title}</h1>
-        <p className="intro-item mt-5 text-lg text-chalk-2">{format(i.text, { n: count })}</p>
+        <p className="intro-item mt-5 text-lg text-chalk-2">{format(i.text, { n: count })}
+          {data.funding.length > 0 && ` ${i.budget}`}
+        </p>
         <ul className="mt-6 grid gap-2.5 max-sm:order-1">
           {i.gestures.map((g) => (
             <li key={g.dir} className="intro-item flex items-center gap-3">

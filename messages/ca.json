@@ -18,7 +18,7 @@
   "landing": {
     "kicker": "Orientador de vot",
     "title": "Tens un escó. Fes-lo servir.",
-    "lead": "Vota 24 propostes com si fossis al Congrés, amb un pressupost limitat. Al final veuràs quines candidatures han votat com tu, amb la font de cada posició.",
+    "lead": "Vota 24 propostes com si fossis al Congrés: sí, no o abstenció. Al final veuràs quines candidatures han votat com tu, amb la font de cada posició.",
     "start": "Comença",
     "note": "Escó no recomana cap partit. Tot es calcula al teu dispositiu i no guardem cap resposta.",
     "yourSeat": "Aquest escó és teu",
@@ -26,11 +26,11 @@
     "steps": [
       {
         "title": "Vota",
-        "text": "Llisca cada proposta: a la dreta si hi estàs d'acord, a l'esquerra si no."
+        "text": "Llisca cada proposta: a la dreta per al sí, a l'esquerra per al no i amunt per abstenir-te."
       },
       {
-        "title": "Paga-ho",
-        "text": "Els diners són limitats. Cada sí que costa diners l'has de finançar: retallant, pujant impostos o endeutant-te."
+        "title": "Línies vermelles",
+        "text": "Tens 3 línies vermelles per al que no negociaries. Pesen el triple."
       },
       {
         "title": "Descobreix",
@@ -84,7 +84,8 @@
     "intro": {
       "kicker": "Sessió plenària",
       "title": "Et donem la benvinguda al ple.",
-      "text": "Tens un escó i {n} propostes per votar. Els diners són limitats: el que aprovis, ho hauràs de pagar.",
+      "text": "Tens un escó i {n} propostes per votar.",
+      "budget": "Els diners són limitats: el que aprovis, ho hauràs de pagar.",
       "gestures": [
         {
           "dir": "right",

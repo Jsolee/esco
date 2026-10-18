@@ -18,7 +18,7 @@
   "landing": {
     "kicker": "Orientador de voto",
     "title": "Tienes un escaño. Úsalo.",
-    "lead": "Vota 24 propuestas como si estuvieras en el Congreso, con un presupuesto limitado. Al final verás qué candidaturas han votado como tú, con la fuente de cada posición.",
+    "lead": "Vota 24 propuestas como si estuvieras en el Congreso: sí, no o abstención. Al final verás qué candidaturas han votado como tú, con la fuente de cada posición.",
     "start": "Empieza",
     "note": "Escó no recomienda ningún partido. Todo se calcula en tu dispositivo y no guardamos ninguna respuesta.",
     "yourSeat": "Este escaño es tuyo",
@@ -26,11 +26,11 @@
     "steps": [
       {
         "title": "Vota",
-        "text": "Desliza cada propuesta: a la derecha si estás de acuerdo, a la izquierda si no."
+        "text": "Desliza cada propuesta: a la derecha para el sí, a la izquierda para el no y hacia arriba para abstenerte."
       },
       {
-        "title": "Págalo",
-        "text": "El dinero es limitado. Cada sí que cuesta dinero tienes que financiarlo: recortando, subiendo impuestos o endeudándote."
+        "title": "Líneas rojas",
+        "text": "Tienes 3 líneas rojas para lo que no negociarías. Pesan el triple."
       },
       {
         "title": "Descubre",
@@ -84,7 +84,8 @@
     "intro": {
       "kicker": "Sesión plenaria",
       "title": "Te damos la bienvenida al pleno.",
-      "text": "Tienes un escaño y {n} propuestas para votar. El dinero es limitado: lo que apruebes, tendrás que pagarlo.",
+      "text": "Tienes un escaño y {n} propuestas para votar.",
+      "budget": "El dinero es limitado: lo que apruebes, tendrás que pagarlo.",
       "gestures": [
         {
           "dir": "right",
