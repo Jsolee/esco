@@ -12,6 +12,69 @@ Criteris de les etiquetes:
 
 Les votacions surten de les dades obertes del Congrés (`congreso.es/webpublica/opendata/votaciones`) o dels Diaris de Sessions. Quan la font és premsa, s'indica.
 
+## Posicions (fase 3, 24/11/2026): programes del 29-N
+
+Totes les candidatures han publicat el programa del 29-N. Cada posició s'ha confirmat o corregit amb el programa: si el programa s'hi pronuncia, la posició passa a ser la del programa (pàgina del visor del PDF, enllaç `#page=` i cita literal comprovada contra el text extret); si calla, es manté la de la fase 1. Les fonts porten `kind` (`program`, `vote` o `other`) i el resultat ho mostra.
+
+**Programes:** PP (*La reconstrucción nacional*), PSOE (*La fuerza de seguir avanzando*; el PSC no en publica de propi i se li aplica el del PSOE), Vox (*Es sentido común*), Frente Amplio, Podemos (*Así de básico: Paz, casa y trabajo*), ERC, Junts (publicat per Betevé i El Nacional; no és a junts.cat), EH Bildu, EAJ-PNV, BNG, Compromís-Front Valencià i Coalición Canaria (*Defiende Canarias*, que no es pronuncia sobre cap de les 24 afirmacions). L'URL i la data de cada un són a `sources` de cada candidatura (`programa-29n`).
+
+**Criteris d'aquesta fase:**
+- Les cel·les que el programa no tracta directament es deixen com a silenci, encara que se'n pugui deduir alguna cosa: EH Bildu (`ter-referendum`, `ter-immigracio`) i el PNB (`ter-immigracio`) només parlen d'Euskadi; el PP (`ter-immigracio`) no parla de Catalunya; Vox (`ter-referendum`) no esmenta cap referèndum.
+- Les candidatures noves del BOE que comparteixen programa amb una altra (UPN-PP a Navarra, Comuns-Front Ampli a Catalunya) en copien les posicions i les fonts.
+
+**Canvis de signe** (tots comprovats a la pàgina citada):
+- PSOE i PSC, `hab-desallotjament` −1 → +2: «desalojo de viviendas ocupadas en 48 horas» (p. 100), tot i que el PSOE va votar no a la llei del PP el 19/5/2026.
+- BNG, `fis-irpf-inflacio` −1 → +2: «Axustar os tramos estatais do IRPF en función do incremento anual do Índice de Prezos de Consumo en Galiza» (p. 43).
+
+**Canvis per candidatura:**
+
+- **bng**: 13 posicions del programa; canvis: `hab-renovacio` 2 → 1, `tre-jornada` 1 → 2, `tre-acomiadament` 1 → 2, `tre-smi-autonomic` 1 → 2, `fis-irpf-inflacio` -1 → 2 **(canvi de signe)**, `fis-energetiques` 1 → 2, `ter-referendum` 2 → 1
+- **cc**: 0 posicions del programa; canvis: cap
+- **compromis**: 14 posicions del programa; canvis: `hab-renovacio` 2 → 1, `hab-zones-tensionades` -1 → -2, `tre-jornada` 1 → 2, `tre-acomiadament` 1 → 2, `fis-irpf-inflacio` -1 → 0, `ene-nuclear` -1 → -2, `ene-empresa-publica` 1 → 2, `ene-transvasaments` -1 → 0, `edu-universitats-privades` None → 1
+- **eaj-pnv**: 4 posicions del programa; canvis: `tre-smi-autonomic` 0 → 2, `dre-multireincidencia` 2 → 1
+- **eh-bildu**: 11 posicions del programa; canvis: `hab-renovacio` 2 → 1, `tre-jornada` 1 → 2, `tre-acomiadament` 1 → 2, `fis-energetiques` 1 → 2, `ene-nuclear` -1 → -2
+- **erc**: 10 posicions del programa; canvis: `tre-jornada` 1 → 2, `tre-acomiadament` 1 → 2, `fis-energetiques` 1 → 2, `edu-universitats-privades` 1 → 2, `san-gestio-publica` 0 → 1, `ter-immigracio` 1 → 2, `dre-memoria` -2 → -1
+- **frente-amplio**: 17 posicions del programa; canvis: `hab-zones-tensionades` -1 → -2, `tre-acomiadament` 2 → 1, `fis-energetiques` 1 → 2, `ene-nuclear` -1 → -2, `edu-concerts` -2 → -1, `edu-universitats-privades` 1 → 2, `ter-referendum` 0 → 1
+- **junts**: 16 posicions del programa; canvis: `hab-desallotjament` 0 → 2, `hab-zones-tensionades` 1 → 2, `tre-jornada` -2 → -1, `fis-irpf-inflacio` 0 → 2, `fis-successions` 1 → 2, `ene-nuclear` 0 → 1, `san-gestio-publica` -2 → -1, `ter-referendum` 2 → 1, `ter-amnistia` -2 → -1
+- **podemos**: 14 posicions del programa; canvis: `hab-renovacio` 2 → 1, `tre-jornada` 1 → 2, `tre-acomiadament` 1 → 2, `ene-nuclear` -1 → -2, `edu-concerts` -1 → -2, `san-muface` -1 → -2, `san-avortament` 1 → 2, `dre-regularitzacio` 2 → 1, `dre-memoria` -1 → -2
+- **pp**: 11 posicions del programa; canvis: `edu-concerts` 1 → 2, `ter-amnistia` 1 → 2, `dre-multireincidencia` 2 → 1
+- **psc**: 11 posicions del programa; canvis: `hab-renovacio` 2 → 1, `hab-desallotjament` -1 → 2 **(canvi de signe)**, `hab-zones-tensionades` -1 → -2, `fis-irpf-inflacio` -1 → 0, `ene-nuclear` -1 → -2, `san-gestio-publica` 1 → 2, `dre-memoria` -2 → -1
+- **psoe**: 11 posicions del programa; canvis: `hab-renovacio` 2 → 1, `hab-desallotjament` -1 → 2 **(canvi de signe)**, `hab-zones-tensionades` -1 → -2, `fis-irpf-inflacio` -1 → 0, `ene-nuclear` -1 → -2, `dre-memoria` -2 → -1
+- **vox**: 9 posicions del programa; canvis: `hab-desallotjament` 1 → 2, `ene-nuclear` 1 → 2, `san-avortament` -2 → -1, `dre-memoria` 2 → 1
+
+### Matriu (fase 3)
+
+`·` = no s'hi pronuncia. UPN-PP té els valors del PP i Comuns-Front Ampli els del Frente Amplio.
+
+| Afirmació | bng | cc | compromis | eaj-pnv | eh-bildu | erc | frente-amplio | junts | podemos | pp | psc | psoe | vox |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `hab-renovacio` | +1 | -2 | +1 | -2 | +1 | +2 | +2 | -2 | +1 | -2 | +1 | +1 | -2 |
+| `hab-desallotjament` | -1 | +1 | -1 | 0 | -1 | -1 | -1 | +2 | -1 | +2 | +2 | +2 | +2 |
+| `hab-zones-tensionades` | -1 | 0 | -2 | 0 | -1 | -1 | -2 | +2 | -1 | +2 | -2 | -2 | +1 |
+| `tre-jornada` | +2 | +1 | +2 | +1 | +2 | +2 | +2 | -1 | +2 | -2 | +2 | +2 | -2 |
+| `tre-acomiadament` | +2 | +1 | +2 | +1 | +2 | +2 | +1 | 0 | +2 | -1 | +1 | +1 | -1 |
+| `tre-smi-autonomic` | +2 | · | · | +2 | +2 | +2 | -1 | +2 | · | -2 | 0 | -1 | -2 |
+| `fis-irpf-inflacio` | +2 | +1 | 0 | 0 | -1 | -1 | -1 | +2 | -1 | +2 | 0 | 0 | +1 |
+| `fis-successions` | -1 | +1 | -2 | · | · | -1 | -2 | +2 | · | +2 | -1 | -1 | +2 |
+| `fis-energetiques` | +2 | 0 | +1 | -1 | +2 | +2 | +2 | -1 | +2 | -1 | 0 | 0 | -1 |
+| `ene-nuclear` | -1 | -1 | -2 | -1 | -2 | -1 | -2 | +1 | -2 | +2 | -2 | -2 | +2 |
+| `ene-empresa-publica` | +1 | -1 | +2 | -1 | 0 | +1 | +1 | -1 | +2 | -1 | 0 | 0 | -1 |
+| `ene-transvasaments` | -1 | -1 | 0 | -1 | -1 | -1 | -1 | -1 | -1 | 0 | -1 | -1 | +2 |
+| `edu-concerts` | -2 | · | -1 | +1 | -1 | · | -1 | +1 | -2 | +2 | -1 | -1 | +1 |
+| `edu-castella` | -2 | · | -1 | · | -1 | -2 | -1 | -2 | · | +1 | -1 | · | +1 |
+| `edu-universitats-privades` | +1 | · | +1 | -1 | +1 | +2 | +2 | · | +2 | -1 | +2 | +2 | · |
+| `san-gestio-publica` | +2 | · | +2 | · | +2 | +1 | +2 | -1 | +2 | -1 | +2 | +2 | -1 |
+| `san-muface` | -1 | · | -1 | 0 | · | · | -2 | · | -2 | +2 | +1 | +1 | +2 |
+| `san-avortament` | +1 | +1 | +1 | +1 | +1 | +1 | +2 | +1 | +2 | -2 | +2 | +2 | -1 |
+| `ter-referendum` | +1 | -2 | +1 | +1 | +1 | +2 | +1 | +1 | +1 | -1 | -2 | -1 | -1 |
+| `ter-immigracio` | +1 | +1 | 0 | +1 | +1 | +2 | +1 | +2 | -1 | -1 | +2 | +2 | -1 |
+| `ter-amnistia` | -2 | +1 | -2 | -2 | -2 | -2 | -2 | -1 | -2 | +2 | -2 | -2 | +1 |
+| `dre-regularitzacio` | +1 | +1 | +1 | +1 | +1 | +1 | +1 | -2 | +1 | -2 | +2 | +2 | -2 |
+| `dre-multireincidencia` | -2 | 0 | -2 | +1 | -2 | 0 | -2 | +2 | -2 | +1 | +2 | +2 | +2 |
+| `dre-memoria` | -1 | -1 | -1 | -2 | -2 | -1 | -2 | -1 | -2 | +2 | -1 | -1 | +1 |
+
+**Per revisar:** PSOE `hab-renovacio` (+1, el programa parla d'estabilitat però no d'indemnitzar), ERC `edu-universitats-privades` (+2, els requisits són per a totes les universitats noves), Junts `tre-jornada` i `fis-energetiques` (surten de l'annex de balanç de la legislatura, no de compromisos).
+
 ## Posicions (fase 1, 17/10/2026)
 
 Les 13 candidatures provisionals tenen posició sobre les 24 afirmacions (312 cel·les): 290 amb valor i 22 «no s'hi pronuncia». Cap partit havia publicat encara el programa del 29-N.

@@ -1,6 +1,6 @@
 # Eleccions generals del 29 de novembre de 2026: estat de les dades
 
-Elecció real, convocada pel Real Decret 806/2026, de 5 d'octubre ([BOE núm. 248, de 6 d'octubre de 2026](https://www.boe.es/boe/dias/2026/10/06/pdfs/BOE-A-2026-20742.pdf)). Des del 17/10 està en **mode brúixola** (`"status": "preview"`, `"reveal": "2026-11-03"`): es pot jugar i el resultat mostra només la posició als eixos; les respostes es desen al dispositiu. Per revelar les candidatures, canviar `status` a `open` quan les dades estiguin completes (i ajustar `reveal` si la data es mou).
+Elecció real, convocada pel Real Decret 806/2026, de 5 d'octubre ([BOE núm. 248, de 6 d'octubre de 2026](https://www.boe.es/boe/dias/2026/10/06/pdfs/BOE-A-2026-20742.pdf)). **Oberta** (`"status": "open"`) des del 24/11/2026: candidatures proclamades al BOE i posicions confirmades amb els programes del 29-N. Del 17/10 al 24/11 va estar en mode brúixola; qui hi va jugar troba les respostes desades i, en tornar, veu «Ja pots obrir el teu vot».
 
 ## Calendari
 
@@ -15,31 +15,29 @@ Elecció real, convocada pel Real Decret 806/2026, de 5 d'octubre ([BOE núm. 24
 
 Les dates de candidatures surten dels terminis de la LOREG comptats des del 6 d'octubre. Cal contrastar-les amb el [calendari oficial de la Junta Electoral Central](https://www.juntaelectoralcentral.es/cs/jec/eleccionesEnCurso/Elecciones_generales_2026).
 
-## Candidatures (esquelet provisional)
+## Candidatures (proclamades, BOE del 3/11/2026)
 
-> Segons la premsa, Podem no es presentarà a Catalunya: el 12/10/2026 va pactar donar-hi suport a ERC. Cal confirmar-ho amb les candidatures proclamades i, si és així, treure les províncies catalanes de `podemos.json`.
+Font: [BOE-A-2026-23103](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-23103). Una candidatura és el que surt a la papereta; les federacions del PSOE (PSE-EE, PSdeG, PSIB, PSN) i les marques territorials del Frente Amplio fora de Catalunya van dins de la candidatura principal.
 
-Criteri de l'esquelet: partits amb representació al Congrés a la XV legislatura que han anunciat que es presenten, segons la premsa i la [Viquipèdia](https://es.wikipedia.org/wiki/Elecciones_generales_de_Espa%C3%B1a_de_2026) a 16 d'octubre de 2026. **No és la llista oficial.** Totes porten `"provisional": true`, sense fonts ni posicions.
+| Fitxer | Candidatura | Circumscripcions |
+|---|---|---|
+| `pp.json` | Partido Popular | Totes menys Navarra |
+| `upn-pp.json` | UPN en coalició amb el PP | Navarra (posicions i programa del PP) |
+| `psoe.json` | PSOE | Totes menys Catalunya |
+| `psc.json` | PSC-PSOE | Catalunya (programa del PSOE: el PSC no en publica de propi) |
+| `vox.json` | Vox | Totes |
+| `frente-amplio.json` | Frente Amplio (IU, Sumar, Más Madrid, CHA…) | 40, sense Terol, Ceuta, Melilla, la Comunitat Valenciana, Canàries ni Catalunya |
+| `comuns-front-ampli.json` | Comuns-Front Ampli | Catalunya (posicions i programa del Frente Amplio) |
+| `podemos.json` | Podemos | 41, sense Catalunya, Balears, Melilla, la Comunitat Valenciana (va dins de Compromís) ni Canàries (dins d'UPC) |
+| `erc.json` | ERC | Catalunya |
+| `junts.json` | Junts per Catalunya | Catalunya |
+| `eh-bildu.json` | EH Bildu (a Navarra, EH Bildu-ERC) | País Basc i Navarra |
+| `eaj-pnv.json` | EAJ-PNV | País Basc (a Navarra hi ha Geroa Bai, a part) |
+| `bng.json` | BNG | Galícia |
+| `compromis.json` | Compromís: Front Valencià (amb EUPV, Podem i ERPV) | Comunitat Valenciana |
+| `cc.json` | Coalición Canaria (amb Municipalistas Primero Canarias) | Canàries |
 
-| Fitxer | Candidatura | Circumscripcions | Pendent de confirmar |
-|---|---|---|---|
-| `pp.json` | Partido Popular | Totes | Coalicions amb PAR (Aragó) i UPN (Navarra): nom a cada província |
-| `psoe.json` | PSOE | Totes menys Catalunya | |
-| `psc.json` | PSC | Catalunya | Nom oficial (PSC-PSOE?) |
-| `vox.json` | Vox | Totes | |
-| `frente-amplio.json` | Frente Amplio | Totes | Integrants i noms territorials (Comuns a Catalunya, Más Madrid…) |
-| `podemos.json` | Podemos | Totes | Coalició amb Alianza Verde |
-| `erc.json` | ERC | Catalunya | |
-| `junts.json` | Junts per Catalunya | Catalunya | Integrants (DC, MEScat) |
-| `eh-bildu.json` | EH Bildu | País Basc i Navarra | |
-| `eaj-pnv.json` | EAJ-PNV | País Basc | Navarra (Geroa Bai?) |
-| `bng.json` | BNG | Galícia | |
-| `compromis.json` | Compromís | Comunitat Valenciana | Nom oficial (Compromís-Front Valencià?) |
-| `cc.json` | Coalición Canaria | Canàries | |
-
-Els colors són provisionals i només apareixen a la pantalla de resultats.
-
-Altres formacions anunciades sense representació al Congrés (Se Acabó La Fiesta, PACMA, Democracia 21, Escaños en Blanco, Adelante Andalucía, Drago Canarias…): cal decidir el criteri per incloure-les quan es proclamin les candidatures.
+**No incloses:** candidatures sense representació a la XV legislatura. Les enquestes de novembre donen opcions d'escó a Adelante Andalucía (unes 3 escons de mitjana) i a Unidad del Pueblo Canario (NC-BC, Podemos, IU i Sumar), però cap de les dues ha publicat un programa amb què codificar les posicions. Se Acabó La Fiesta es presenta a 46 circumscripcions i les enquestes li donen 0 escons.
 
 ## Afirmacions
 
@@ -51,21 +49,14 @@ L'avançament electoral el va provocar la derogació dels dos decrets llei d'hab
 
 El simulador de mandat necessita el cost de cada afirmació (`budget`, amb `budgetSource` d'una font neutral com l'AIReF) i les fonts de finançament (`funding` a `election.json`), amb la posició de cada candidatura sobre cada font. Cap de les 24 afirmacions té avui una estimació neutral citable, així que la primera versió s'obrirà **sense** simulador: sense fonts, el joc no demana finançament.
 
-## Pla
+## Fets
 
-Decidit el 17/10/2026:
-1. **Fins al 26/10:** afirmacions i primera versió de les posicions (fet el 17/10: 312 posicions de 13 candidatures, a partir de votacions de la XV legislatura, programes del 2023 i declaracions; metodologia, matriu i cel·les dubtoses a `AFIRMACIONS.md`).
-2. **3/11:** candidatures proclamades al BOE.
-3. **Quan es publiquin els programes del 29-N:** confirmar o corregir cada posició amb el programa i la pàgina.
-4. **Abans del 13/11:** revisió humana i obertura.
+1. Fase 1 (17/10): 24 afirmacions i 312 posicions a partir de votacions del Congrés, programes del 2023 i declaracions.
+2. Fase 2 (24/11): candidatures proclamades al BOE del 3/11.
+3. Fase 3 (24/11): posicions confirmades o corregides amb els programes del 29-N (vegeu `AFIRMACIONS.md`).
 
-A finals d'octubre s'enviaran les 24 afirmacions a cada partit perquè hi respongui, com fan altres orientadors de vot; la seva resposta es publicarà al costat de la nostra codificació.
+## Pendent
 
-## Per poder obrir l'elecció
-
-1. Substituir l'esquelet per les candidatures proclamades (BOE del 3 de novembre) i posar `"provisional": false`.
-2. Afegir el programa de cada candidatura a `sources` i codificar-ne les posicions amb pàgina o URL (vegeu `DATA_GUIDE.md`).
-3. Revisar les afirmacions.
-4. Canviar `"status"` a `"open"`. A partir d'aquí, la validació exigeix que cada candidatura tingui fonts i una posició per a cada afirmació.
-
-Hi ha una revisió programada el 3 de novembre de 2026 que farà el pas 1 en una branca local.
+- Revisió humana de les cel·les marcades a `AFIRMACIONS.md` (fase 3).
+- Enviar les posicions a cada partit perquè les pugui revisar.
+- Després del 29-N: passar l'elecció a `archived` o deixar-la oberta com a consulta.

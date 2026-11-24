@@ -69,6 +69,8 @@ export const Source = z.object({
   url: z.url(),
   date: z.iso.date(),
   lang: z.string().min(2), // idioma del document, per marcar les cites
+  // tipus de font, per etiquetar cada posició al resultat: programa electoral, votació parlamentària o una altra
+  kind: z.enum(["program", "vote", "other"]).optional(),
 });
 
 export const Position = z

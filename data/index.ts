@@ -27,6 +27,8 @@ import g26EajPnv from "./elections/generals-2026/candidacies/eaj-pnv.json";
 import g26Bng from "./elections/generals-2026/candidacies/bng.json";
 import g26Compromis from "./elections/generals-2026/candidacies/compromis.json";
 import g26Cc from "./elections/generals-2026/candidacies/cc.json";
+import g26UpnPp from "./elections/generals-2026/candidacies/upn-pp.json";
+import g26Comuns from "./elections/generals-2026/candidacies/comuns-front-ampli.json";
 
 export const RAW = {
   territory,
@@ -36,7 +38,7 @@ export const RAW = {
     {
       election: g26,
       questions: g26Questions,
-      candidacies: [g26Pp, g26Psoe, g26Psc, g26Vox, g26FrenteAmplio, g26Podemos, g26Erc, g26Junts, g26EhBildu, g26EajPnv, g26Bng, g26Compromis, g26Cc],
+      candidacies: [g26Pp, g26Psoe, g26Psc, g26Vox, g26FrenteAmplio, g26Podemos, g26Erc, g26Junts, g26EhBildu, g26EajPnv, g26Bng, g26Compromis, g26Cc, g26UpnPp, g26Comuns],
     },
   ],
 };

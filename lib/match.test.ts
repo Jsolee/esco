@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { axesOf, dhondt, match, MIN_COVERAGE, seededShuffle } from "./match";
+import { axesOf, byTopic, dhondt, match, MIN_COVERAGE, seededShuffle } from "./match";
 import type { Answer, Candidacy, Question } from "./schema";
 
 const q = (id: string, topic = "t1", axes: Question["axes"] = { economic: 1 }): Question => ({
@@ -150,5 +150,16 @@ describe("dhondt", () => {
   it("reparteix tots els escons i afavoreix lleugerament els grans", () => {
     const seats = dhondt([{ id: "a", votes: 340 }, { id: "b", votes: 280 }, { id: "c", votes: 160 }, { id: "d", votes: 60 }], 7);
     expect(seats).toEqual({ a: 3, b: 3, c: 1, d: 0 });
+  });
+});
+
+describe("byTopic", () => {
+  it("dona el millor de cada tema votat, amb empats, i salta els temes sense vots", () => {
+    const x = party("x", { a: 2, b: 2, c: 2, d: -2 });
+    const y = party("y", { a: 2, b: 2, c: 2, d: 2 });
+    const out = byTopic({ questions: Q, answers: { a: 1, b: 1, c: null }, candidacies: [x, y], order: ["x", "y"] });
+    expect(out).toEqual([{ topic: "t1", voted: 2, best: [expect.objectContaining({ id: "x", affinity: 100 }), expect.objectContaining({ id: "y", affinity: 100 })] }]);
+    const t2 = byTopic({ questions: Q, answers: { d: 1 }, candidacies: [x, y], order: ["x", "y"] });
+    expect(t2.map((t) => [t.topic, t.best.map((b) => b.id)])).toEqual([["t2", ["y"]]]);
   });
 });

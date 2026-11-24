@@ -61,7 +61,7 @@ export default async function ElectionPage({ params }: PageProps<"/[locale]/[ele
       members: c.members,
       circumscriptions: c.circumscriptions,
       positions: c.positions as GameData["candidacies"][number]["positions"],
-      sources: Object.fromEntries(c.sources.map((s) => [s.id, { title: s.title, url: s.url, lang: s.lang }])),
+      sources: Object.fromEntries(c.sources.map((s) => [s.id, { title: s.title, url: s.url, lang: s.lang, kind: s.kind, date: s.date }])),
       axes: axesOf([...e.questions, ...e.election.funding], positionsOf(c), 0.5),
     })),
     provinces: DATA.territory.provinces

@@ -1,0 +1,322 @@
+{
+  "id": "comuns-front-ampli",
+  "name": "Comuns-Front Ampli",
+  "short": "Comuns",
+  "color": "#E5005A",
+  "members": [
+    "Catalunya en Comú",
+    "Esquerra Unida i Alternativa",
+    "Movimiento Sumar"
+  ],
+  "provisional": false,
+  "circumscriptions": [
+    "08",
+    "17",
+    "25",
+    "43"
+  ],
+  "sources": [
+    {
+      "id": "programa-29n",
+      "title": "Programa electoral Frente Amplio. Elecciones generales 29N 2026 (web: «Un programa como una casa. Un programa para recuperar el derecho al futuro»)",
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf",
+      "date": "2026-11-23",
+      "lang": "es",
+      "kind": "program"
+    },
+    {
+      "id": "congreso-20261002-hab-renovacio",
+      "title": "Congreso, 2/10/2026. Votó sí: convalidación del Real Decreto-ley 27/2026 (renovación de alquileres)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF",
+      "date": "2026-10-02",
+      "lang": "es",
+      "kind": "vote"
+    },
+    {
+      "id": "congreso-20260519-hab-desallotjament",
+      "title": "Congreso, 19/5/2026. Votó no: toma en consideración de la ley del PP contra la ocupación ilegal",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf",
+      "date": "2026-05-19",
+      "lang": "es",
+      "kind": "vote"
+    },
+    {
+      "id": "congreso-20260421-hab-zones-tensionades",
+      "title": "Congreso, 21/4/2026. Votó no: toma en consideración de la ley del PP que deroga las zonas de mercado tensionado",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf",
+      "date": "2026-04-21",
+      "lang": "es",
+      "kind": "vote"
+    },
+    {
+      "id": "congreso-20250910-tre-jornada",
+      "title": "Congreso, 10/9/2025. Votó no: enmiendas a la totalidad (devolución) al proyecto de ley de reducción de la jornada a 37,5 horas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf",
+      "date": "2025-09-10",
+      "lang": "es",
+      "kind": "vote"
+    },
+    {
+      "id": "congreso-20250917-tre-acomiadament",
+      "title": "Congreso, 17/9/2025. Votó sí: proposición no de ley de Sumar por un despido «restaurativo y disuasorio»",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf",
+      "date": "2025-09-17",
+      "lang": "es",
+      "kind": "vote"
+    },
+    {
+      "id": "congreso-20251113-fis-irpf-inflacio",
+      "title": "Congreso, 13/11/2025. Votó no: moción del PP que pide deflactar al menos tres tramos del IRPF",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf",
+      "date": "2025-11-13",
+      "lang": "es",
+      "kind": "vote"
+    },
+    {
+      "id": "congreso-20260930-fis-energetiques",
+      "title": "Congreso, 30/9/2026. Votó sí: moción de Podemos, punto 1: impuesto permanente a energéticas y petroleras",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf",
+      "date": "2026-09-30",
+      "lang": "es",
+      "kind": "vote"
+    },
+    {
+      "id": "congreso-20250617-ene-nuclear",
+      "title": "Congreso, 17/6/2025. Votó no: toma en consideración de la ley del PP para mantener la energía nuclear",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf",
+      "date": "2025-06-17",
+      "lang": "es",
+      "kind": "vote"
+    },
+    {
+      "id": "congreso-20260930-ene-empresa-publica",
+      "title": "Congreso, 30/9/2026. Votó sí: moción de Podemos, punto 3: empresa pública de energía",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf",
+      "date": "2026-09-30",
+      "lang": "es",
+      "kind": "vote"
+    },
+    {
+      "id": "congreso-20240423-ene-transvasaments",
+      "title": "Congreso, 23/4/2024. Votó no: moción de Vox, punto 2: Plan Nacional del Agua con interconexión de cuencas",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf",
+      "date": "2024-04-23",
+      "lang": "es",
+      "kind": "vote"
+    },
+    {
+      "id": "congreso-20260430-san-avortament",
+      "title": "Congreso, 30/4/2026. Votó no: enmiendas a la totalidad (devolución) a la reforma del artículo 43 de la Constitución (aborto)",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf",
+      "date": "2026-04-30",
+      "lang": "es",
+      "kind": "vote"
+    },
+    {
+      "id": "congreso-20250923-ter-immigracio",
+      "title": "Congreso, 23/9/2025. Votó sí: toma en consideración de la ley de delegación en Cataluña de competencias de inmigración",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf",
+      "date": "2025-09-23",
+      "lang": "es",
+      "kind": "vote"
+    },
+    {
+      "id": "congreso-20240530-ter-amnistia",
+      "title": "Congreso, 30/5/2024. Votó sí: votación final de la Ley de Amnistía (levantamiento del veto del Senado)",
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF",
+      "date": "2024-05-30",
+      "lang": "es",
+      "kind": "vote"
+    },
+    {
+      "id": "congreso-20260212-dre-multireincidencia",
+      "title": "Congreso, 12/2/2026. Votó no: votación final de la ley orgánica de multirreincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf",
+      "date": "2026-02-12",
+      "lang": "es",
+      "kind": "vote"
+    },
+    {
+      "id": "diaz-smi-2026",
+      "title": "NacióDigital: El govern espanyol tanca la porta a un salari mínim català (declaracions de Yolanda Díaz a TVE)",
+      "url": "https://naciodigital.cat/politica/el-govern-espanyol-tanca-la-porta-a-un-salari-minim-catala.html",
+      "date": "2026-01-30",
+      "lang": "ca",
+      "kind": "other"
+    },
+    {
+      "id": "programa-2023",
+      "title": "Programa electoral de SUMAR, elecciones generales 2023 («Un programa para ti»)",
+      "url": "https://movimientosumar.es/wp-content/uploads/2023/07/Un-Programa-para-ti.pdf",
+      "date": "2023-07-10",
+      "lang": "es",
+      "kind": "program"
+    },
+    {
+      "id": "llei-8-2022-3cat",
+      "title": "3Cat: Què diu la nova llei del català a l'escola: sense percentatges i amb criteris pedagògics (Llei 8/2022 pactada per PSC, ERC, Junts i En Comú Podem)",
+      "url": "https://www.3cat.cat/3catinfo/que-diu-la-nova-llei-del-catala-a-lescola-sense-percentatges-i-amb-criteris-pedagogics/noticia-amp/3166030/",
+      "date": "2022-05-24",
+      "lang": "ca",
+      "kind": "other"
+    }
+  ],
+  "positions": {
+    "hab-renovacio": {
+      "value": 2,
+      "source": "programa-29n",
+      "page": 14,
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=14",
+      "quote": "exigiendo un preaviso legal de 6 meses para la no renovación y una indemnización de 12 mensualidades a cargo del arrendador si este incumple los estrictos supuestos legales fijados para rescindir el contrato."
+    },
+    "hab-desallotjament": {
+      "value": -1,
+      "source": "congreso-20260519-hab-desallotjament",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf"
+    },
+    "hab-zones-tensionades": {
+      "value": -2,
+      "source": "programa-29n",
+      "page": 13,
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=13",
+      "quote": "Limitaremos por ley el precio del alquiler residencial en todas las zonas tensionadas"
+    },
+    "tre-jornada": {
+      "value": 2,
+      "source": "programa-29n",
+      "page": 63,
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=63",
+      "quote": "Implantación inmediata a 37,5 horas en 2026 y 35 horas en el sector público"
+    },
+    "tre-acomiadament": {
+      "value": 1,
+      "source": "programa-29n",
+      "page": 60,
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=60",
+      "quote": "Reformaremos la indemnización por despido improcedente para que repare el daño real causado a la persona trabajadora y disuada de los despidos injustificados"
+    },
+    "tre-smi-autonomic": {
+      "value": -1,
+      "source": "diaz-smi-2026",
+      "url": "https://naciodigital.cat/politica/el-govern-espanyol-tanca-la-porta-a-un-salari-minim-catala.html",
+      "quote": "La vicepresidenta segona del govern espanyol, Yolanda Díaz, ha defensat aquest divendres que el salari mínim interprofessional no variï en funció de cada comunitat autònoma."
+    },
+    "fis-irpf-inflacio": {
+      "value": -1,
+      "source": "congreso-20251113-fis-irpf-inflacio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf"
+    },
+    "fis-successions": {
+      "value": -2,
+      "source": "programa-29n",
+      "page": 112,
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=112",
+      "quote": "el de Sucesiones y Donaciones por un valor normativo actualizado. Además, fijaremos por ley un mínimo común de tributación en ambos impuestos en todo el territorio."
+    },
+    "fis-energetiques": {
+      "value": 2,
+      "source": "programa-29n",
+      "page": 51,
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=51",
+      "quote": "Recuperación con carácter estructural del gravamen especial del 1,2 % sobre la cifra de negocios de los grandes operadores y empresas energéticas que actúan en España."
+    },
+    "ene-nuclear": {
+      "value": -2,
+      "source": "programa-29n",
+      "page": 71,
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=71",
+      "quote": "Cumpliremos el calendario de cierre de las centrales nucleares. Almaraz I y II cerrarán en los plazos previstos (2027-2028)"
+    },
+    "ene-empresa-publica": {
+      "value": 1,
+      "source": "programa-29n",
+      "page": 70,
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=70",
+      "quote": "Crearemos una comercializadora pública de referencia, que distribuya energía a los hogares y rompa el oligopolio y su integración vertical."
+    },
+    "ene-transvasaments": {
+      "value": -1,
+      "source": "congreso-20240423-ene-transvasaments",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf"
+    },
+    "edu-concerts": {
+      "value": -1,
+      "source": "programa-29n",
+      "page": 31,
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=31",
+      "quote": "En el periodo de coexistencia con centros concertados se prohibirán de forma inmediata las cuotas obligatorias en centros sostenidos con fondos públicos, sancionando incumplimientos. El objetivo es que el 100 % de los fondos públicos vayan destinados a la educación pública."
+    },
+    "edu-castella": {
+      "value": -1,
+      "source": "programa-29n",
+      "page": 32,
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=32",
+      "quote": "garantizando la inmersión lingüística en catalán como lengua vehicular en Cataluña."
+    },
+    "edu-universitats-privades": {
+      "value": 2,
+      "source": "programa-29n",
+      "page": 33,
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=33",
+      "quote": "Aprobaremos normativa estatal que exija a la universidad privada requisitos de funcionamiento docente e investigador idénticos a la pública, junto con auditorías de calidad periódicas por la ANECA con facultad sancionadora"
+    },
+    "san-gestio-publica": {
+      "value": 2,
+      "source": "programa-29n",
+      "page": 26,
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=26",
+      "quote": "Derogaremos expresamente la Ley 15/1997, sobre habilitación de nuevas formas de gestión del SNS, que había abierto la puerta a la colaboración con entidades privadas, y los modelos de gestión indirecta pasarán a ser estrictamente excepcionales."
+    },
+    "san-muface": {
+      "value": -2,
+      "source": "programa-29n",
+      "page": 27,
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=27",
+      "quote": "Integración de mutuas de funcionariado (MUFACE/MUGEJU/ISFAS): Aplicaremos el plan propuesto para la integración definitiva de todas las mutuas de funcionarios al Sistema Nacional de Salud."
+    },
+    "san-avortament": {
+      "value": 2,
+      "source": "programa-29n",
+      "page": 28,
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=28",
+      "quote": "Reformaremos el artículo 43 de la Constitución para incluir el derecho al aborto"
+    },
+    "ter-referendum": {
+      "value": 1,
+      "source": "programa-29n",
+      "page": 147,
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=147",
+      "quote": "impulsar el cambio de modelo territorial establecido en la Constitución, en un sentido federal y plurinacional incluyendo el derecho a decidir mediante referéndum para resolver definitivamente la cuestión territorial."
+    },
+    "ter-immigracio": {
+      "value": 1,
+      "source": "congreso-20250923-ter-immigracio",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf"
+    },
+    "ter-amnistia": {
+      "value": -2,
+      "source": "congreso-20240530-ter-amnistia",
+      "page": 25,
+      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF#page=25"
+    },
+    "dre-regularitzacio": {
+      "value": 1,
+      "source": "programa-29n",
+      "page": 133,
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=133",
+      "quote": "Culminar la regularización extraordinaria de 2026: Resolveremos todas las solicitudes con medios suficientes"
+    },
+    "dre-multireincidencia": {
+      "value": -2,
+      "source": "congreso-20260212-dre-multireincidencia",
+      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf"
+    },
+    "dre-memoria": {
+      "value": -2,
+      "source": "programa-29n",
+      "page": 153,
+      "url": "https://frenteamplio.info/pdf/ProgramaFrenteAmplio.pdf#page=153",
+      "quote": "Desarrollo reglamentario de la Ley de Memoria Democrática que recoja el derecho a la reparación de todas las víctimas de la dictadura franquista"
+    }
+  }
+}

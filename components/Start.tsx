@@ -196,6 +196,7 @@ export function Start({
                 <span className="flex flex-wrap items-center gap-2">
                   <span className="kicker rounded-full border border-current px-2.5 py-1">{m.start.status[e.status]}</span>
                   {e.fictional && <span className="kicker rounded-full border border-dashed border-current px-2.5 py-1">{m.start.fictional}</span>}
+                  {!e.fictional && <DaysLeft date={e.date} />}
                 </span>
                 <span className="font-serif text-3xl leading-tight">{e.name}</span>
                 <span className="text-sm opacity-80">
@@ -215,4 +216,14 @@ export function Start({
       )}
     </div>
   );
+}
+
+// Compte enrere fins al dia de la votació (només eleccions reals, durant els dos últims mesos).
+function DaysLeft({ date }: { date: string }) {
+  const { m } = useI18n();
+  const today = new Date();
+  const days = Math.round((Date.parse(date) - Date.UTC(today.getFullYear(), today.getMonth(), today.getDate())) / 86_400_000);
+  if (days < 0 || days > 60) return null;
+  const text = days === 0 ? m.start.today : format(days === 1 ? m.start.daysLeft.one : m.start.daysLeft.other, { n: days });
+  return <span className="kicker rounded-full bg-chalk px-2.5 py-1 text-stage group-hover:bg-stage group-hover:text-chalk">{text}</span>;
 }

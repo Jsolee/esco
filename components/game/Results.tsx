@@ -5,7 +5,7 @@ import { useMemo, useRef, useState } from "react";
 import { gsap, reducedMotion, sfx, SplitText, useGSAP } from "@/lib/fx";
 import { balanceOf, fundingAnswers, usedOf, weightOf, type Alloc } from "@/lib/budget";
 import type { GameData, GCandidacy, GFunding, GQuestion } from "@/lib/game";
-import { dhondt, match, type Answers } from "@/lib/match";
+import { byTopic, dhondt, match, type Answers } from "@/lib/match";
 import type { Answer } from "@/lib/schema";
 import { encodeShare } from "@/lib/share";
 import { format } from "@/lib/text";
@@ -61,6 +61,10 @@ export function Results({
         order: candidacies.map((c) => c.id),
       }),
     [order, data.funding, answers, fundAnswers, tokens, red, candidacies],
+  );
+  const topics = useMemo(
+    () => byTopic({ questions: order, answers, red, candidacies, order: candidacies.map((c) => c.id) }),
+    [order, answers, red, candidacies],
   );
   const voted = order.filter((q) => typeof answers[q.id] === "number").length;
   const top = result.ranked.filter((x) => x.rank === 1);
@@ -254,6 +258,43 @@ export function Results({
           </section>
         )}
 
+        {result.ranked.length > 0 && topics.length > 0 && (
+          <section className="reveal mt-16 grid gap-8 lg:grid-cols-[1fr_1.4fr]" aria-labelledby="res-tp">
+            <div className="grid content-start gap-3">
+              <h2 id="res-tp" className="font-serif text-3xl">
+                {r.topicsTitle}
+              </h2>
+              <p className="max-w-[46ch] text-ink-2">{r.topicsText}</p>
+            </div>
+            <ul className="border-t-2 border-ink">
+              {topics.map((t) => (
+                <li key={t.topic} className="grid gap-1.5 border-b border-rule py-4 sm:grid-cols-[11rem_minmax(0,1fr)] sm:items-baseline sm:gap-4">
+                  <p>
+                    <span className="font-semibold">{data.topics.find((x) => x.id === t.topic)?.name ?? t.topic}</span>
+                    <span className="block text-xs text-ink-3">{format(t.voted === 1 ? r.topicVoted.one : r.topicVoted.other, { n: t.voted })}</span>
+                  </p>
+                  <p className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                    {t.best.length > 3 ? (
+                      <span className="text-ink-2">{format(r.topicTie, { n: t.best.length })}</span>
+                    ) : (
+                      t.best.map((b) => (
+                        <span key={b.id} className="inline-flex items-center gap-2">
+                          <span aria-hidden className="size-2.5 rounded-full" style={{ background: byId[b.id].color }} />
+                          <span className="font-medium">{byId[b.id].name.length > 22 ? byId[b.id].short : byId[b.id].name}</span>
+                        </span>
+                      ))
+                    )}
+                    <span className="num ml-auto font-serif text-2xl font-light">
+                      {t.best[0].affinity}
+                      <span className="text-[0.55em]">%</span>
+                    </span>
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         {result.insufficient.length > 0 && voted > 0 && (
           <section className="reveal mt-10 grid gap-2" aria-labelledby="res-in">
             <h2 id="res-in" className="kicker text-ink-2">
@@ -389,6 +430,8 @@ function Mandate({ order, answers, alloc, funding }: { order: GQuestion[]; answe
   );
 }
 
+const ROW = "border-b border-rule align-top max-sm:grid max-sm:py-2";
+
 function Comparison({
   c,
   order,
@@ -407,14 +450,17 @@ function Comparison({
   const { m } = useI18n();
   const r = m.results;
   const label = (v: Answer) => m.game.votes[String(v) as "0"];
+  const kindOf = (s: GCandidacy["sources"][string]) =>
+    s.kind === "program" ? format(r.kind.program, { year: s.date.slice(0, 4) }) : s.kind ? r.kind[s.kind] : "";
   return (
     <details className="group">
       <summary className="inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm font-medium text-ink-2 hover:text-ink">
         {r.compare} <span aria-hidden className="transition group-open:rotate-90">›</span>
       </summary>
       <div className="overflow-x-auto">
-        <table className="mt-2 w-full min-w-[40rem] border-collapse text-sm">
-          <thead>
+        {/* En mòbil cada fila és una fitxa: l'afirmació a dalt, tu i la candidatura al costat, i la font a sota. */}
+        <table className="mt-2 w-full border-collapse text-sm max-sm:block sm:min-w-[40rem]">
+          <thead className="max-sm:hidden">
             <tr className="border-b border-ink text-left">
               <th scope="col" className="py-2 pr-4 font-semibold">{r.colStatement}</th>
               <th scope="col" className="py-2 pr-4 font-semibold">{r.colYou}</th>
@@ -422,24 +468,27 @@ function Comparison({
               <th scope="col" className="py-2 font-semibold">{r.colSource}</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="max-sm:block">
             {order.map((q) => {
               const a = answers[q.id];
               const p = c.positions[q.id];
               const src = p && c.sources[p.source];
               return (
-                <tr key={q.id} className="border-b border-rule align-top">
-                  <td className="max-w-[24rem] py-3 pr-4">
+                <tr key={q.id} className={ROW}>
+                  <td className="py-3 pr-4 max-sm:pb-1 sm:max-w-[24rem]">
                     {q.text}
                     {red.includes(q.id) && <span className="kicker mt-1 block text-ink">⊘ {r.redRow}</span>}
                   </td>
-                  <td className="py-3 pr-4">
+                  <td className="py-3 pr-4 max-sm:py-1">
+                    <span className="kicker mr-2 inline-block min-w-12 text-ink-3 sm:hidden">{r.colYou}</span>
                     {typeof a === "number" ? <ScaleGlyph value={a} label={label(a)} /> : <span className="text-ink-3">{a === null ? r.skipped : "—"}</span>}
                   </td>
-                  <td className="py-3 pr-4">
+                  <td className="py-3 pr-4 max-sm:py-1">
+                    <span className="kicker mr-2 inline-block min-w-12 text-ink-3 sm:hidden">{c.short}</span>
                     {p && p.value !== null ? <ScaleGlyph value={p.value} label={label(p.value)} /> : <span className="text-ink-3">{r.noPosition}</span>}
                   </td>
-                  <td className="py-3">
+                  <td className="py-3 max-sm:pt-1">
+                    {src?.kind && <span className="kicker mb-1 block text-ink-3">{kindOf(src)}</span>}
                     {src &&
                       (p.value !== null ? (
                         <a href={p.url ?? src.url} target="_blank" rel="noopener noreferrer" className="underline decoration-ink-3 underline-offset-4 hover:decoration-ink">
@@ -470,13 +519,16 @@ function Comparison({
               const p = c.positions[f.id];
               const src = p && c.sources[p.source];
               return (
-                <tr key={f.id} className="border-b border-rule align-top">
-                  <td className="max-w-[24rem] py-3 pr-4">{f.name}</td>
-                  <td className="py-3 pr-4">{typeof a === "number" ? <ScaleGlyph value={a} label={r.usedYes} /> : <span className="text-ink-3">—</span>}</td>
-                  <td className="py-3 pr-4">
+                <tr key={f.id} className={ROW}>
+                  <td className="py-3 pr-4 max-sm:pb-1 sm:max-w-[24rem]">{f.name}</td>
+                  <td className="py-3 pr-4 max-sm:py-1">
+                    <span className="kicker mr-2 inline-block min-w-12 text-ink-3 sm:hidden">{r.colYou}</span>{typeof a === "number" ? <ScaleGlyph value={a} label={r.usedYes} /> : <span className="text-ink-3">—</span>}</td>
+                  <td className="py-3 pr-4 max-sm:py-1">
+                    <span className="kicker mr-2 inline-block min-w-12 text-ink-3 sm:hidden">{c.short}</span>
                     {p && p.value !== null ? <ScaleGlyph value={p.value} label={label(p.value)} /> : <span className="text-ink-3">{r.noPosition}</span>}
                   </td>
-                  <td className="py-3">
+                  <td className="py-3 max-sm:pt-1">
+                    {src?.kind && <span className="kicker mb-1 block text-ink-3">{kindOf(src)}</span>}
                     {src &&
                       (p.value !== null ? (
                         <a href={p.url ?? src.url} target="_blank" rel="noopener noreferrer" className="underline decoration-ink-3 underline-offset-4 hover:decoration-ink">

@@ -1,142 +1,168 @@
 {
   "id": "eh-bildu",
   "name": "Euskal Herria Bildu",
-  "short": "EH BILDU",
+  "short": "EH Bildu",
   "color": "#A3C940",
-  "provisional": true,
+  "provisional": false,
   "circumscriptions": [
     "01",
     "20",
-    "48",
-    "31"
+    "31",
+    "48"
   ],
   "sources": [
+    {
+      "id": "programa-29n",
+      "title": "Programa. Garantía y derechos (EH Bildu, elecciones generales 29N 2026)",
+      "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf",
+      "date": "2026-11-16",
+      "lang": "es",
+      "kind": "program"
+    },
     {
       "id": "congreso-20261002-hab-renovacio",
       "title": "Congreso, 2/10/2026. Votó sí: convalidación del Real Decreto-ley 27/2026 (renovación de alquileres)",
       "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF",
       "date": "2026-10-02",
-      "lang": "es"
+      "lang": "es",
+      "kind": "vote"
     },
     {
       "id": "congreso-20260519-hab-desallotjament",
       "title": "Congreso, 19/5/2026. Votó no: toma en consideración de la ley del PP contra la ocupación ilegal",
       "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion179/20260519/Votacion001/VOT_20260519203459.pdf",
       "date": "2026-05-19",
-      "lang": "es"
+      "lang": "es",
+      "kind": "vote"
     },
     {
       "id": "congreso-20260421-hab-zones-tensionades",
       "title": "Congreso, 21/4/2026. Votó no: toma en consideración de la ley del PP que deroga las zonas de mercado tensionado",
       "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf",
       "date": "2026-04-21",
-      "lang": "es"
+      "lang": "es",
+      "kind": "vote"
     },
     {
       "id": "congreso-20250910-tre-jornada",
       "title": "Congreso, 10/9/2025. Votó no: enmiendas a la totalidad (devolución) al proyecto de ley de reducción de la jornada a 37,5 horas",
       "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf",
       "date": "2025-09-10",
-      "lang": "es"
+      "lang": "es",
+      "kind": "vote"
     },
     {
       "id": "congreso-20250917-tre-acomiadament",
       "title": "Congreso, 17/9/2025. Votó sí: proposición no de ley de Sumar por un despido «restaurativo y disuasorio»",
       "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf",
       "date": "2025-09-17",
-      "lang": "es"
+      "lang": "es",
+      "kind": "vote"
     },
     {
       "id": "congreso-20251113-fis-irpf-inflacio",
       "title": "Congreso, 13/11/2025. Votó no: moción del PP que pide deflactar al menos tres tramos del IRPF",
       "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion146/20251113/Votacion062/VOT_20251113131235.pdf",
       "date": "2025-11-13",
-      "lang": "es"
+      "lang": "es",
+      "kind": "vote"
     },
     {
       "id": "congreso-20260930-fis-energetiques",
       "title": "Congreso, 30/9/2026. Votó sí: moción de Podemos, punto 1: impuesto permanente a energéticas y petroleras",
       "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf",
       "date": "2026-09-30",
-      "lang": "es"
+      "lang": "es",
+      "kind": "vote"
     },
     {
       "id": "congreso-20250617-ene-nuclear",
       "title": "Congreso, 17/6/2025. Votó no: toma en consideración de la ley del PP para mantener la energía nuclear",
       "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf",
       "date": "2025-06-17",
-      "lang": "es"
+      "lang": "es",
+      "kind": "vote"
     },
     {
       "id": "congreso-20260930-ene-empresa-publica",
       "title": "Congreso, 30/9/2026. Se abstuvo: moción de Podemos, punto 3: empresa pública de energía",
       "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion005/VOT_20260930153547.pdf",
       "date": "2026-09-30",
-      "lang": "es"
+      "lang": "es",
+      "kind": "vote"
     },
     {
       "id": "congreso-20240423-ene-transvasaments",
       "title": "Congreso, 23/4/2024. Votó no: moción de Vox, punto 2: Plan Nacional del Agua con interconexión de cuencas",
       "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion036/20240423/Votacion026/VOT_20240423213516.pdf",
       "date": "2024-04-23",
-      "lang": "es"
+      "lang": "es",
+      "kind": "vote"
     },
     {
       "id": "congreso-20260430-san-avortament",
       "title": "Congreso, 30/4/2026. Votó no: enmiendas a la totalidad (devolución) a la reforma del artículo 43 de la Constitución (aborto)",
       "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf",
       "date": "2026-04-30",
-      "lang": "es"
+      "lang": "es",
+      "kind": "vote"
     },
     {
       "id": "congreso-20250923-ter-immigracio",
       "title": "Congreso, 23/9/2025. Votó sí: toma en consideración de la ley de delegación en Cataluña de competencias de inmigración",
       "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion133/20250923/Votacion001/VOT_20250923211046.pdf",
       "date": "2025-09-23",
-      "lang": "es"
+      "lang": "es",
+      "kind": "vote"
     },
     {
       "id": "congreso-20240530-ter-amnistia",
       "title": "Congreso, 30/5/2024. Votó sí: votación final de la Ley de Amnistía (levantamiento del veto del Senado)",
       "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-45.PDF",
       "date": "2024-05-30",
-      "lang": "es"
+      "lang": "es",
+      "kind": "vote"
     },
     {
       "id": "congreso-20260212-dre-multireincidencia",
       "title": "Congreso, 12/2/2026. Votó no: votación final de la ley orgánica de multirreincidencia",
       "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion159/20260212/Votacion023/VOT_20260212114309.pdf",
       "date": "2026-02-12",
-      "lang": "es"
+      "lang": "es",
+      "kind": "vote"
     },
     {
       "id": "compromiso-2023",
       "title": "Compromiso de Euskal Herria Bildu (elecciones generales 23J 2023)",
       "url": "https://ehbildu.eus/dokumentuak/23J-COMPROMISO-DE-EUSKAL-HERRIA-BILDU.pdf",
       "date": "2023-07-06",
-      "lang": "es"
+      "lang": "es",
+      "kind": "other"
     },
     {
       "id": "orain-ley-educacion-2023",
       "title": "Orain/EITB: EH Bildu denuncia que el PNV acepta los modelos lingüísticos y el PSE-EE, a cambio, la concertación universal",
       "url": "https://orain.eus/es/actualidad/sociedad/2023/11/21/eh-bildu-denuncia-que-pnv-acepta-modelos-linguisticos-y-a-cambio-pseee-concertacion-universal/",
       "date": "2023-11-21",
-      "lang": "es"
+      "lang": "es",
+      "kind": "other"
     },
     {
       "id": "efe-pnl-universitats-2025",
       "title": "EFE (via Infobae): El Congreso pide al Gobierno endurecer los criterios para crear nuevas universidades",
       "url": "https://www.infobae.com/espana/agencias/2025/03/13/el-congreso-pide-al-gobierno-endurecer-los-criterios-para-crear-nuevas-universidades/",
       "date": "2025-03-13",
-      "lang": "es"
+      "lang": "es",
+      "kind": "other"
     }
   ],
   "positions": {
     "hab-renovacio": {
-      "value": 2,
-      "source": "congreso-20261002-hab-renovacio",
-      "page": 63,
-      "url": "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-210.PDF#page=63"
+      "value": 1,
+      "source": "programa-29n",
+      "page": 5,
+      "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf#page=5",
+      "quote": "Establecer contratos de arrendamiento ordinarios con prórroga automática como mecanismo para ofrecer estabilidad y seguridad a inquilinas e inquilinos y también a pequeños propietarios."
     },
     "hab-desallotjament": {
       "value": -1,
@@ -145,24 +171,31 @@
     },
     "hab-zones-tensionades": {
       "value": -1,
-      "source": "congreso-20260421-hab-zones-tensionades",
-      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion173/20260421/Votacion001/VOT_20260421201006.pdf"
+      "source": "programa-29n",
+      "page": 5,
+      "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf#page=5",
+      "quote": "Un mecanismo especial de financiación estatal dirigido a ayuntamientos que hayan aplicado y declarado zonas tensionadas, para impulsar el desarrollo de los planes de vivienda locales asociados a la declaración y regulación del alquiler."
     },
     "tre-jornada": {
-      "value": 1,
-      "source": "congreso-20250910-tre-jornada",
-      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion130/20250910/Votacion010/VOT_20250910213533.pdf"
+      "value": 2,
+      "source": "programa-29n",
+      "page": 6,
+      "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf#page=6",
+      "quote": "Reducción de la jornada laboral hasta las 32 horas semanales o la jornada de 4 días sin reducción salarial."
     },
     "tre-acomiadament": {
-      "value": 1,
-      "source": "congreso-20250917-tre-acomiadament",
-      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion132/20250917/Votacion003/VOT_20250917194017.pdf"
+      "value": 2,
+      "source": "programa-29n",
+      "page": 6,
+      "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf#page=6",
+      "quote": "Indemnización por despido improcedente de al menos 45 días, cumpliendo con la resolución del Comité Europeo de Derechos Sociales de establecer indemnizaciones disuasorias y suficientes"
     },
     "tre-smi-autonomic": {
       "value": 2,
-      "source": "compromiso-2023",
-      "page": 3,
-      "quote": "Exigiremos el aumento del SMI hasta los 1.200€, asumiendo además la capacidad para establecer un SMI propio acorde a nuestra realidad"
+      "source": "programa-29n",
+      "page": 6,
+      "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf#page=6",
+      "quote": "Modificación del Estatuto de los Trabajadores para que las CCAA puedan establecer su propio SMI en atención a la realidad socioeconómica constituyendo el SMI fijado por el estado el mínimo legal indisponible."
     },
     "fis-irpf-inflacio": {
       "value": -1,
@@ -174,14 +207,18 @@
       "source": "compromiso-2023"
     },
     "fis-energetiques": {
-      "value": 1,
-      "source": "congreso-20260930-fis-energetiques",
-      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion202/20260930/Votacion003/VOT_20260930153546.pdf"
+      "value": 2,
+      "source": "programa-29n",
+      "page": 18,
+      "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf#page=18",
+      "quote": "Captura de beneficios extraordinarios: Articular un mecanismo permanente que grave los beneficios extraordinarios o windfall profits de las grandes corporaciones energéticas, tanto las vinculadas a los precios altos de la electricidad como los márgenes extraordinarios en el sector fósil."
     },
     "ene-nuclear": {
-      "value": -1,
-      "source": "congreso-20250617-ene-nuclear",
-      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion119/20250617/Votacion001/VOT_20250617203249.pdf"
+      "value": -2,
+      "source": "programa-29n",
+      "page": 15,
+      "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf#page=15",
+      "quote": "Calendario nuclear: Apostaremos por mantener el calendario de cierre nuclear definido en el PNIEC."
     },
     "ene-empresa-publica": {
       "value": 0,
@@ -213,9 +250,10 @@
     },
     "san-gestio-publica": {
       "value": 2,
-      "source": "compromiso-2023",
-      "page": 6,
-      "quote": "Derogar la Ley 15/1997 de Gestión del Sistema de Salud aprobada por el PP, que permite la privatización y externalización de los servicios sanitarios."
+      "source": "programa-29n",
+      "page": 11,
+      "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf#page=11",
+      "quote": "Derogar la Ley 15/1997 de 25 de abril, sobre habilitación de nuevas formas de gestión del Sistema Nacional de Salud, aprobada por el PP que permite la privatización y externalización de los servicios sanitarios."
     },
     "san-muface": {
       "value": null,
@@ -223,8 +261,10 @@
     },
     "san-avortament": {
       "value": 1,
-      "source": "congreso-20260430-san-avortament",
-      "url": "https://www.congreso.es/webpublica/opendata/votaciones/Leg15/Sesion177/20260430/Votacion012/VOT_20260430125141.pdf"
+      "source": "programa-29n",
+      "page": 19,
+      "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf#page=19",
+      "quote": "Blindar el derecho al aborto. Para ello, daremos los pasos y propondremos todas las medidas necesarias para garantizar el acceso libre, seguro, confidencial y digno al aborto."
     },
     "ter-referendum": {
       "value": 1,
@@ -245,9 +285,10 @@
     },
     "dre-regularitzacio": {
       "value": 1,
-      "source": "compromiso-2023",
-      "page": 11,
-      "quote": "Exigiremos la derogación de la Ley de Extranjería, sustituyéndola por una nueva legislación que respete y garantice todos los derechos humanos y civiles de todas las personas migrantes"
+      "source": "programa-29n",
+      "page": 20,
+      "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf#page=20",
+      "quote": "Regularización y nueva Ley de Extranjería: Garantizar una regularización efectiva, accesible y estable. Facilitar las autorizaciones de residencia y trabajo y prevenir la irregularidad sobrevenida."
     },
     "dre-multireincidencia": {
       "value": -2,
@@ -256,9 +297,10 @@
     },
     "dre-memoria": {
       "value": -2,
-      "source": "compromiso-2023",
-      "page": 12,
-      "quote": "Ampliar la Ley de Memoria Democrática para incluir en la misma garantías de reconocimiento, justicia y reparación para todas las víctimas de todas las fases históricas que aún siguen sin ser reconocidas"
+      "source": "programa-29n",
+      "page": 27,
+      "url": "https://posibleegin.ehbildu.eus/wp-content/uploads/2026/11/PROGRAMA-CAS.pdf#page=27",
+      "quote": "Ampliar la Ley de Memoria Democrática para reconocer la condición de víctimas de vulneraciones de derechos humanos a colectivos que todavía no tienen tal reconocimiento"
     }
   }
 }

@@ -20,7 +20,7 @@ export type GCandidacy = {
   members?: string[];
   circumscriptions: "all" | string[];
   positions: Record<string, { value: Answer | null; source: string; page?: number; url?: string; quote?: string }>;
-  sources: Record<string, { title: string; url: string; lang: string }>;
+  sources: Record<string, { title: string; url: string; lang: string; kind?: "program" | "vote" | "other"; date: string }>;
   axes: Point; // posició als eixos, calculada en build
 };
 export type GameData = {

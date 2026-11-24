@@ -74,7 +74,12 @@
       "archived": "Archivada"
     },
     "pending": "Se podrá jugar cuando se proclamen las candidaturas y se publiquen los programas electorales.",
-    "revealOn": "partidos a partir del {date}"
+    "revealOn": "partidos a partir del {date}",
+    "daysLeft": {
+      "one": "Falta 1 día para votar",
+      "other": "Faltan {n} días para votar"
+    },
+    "today": "Hoy se vota"
   },
   "game": {
     "fictional": "Datos ficticios",
@@ -353,7 +358,19 @@
       "one": "Vota en contra de 1 de tus líneas rojas",
       "other": "Vota en contra de {n} de tus líneas rojas"
     },
-    "redRow": "Tu línea roja"
+    "redRow": "Tu línea roja",
+    "topicsTitle": "Tema a tema",
+    "topicsText": "Con quién coincides más en cada tema, según las propuestas que has votado. Aquí no cuentan las fichas de influencia.",
+    "topicVoted": {
+      "one": "1 propuesta votada",
+      "other": "{n} propuestas votadas"
+    },
+    "topicTie": "Empate entre {n} candidaturas",
+    "kind": {
+      "program": "Programa {year}",
+      "vote": "Votación parlamentaria",
+      "other": "Otra fuente"
+    }
   },
   "shared": {
     "title": "Un resultado de Escó",

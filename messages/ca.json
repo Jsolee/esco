@@ -74,7 +74,12 @@
       "archived": "Arxivada"
     },
     "pending": "Es podrà jugar quan es proclamin les candidatures i es publiquin els programes electorals.",
-    "revealOn": "partits a partir del {date}"
+    "revealOn": "partits a partir del {date}",
+    "daysLeft": {
+      "one": "Falta 1 dia per votar",
+      "other": "Falten {n} dies per votar"
+    },
+    "today": "Avui es vota"
   },
   "game": {
     "fictional": "Dades fictícies",
@@ -353,7 +358,19 @@
       "one": "Vota en contra d'1 de les teves línies vermelles",
       "other": "Vota en contra de {n} de les teves línies vermelles"
     },
-    "redRow": "La teva línia vermella"
+    "redRow": "La teva línia vermella",
+    "topicsTitle": "Tema a tema",
+    "topicsText": "Amb qui coincideixes més en cada tema, segons les propostes que has votat. Aquí no compten les fitxes d'influència.",
+    "topicVoted": {
+      "one": "1 proposta votada",
+      "other": "{n} propostes votades"
+    },
+    "topicTie": "Empat entre {n} candidatures",
+    "kind": {
+      "program": "Programa {year}",
+      "vote": "Votació parlamentària",
+      "other": "Una altra font"
+    }
   },
   "shared": {
     "title": "Un resultat d'Escó",

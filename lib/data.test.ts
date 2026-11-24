@@ -28,10 +28,10 @@ describe("dades del repo", () => {
   });
 
   it("accepten candidatures provisionals amb posicions incompletes en una elecció que encara no és oberta", () => {
-    const notOpen = DATA.elections.find((e) => e.election.status === "upcoming" || e.election.status === "preview");
-    expect(notOpen?.candidacies.every((c) => c.provisional)).toBe(true);
     const raw = clone();
-    const c = raw.elections[1].candidacies[0] as { positions: Record<string, unknown> };
+    Object.assign(raw.elections[1].election, { status: "preview", reveal: "2026-11-03" });
+    const c = raw.elections[1].candidacies[0] as { positions: Record<string, unknown>; provisional: boolean };
+    c.provisional = true;
     c.positions = {};
     expect(() => loadData(raw)).not.toThrow();
   });

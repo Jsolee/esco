@@ -61,6 +61,24 @@ export function match(input: {
   return { ranked, insufficient, user: axesOf(questions, answers) };
 }
 
+// Tema a tema: amb qui coincideixes més en cada tema que has votat (sense fitxes, amb les línies vermelles).
+export function byTopic(input: {
+  questions: MQuestion[];
+  answers: Answers;
+  red?: string[];
+  candidacies: MCandidacy[];
+  order: string[];
+}): { topic: string; voted: number; best: Ranked[] }[] {
+  const topics = [...new Set(input.questions.map((q) => q.topic))];
+  return topics.flatMap((topic) => {
+    const questions = input.questions.filter((q) => q.topic === topic);
+    const voted = questions.filter((q) => typeof input.answers[q.id] === "number").length;
+    if (!voted) return [];
+    const best = match({ ...input, questions }).ranked.filter((r) => r.rank === 1);
+    return best.length ? [{ topic, voted, best }] : [];
+  });
+}
+
 // Posició a cada eix, de −1 a +1. Si minCoverage > 0, un eix només es dona quan hi ha valor
 // per a aquesta fracció de les afirmacions que hi contribueixen.
 export function axesOf(
