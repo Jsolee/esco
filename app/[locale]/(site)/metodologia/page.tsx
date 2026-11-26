@@ -12,7 +12,8 @@ const pct = `${MIN_COVERAGE * 100} %`;
 
 const Formula = () => (
   <pre className="overflow-x-auto bg-sunken p-5 text-sm leading-relaxed">
-    {`s(x)     = sentit: +1 (sí), 0 (abstenció), −1 (no)
+    {`q        = propostes on has votat sí o no
+s(x)     = sentit: +1 (sí), 0 (abstenció de la candidatura), −1 (no)
 pes(q)   = fitxes del tema × ${RED_WEIGHT} si és una línia vermella
 D        = Σ pes(q) · |s(tu) − s(candidatura)| / 2
 Dmàx     = Σ pes(q)
@@ -44,9 +45,9 @@ const CONTENT = {
       {
         h: "El càlcul de l'afinitat",
         body: [
-          "Per a cada candidatura es compara el sentit del teu vot (sí, no o abstenció) amb el de la seva posició, proposta per proposta, i es converteix en un percentatge de 0 a 100. Coincidir compta sencer; sí contra abstenció, mig; sí contra no, gens. Només es compara el sentit perquè la intensitat de la posició d'un partit no es pot mesurar bé: votar una llei i haver-la escrit compten igual.",
+          "Per a cada candidatura es compara el sentit del teu vot (sí o no) amb el de la seva posició, proposta per proposta, i es converteix en un percentatge de 0 a 100. Coincidir compta sencer; si la candidatura s'hi absté, mig; sí contra no, gens. Només es compara el sentit perquè la intensitat de la posició d'un partit no es pot mesurar bé: votar una llei i haver-la escrit compten igual.",
           `Tens ${RED_LINES} línies vermelles per a les propostes que no negociaries. Una línia vermella pesa ${RED_WEIGHT} vegades més, i si una candidatura hi vota en contra, el resultat t'ho diu. Les propostes dels temes on poses fitxes d'influència també pesen més.`,
-          "L'abstenció és una resposta i compta. «Salta» no compta. Si una candidatura no es pronuncia sobre una proposta, aquella proposta no entra al seu càlcul.",
+          "Les teves abstencions no entren al càlcul de l'afinitat: no t'acosten ni t'allunyen de ningú. Si comptessin com a mig acord amb tothom, moltes abstencions deixarien totes les candidatures prop del 50 %. Sí que compten per a la brúixola, on et situen al centre. «Salta» no compta per a res. Si una candidatura no es pronuncia sobre una proposta, aquella proposta no entra al seu càlcul.",
           `Perquè una candidatura amb molt poques posicions no surti amunt per casualitat, cal que es pronunciï com a mínim sobre el ${pct} de les propostes que has votat per entrar al rànquing. La resta es mostra a part.`,
           "Els empats es decideixen sobre la xifra arrodonida, la que veus. Les candidatures empatades comparteixen posició i s'ordenen amb l'ordre aleatori de la sessió.",
         ],
@@ -112,9 +113,9 @@ const CONTENT = {
       {
         h: "El cálculo de la afinidad",
         body: [
-          "Para cada candidatura se compara el sentido de tu voto (sí, no o abstención) con el de su posición, propuesta por propuesta, y se convierte en un porcentaje de 0 a 100. Coincidir cuenta entero; sí contra abstención, medio; sí contra no, nada. Solo se compara el sentido porque la intensidad de la posición de un partido no se puede medir bien: votar una ley y haberla escrito cuentan igual.",
+          "Para cada candidatura se compara el sentido de tu voto (sí o no) con el de su posición, propuesta por propuesta, y se convierte en un porcentaje de 0 a 100. Coincidir cuenta entero; si la candidatura se abstiene, medio; sí contra no, nada. Solo se compara el sentido porque la intensidad de la posición de un partido no se puede medir bien: votar una ley y haberla escrito cuentan igual.",
           `Tienes ${RED_LINES} líneas rojas para las propuestas que no negociarías. Una línea roja pesa ${RED_WEIGHT} veces más, y si una candidatura vota en contra, el resultado te lo dice. Las propuestas de los temas donde pones fichas de influencia también pesan más.`,
-          "La abstención es una respuesta y cuenta. «Salta» no cuenta. Si una candidatura no se pronuncia sobre una propuesta, esa propuesta no entra en su cálculo.",
+          "Tus abstenciones no entran en el cálculo de la afinidad: no te acercan ni te alejan de nadie. Si contaran como medio acuerdo con todos, muchas abstenciones dejarían a todas las candidaturas cerca del 50 %. Sí cuentan para la brújula, donde te sitúan en el centro. «Salta» no cuenta para nada. Si una candidatura no se pronuncia sobre una propuesta, esa propuesta no entra en su cálculo.",
           `Para que una candidatura con muy pocas posiciones no suba por casualidad, tiene que pronunciarse como mínimo sobre el ${pct} de las propuestas que has votado para entrar en el ranking. El resto se muestra aparte.`,
           "Los empates se deciden sobre la cifra redondeada, la que ves. Las candidaturas empatadas comparten posición y se ordenan con el orden aleatorio de la sesión.",
         ],

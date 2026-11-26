@@ -34,8 +34,21 @@ describe("match", () => {
     expect(run({ a: 2, b: -1, c: 0, d: 1 }, [same]).ranked[0].affinity).toBe(100);
   });
 
-  it("neutral contra extrem dona 50", () => {
-    const { ranked } = run({ a: 0, b: 0, c: 0, d: 0 }, [party("p", { a: 2, b: -2, c: 2, d: -2 })]);
+  it("una abstenció teva no compta: ni acosta ni allunya de ningú", () => {
+    const p = party("p", { a: 2, b: -2, c: 2, d: -2 });
+    const o = party("o", { a: -2, b: 2, c: 0, d: 2 });
+    const { ranked } = run({ a: 1, b: -1, c: 0, d: 0 }, [p, o]);
+    expect(ranked.map((r) => [r.id, r.affinity, r.coverage])).toEqual([["p", 100, 1], ["o", 0, 1]]);
+  });
+
+  it("tot abstencions: no hi ha res a comparar", () => {
+    const r = run({ a: 0, b: 0, c: 0, d: 0 }, [party("p", { a: 2, b: -2, c: 0, d: -2 })]);
+    expect(r.ranked).toEqual([]);
+    expect(r.user).toEqual({ economic: 0 });
+  });
+
+  it("l'abstenció d'un partit és mig acord amb un sí o un no", () => {
+    const { ranked } = run({ a: 1, b: -1, c: null, d: null }, [party("p", { a: 0, b: 0, c: 1, d: 1 })]);
     expect(ranked[0].affinity).toBe(50);
   });
 
@@ -159,6 +172,7 @@ describe("byTopic", () => {
     const y = party("y", { a: 2, b: 2, c: 2, d: 2 });
     const out = byTopic({ questions: Q, answers: { a: 1, b: 1, c: null }, candidacies: [x, y], order: ["x", "y"] });
     expect(out).toEqual([{ topic: "t1", voted: 2, best: [expect.objectContaining({ id: "x", affinity: 100 }), expect.objectContaining({ id: "y", affinity: 100 })] }]);
+    expect(byTopic({ questions: Q, answers: { a: 0, d: 0 }, candidacies: [x, y], order: ["x", "y"] })).toEqual([]);
     const t2 = byTopic({ questions: Q, answers: { d: 1 }, candidacies: [x, y], order: ["x", "y"] });
     expect(t2.map((t) => [t.topic, t.best.map((b) => b.id)])).toEqual([["t2", ["y"]]]);
   });

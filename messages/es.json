@@ -255,7 +255,7 @@
       "items": [
         {
           "t": "Sí, No, Abstención",
-          "d": "Vota cada propuesta como harías en el Congreso: desliza a la derecha (sí), a la izquierda (no) o hacia arriba (abstención). La abstención cuenta: significa que no estás ni a favor ni en contra."
+          "d": "Vota cada propuesta como harías en el Congreso: desliza a la derecha (sí), a la izquierda (no) o hacia arriba (abstención). La abstención significa que no estás ni a favor ni en contra: no te acerca ni te aleja de ninguna candidatura. Para el resultado solo cuentan tus síes y tus noes."
         },
         {
           "t": "Salta",
@@ -293,17 +293,18 @@
     "goesTo": "Tu escaño es para",
     "tie": "Empate en cabeza",
     "affinity": "de afinidad",
-    "basedOn": "Calculado sobre {n} propuestas que has votado.",
+    "basedOn": "Calculado sobre las {n} propuestas en las que has votado sí o no.",
+    "fewVotes": "Con tan pocos síes y noes el resultado es solo orientativo. Cuantas más propuestas votes, más preciso será.",
     "allSkipped": {
-      "title": "No has votado ninguna propuesta.",
-      "text": "Sin votos no podemos compararte con nadie. Vuelve y vota al menos unas cuantas.",
+      "title": "No has votado sí o no a ninguna propuesta.",
+      "text": "Sin ningún sí ni ningún no, no podemos compararte con nadie. Vuelve y vota al menos unas cuantas.",
       "back": "Vuelve a la primera"
     },
     "hemicycleTitle": "Si el Congreso pensara como tú",
     "hemicycleText": "350 escaños repartidos con el sistema D'Hondt, usando tu afinidad con cada candidatura como si fueran votos. Las candidaturas se ordenan de izquierda a derecha según su posición económica.",
     "seats": "{n} escaños",
     "rankingTitle": "Ranking de afinidad",
-    "coverage": "Se pronuncia sobre el {n} % de las propuestas que has votado.",
+    "coverage": "Se pronuncia sobre el {n} % de las propuestas en las que has votado sí o no.",
     "members": "Coalición de {list}",
     "compare": "Compara propuesta por propuesta",
     "colStatement": "Propuesta",
@@ -313,7 +314,7 @@
     "skipped": "Saltada",
     "page": "p. {n}",
     "insufficientTitle": "Sin suficientes posiciones para comparar",
-    "insufficientText": "Se pronuncian sobre menos de la mitad de las propuestas que has votado.",
+    "insufficientText": "Se pronuncian sobre menos de la mitad de las propuestas en las que has votado sí o no.",
     "mapTitle": "El mapa",
     "mapText": "Tu posición y la de cada candidatura, calculadas a partir de las respuestas a las propuestas que pesan en cada eje.",
     "axes": {

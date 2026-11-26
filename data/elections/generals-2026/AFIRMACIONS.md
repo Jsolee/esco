@@ -12,6 +12,10 @@ Criteris de les etiquetes:
 
 Les votacions surten de les dades obertes del Congrés (`congreso.es/webpublica/opendata/votaciones`) o dels Diaris de Sessions. Quan la font és premsa, s'indica.
 
+## Llenguatge planer (26/11/2026)
+
+El text i el context de les 24 afirmacions de `questions.json` es van reescriure perquè les entengui tothom: sense noms de lleis ni termes tècnics, amb una explicació curta quan cal («Un transvasament porta aigua de la conca d'un riu a una altra») i amb els arguments marcats com a «A favor» i «En contra». **Cap afirmació canvia de sentit**: un sí continua volent dir el mateix, i per això les posicions i les cites de les candidatures no s'han tocat. Els títols curts d'aquest document (`hab-renovacio`: indemnitzar si no es renova el lloguer…) i les fonts continuen valent. El context no afegeix cap fet nou: reformula els que ja hi havia i només hi suma definicions curtes de termes (què és una zona tensionada segons la llei d'habitatge, un tram de l'IRPF, un furt, una escola concertada, un transvasament, MUFACE i l'AIReF). Un segon revisor va comparar les 24 amb les originals i amb les posicions codificades; se'n van corregir sis que s'havien desviat (`dre-regularitzacio`, `fis-irpf-inflacio`, `hab-zones-tensionades`, i els contextos de `ter-referendum`, `ene-empresa-publica` i `san-avortament`).
+
 ## Posicions (fase 3, 24/11/2026): programes del 29-N
 
 Totes les candidatures han publicat el programa del 29-N. Cada posició s'ha confirmat o corregit amb el programa: si el programa s'hi pronuncia, la posició passa a ser la del programa (pàgina del visor del PDF, enllaç `#page=` i cita literal comprovada contra el text extret); si calla, es manté la de la fase 1. Les fonts porten `kind` (`program`, `vote` o `other`) i el resultat ho mostra.

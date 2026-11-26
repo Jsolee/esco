@@ -255,7 +255,7 @@
       "items": [
         {
           "t": "Sí, No, Abstenció",
-          "d": "Vota cada proposta com faries al Congrés: llisca a la dreta (sí), a l'esquerra (no) o amunt (abstenció). L'abstenció compta: vol dir que no estàs ni a favor ni en contra."
+          "d": "Vota cada proposta com faries al Congrés: llisca a la dreta (sí), a l'esquerra (no) o amunt (abstenció). L'abstenció vol dir que no estàs ni a favor ni en contra: no t'acosta ni t'allunya de cap candidatura. Per al resultat només compten els teus sís i els teus nos."
         },
         {
           "t": "Salta",
@@ -293,17 +293,18 @@
     "goesTo": "El teu escó és per a",
     "tie": "Empat al capdamunt",
     "affinity": "d'afinitat",
-    "basedOn": "Calculat sobre {n} propostes que has votat.",
+    "basedOn": "Calculat sobre les {n} propostes en què has votat sí o no.",
+    "fewVotes": "Amb tan pocs sís i nos el resultat és només orientatiu. Com més propostes votis, més precís serà.",
     "allSkipped": {
-      "title": "No has votat cap proposta.",
-      "text": "Sense vots no podem comparar-te amb ningú. Torna-hi i vota'n almenys unes quantes.",
+      "title": "No has votat sí o no a cap proposta.",
+      "text": "Sense cap sí ni cap no, no podem comparar-te amb ningú. Torna-hi i vota'n almenys unes quantes.",
       "back": "Torna a la primera"
     },
     "hemicycleTitle": "Si el Congrés pensés com tu",
     "hemicycleText": "350 escons repartits amb el sistema D'Hondt, fent servir la teva afinitat amb cada candidatura com si fossin vots. Les candidatures s'ordenen d'esquerra a dreta segons la seva posició econòmica.",
     "seats": "{n} escons",
     "rankingTitle": "Rànquing d'afinitat",
-    "coverage": "Es pronuncia sobre el {n} % de les propostes que has votat.",
+    "coverage": "Es pronuncia sobre el {n} % de les propostes en què has votat sí o no.",
     "members": "Coalició de {list}",
     "compare": "Compara proposta per proposta",
     "colStatement": "Proposta",
@@ -313,7 +314,7 @@
     "skipped": "Saltada",
     "page": "p. {n}",
     "insufficientTitle": "Sense prou posicions per comparar",
-    "insufficientText": "Es pronuncien sobre menys de la meitat de les propostes que has votat.",
+    "insufficientText": "Es pronuncien sobre menys de la meitat de les propostes en què has votat sí o no.",
     "mapTitle": "El mapa",
     "mapText": "La teva posició i la de cada candidatura, calculades a partir de les respostes a les propostes que pesen en cada eix.",
     "axes": {

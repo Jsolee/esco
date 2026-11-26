@@ -40,7 +40,7 @@ messages/                   textos d'interfície en català i castellà
 ## Algorisme
 
 Coincidència de sentit amb pesos: per a cada candidatura, sobre les propostes que has votat i on ella té posició,
-`afinitat = 100 · (1 − Σ pes·|s(tu) − s(ella)|/2 / Σ pes)`, on `s` és el sentit (+1 sí, 0 abstenció, −1 no). El pes és el de les fitxes del tema, ×3 si la proposta és una de les teves 3 línies vermelles. Les saltades i els «no s'hi pronuncia» no compten; cal una cobertura mínima del 50 % per entrar al rànquing. Detalls i casos límit a `lib/match.ts` i `lib/match.test.ts`.
+`afinitat = 100 · (1 − Σ pes·|s(tu) − s(ella)|/2 / Σ pes)`, on `s` és el sentit (+1 sí, 0 abstenció, −1 no). El pes és el de les fitxes del tema, ×3 si la proposta és una de les teves 3 línies vermelles. Les teves abstencions, les saltades i els «no s'hi pronuncia» no compten (una abstenció només situa la brúixola al centre); cal una cobertura mínima del 50 % per entrar al rànquing. Detalls i casos límit a `lib/match.ts` i `lib/match.test.ts`.
 
 ## Rendiment i accessibilitat
 

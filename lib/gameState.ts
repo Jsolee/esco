@@ -2,7 +2,7 @@ import type { Achievement } from "./achievements";
 import { TOKENS, type Alloc } from "./budget";
 import type { GQuestion } from "./game";
 import type { Saved } from "./saved";
-import { RED_LINES, seededShuffle, type Answers } from "./match";
+import { isFirm, RED_LINES, seededShuffle, type Answers } from "./match";
 import type { Answer } from "./schema";
 
 // Estat d'una partida, sense React: es desa a sessionStorage i es pot provar amb Vitest.
@@ -53,7 +53,6 @@ export const fresh = (province: string | null): State => ({
 });
 
 // Una línia vermella només té sentit amb un sí o un no, i n'hi ha com a màxim RED_LINES.
-const isFirm = (v: Answer | null | undefined) => v === 1 || v === -1 || v === 2 || v === -2;
 const withRed = (red: string[], id: string, on: boolean) =>
   on ? (red.includes(id) || red.length >= RED_LINES ? red : [...red, id]) : red.filter((x) => x !== id);
 const advance = (s: State, total: number): State =>

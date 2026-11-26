@@ -93,8 +93,8 @@ Ofereix sempre opcions de tots els tipus i de sensibilitats diferents (retallade
 
 - **`budget`** (opcional): efecte sobre el pressupost si s'hi està d'acord, en punts. Negatiu si costa diners (més despesa o menys impostos), positiu si n'aporta. Les propostes que no tenen cost públic (una regulació, un referèndum) no en porten.
 - **`budgetSource`**: d'on surt l'estimació del cost. És obligatori en eleccions reals obertes; fes servir fonts neutrals (AIReF, pressupostos, memòries econòmiques dels programes). Recorda que baixar impostos també té cost.
-- **`text`**: una afirmació clara, en positiu, que es pugui respondre d'acord o en desacord. Màxim 120 caràcters per idioma, perquè hi càpiga a la carta del mòbil.
-- **`context`**: 2 o 3 frases neutres amb la situació actual i els arguments principals de cada banda. Res que no es pugui verificar.
+- **`text`**: una afirmació clara, en positiu, que es pugui respondre d'acord o en desacord. Màxim 120 caràcters per idioma, perquè hi càpiga a la carta del mòbil. En llenguatge planer: l'ha d'entendre algú que no segueix la política. Res de noms de lleis, sigles sense explicar ni termes tècnics («zona tensionada», «acomiadament improcedent»); digues què passaria a la pràctica.
+- **`context`**: 2 o 3 frases neutres amb la situació actual i, al final, «A favor: … En contra: …» amb l'argument principal de cada banda. Res que no es pugui verificar. Si cal un terme tècnic, explica'l en mitja frase.
 - **`topic`**: un `id` de `data/topics.json`. Els usuaris poden marcar temes com a prioritaris (pes ×2).
 - **`axes`**: quant empeny cap a cada pol estar-hi **d'acord**, de −1 a +1.
   - `economic`: −1 esquerra, +1 dreta

@@ -10,6 +10,8 @@ export const RED_WEIGHT = 3; // una línia vermella pesa el triple
 export const AXES: Axis[] = ["economic", "social", "territorial"];
 
 export type Answers = Record<string, Answer | null>; // null = saltada; absent = encara no vista
+// Un sí o un no. L'abstenció (0) situa la brúixola al centre, però no es compara amb cap candidatura.
+export const isFirm = (a: Answer | null | undefined): a is Exclude<Answer, 0> => typeof a === "number" && a !== 0;
 export type Point = Partial<Record<Axis, number>>;
 export type Ranked = { id: string; affinity: number; rank: number; coverage: number; clash: number }; // clash: línies vermelles que vota al revés
 export type Insufficient = { id: string; coverage: number };
@@ -25,7 +27,8 @@ export function match(input: {
   const { questions, answers, candidacies, order } = input;
   const weights = input.weights ?? {};
   const red = new Set(input.red ?? []);
-  const answered = questions.filter((q) => typeof answers[q.id] === "number");
+  // Abstenir-se no acosta ni allunya de ningú: si comptés com a mig acord, moltes abstencions ho deixarien tot al 50 %.
+  const answered = questions.filter((q) => isFirm(answers[q.id]));
   const pos = (id: string) => (order.indexOf(id) + 1 || Infinity);
 
   const scored: Omit<Ranked, "rank">[] = [];
@@ -41,7 +44,7 @@ export function match(input: {
       // Només es compara el sentit (sí, abstenció, no): la intensitat d'un partit no es pot mesurar bé.
       const u = Math.sign(answers[q.id] as number);
       const p = Math.sign(v);
-      const isRed = red.has(q.id) && u !== 0;
+      const isRed = red.has(q.id);
       const w = (weights[q.topic] ?? 1) * (isRed ? RED_WEIGHT : 1);
       distance += (w * Math.abs(u - p)) / 2;
       max += w;
@@ -72,7 +75,7 @@ export function byTopic(input: {
   const topics = [...new Set(input.questions.map((q) => q.topic))];
   return topics.flatMap((topic) => {
     const questions = input.questions.filter((q) => q.topic === topic);
-    const voted = questions.filter((q) => typeof input.answers[q.id] === "number").length;
+    const voted = questions.filter((q) => isFirm(input.answers[q.id])).length;
     if (!voted) return [];
     const best = match({ ...input, questions }).ranked.filter((r) => r.rank === 1);
     return best.length ? [{ topic, voted, best }] : [];

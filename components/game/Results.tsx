@@ -5,7 +5,7 @@ import { useMemo, useRef, useState } from "react";
 import { gsap, reducedMotion, sfx, SplitText, useGSAP } from "@/lib/fx";
 import { balanceOf, fundingAnswers, usedOf, weightOf, type Alloc } from "@/lib/budget";
 import type { GameData, GCandidacy, GFunding, GQuestion } from "@/lib/game";
-import { byTopic, dhondt, match, type Answers } from "@/lib/match";
+import { byTopic, dhondt, isFirm, match, type Answers } from "@/lib/match";
 import type { Answer } from "@/lib/schema";
 import { encodeShare } from "@/lib/share";
 import { format } from "@/lib/text";
@@ -18,6 +18,8 @@ import { Coin } from "./Funding";
 import { Wordmark } from "../Wordmark";
 import { PoliticalMap } from "./PoliticalMap";
 import { ScaleGlyph } from "./ScaleGlyph";
+
+const FEW_VOTES = 8; // per sota d'això, l'afinitat depèn de massa poques respostes
 
 export function Results({
   data,
@@ -67,6 +69,7 @@ export function Results({
     [order, answers, red, candidacies],
   );
   const voted = order.filter((q) => typeof answers[q.id] === "number").length;
+  const firm = order.filter((q) => isFirm(answers[q.id])).length; // sís i nos: l'únic que es compara amb les candidatures
   const top = result.ranked.filter((x) => x.rank === 1);
   const tied = (rank: number) => result.ranked.filter((x) => x.rank === rank).length > 1;
 
@@ -181,7 +184,10 @@ export function Results({
                   </span>
                   <span className="text-lg text-chalk-2">{r.affinity}</span>
                 </p>
-                <p className="mt-1 text-sm text-chalk-3">{format(r.basedOn, { n: voted })}</p>
+                <p className="mt-1 max-w-[46ch] text-sm text-chalk-3">
+                  {format(r.basedOn, { n: firm })}
+                  {firm < FEW_VOTES && ` ${r.fewVotes}`}
+                </p>
               </>
             ) : (
               <>
@@ -295,7 +301,7 @@ export function Results({
           </section>
         )}
 
-        {result.insufficient.length > 0 && voted > 0 && (
+        {result.insufficient.length > 0 && firm > 0 && (
           <section className="reveal mt-10 grid gap-2" aria-labelledby="res-in">
             <h2 id="res-in" className="kicker text-ink-2">
               {r.insufficientTitle}
